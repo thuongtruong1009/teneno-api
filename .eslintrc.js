@@ -22,15 +22,10 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
-
-        // "@typescript-eslint/explicit-member-accessibility": 0,
-        // '@typescript-eslint/interface-name-prefix': 0,
-        // 'prettier/prettier': ['off', { singleQuote: true }],
-        // "@typescript-eslint/no-parameter-properties": 0,
-        // '@typescript-eslint/explicit-function-return-type': 0,
-        // '@typescript-eslint/explicit-module-boundary-types': 0,
-        // '@typescript-eslint/no-explicit-any': 0,
-        // "@typescript-eslint/ban-types": 0,
-        // "@typescript-eslint/no-var-requires": 0
+        "@typescript-eslint/explicit-member-accessibility": 0,
+        'prettier/prettier': ['off', { singleQuote: true }],
+        "@typescript-eslint/no-parameter-properties": 0,
+        "@typescript-eslint/ban-types": 0,
+        "@typescript-eslint/no-var-requires": 0
     },
 };

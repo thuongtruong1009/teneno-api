@@ -1,60 +1,94 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Logo" />
 </p>
 
-<p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-<p align="center">
+<p align="center">A official api for teneno application</p>
+
+## Preview
+
+* [API Document](http://localhost:5500/api)
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
 ## Features
-[Husky x Lintstage x Commitlint](https://medium.com/angular-in-depth/husky-6-lint-prettier-eslint-and-commitlint-for-javascript-project-d7174d44735a)
+
+* **Auth**
+
+  [x] Signup
+
+  [x] Signin
+
+  [x] Signout
+
+  [x] Refresh access-token
+  
+* **Users**
+
+  [ ] Get list all users
+  
+  [ ] Get user data by user-id
+
+  [ ] Get public user profile by user-id / username / email
+
+## Plugins & Dependencies
+
+* [Nodejs](http://nodejs.org) framework for building efficient and scalable server-side applications
+* [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository
+* [Prisma](https://www.prisma.io/) query builder and auto-generated schema with types tailored
+* [CORS](https://www.npmjs.com/package/cors) connect middleware that can be used to enable CORS with various options
+* [Swagger](https://swagger.io/) describe definition format and design document APIs at scale
+* [Bcrypt](https://www.npmjs.com/package/bcrypt) a library to help you hash passwords
+* [JWT](https://www.npmjs.com/package/jsonwebtoken) decode, verify and generate access tokens
+* [Class-validator](https://www.npmjs.com/package/class-validator) use of decorator and non-decorator to perform validation
+* [Class-transformer](https://www.npmjs.com/package/class-transformer) transform plain object to some instance of class and versa and serialize / deserialize object based on criteria
+* [Passport](https://www.npmjs.com/package/passport) compatible authentication requests middleware for Node.js
+
+## Conventions & Tools
+
+* [Prettier](https://prettier.io/) opinionated code formatter
+* [Eslint](https://eslint.org/) analyzes code to quickly find problems and built with continuous integration pipeline
+* [Husky x Lintstage x Commitlint](https://medium.com/angular-in-depth/husky-6-lint-prettier-eslint-and-commitlint-for-javascript-project-d7174d44735a) linter conventions for clean code
+* [JWT Playground](https://jwt.io)
 
 ### Prisma
-* 1. Installation
+
+#### 1. Installation
 ```bash
 npm install prisma@latest @prisma/client
 ```
-* 2. Installation
+#### 2. Running
 ```bash
 npx prisma init
-```
-
-* 3. Running
-```bash
 prisma db pull  #turn database schema into a Prisma schema
 prisma generate #generate the Prisma Client
 ```
 
-* 4. Create env and migrate db
+#### 3. Create env and migrate db
 ```bash
 npx prisma migrate dev --create-only
 ```
-* 5. Open prisma studio
+#### 4. Open prisma studio
 ```bash
 npx prisma studio
 ```
 
-* 6. Sync migrate change to db
+#### 5. Sync migrate change to db
 ```bash
 npx prisma db push
 ```
 
 ### Database
-* 1. Start db
+
+#### 1. Start db
 ```bash
 docker-compose up
 ```
 
-## Installation
+## Running the app in local
 
 ```bash
 $ npm install
 ```
-
-## Running the app
 
 ```bash
 # development
@@ -82,14 +116,14 @@ $ npm run test:cov
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Teneno is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://github.com/sponsors/thuongtruong1009).
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Tran Nguyen Thuong Truong](https://github.com/thuongtruong1009)
+- Devto - [@thuongtruong1009](https://dev.to/thuongtruong1009)
+- Linkedin - [@thuongtruong1009](https://linkedin.com/in/thuongtruong1009)
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Teneno is [MIT licensed](LICENSE).
