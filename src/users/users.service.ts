@@ -12,7 +12,17 @@ export class UsersService {
   }
 
   async getAllUsers() {
-    return await this.prismaService.user.findMany();
+    const user = await this.prismaService.user.findMany({
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+    const total = user.length;
+    return { total, user };
   }
 
   async getUsersById(userId: string) {
@@ -21,6 +31,7 @@ export class UsersService {
         where: { id: Number(userId) },
         select: {
           id: true,
+          username: true,
           email: true,
           profile: true,
           createdAt: true,

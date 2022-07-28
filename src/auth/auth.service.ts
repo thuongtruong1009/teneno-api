@@ -61,10 +61,12 @@ export class AuthService {
       data: {
         email: dto.email,
         hash,
+        username: dto.username,
         profile: {
           create: {
-            name: dto.name,
+            fullName: dto.fullName,
             bio: dto.bio,
+            age: dto.age,
             gender: dto.gender,
           },
         },

@@ -8,10 +8,11 @@ datasource db {
 }
 
 model User {
-  id                 Int         @id @default(autoincrement()) @unique
-  createdAt          DateTime    @default(now())
-  updatedAt          DateTime    @updatedAt
-  email              String      @unique
+  id                 Int          @id @unique @default(autoincrement())
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  email              String       @unique
+  username           String       @unique
   hash               String
   hashedRefreshToken String?
   profile            UserProfile?
@@ -22,11 +23,12 @@ model User {
 }
 
 model UserProfile {
-  name   String
-  bio    String
-  gender Int
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
+  fullName String
+  bio      String
+  age      Int
+  gender   Int
+  user     User   @relation(fields: [userId], references: [id])
+  userId   Int    @unique
 
   @@map("profiles")
 }

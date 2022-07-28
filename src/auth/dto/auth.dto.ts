@@ -15,7 +15,13 @@ export class AuthDto {
   password: string;
 
   @IsString()
-  name: string;
+  username: string;
+
+  @IsString()
+  fullName: string;
+
+  @IsNumber()
+  age: number;
 
   @IsString()
   bio: string;
