@@ -60,7 +60,7 @@ export class AuthService {
     const newUser = await this.prismaService.user.create({
       data: {
         email: dto.email,
-        hash,
+        password: hash,
         username: dto.username,
         profile: {
           create: {
@@ -86,7 +86,7 @@ export class AuthService {
     });
     if (!user) throw new ForbiddenException('Access denied');
 
-    const passwordMatches = await comparePassword(dto.password, user.hash);
+    const passwordMatches = await comparePassword(dto.password, user.password);
     if (!passwordMatches) throw new ForbiddenException('Access denied');
 
     const tokens = await this.getTokens(user.id, user.email);
@@ -120,6 +120,36 @@ export class AuthService {
       user.hashedRefreshToken,
     );
     if (!hashMatches) throw new ForbiddenException('Access denied');
+
+    const tokens = await this.getTokens(user.id, user.email);
+    await this.updateRtHash(user.id, tokens.refreshToken);
+    return tokens;
+  }
+
+  async updatePassWord(dto: LoginDto) {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        email: dto.email,
+      },
+    });
+
+    // const passwordMatches = await comparePassword(dto.password, user.password);
+    // if (!passwordMatches) throw new ForbiddenException('Access denied');
+
+    // if (passwordMatches) {
+    //   await this.prismaService.user.update({
+    //     where: { email: dto.email },
+    //     data: {
+    //       password: dto.password,
+    //   });
+    // }
+
+    await this.prismaService.user.update({
+      where: { email: dto.email },
+      data: {
+        password: await hashPassword(dto.password),
+      },
+    });
 
     const tokens = await this.getTokens(user.id, user.email);
     await this.updateRtHash(user.id, tokens.refreshToken);

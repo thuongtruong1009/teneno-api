@@ -4,6 +4,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -82,5 +83,18 @@ export class AuthController {
     @GetCurrentUser('refreshToken') refreshToken: string,
   ) {
     return this.authService.refreshToken(userId, refreshToken);
+  }
+
+  @Put('password')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Update user password' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
+  updatePassWord(@Body() dto: LoginDto): Promise<ITokens> {
+    return this.authService.updatePassWord(dto);
   }
 }

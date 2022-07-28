@@ -30,7 +30,9 @@
 
   ✅  Get public user profile by user-id / username / email
 
-  ⬜️  Update user profile
+  ✅  Update user profile
+
+<!-- ⬜️ ✅ -->
 
 ## Plugins & Dependencies
 

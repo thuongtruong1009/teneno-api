@@ -7,7 +7,7 @@ export class UsersService {
   constructor(private prismaService: PrismaService) {}
 
   async updateUsersProfile(userId: string, dto: UserProfileDto) {
-    const user = await this.prismaService.user.update({
+    await this.prismaService.user.update({
       where: { id: Number(userId) },
       data: {
         profile: {
@@ -17,7 +17,8 @@ export class UsersService {
         },
       },
     });
-    return user;
+    const newProfile = await this.getUsersById(userId);
+    return newProfile;
   }
 
   async getAllUsers() {
@@ -35,20 +36,16 @@ export class UsersService {
   }
 
   async getUsersById(userId: string) {
-    try {
-      return await this.prismaService.user.findUnique({
-        where: { id: Number(userId) },
-        select: {
-          id: true,
-          username: true,
-          email: true,
-          profile: true,
-          createdAt: true,
-          updatedAt: true,
-        },
-      });
-    } catch (error) {
-      throw new Error(`Error when find user by id: ${error.message} `);
-    }
+    return await this.prismaService.user.findUnique({
+      where: { id: Number(userId) },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        profile: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
   }
 }
