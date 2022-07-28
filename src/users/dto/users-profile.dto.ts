@@ -1,16 +1,33 @@
-import { IsBoolean, IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 
 export class UserProfileDto {
-  @IsEmail()
-  @IsNotEmpty()
-  email: string;
-
+  @ApiProperty({
+    type: String,
+    example: 'Hello ABC',
+  })
   @IsString()
-  name: string;
+  fullName: string;
 
+  @ApiProperty({
+    type: Number,
+    example: 19,
+  })
+  @IsNumber()
+  age: number;
+
+  @ApiProperty({
+    type: String,
+    example: 'This is bio of Hello ABC account',
+  })
   @IsString()
   bio: string;
 
-  @IsBoolean()
-  gender: boolean;
+  @ApiProperty({
+    type: Number,
+    description: '1: male, 2: female, 0: other',
+    example: 1,
+  })
+  @IsNumber()
+  gender: number;
 }

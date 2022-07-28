@@ -3,7 +3,7 @@ CREATE TABLE "profiles" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "bio" TEXT,
-    "gender" BOOLEAN NOT NULL,
+    "gender" INTEGER NOT NULL,
     "userId" INTEGER NOT NULL,
 
     CONSTRAINT "profiles_pkey" PRIMARY KEY ("id")

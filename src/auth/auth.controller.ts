@@ -71,6 +71,12 @@ export class AuthController {
   @Post('refresh')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Logout account on all devices' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
   refreshToken(
     @GetCurrentUserId() userId: number,
     @GetCurrentUser('refreshToken') refreshToken: string,

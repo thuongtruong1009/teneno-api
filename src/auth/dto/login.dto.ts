@@ -13,5 +13,10 @@ export class LoginDto {
 
   @IsNotEmpty()
   @IsString()
+  @ApiProperty({
+    type: String,
+    description: 'This is a required property',
+    example: 'password123',
+  })
   password: string;
 }

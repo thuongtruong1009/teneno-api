@@ -1,14 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UserProfileDto } from './dto';
-import { IUserProfile } from './type/user-profile';
 
 @Injectable()
 export class UsersService {
   constructor(private prismaService: PrismaService) {}
 
-  async updateUsersProfile(dto: UserProfileDto) {
-    return dto;
+  async updateUsersProfile(userId: string, dto: UserProfileDto) {
+    const user = await this.prismaService.user.update({
+      where: { id: Number(userId) },
+      data: {
+        profile: {
+          update: {
+            ...dto,
+          },
+        },
+      },
+    });
+    return user;
   }
 
   async getAllUsers() {

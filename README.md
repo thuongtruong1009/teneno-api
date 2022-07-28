@@ -14,21 +14,23 @@
 
 * **Auth**
 
-  [x] Signup
+  ✅ Signup
 
-  [x] Signin
+  ✅  Signin
 
-  [x] Signout
+  ✅  Signout
 
-  [x] Refresh access-token
+  ✅  Refresh access-token
   
 * **Users**
 
-  [ ] Get list all users
+  ✅  Get list all users
   
-  [ ] Get user data by user-id
+  ✅  Get user data by user-id
 
-  [ ] Get public user profile by user-id / username / email
+  ✅  Get public user profile by user-id / username / email
+
+  ⬜️  Update user profile
 
 ## Plugins & Dependencies
 

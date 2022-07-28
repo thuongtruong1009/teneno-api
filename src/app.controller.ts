@@ -1,12 +1,14 @@
 import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
+import { Public } from './auth/common/decorators';
 
 @ApiTags('Home')
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Public()
   @Get()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Teneno homepage' })
