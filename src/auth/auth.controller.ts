@@ -16,6 +16,7 @@ import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './common/decorators';
 import { RtGuard } from './common/guards';
 import { AuthDto } from './dto';
+import { LoginDto } from './dto/login.dto';
 import { ITokens } from './types';
 
 @ApiTags('Auth')
@@ -49,7 +50,7 @@ export class AuthController {
     description: '{code: 1, data: {access-token}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  signinLocal(@Body() dto: AuthDto): Promise<ITokens> {
+  signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
     return this.authService.signinLocal(dto);
   }
 

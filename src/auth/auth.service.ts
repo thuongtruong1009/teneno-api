@@ -1,11 +1,11 @@
 import { ForbiddenException, Inject, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import * as bcrypt from 'bcrypt';
 import { ITokens } from './types';
 import { JwtService } from '@nestjs/jwt';
 import { AuthDto } from './dto';
 import { ConfigService } from '@nestjs/config';
 import { comparePassword, hashPassword } from 'src/helpers/hash';
+import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
@@ -61,6 +61,13 @@ export class AuthService {
       data: {
         email: dto.email,
         hash,
+        profile: {
+          create: {
+            name: dto.name,
+            bio: dto.bio,
+            gender: dto.gender,
+          },
+        },
       },
     });
 
@@ -69,7 +76,7 @@ export class AuthService {
     return tokens;
   }
 
-  async signinLocal(dto: AuthDto) {
+  async signinLocal(dto: LoginDto) {
     const user = await this.prismaService.user.findUnique({
       where: {
         email: dto.email,
