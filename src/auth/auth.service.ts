@@ -2,10 +2,10 @@ import { ForbiddenException, Inject, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ITokens } from './types';
 import { JwtService } from '@nestjs/jwt';
-import { AuthDto } from './dto';
 import { ConfigService } from '@nestjs/config';
 import { comparePassword, hashPassword } from 'src/helpers/hash';
-import { LoginDto } from './dto/login.dto';
+import { LoginDto } from './dto/sigin.dto';
+import { SignupDto } from './dto/signup.dto';
 
 @Injectable()
 export class AuthService {
@@ -54,7 +54,7 @@ export class AuthService {
     });
   }
 
-  async signupLocal(dto: AuthDto): Promise<ITokens> {
+  async signupLocal(dto: SignupDto): Promise<ITokens> {
     const hash = await hashPassword(dto.password);
 
     const newUser = await this.prismaService.user.create({
@@ -64,10 +64,12 @@ export class AuthService {
         username: dto.username,
         profile: {
           create: {
-            fullName: dto.fullName,
-            bio: dto.bio,
-            age: dto.age,
-            gender: dto.gender,
+            fullName: '',
+            bio: '',
+            address: '',
+            phone: '',
+            age: 0,
+            gender: 0,
           },
         },
       },

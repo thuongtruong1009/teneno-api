@@ -16,8 +16,7 @@ import {
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './common/decorators';
 import { RtGuard } from './common/guards';
-import { AuthDto } from './dto';
-import { LoginDto } from './dto/login.dto';
+import { LoginDto, SignupDto } from './dto';
 import { ITokens } from './types';
 
 @ApiTags('Auth')
@@ -37,7 +36,7 @@ export class AuthController {
     description: '{code: 1, data: {user}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  signupLocal(@Body() dto: AuthDto): Promise<ITokens> {
+  signupLocal(@Body() dto: SignupDto): Promise<ITokens> {
     return this.authService.signupLocal(dto);
   }
 

@@ -10,6 +10,20 @@ export class UserProfileDto {
   fullName: string;
 
   @ApiProperty({
+    type: String,
+    example: 'Address A, City B, Country C',
+  })
+  @IsString()
+  address: string;
+
+  @ApiProperty({
+    type: String,
+    example: '09999999999',
+  })
+  @IsString()
+  phone: string;
+
+  @ApiProperty({
     type: Number,
     example: 19,
   })

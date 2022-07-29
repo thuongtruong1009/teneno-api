@@ -46,6 +46,7 @@
 * [Class-validator](https://www.npmjs.com/package/class-validator) use of decorator and non-decorator to perform validation
 * [Class-transformer](https://www.npmjs.com/package/class-transformer) transform plain object to some instance of class and versa and serialize / deserialize object based on criteria
 * [Passport](https://www.npmjs.com/package/passport) compatible authentication requests middleware for Node.js
+* [Cookies-Parser](https://anonystick.com/blog-developer/cookie-parser-la-gi-middleware-can-thiet-ma-hoa-cookie-trong-expressjs-2020112687915577) middleware parsing of cookies in Nodejs and Expressjs.
 
 ## Conventions & Tools
 
