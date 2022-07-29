@@ -8,12 +8,50 @@ datasource db {
 }
 
 model User {
-  id                 Int      @id @default(autoincrement())
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-  email              String   @unique
-  hash               String
+  id                 Int          @id @unique @default(autoincrement())
+  email              String       @unique
+  username           String       @unique
+  password           String
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
   hashedRefreshToken String?
+  profile            UserProfile?
+  //   role    Role     @default(USER)
+  //   posts   Post[]
 
   @@map("users")
 }
+
+model UserProfile {
+  fullName String @default("")
+  bio      String @default("")
+  address  String @default("")
+  phone    String @default("")
+  age      Int    @default(0)
+  gender   Int    @default(0)
+  user     User   @relation(fields: [userId], references: [id])
+  userId   Int    @unique
+
+  @@map("profiles")
+}
+
+// model Post {
+//   id         Int        @id @default(autoincrement())
+//   createdAt  DateTime   @default(now())
+//   title      String
+//   published  Boolean    @default(false)
+//   author     User       @relation(fields: [authorId], references: [id])
+//   authorId   Int
+//   categories Category[] @relation(references: [id])
+// }
+
+// model Category {
+//   id    Int    @id @default(autoincrement())
+//   name  String
+//   posts Post[] @relation(references: [id])
+// }
+
+// enum Role {
+//   USER
+//   ADMIN
+// }

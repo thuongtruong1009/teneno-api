@@ -1,9 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   HttpCode,
   HttpStatus,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -15,7 +17,7 @@ import {
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './common/decorators';
 import { RtGuard } from './common/guards';
-import { AuthDto } from './dto';
+import { LoginDto, SignupDto } from './dto';
 import { ITokens } from './types';
 
 @ApiTags('Auth')
@@ -35,7 +37,7 @@ export class AuthController {
     description: '{code: 1, data: {user}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  signupLocal(@Body() dto: AuthDto): Promise<ITokens> {
+  signupLocal(@Body() dto: SignupDto): Promise<ITokens> {
     return this.authService.signupLocal(dto);
   }
 
@@ -49,7 +51,7 @@ export class AuthController {
     description: '{code: 1, data: {access-token}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  signinLocal(@Body() dto: AuthDto): Promise<ITokens> {
+  signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
     return this.authService.signinLocal(dto);
   }
 
@@ -70,10 +72,29 @@ export class AuthController {
   @Post('refresh')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Logout account on all devices' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
   refreshToken(
     @GetCurrentUserId() userId: number,
     @GetCurrentUser('refreshToken') refreshToken: string,
   ) {
     return this.authService.refreshToken(userId, refreshToken);
+  }
+
+  @Put('password')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Update user password' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
+  updatePassWord(@Body() dto: LoginDto): Promise<ITokens> {
+    return this.authService.updatePassWord(dto);
   }
 }
