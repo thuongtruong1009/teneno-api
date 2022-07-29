@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -15,6 +16,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Public } from 'src/auth/common/decorators';
+import { LoginDto } from 'src/auth/dto';
 import { UserProfileDto } from './dto';
 import { UsersService } from './users.service';
 
@@ -66,4 +68,17 @@ export class UsersController {
   getUsersById(@Param('userId') userId: string) {
     return this.usersService.getUsersById(userId);
   }
+
+  // @Delete(':userId')
+  // @ApiBearerAuth()
+  // @HttpCode(HttpStatus.OK)
+  // @ApiOperation({ summary: 'Delete user by email' })
+  // @ApiResponse({
+  //   status: 200,
+  //   description: '{code: 1, data: {}, message: ""',
+  // })
+  // @ApiResponse({ status: 404, description: 'Not found' })
+  // deleteUserByEmail(@Param('userId') userId: string, @Body() dto: LoginDto) {
+  //   return this.usersService.deleteUserByEmail(userId, dto);
+  // }
 }
