@@ -1,6 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { FileDto } from './dto';
 
-@Injectable()
-export class FileService {
-  constructor(private readonly fileService: FileService) {}
+export class FilesService {
+  async uploadFile(file: Express.Multer.File) {
+    return { file: file.filename };
+  }
+
+  async failValidation(dto: FileDto, file: Express.Multer.File) {
+    return { dto, file: file };
+  }
+
+  async passValidation(dto: FileDto, file?: Express.Multer.File) {
+    return { dto, file: file };
+  }
 }

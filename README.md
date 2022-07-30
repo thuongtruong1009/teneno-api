@@ -33,6 +33,8 @@
 
   ✅  Update user profile
 
+  ✅  Upload file/avatar
+
 <!-- ⬜️ ✅ -->
 
 ## Plugins & Dependencies
@@ -48,7 +50,7 @@
 * [Class-transformer](https://www.npmjs.com/package/class-transformer) transform plain object to some instance of class and versa and serialize / deserialize object based on criteria
 * [Passport](https://www.npmjs.com/package/passport) compatible authentication requests middleware for Node.js
 * [Cookies-Parser](https://anonystick.com/blog-developer/cookie-parser-la-gi-middleware-can-thiet-ma-hoa-cookie-trong-expressjs-2020112687915577) middleware parsing of cookies in Nodejs and Expressjs.
-* [File-upload with Multer](https://docs.nestjs.com/techniques/file-upload)
+* [Multer](https://docs.nestjs.com/techniques/file-upload) upload file data form in Expressjs
 
 ## Conventions & Tools
 
@@ -56,6 +58,10 @@
 * [Eslint](https://eslint.org/) analyzes code to quickly find problems and built with continuous integration pipeline
 * [Husky x Lintstage x Commitlint](https://medium.com/angular-in-depth/husky-6-lint-prettier-eslint-and-commitlint-for-javascript-project-d7174d44735a) linter conventions for clean code
 * [JWT Playground](https://jwt.io)
+
+## References & Tips
+
+* [Fix upload file on Postman](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)
 
 ### Prisma
 

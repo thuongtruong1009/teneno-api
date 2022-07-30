@@ -1,25 +1,42 @@
 import {
   Body,
   Controller,
+  HttpCode,
+  HttpStatus,
   ParseFilePipeBuilder,
   Post,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Express } from 'express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { FileDto } from './dto';
-import { FileService } from './files.service';
+import { FilesService } from './files.service';
 
 @ApiTags('Files')
 @Controller('files')
 export class FileController {
-  constructor(private readonly fileService: FileService) {}
+  constructor(private fileService: FilesService) {}
 
   @Post('upload')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Upload file form data' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {file}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
   @ApiConsumes('multipart/form-data')
   @ApiBody({
     schema: {
@@ -47,16 +64,45 @@ export class FileController {
     }),
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-    console.log(file.filename);
-    return {
-      file: file.filename,
-    };
+    return this.fileService.uploadFile(file);
+  }
+
+  @UseInterceptors(FileInterceptor('file'))
+  @Post('fail-validation')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Test fail validation file' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {file}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
+  uploadFileAndFailValidation(
+    @Body() dto: FileDto,
+    @UploadedFile(
+      new ParseFilePipeBuilder()
+        .addFileTypeValidator({
+          fileType: 'jpg',
+        })
+        .build(),
+    )
+    file: Express.Multer.File,
+  ) {
+    return this.fileService.failValidation(dto, file);
   }
 
   @UseInterceptors(FileInterceptor('file'))
   @Post('pass-validation')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Test pass validation file' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {file}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
   uploadFileAndPassValidation(
-    @Body() body: FileDto,
+    @Body() dto: FileDto,
     @UploadedFile(
       new ParseFilePipeBuilder()
         .addFileTypeValidator({
@@ -68,28 +114,6 @@ export class FileController {
     )
     file?: Express.Multer.File,
   ) {
-    return {
-      body,
-      file: file?.buffer.toString(),
-    };
-  }
-
-  @UseInterceptors(FileInterceptor('file'))
-  @Post('fail-validation')
-  uploadFileAndFailValidation(
-    @Body() body: FileDto,
-    @UploadedFile(
-      new ParseFilePipeBuilder()
-        .addFileTypeValidator({
-          fileType: 'jpg',
-        })
-        .build(),
-    )
-    file: Express.Multer.File,
-  ) {
-    return {
-      body,
-      file: file.buffer.toString(),
-    };
+    return this.fileService.passValidation(dto, file);
   }
 }
