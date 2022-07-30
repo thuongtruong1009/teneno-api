@@ -9,7 +9,7 @@ import {
   MinLength,
   Validate,
 } from 'class-validator';
-import { usenameValidator } from './validators';
+import { passwordValidator, usenameValidator } from './validators';
 
 export class SignupDto {
   @IsNotEmpty()
@@ -22,11 +22,21 @@ export class SignupDto {
   email: string;
 
   @IsNotEmpty()
-  @IsString()
   @ApiProperty({
     type: String,
     description: 'This is a required property',
     example: 'password123',
+  })
+  @Length(8, 21)
+  @MinLength(7, {
+    message: 'Password is too short, must be at least 8 characters!',
+  })
+  @MaxLength(21, {
+    message: 'Password is too long, must be at most 20 characters!',
+  })
+  @Validate(passwordValidator, {
+    message:
+      'Password must be at contain at least one number, one uppercase letter and one special character',
   })
   password: string;
 
