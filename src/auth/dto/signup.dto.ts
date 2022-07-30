@@ -1,5 +1,15 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsAlphanumeric,
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  Length,
+  MaxLength,
+  MinLength,
+  Validate,
+} from 'class-validator';
+import { usenameValidator } from './validators';
 
 export class SignupDto {
   @IsNotEmpty()
@@ -25,5 +35,17 @@ export class SignupDto {
     example: 'username123',
   })
   @IsString()
+  @IsNotEmpty()
+  @IsAlphanumeric()
+  @Length(3, 20)
+  @MinLength(2, {
+    message: 'Name is too short, must be at least 3 characters!',
+  })
+  @MaxLength(21, {
+    message: 'Name is too long, must be at most 20 characters!',
+  })
+  @Validate(usenameValidator, {
+    message: 'Username must be not begin with number!',
+  })
   username: string;
 }
