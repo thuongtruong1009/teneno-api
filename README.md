@@ -1,6 +1,7 @@
-<p align="center">
+<div align="center">
+  <h1>Teneno API</h1>
   <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Logo" />
-</p>
+</div>
 
 <p align="center">A official api for teneno application</p>
 
@@ -47,6 +48,7 @@
 * [Class-transformer](https://www.npmjs.com/package/class-transformer) transform plain object to some instance of class and versa and serialize / deserialize object based on criteria
 * [Passport](https://www.npmjs.com/package/passport) compatible authentication requests middleware for Node.js
 * [Cookies-Parser](https://anonystick.com/blog-developer/cookie-parser-la-gi-middleware-can-thiet-ma-hoa-cookie-trong-expressjs-2020112687915577) middleware parsing of cookies in Nodejs and Expressjs.
+* [File-upload with Multer](https://docs.nestjs.com/techniques/file-upload)
 
 ## Conventions & Tools
 

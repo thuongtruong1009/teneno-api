@@ -16,6 +16,8 @@ CREATE TABLE "profiles" (
     "fullName" TEXT NOT NULL DEFAULT '',
     "bio" TEXT NOT NULL DEFAULT '',
     "address" TEXT NOT NULL DEFAULT '',
+    "birthdate" TIMESTAMP(3) NOT NULL DEFAULT '2021-01-01 05:01:03.938 +00:00',
+    "avatar" TEXT NOT NULL DEFAULT '',
     "phone" TEXT NOT NULL DEFAULT '',
     "age" INTEGER NOT NULL DEFAULT 0,
     "gender" INTEGER NOT NULL DEFAULT 0,
