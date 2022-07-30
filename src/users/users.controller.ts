@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -17,7 +18,7 @@ import {
 } from '@nestjs/swagger';
 import { Public } from 'src/auth/common/decorators';
 import { LoginDto } from 'src/auth/dto';
-import { UserProfileDto } from './dto';
+import { PaginationDto, UserProfileDto } from './dto';
 import { UsersService } from './users.service';
 
 @ApiTags('Users')
@@ -36,8 +37,8 @@ export class UsersController {
     description: '{code: 1, data: {user}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  getAllUsers() {
-    return this.usersService.getAllUsers();
+  getAllUsers(@Query() dto: PaginationDto) {
+    return this.usersService.getAllUsers(dto);
   }
 
   @Put('profile/:userId')
