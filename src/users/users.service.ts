@@ -2,7 +2,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { LoginDto } from 'src/auth/dto';
 import { comparePassword } from 'src/helpers/hash';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { UserProfileDto } from './dto';
+import { PaginationDto, UserProfileDto } from './dto';
 
 @Injectable()
 export class UsersService {
@@ -23,8 +23,14 @@ export class UsersService {
     return newProfile;
   }
 
-  async getAllUsers() {
+  async getAllUsers(dto: PaginationDto) {
+    const total = await this.prismaService.user.count();
     const user = await this.prismaService.user.findMany({
+      skip: Number(dto.limit) * (Number(dto.current) - 1),
+      take: Number(dto.limit),
+      orderBy: {
+        id: dto.order as any,
+      },
       select: {
         id: true,
         email: true,
@@ -33,8 +39,14 @@ export class UsersService {
         updatedAt: true,
       },
     });
-    const total = user.length;
-    return { total, user };
+    return {
+      total,
+      pageLength: user.length,
+      orderBy: dto.order,
+      pageLimit: Number(dto.limit),
+      pageCurrent: Number(dto.current),
+      users: user,
+    };
   }
 
   async getUsersById(userId: string) {

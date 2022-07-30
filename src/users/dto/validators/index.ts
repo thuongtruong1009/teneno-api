@@ -1,1 +1,2 @@
-export * from './username.validator';
+export * from './fullName.validator';
+export * from './phoneNumber.validator';
