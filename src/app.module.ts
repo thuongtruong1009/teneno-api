@@ -6,7 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { AtGuard } from './auth/common/guards';
 import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
-import { FileModule } from './file/file.module';
+import { FileModule } from './files/files.module';
 
 @Module({
   imports: [AuthModule, PrismaModule, UsersModule, FileModule],
