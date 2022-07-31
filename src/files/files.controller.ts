@@ -25,6 +25,7 @@ import {
 import { Express } from 'express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { SingleDecorator } from './decorators';
 import { FileDto } from './dto';
 import { FilesService } from './files.service';
 
@@ -42,32 +43,7 @@ export class FileController {
     description: '{code: 1, data: {file}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        file: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './public/avatars',
-        filename: (req, file, cb) => {
-          const randomName = Array(32)
-            .fill(null)
-            .map(() => Math.round(Math.random() * 16).toString(16))
-            .join('');
-          cb(null, `${randomName}${extname(file.originalname)}`);
-        },
-      }),
-    }),
-  )
+  @SingleDecorator('./public/avatars')
   uploadAvatar(@UploadedFile() file: Express.Multer.File) {
     return this.fileService.uploadAvatar(file);
   }
@@ -81,32 +57,7 @@ export class FileController {
     description: '{code: 1, data: {file}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        file: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './public/covers',
-        filename: (req, file, cb) => {
-          const randomName = Array(32)
-            .fill(null)
-            .map(() => Math.round(Math.random() * 16).toString(16))
-            .join('');
-          cb(null, `${randomName}${extname(file.originalname)}`);
-        },
-      }),
-    }),
-  )
+  @SingleDecorator('./public/covers')
   uploadCover(@UploadedFile() file: Express.Multer.File) {
     return this.fileService.uploadCover(file);
   }
