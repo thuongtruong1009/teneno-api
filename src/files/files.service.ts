@@ -16,4 +16,12 @@ export class FilesService {
   async passValidation(dto: FileDto, file?: Express.Multer.File) {
     return { dto, file: file };
   }
+
+  async uploadPosts(files: Array<Express.Multer.File>) {
+    return { files: files.map((file) => file.filename) };
+  }
+
+  async uploadAvatarAndBackground(files: Express.Multer.File[]) {
+    return { files: files.map((file) => file.filename) };
+  }
 }
