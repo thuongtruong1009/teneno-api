@@ -65,8 +65,11 @@ export class AuthService {
         profile: {
           create: {
             fullName: '',
-            birthdate: '1970-01-01T14:21:00+02:00',
+            birthdate: new Date(),
             avatar: '',
+            cover: '',
+            marriageStatus: '',
+            interests: [],
             bio: '',
             address: '',
             phone: '',

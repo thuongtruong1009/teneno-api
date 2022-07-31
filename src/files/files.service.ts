@@ -1,7 +1,11 @@
 import { FileDto } from './dto';
 
 export class FilesService {
-  async uploadFile(file: Express.Multer.File) {
+  async uploadAvatar(file: Express.Multer.File) {
+    return { file: file.filename };
+  }
+
+  async uploadCover(file: Express.Multer.File) {
     return { file: file.filename };
   }
 

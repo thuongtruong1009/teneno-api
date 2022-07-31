@@ -28,10 +28,10 @@ import { FilesService } from './files.service';
 export class FileController {
   constructor(private fileService: FilesService) {}
 
-  @Post('upload')
+  @Post('avatar')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Upload file form data' })
+  @ApiOperation({ summary: 'Upload avatar file form data' })
   @ApiResponse({
     status: 200,
     description: '{code: 1, data: {file}, message: ""',
@@ -63,8 +63,47 @@ export class FileController {
       }),
     }),
   )
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.fileService.uploadFile(file);
+  uploadAvatar(@UploadedFile() file: Express.Multer.File) {
+    return this.fileService.uploadAvatar(file);
+  }
+
+  @Post('cover')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Upload cover file form data' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {file}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './public/covers',
+        filename: (req, file, cb) => {
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('');
+          cb(null, `${randomName}${extname(file.originalname)}`);
+        },
+      }),
+    }),
+  )
+  uploadCover(@UploadedFile() file: Express.Multer.File) {
+    return this.fileService.uploadCover(file);
   }
 
   @UseInterceptors(FileInterceptor('file'))

@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   IsAlphanumeric,
+  IsArray,
   IsDate,
   IsNumber,
   IsString,
@@ -38,6 +39,27 @@ export class UserProfileDto {
   })
   @IsString()
   avatar: string;
+
+  @ApiProperty({
+    type: String,
+    example: 'Cover example 1 url',
+  })
+  @IsString()
+  cover: string;
+
+  @ApiProperty({
+    type: String,
+    example: 'Single',
+  })
+  @IsString()
+  marriageStatus: string;
+
+  @ApiProperty({
+    type: [],
+    example: ['Music', 'Sport', 'Travel'],
+  })
+  @IsArray()
+  interests: [];
 
   @ApiProperty({
     type: String,

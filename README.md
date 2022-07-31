@@ -33,7 +33,9 @@
 
   ✅  Update user profile
 
-  ✅  Upload file/avatar
+* **File**
+
+  ✅  Upload file data
 
 <!-- ⬜️ ✅ -->
 
