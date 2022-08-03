@@ -4,7 +4,7 @@ import { ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
-export function FreeSingleDecorator(path: string) {
+export function SingleFieldDecorator(path: string) {
   return applyDecorators(
     UseInterceptors(
       FileInterceptor('file', {

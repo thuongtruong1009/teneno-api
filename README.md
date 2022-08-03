@@ -15,7 +15,7 @@
 
 * **Auth**
 
-  ✅ Signup
+  ✅  Signup
 
   ✅  Signin
 
@@ -33,9 +33,17 @@
 
   ✅  Update user profile
 
+  ⬜️  Delete user by user-id
+
+
 * **File**
 
-  ✅  Upload file data
+  ✅  Upload single field file data (avatar, cover)
+
+  ✅  Upload multi fields file data
+
+  ✅  Upload array-field files data (post, sample_image)
+
 
 <!-- ⬜️ ✅ -->
 
@@ -64,45 +72,52 @@
 ## References & Tips
 
 * [Fix upload file on Postman](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)
-* [File with Nest](https://peaceful-kitchen-5a9.notion.site/Upload-File-API-NESTJS-Example-523aa06d7eb448b9bd568f7030735b74)
+* [File upload with Nest](https://notiz.dev/blog/type-safe-file-uploads)
 
 ### Prisma
 
-#### 1. Installation
 ```bash
+# Installation
 npm install prisma@latest @prisma/client
 ```
-#### 2. Running
+
 ```bash
+# Init prisma
 npx prisma init
-prisma db pull  #turn database schema into a Prisma schema
-prisma generate #generate the Prisma Client
+
+# turn database schema into a Prisma schema
+prisma db pull
+
+# generate the Prisma Client
+prisma generate
 ```
 
-#### 3. Create env and migrate db
 ```bash
+# Create env and migrate db
 npx prisma migrate dev --create-only
 ```
-#### 4. Open prisma studio
+
 ```bash
+# Open prisma studio
 npx prisma studio
 ```
 
-#### 5. Sync migrate change to db
 ```bash
+# Sync migrate change to db
 npx prisma db push
 ```
 
 ### Database
 
-#### 1. Start db
 ```bash
-docker-compose up
+# Start db
+$ docker-compose up
 ```
 
-## Running the app in local
+### Running
 
 ```bash
+# Running the app in local
 $ npm install
 ```
 
@@ -117,7 +132,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+### Test
 
 ```bash
 # unit tests

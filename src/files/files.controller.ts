@@ -15,9 +15,9 @@ import {
 } from '@nestjs/swagger';
 import { Express } from 'express';
 import {
-  ArraySingleDecorator,
-  FreeSingleDecorator,
-  MultiFreeSingleDecorator,
+  ArrayFieldDecorator,
+  SingleFieldDecorator,
+  MultiFieldDecorator,
 } from './decorators';
 import { FilesService } from './files.service';
 
@@ -35,7 +35,7 @@ export class FileController {
     description: '{code: 1, data: {file}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  @FreeSingleDecorator('./public/avatars')
+  @SingleFieldDecorator('./public/avatars')
   uploadAvatar(@UploadedFile() file: Express.Multer.File) {
     return this.fileService.uploadAvatar(file);
   }
@@ -49,12 +49,12 @@ export class FileController {
     description: '{code: 1, data: {file}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  @FreeSingleDecorator('./public/covers')
+  @SingleFieldDecorator('./public/covers')
   uploadCover(@UploadedFile() file: Express.Multer.File) {
     return this.fileService.uploadCover(file);
   }
 
-  @Post('posts')
+  @Post('multi')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Upload single avatar and single cover background' })
@@ -63,13 +63,21 @@ export class FileController {
     description: '{code: 1, data: {file}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  @MultiFreeSingleDecorator('./public/posts')
-  uploadPosts(@UploadedFiles() files: Express.Multer.File[]) {
-    console.log(files);
-    return this.fileService.uploadPosts(files);
+  @MultiFieldDecorator(
+    [
+      { name: 'item_1', maxCount: 1, required: true },
+      { name: 'item_2', maxCount: 1 },
+      { name: 'item_3', maxCount: 1 },
+      { name: 'item_4', maxCount: 1 },
+      { name: 'item_5', maxCount: 1 },
+    ],
+    './public/multi',
+  )
+  uploadMulti(@UploadedFiles() files: Express.Multer.File[]) {
+    return this.fileService.uploadMulti(files);
   }
 
-  @Post('multi')
+  @Post('posts')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Upload post with multi images' })
@@ -78,8 +86,9 @@ export class FileController {
     description: '{code: 1, data: {file}, message: ""',
   })
   @ApiResponse({ status: 404, description: 'Not found' })
-  @ArraySingleDecorator('./public/array')
-  uploadMulti(@UploadedFiles() files: Array<Express.Multer.File>) {
-    return this.fileService.uploadMulti(files);
+  @ArrayFieldDecorator('files', true, 10, './public/posts')
+  uploadPosts(@UploadedFiles() files: Array<Express.Multer.File>) {
+    console.log(files);
+    return this.fileService.uploadPosts(files);
   }
 }

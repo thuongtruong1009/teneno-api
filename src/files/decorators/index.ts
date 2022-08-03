@@ -1,3 +1,3 @@
-export * from './free-single.decorator';
-export * from './multi-free-single.decorator';
-export * from './array-single.decorator';
+export * from './single-field.decorator';
+export * from './multi-field.decorator';
+export * from './array-field.decorator';
