@@ -1,8 +1,31 @@
 {
-  "name": "teneno",
+  "name": "teneno-api",
   "version": "1.2.0",
   "description": "The official Teneno API application",
   "author": "Tran Nguyen Thuong Truong <thuongtruong1009@proton.me>",
+  "homepage": "https://github.com/thuongtruong1009/teneno-api#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thuongtruong1009/teneno-api"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/thuongtruong1009"
+    },
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/thuongtruong1009"
+    },
+    {
+      "type": "momo",
+      "url": "https://nhantien.momo.vn/0917085937"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/thuongtruong1009"
+    }
+  ],
   "private": true,
   "license": "MIT",
   "scripts": {

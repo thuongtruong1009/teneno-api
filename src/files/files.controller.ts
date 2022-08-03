@@ -54,10 +54,25 @@ export class FileController {
     return this.fileService.uploadCover(file);
   }
 
+  @Post('posts')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Upload post with multi images' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {file}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
+  @ArrayFieldDecorator('files', true, 10, './public/posts')
+  uploadPosts(@UploadedFiles() files: Array<Express.Multer.File>) {
+    console.log(files);
+    return this.fileService.uploadPosts(files);
+  }
+
   @Post('multi')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Upload single avatar and single cover background' })
+  @ApiOperation({ summary: 'Upload multi fields' })
   @ApiResponse({
     status: 200,
     description: '{code: 1, data: {file}, message: ""',
@@ -75,20 +90,5 @@ export class FileController {
   )
   uploadMulti(@UploadedFiles() files: Express.Multer.File[]) {
     return this.fileService.uploadMulti(files);
-  }
-
-  @Post('posts')
-  @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Upload post with multi images' })
-  @ApiResponse({
-    status: 200,
-    description: '{code: 1, data: {file}, message: ""',
-  })
-  @ApiResponse({ status: 404, description: 'Not found' })
-  @ArrayFieldDecorator('files', true, 10, './public/posts')
-  uploadPosts(@UploadedFiles() files: Array<Express.Multer.File>) {
-    console.log(files);
-    return this.fileService.uploadPosts(files);
   }
 }
