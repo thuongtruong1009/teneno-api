@@ -1,13 +1,13 @@
 import { applyDecorators, UseInterceptors } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
-export function SingleDecorator(path: string) {
+export function ArraySingleDecorator(path: string) {
   return applyDecorators(
     UseInterceptors(
-      FileInterceptor('file', {
+      FileInterceptor('files', {
         storage: diskStorage({
           destination: path,
           filename: (req, file, cb) => {
@@ -25,9 +25,12 @@ export function SingleDecorator(path: string) {
       schema: {
         type: 'object',
         properties: {
-          file: {
-            type: 'string',
-            format: 'binary',
+          files: {
+            type: 'array',
+            items: {
+              type: 'string',
+              format: 'binary',
+            },
           },
         },
       },

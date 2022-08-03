@@ -1,4 +1,4 @@
-import { FileDto } from './dto';
+import { InternalServerErrorException } from '@nestjs/common';
 
 export class FilesService {
   async uploadAvatar(file: Express.Multer.File) {
@@ -9,19 +9,19 @@ export class FilesService {
     return { file: file.filename };
   }
 
-  async failValidation(dto: FileDto, file: Express.Multer.File) {
-    return { dto, file: file };
+  async uploadPosts(files: Express.Multer.File[]) {
+    try {
+      const [avatar, background] = files;
+      return { avatar: avatar.filename, background: background.filename };
+    } catch (e) {
+      throw new InternalServerErrorException(
+        'Upload avatar and background failed',
+      );
+    }
+    // return { files: files.map((file) => file.filename) };
   }
 
-  async passValidation(dto: FileDto, file?: Express.Multer.File) {
-    return { dto, file: file };
-  }
-
-  async uploadPosts(files: Array<Express.Multer.File>) {
-    return { files: files.map((file) => file.filename) };
-  }
-
-  async uploadAvatarAndBackground(files: Express.Multer.File[]) {
+  async uploadMulti(files: Array<Express.Multer.File>) {
     return { files: files.map((file) => file.filename) };
   }
 }

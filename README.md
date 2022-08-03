@@ -64,6 +64,7 @@
 ## References & Tips
 
 * [Fix upload file on Postman](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)
+* [File with Nest](https://peaceful-kitchen-5a9.notion.site/Upload-File-API-NESTJS-Example-523aa06d7eb448b9bd568f7030735b74)
 
 ### Prisma
 
