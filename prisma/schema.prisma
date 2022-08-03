@@ -16,7 +16,7 @@ model User {
   updatedAt          DateTime     @updatedAt
   hashedRefreshToken String?
   profile            UserProfile?
-  //   role    Role     @default(USER)
+  role               String[]     @default(["USER"])
   //   posts   Post[]
 
   @@map("users")

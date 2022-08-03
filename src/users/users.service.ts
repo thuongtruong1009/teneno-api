@@ -98,30 +98,32 @@ export class UsersService {
     return newProfile;
   }
 
-  // async deleteUserByEmail(userId: string, dto: LoginDto) {
-  //   const user = await this.prismaService.user.findUnique({
-  //     where: {
-  //       id: Number(userId),
-  //     },
-  //   });
-  //   console.log(user);
+  async deleteUserByEmail(userId: string, dto: LoginDto) {
+    // const user = await this.prismaService.user.findUnique({
+    //   where: {
+    //     id: Number(userId),
+    //   },
+    // });
+    // console.log(user);
 
-  //   if (!user) throw new ForbiddenException('Access denied');
+    // if (!user) throw new ForbiddenException('Access denied');
 
-  //   const matchPassword = await comparePassword(dto.password, user.password);
+    // const matchPassword = await comparePassword(dto.password, user.password);
 
-  //   if (!matchPassword) throw new ForbiddenException('Access denied');
+    // if (!matchPassword) throw new ForbiddenException('Access denied');
 
-  //   if (matchPassword) {
-  //     await this.prismaService.user.delete({
-  //       where: {
-  //         id: Number(userId),
-  //       },
-  //     });
-  //     console.log('oke');
-  //   } else {
-  //     throw new Error('Somethings was wrong!');
-  //   }
-  //   return matchPassword;
-  // }
+    // if (matchPassword) {
+    //   await this.prismaService.user.delete({
+    //     where: {
+    //       id: Number(userId),
+    //     },
+    //   });
+    //   console.log('oke');
+    // } else {
+    //   throw new Error('Somethings was wrong!');
+    // }
+    // return matchPassword;
+
+    return 'Admin role to delete user';
+  }
 }

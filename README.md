@@ -73,6 +73,7 @@
 
 * [Fix upload file on Postman](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)
 * [File upload with Nest](https://notiz.dev/blog/type-safe-file-uploads)
+* [Base roles example](https://www.youtube.com/watch?v=wdsp7BNmJRc&list=PL2eJaT2jJV7Ku72gl8YSSVRC0D7IQRJJZ&index=9&ab_channel=MariusEspejo)
 
 ### Prisma
 
