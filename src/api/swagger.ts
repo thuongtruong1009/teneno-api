@@ -19,7 +19,7 @@ export const initSwagger = (app: INestApplication) => {
         bearerFormat: 'JWT',
         description: 'Paste a valid access token here.',
       },
-      'Access token',
+      'bearer',
     )
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);

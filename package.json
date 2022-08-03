@@ -1,8 +1,31 @@
 {
-  "name": "teneno",
-  "version": "1.0.0",
+  "name": "teneno-api",
+  "version": "1.2.0",
   "description": "The official Teneno API application",
   "author": "Tran Nguyen Thuong Truong <thuongtruong1009@proton.me>",
+  "homepage": "https://github.com/thuongtruong1009/teneno-api#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thuongtruong1009/teneno-api"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/thuongtruong1009"
+    },
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/thuongtruong1009"
+    },
+    {
+      "type": "momo",
+      "url": "https://nhantien.momo.vn/0917085937"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/thuongtruong1009"
+    }
+  ],
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -24,7 +47,6 @@
     "prisma:migrate": "npx prisma migrate dev --create-only",
     "prisma:studio": "npx prisma studio",
     "prisma:push": "npx prisma db push"
-
   },
   "dependencies": {
     "@commitlint/cli": "^17.0.3",
@@ -55,6 +77,7 @@
     "@nestjs/testing": "^9.0.0",
     "@types/express": "^4.17.13",
     "@types/jest": "28.1.4",
+    "@types/multer": "^1.4.7",
     "@types/node": "^16.0.0",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",

@@ -1,6 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsAlphanumeric,
+  IsArray,
+  IsDate,
   IsNumber,
   IsString,
   Length,
@@ -32,6 +35,34 @@ export class UserProfileDto {
 
   @ApiProperty({
     type: String,
+    example: 'Avatar example 1 url',
+  })
+  @IsString()
+  avatar: string;
+
+  @ApiProperty({
+    type: String,
+    example: 'Cover example 1 url',
+  })
+  @IsString()
+  cover: string;
+
+  @ApiProperty({
+    type: String,
+    example: 'Single',
+  })
+  @IsString()
+  marriageStatus: string;
+
+  @ApiProperty({
+    type: [],
+    example: ['Music', 'Sport', 'Travel'],
+  })
+  @IsArray()
+  interests: [];
+
+  @ApiProperty({
+    type: String,
     example: '123, Address A, City B, Country C',
   })
   @IsString()
@@ -47,6 +78,11 @@ export class UserProfileDto {
   @IsString()
   @Validate(phoneNumberValidator, { message: 'Phone number is invalid!' })
   phone: string;
+
+  @ApiProperty({ example: '2021-07-02T05:01:03.938Z' })
+  @Type(() => Date)
+  @IsDate()
+  birthdate: Date;
 
   @ApiProperty({
     type: Number,
