@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 model User {
   id                 Int          @id @unique @default(autoincrement())
   email              String       @unique
@@ -16,7 +21,8 @@ model User {
   updatedAt          DateTime     @updatedAt
   hashedRefreshToken String?
   profile            UserProfile?
-  role               String[]     @default(["USER"])
+  // role               String[]     @default(["USER"])
+  role               Role     @default(USER)
   //   posts   Post[]
 
   @@map("users")
@@ -34,7 +40,7 @@ model UserProfile {
   phone          String   @default("")
   age            Int      @default(0)
   gender         Int      @default(0)
-  user           User     @relation(fields: [userId], references: [id])
+  user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
   userId         Int      @unique
 
   @@map("profiles")
@@ -56,7 +62,3 @@ model UserProfile {
 //   posts Post[] @relation(references: [id])
 // }
 
-// enum Role {
-//   USER
-//   ADMIN
-// }

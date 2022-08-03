@@ -107,11 +107,10 @@ export class UsersController {
     return this.usersService.updateUsersCover(userId, dto);
   }
 
-  @Delete(':userId')
-  @RoleDecorator(ROLE.ADMIN)
+  @Delete('profile/:userId')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Delete user by email' })
+  @ApiOperation({ summary: 'Delete user profile by email & password (user)' })
   @ApiResponse({
     status: 200,
     description: '{code: 1, data: {}, message: ""',
@@ -119,5 +118,19 @@ export class UsersController {
   @ApiResponse({ status: 404, description: 'Not found' })
   deleteUserByEmail(@Param('userId') userId: string, @Body() dto: LoginDto) {
     return this.usersService.deleteUserByEmail(userId, dto);
+  }
+
+  @Delete(':userId')
+  // @RoleDecorator(ROLE.ADMIN)
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Delete user by user-id (admin)' })
+  @ApiResponse({
+    status: 200,
+    description: '{code: 1, data: {}, message: ""',
+  })
+  @ApiResponse({ status: 404, description: 'Not found' })
+  deleteUserById(@Param('userId') userId: string) {
+    return this.usersService.deleteUserById(userId);
   }
 }

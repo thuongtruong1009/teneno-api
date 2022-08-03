@@ -1,4 +1,8 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { LoginDto } from 'src/auth/dto';
 import { comparePassword } from 'src/helpers/hash';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -31,8 +35,8 @@ export class UsersService {
     });
     return {
       total,
-      pageLength: user.length,
       orderBy: dto.order,
+      pageItems: user.length,
       pageLimit: Number(dto.limit),
       pageCurrent: Number(dto.current),
       users: user,
@@ -99,31 +103,40 @@ export class UsersService {
   }
 
   async deleteUserByEmail(userId: string, dto: LoginDto) {
-    // const user = await this.prismaService.user.findUnique({
-    //   where: {
-    //     id: Number(userId),
-    //   },
-    // });
-    // console.log(user);
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        id: Number(userId),
+      },
+    });
 
-    // if (!user) throw new ForbiddenException('Access denied');
+    if (!user) throw new ForbiddenException('Access denied');
 
-    // const matchPassword = await comparePassword(dto.password, user.password);
+    const matchPassword = await comparePassword(dto.password, user.password);
 
-    // if (!matchPassword) throw new ForbiddenException('Access denied');
+    if (!matchPassword) throw new ForbiddenException('Access denied');
 
-    // if (matchPassword) {
-    //   await this.prismaService.user.delete({
-    //     where: {
-    //       id: Number(userId),
-    //     },
-    //   });
-    //   console.log('oke');
-    // } else {
-    //   throw new Error('Somethings was wrong!');
-    // }
-    // return matchPassword;
+    await this.prismaService.userProfile.delete({
+      where: {
+        userId: Number(userId),
+      },
+    });
+    return matchPassword;
+  }
 
-    return 'Admin role to delete user';
+  async deleteUserById(userId: string) {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        id: Number(userId),
+      },
+    });
+
+    if (!user) throw new NotFoundException('Access denied');
+
+    await this.prismaService.user.delete({
+      where: {
+        id: Number(userId),
+      },
+    });
+    return user;
   }
 }

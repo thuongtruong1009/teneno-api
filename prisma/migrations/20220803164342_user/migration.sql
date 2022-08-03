@@ -7,6 +7,7 @@ CREATE TABLE "users" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "hashedRefreshToken" TEXT,
+    "role" TEXT[] DEFAULT ARRAY['USER']::TEXT[],
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );

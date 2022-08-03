@@ -33,7 +33,9 @@
 
   ✅  Update user profile
 
-  ⬜️  Delete user by user-id
+  ✅  Delete user-profile by email & password
+
+  ✅  Delete user by user-id (admin)
 
 
 * **File**
