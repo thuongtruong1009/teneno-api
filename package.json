@@ -69,7 +69,8 @@
     "prisma": "^4.1.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "husky": "^8.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
@@ -85,7 +86,6 @@
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^8.0.0",
     "jest": "28.1.2",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1",
