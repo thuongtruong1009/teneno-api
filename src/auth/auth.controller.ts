@@ -29,7 +29,7 @@ export class AuthController {
 
   @Public()
   @Post('local/signup')
-  @ApiBearerAuth()
+  @ApiBearerAuth('access_token')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create new user account' })
   @ApiResponse({

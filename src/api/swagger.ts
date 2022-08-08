@@ -11,15 +11,17 @@ export const initSwagger = (app: INestApplication) => {
     .addServer('http://localhost:5500')
     .setVersion('1.0')
     .addTag('cats', 'default description')
-    // .addBearerAuth()
     .addBearerAuth(
       {
         type: 'http',
         scheme: 'Bearer',
-        bearerFormat: 'JWT',
+        name: 'Authorization',
+        // bearerFormat: 'JWT',
+        bearerFormat: 'Bearer',
         description: 'Paste a valid access token here.',
+        in: 'Header',
       },
-      'bearer',
+      'access_token',
     )
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
