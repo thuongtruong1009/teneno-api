@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
-import { AtGuard } from './auth/common/guards';
-import { PrismaModule } from './prisma/prisma.module';
-import { UsersModule } from './users/users.module';
-import { FilesModule } from './files/files.module';
+import { AuthModule } from './infrastructure/auth/auth.module';
+import { AtGuard } from './infrastructure/auth/common/guards';
+import { PrismaModule } from './infrastructure/prisma/prisma.module';
+import { UsersModule } from './infrastructure/users/users.module';
+import { FilesModule } from './infrastructure/files/files.module';
 
 @Module({
   imports: [AuthModule, PrismaModule, UsersModule, FilesModule],

@@ -4,15 +4,15 @@ import { NestFactory } from '@nestjs/core';
 import { corsOptions } from './api/cors.config';
 import { initSwagger } from './api/swagger';
 import { AppModule } from './app.module';
-import { HttpExceptionFilter } from './exceptions/http.filter';
+import { HttpExceptionFilter } from './core/exceptions/http.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
   app.enableCors(corsOptions);
-  initSwagger(app);
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+  initSwagger(app);
 
   const config: ConfigService = app.get(ConfigService);
   const port: number = config.get<number>('PORT');
@@ -21,7 +21,7 @@ async function bootstrap() {
     console.log('[⚡ Server] is running on ', config.get<string>('BASE_URL'));
     console.log(
       '[⚡ Swagger] is running on ',
-      config.get<string>('BASE_URL') + '/api',
+      config.get<string>('SWAGGER_URL'),
     );
     console.log(
       '[⚡ Web Socket] is running on ',
