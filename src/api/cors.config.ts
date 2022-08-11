@@ -1,8 +1,9 @@
-const whiteList = ['http://127.0.0.1:5500', 'http://localhost:5500'];
+const whiteList = process.env.WHITE_LIST;
 
-export const corsOptions = function (req, callback) {
+export const corsOptions = function (req: any, callback: any) {
   let option;
-  if (whiteList.indexOf(req.header('Origin')) !== -1) {
+
+  if (Array(whiteList).indexOf(req.header('Origin')) !== -1) {
     option = { origin: true };
   } else {
     option = { origin: false };

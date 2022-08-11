@@ -9,17 +9,32 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
+  ApiHeader,
+  ApiNotAcceptableResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
   ApiOperation,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './common/decorators';
-import { RtGuard } from './common/guards';
+import { AtGuard, RtGuard } from './common/guards';
 import { LoginDto, SignupDto } from './dto';
 import { ITokens } from './types';
 
 @ApiTags('Auth')
+@ApiForbiddenResponse({ description: 'Forbidden.' })
+@ApiNotFoundResponse({
+  description: 'Not Found.',
+  type: Error,
+})
+@ApiOkResponse({ description: 'Success.' })
+@ApiNotAcceptableResponse({
+  description: 'Provided fields are not in correct form.',
+})
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {
@@ -28,55 +43,38 @@ export class AuthController {
 
   @Public()
   @Post('local/signup')
-  @ApiBearerAuth('access_token')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create new user account' })
-  @ApiResponse({
-    status: 200,
-    description: '{code: 1, data: {user}, message: ""',
+  @ApiCreatedResponse({
+    description: 'The new account has been created.',
+    type: SignupDto,
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   signupLocal(@Body() dto: SignupDto): Promise<ITokens> {
     return this.authService.signupLocal(dto);
   }
 
   @Public()
   @Post('local/signin')
-  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Login to user account' })
-  @ApiResponse({
-    status: 200,
-    description: '{code: 1, data: {access-token}, message: ""',
-  })
-  @ApiResponse({ status: 404, description: 'Not found' })
   signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
     return this.authService.signinLocal(dto);
   }
 
   @Post('logout')
   @ApiBearerAuth()
+  @UseGuards(AtGuard)
   @ApiOperation({ summary: 'Logout user account' })
-  @ApiResponse({
-    status: 200,
-    description: '{code: 1, data: {}, message: ""',
-  })
-  @ApiResponse({ status: 404, description: 'Not found' })
   logout(@GetCurrentUserId() userId: number) {
     return this.authService.logout(userId);
   }
 
   @Public()
-  @UseGuards(RtGuard)
   @Post('refresh')
   @ApiBearerAuth()
+  @UseGuards(RtGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Logout account on all devices' })
-  @ApiResponse({
-    status: 200,
-    description: '{code: 1, data: {}, message: ""',
-  })
-  @ApiResponse({ status: 404, description: 'Not found' })
   refreshToken(
     @GetCurrentUserId() userId: number,
     @GetCurrentUser('refreshToken') refreshToken: string,
@@ -86,13 +84,9 @@ export class AuthController {
 
   @Put('password')
   @ApiBearerAuth()
+  @UseGuards(AtGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update user password' })
-  @ApiResponse({
-    status: 200,
-    description: '{code: 1, data: {}, message: ""',
-  })
-  @ApiResponse({ status: 404, description: 'Not found' })
   updatePassWord(@Body() dto: LoginDto): Promise<ITokens> {
     return this.authService.updatePassWord(dto);
   }

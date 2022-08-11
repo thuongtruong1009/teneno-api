@@ -7,9 +7,19 @@ import { AtGuard } from './infrastructure/auth/common/guards';
 import { PrismaModule } from './infrastructure/prisma/prisma.module';
 import { UsersModule } from './infrastructure/users/users.module';
 import { FilesModule } from './infrastructure/files/files.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [AuthModule, PrismaModule, UsersModule, FilesModule],
+  imports: [
+    AuthModule,
+    PrismaModule,
+    UsersModule,
+    FilesModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env'],
+    }),
+  ],
   controllers: [AppController],
   providers: [
     AppService,
