@@ -44,9 +44,14 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
-    "prisma:migrate": "npx prisma migrate dev --create-only",
+    "generate": "npx prisma generate",
+    "deploy": "npx prisma migrate deploy",
+    "migrate": "npx prisma migrate dev --create-only",
     "prisma:studio": "npx prisma studio",
     "prisma:push": "npx prisma db push"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
   },
   "dependencies": {
     "@commitlint/cli": "^17.0.3",

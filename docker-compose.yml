@@ -8,3 +8,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1233456789
       POSTGRES_DB: teneno-api
+  # app:
+  #   image: teneno-api
+  #   ports:
+  #     - "5500:5500"
+  #   restart: unless-stopped

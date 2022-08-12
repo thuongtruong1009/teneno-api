@@ -26,7 +26,7 @@ import { UsersController } from './infrastructure/users/users.controller';
     FilesModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env'],
+      // envFilePath: ['.env'],
     }),
   ],
   controllers: [AppController],
