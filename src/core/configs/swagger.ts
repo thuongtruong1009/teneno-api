@@ -19,16 +19,13 @@ export const initSwagger = (app: INestApplication) => {
     .addServer(config.get<string>('BASE_URL'))
     .setVersion('1.4')
     .addTag('cats', 'default description')
-    .addBearerAuth(
-      {
-        type: 'http',
-        scheme: 'Bearer',
-        bearerFormat: 'JWT',
-        description: 'Paste a valid access token here.',
-        in: 'Header',
-      },
-      'access_token',
-    )
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'Bearer',
+      bearerFormat: 'JWT',
+      description: 'Paste a valid access token here.',
+      in: 'Header',
+    })
     .addSecurity('api_key', {
       type: 'apiKey',
       name: 'api_key',

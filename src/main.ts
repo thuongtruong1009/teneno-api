@@ -1,11 +1,11 @@
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import { corsOptions } from './api/cors.config';
-import { initSwagger } from './api/swagger';
 import { AppModule } from './app.module';
-import { HttpExceptionFilter } from './core/exceptions/http.filter';
+import { HttpExceptionFilter } from './core/filters/http.filter';
 import * as cookieParser from 'cookie-parser';
+import { corsOptions } from './core/configs/cors.config';
+import { initSwagger } from './core/configs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
