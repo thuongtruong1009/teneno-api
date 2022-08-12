@@ -16,7 +16,7 @@ model User {
   updatedAt          DateTime     @updatedAt
   hashedRefreshToken String?
   profile            UserProfile?
-  //   role    Role     @default(USER)
+  role               String[]     @default(["USER"])
   //   posts   Post[]
 
   @@map("users")
@@ -34,7 +34,7 @@ model UserProfile {
   phone          String   @default("")
   age            Int      @default(0)
   gender         Int      @default(0)
-  user           User     @relation(fields: [userId], references: [id])
+  user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
   userId         Int      @unique
 
   @@map("profiles")
@@ -54,9 +54,4 @@ model UserProfile {
 //   id    Int    @id @default(autoincrement())
 //   name  String
 //   posts Post[] @relation(references: [id])
-// }
-
-// enum Role {
-//   USER
-//   ADMIN
 // }

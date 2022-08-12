@@ -33,7 +33,9 @@
 
   ✅  Update user profile
 
-  ⬜️  Delete user by user-id
+  ✅  Delete user-profile by email & password
+
+  ✅  Delete user by user-id (admin)
 
 
 * **File**
@@ -61,6 +63,7 @@
 * [Passport](https://www.npmjs.com/package/passport) compatible authentication requests middleware for Node.js
 * [Cookies-Parser](https://anonystick.com/blog-developer/cookie-parser-la-gi-middleware-can-thiet-ma-hoa-cookie-trong-expressjs-2020112687915577) middleware parsing of cookies in Nodejs and Expressjs.
 * [Multer](https://docs.nestjs.com/techniques/file-upload) upload file data form in Expressjs
+* [Cookie-parser](https://www.npmjs.com/package/cookie-parser) Parse Cookie header and signed cookie support
 
 ## Conventions & Tools
 
@@ -71,8 +74,10 @@
 
 ## References & Tips
 
+* [Prisma x Nest](https://docs.nestjs.com/recipes/prisma#getting-started) build CRUD API endpoints rapidy
 * [Fix upload file on Postman](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)
 * [File upload with Nest](https://notiz.dev/blog/type-safe-file-uploads)
+* [Base roles example](https://www.youtube.com/watch?v=wdsp7BNmJRc&list=PL2eJaT2jJV7Ku72gl8YSSVRC0D7IQRJJZ&index=9&ab_channel=MariusEspejo)
 
 ### Prisma
 
