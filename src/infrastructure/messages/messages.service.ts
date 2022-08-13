@@ -70,7 +70,18 @@ export class MessagesService {
   // }
 
   updateMessage(updateMessageDto: UpdateMessageDto) {
-    return `This action updates a #${updateMessageDto} message`;
+    console.log(updateMessageDto);
+
+    this.conversations.forEach((element) => {
+      if (element.id === updateMessageDto['conversationId']) {
+        element.messages.forEach((item) => {
+          if (item.id === updateMessageDto['messageId']) {
+            item.text = updateMessageDto['text'];
+          }
+        });
+      }
+    });
+    return this.findAllMessages(updateMessageDto['conversationId']);
   }
 
   async remove(message: string) {

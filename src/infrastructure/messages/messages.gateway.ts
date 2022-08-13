@@ -81,7 +81,9 @@ export class MessagesGateway {
 
   @SubscribeMessage('updateMessage')
   updateMessage(@MessageBody() updateMessageDto: UpdateMessageDto) {
-    return this.messagesService.updateMessage(updateMessageDto);
+    const refresh = this.messagesService.updateMessage(updateMessageDto);
+    this.server.emit('refresh', refresh);
+    return refresh;
   }
 
   @SubscribeMessage('removeMessage')

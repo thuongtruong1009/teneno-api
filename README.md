@@ -46,6 +46,16 @@
 
   ✅  Upload array-field files data (post, sample_image)
 
+* **Chat**
+
+  ✅ Join conersation by conversation-id
+
+  ✅ Get all messages in conversation
+
+  ✅ Create new messages
+
+  ✅ Delete messages by message-id
+
 
 <!-- ⬜️ ✅ -->
 
