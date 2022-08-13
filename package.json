@@ -60,9 +60,12 @@
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^9.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/platform-socket.io": "^9.0.9",
     "@nestjs/swagger": "^6.0.4",
+    "@nestjs/websockets": "^9.0.9",
     "@prisma/client": "^4.1.0",
     "@types/passport-jwt": "^3.0.6",
     "bcrypt": "^5.0.1",
@@ -76,7 +79,9 @@
     "prisma": "^4.1.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "socket.io": "^4.5.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

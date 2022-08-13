@@ -16,6 +16,7 @@ import { ConfigModule } from '@nestjs/config';
 import { CoreModule } from './infrastructure/core/core.module';
 import { LoggerMiddleware } from './core/middleware/logger.middleware';
 import { UsersController } from './infrastructure/users/users.controller';
+import { MessagesModule } from './infrastructure/messages/messages.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UsersController } from './infrastructure/users/users.controller';
     PrismaModule,
     UsersModule,
     FilesModule,
+    MessagesModule,
     ConfigModule.forRoot({
       isGlobal: true,
       // envFilePath: ['.env'],
