@@ -5,5 +5,4 @@ export class UpdateConversationDto extends PartialType(CreateConversationDto) {
   name?: string;
   description?: string;
   avatar?: string;
-  members?: string[];
 }

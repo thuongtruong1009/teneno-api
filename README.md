@@ -55,7 +55,7 @@
 
   ⬜️  Add new member to current conversation
 
-  ⬜️  Update conversation information (name, description, avatar)
+  ✅  Update conversation information (name, description, avatar)
 
   ⬜️  Delete member out of current conversation by creator-conversation
 
