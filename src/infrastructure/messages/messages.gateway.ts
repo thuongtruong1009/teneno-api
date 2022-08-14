@@ -9,23 +9,11 @@ import { MessagesService } from './messages.service';
 import { Server } from 'http';
 import { Socket } from 'socket.io';
 import { CreateMessageDto, UpdateMessageDto } from './dto';
-// import { map } from 'rxjs/operators';
-// import { from, Observable } from 'rxjs';
 
 @WebSocketGateway({ cors: { origin: '*' } })
 export class MessagesGateway {
   @WebSocketServer() server: Server;
   constructor(private readonly messagesService: MessagesService) {}
-
-  // @SubscribeMessage('events')
-  // findAll(@MessageBody() data: any): Observable<WsResponse<number>> {
-  //   return from([1, 2, 3]).pipe(map(item => ({ event: 'events', data: item })));
-  // }
-
-  // @SubscribeMessage('identity')
-  // async identity(@MessageBody() data: number): Promise<number> {
-  //   return data;
-  // }
 
   @SubscribeMessage('joinConversation')
   joinConversation(
@@ -73,11 +61,6 @@ export class MessagesGateway {
 
     client.broadcast.emit('typing', { senderId: name, isTyping });
   }
-
-  // @SubscribeMessage('findOneMessage')
-  // findOne(@MessageBody() id: number) {
-  //   return this.messagesService.findOne(id);
-  // }
 
   @SubscribeMessage('updateMessage')
   updateMessage(@MessageBody() updateMessageDto: UpdateMessageDto) {

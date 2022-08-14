@@ -65,13 +65,7 @@ export class MessagesService {
     return message;
   }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} message`;
-  // }
-
   updateMessage(updateMessageDto: UpdateMessageDto) {
-    console.log(updateMessageDto);
-
     this.conversations.forEach((element) => {
       if (element.id === updateMessageDto['conversationId']) {
         element.messages.forEach((item) => {

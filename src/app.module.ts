@@ -17,6 +17,7 @@ import { CoreModule } from './infrastructure/core/core.module';
 import { LoggerMiddleware } from './core/middleware/logger.middleware';
 import { UsersController } from './infrastructure/users/users.controller';
 import { MessagesModule } from './infrastructure/messages/messages.module';
+import { ConversationsModule } from './infrastructure/conversations/conversations.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { MessagesModule } from './infrastructure/messages/messages.module';
       isGlobal: true,
       // envFilePath: ['.env'],
     }),
+    ConversationsModule,
   ],
   controllers: [AppController],
   providers: [

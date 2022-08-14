@@ -65,7 +65,7 @@ export class AuthController {
   @ApiBearerAuth()
   @UseGuards(AtGuard)
   @ApiOperation({ summary: 'Logout user account' })
-  logout(@GetCurrentUserId() userId: number) {
+  logout(@GetCurrentUserId() userId: string) {
     return this.authService.logout(userId);
   }
 
@@ -76,7 +76,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Logout account on all devices' })
   refreshToken(
-    @GetCurrentUserId() userId: number,
+    @GetCurrentUserId() userId: string,
     @GetCurrentUser('refreshToken') refreshToken: string,
   ) {
     return this.authService.refreshToken(userId, refreshToken);

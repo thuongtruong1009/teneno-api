@@ -54,6 +54,8 @@
 
   ✅ Create new messages
 
+  ✅ Update message by message-id
+
   ✅ Delete messages by message-id
 
 

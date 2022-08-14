@@ -45,7 +45,7 @@ export class UsersService {
 
   async getUsersById(userId: string) {
     return await this.prismaService.user.findUnique({
-      where: { id: Number(userId) },
+      where: { id: userId },
       select: {
         id: true,
         username: true,
@@ -59,7 +59,7 @@ export class UsersService {
 
   async updateUsersProfile(userId: string, dto: UserProfileDto) {
     await this.prismaService.user.update({
-      where: { id: Number(userId) },
+      where: { id: userId },
       data: {
         profile: {
           update: {
@@ -74,7 +74,7 @@ export class UsersService {
 
   async updateUsersAvatar(userId: string, dto: UserAvatarDto) {
     await this.prismaService.user.update({
-      where: { id: Number(userId) },
+      where: { id: userId },
       data: {
         profile: {
           update: {
@@ -89,7 +89,7 @@ export class UsersService {
 
   async updateUsersCover(userId: string, dto: UserCoverDto) {
     await this.prismaService.user.update({
-      where: { id: Number(userId) },
+      where: { id: userId },
       data: {
         profile: {
           update: {
@@ -105,7 +105,7 @@ export class UsersService {
   async deleteUserByEmail(userId: string, dto: LoginDto) {
     const user = await this.prismaService.user.findUnique({
       where: {
-        id: Number(userId),
+        id: userId,
       },
     });
 
@@ -117,7 +117,7 @@ export class UsersService {
 
     await this.prismaService.userProfile.delete({
       where: {
-        userId: Number(userId),
+        userId: userId,
       },
     });
     return matchPassword;
@@ -126,7 +126,7 @@ export class UsersService {
   async deleteUserById(userId: string) {
     const user = await this.prismaService.user.findUnique({
       where: {
-        id: Number(userId),
+        id: userId,
       },
     });
 
@@ -134,7 +134,7 @@ export class UsersService {
 
     await this.prismaService.user.delete({
       where: {
-        id: Number(userId),
+        id: userId,
       },
     });
     return user;
