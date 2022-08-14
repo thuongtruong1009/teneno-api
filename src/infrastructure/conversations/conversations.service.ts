@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateConversationDto, UpdateConversationDto } from './dto';
+import {
+  CreateConversationDto,
+  GetAllConversationDto,
+  UpdateConversationDto,
+} from './dto';
 import { v4 as uuid } from 'uuid';
 
 @Injectable()
@@ -20,21 +24,29 @@ export class ConversationsService {
     return newConversation;
   }
 
-  async findAllConversations() {
-    const conversation = await this.prismaService.conversation.findMany({
+  async getAllConversations(dto: GetAllConversationDto) {
+    const list = await this.prismaService.conversation.findMany({
       select: {
         id: true,
-        name: true,
-        description: true,
-        createdAt: true,
-        updatedAt: true,
+        members: true,
       },
     });
+    const conversation = list.filter((item) =>
+      item.members.includes(dto.userId),
+    );
     return conversation;
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} conversation`;
+  async getConversationById(id: string) {
+    const conversation = await this.prismaService.conversation.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    if (!conversation) {
+      return null;
+    }
+    return conversation;
   }
 
   updateConversationById(

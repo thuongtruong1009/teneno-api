@@ -8,7 +8,11 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ConversationsService } from './conversations.service';
-import { CreateConversationDto, UpdateConversationDto } from './dto';
+import {
+  CreateConversationDto,
+  GetAllConversationDto,
+  UpdateConversationDto,
+} from './dto';
 
 @Controller('conversations')
 export class ConversationsController {
@@ -20,13 +24,13 @@ export class ConversationsController {
   }
 
   @Get()
-  findAllConversations() {
-    return this.conversationsService.findAllConversations();
+  getAllConversations(@Body() dto: GetAllConversationDto) {
+    return this.conversationsService.getAllConversations(dto);
   }
 
-  @Get(':id')
-  findConversationById(@Param('id') id: string) {
-    return this.conversationsService.findOne(id);
+  @Get(':userId')
+  getConversationById(@Param('userId') userId: string) {
+    return this.conversationsService.getConversationById(userId);
   }
 
   @Patch(':id')
