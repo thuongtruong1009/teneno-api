@@ -1,12 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { GetAllConversationDto } from './get-all-conversation.dto';
 
-export class GetOneConversationDto {
-  @ApiProperty({
-    type: String,
-    example: 'user-id-123-456-789',
-  })
-  @IsString()
-  @IsNotEmpty()
-  id: string;
-}
+export class GetOneConversationDto extends GetAllConversationDto {}

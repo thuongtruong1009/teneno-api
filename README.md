@@ -37,7 +37,6 @@
 
   ✅  Delete user by user-id (admin)
 
-
 * **File**
 
   ✅  Upload single field file data (avatar, cover)
@@ -46,17 +45,33 @@
 
   ✅  Upload array-field files data (post, sample_image)
 
+* **Conversation**
+
+  ✅  Create new conversation
+
+  ✅  Get all conversations of user by user-id
+
+  ✅  Get conversation information has current user
+
+  ⬜️  Add new member to current conversation
+
+  ⬜️  Update conversation information (name, description, avatar)
+
+  ⬜️  Delete member out of current conversation by creator-conversation
+
+  ⬜️  Delete conversation by creator-conversation
+
 * **Chat**
 
-  ✅ Join conersation by conversation-id
+  ✅  Join conversation by conversation-id
 
-  ✅ Get all messages in conversation
+  ✅  Get all messages in conversation
 
-  ✅ Create new messages
+  ✅  Create new messages
 
-  ✅ Update message by message-id
+  ✅  Update message by message-id
 
-  ✅ Delete messages by message-id
+  ✅  Delete messages by message-id
 
 
 <!-- ⬜️ ✅ -->

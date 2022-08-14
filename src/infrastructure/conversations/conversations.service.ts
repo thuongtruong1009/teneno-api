@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import {
   CreateConversationDto,
   GetAllConversationDto,
+  GetOneConversationDto,
   UpdateConversationDto,
 } from './dto';
 import { v4 as uuid } from 'uuid';
@@ -28,6 +29,8 @@ export class ConversationsService {
     const list = await this.prismaService.conversation.findMany({
       select: {
         id: true,
+        name: true,
+        avatar: true,
         members: true,
       },
     });
@@ -37,23 +40,34 @@ export class ConversationsService {
     return conversation;
   }
 
-  async getConversationById(id: string) {
-    const conversation = await this.prismaService.conversation.findUnique({
+  async getConversationById(id: string, dto: GetOneConversationDto) {
+    const identify = await this.prismaService.conversation.findUnique({
       where: {
         id: id,
       },
     });
-    if (!conversation) {
-      return null;
-    }
-    return conversation;
+    if (!identify) return null;
+
+    const conversation = identify.members.includes(dto.userId);
+
+    if (!conversation) return null;
+
+    return identify;
   }
 
-  updateConversationById(
-    id: string,
-    updateConversationDto: UpdateConversationDto,
-  ) {
-    return `This action updates a #${id} conversation`;
+  updateConversationById(id: string, dto: UpdateConversationDto) {
+    const updated = this.prismaService.conversation.update({
+      where: {
+        id: id,
+      },
+      data: {
+        name: dto.name,
+        description: dto.description,
+        avatar: dto.avatar,
+        members: dto.members,
+      },
+    });
+    return updated;
   }
 
   deleteConversationById(id: string) {
