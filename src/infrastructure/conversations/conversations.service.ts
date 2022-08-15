@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import {
   CreateConversationDto,
+  DeleteConversationDto,
   GetAllConversationDto,
   GetOneConversationDto,
   UpdateConversationDto,
@@ -20,6 +21,8 @@ export class ConversationsService {
         description: dto.description,
         avatar: '',
         members: dto.members,
+        admins: dto.admins,
+        creator: dto.creator,
       },
     });
     return newConversation;
@@ -27,32 +30,56 @@ export class ConversationsService {
 
   async getAllConversations(dto: GetAllConversationDto) {
     const list = await this.prismaService.conversation.findMany({
+      where: {
+        OR: [
+          {
+            creator: dto.userId,
+          },
+          {
+            admins: {
+              has: dto.userId,
+            },
+          },
+          {
+            members: {
+              has: dto.userId,
+            },
+          },
+        ],
+      },
       select: {
         id: true,
         name: true,
         avatar: true,
-        members: true,
       },
     });
-    const conversation = list.filter((item) =>
-      item.members.includes(dto.userId),
-    );
-    return conversation;
+    return list;
   }
 
   async getConversationById(id: string, dto: GetOneConversationDto) {
-    const identify = await this.prismaService.conversation.findUnique({
+    const list = await this.prismaService.conversation.findMany({
       where: {
-        id: id,
+        OR: [
+          {
+            creator: dto.userId,
+          },
+          {
+            admins: {
+              has: dto.userId,
+            },
+          },
+          {
+            members: {
+              has: dto.userId,
+            },
+          },
+        ],
+        AND: {
+          id: id,
+        },
       },
     });
-    if (!identify) return null;
-
-    const conversation = identify.members.includes(dto.userId);
-
-    if (!conversation) return null;
-
-    return identify;
+    return list;
   }
 
   updateConversationById(id: string, dto: UpdateConversationDto) {
@@ -70,7 +97,20 @@ export class ConversationsService {
     return updated;
   }
 
-  deleteConversationById(id: string) {
-    return `This action removes a #${id} conversation`;
+  async deleteConversationById(id: string, dto: DeleteConversationDto) {
+    const list = await this.prismaService.conversation.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    if (list['creator'] === dto.userId) {
+      await this.prismaService.conversation.delete({
+        where: {
+          id: id,
+        },
+      });
+      return '';
+    }
+    return false;
   }
 }

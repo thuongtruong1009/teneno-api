@@ -7,15 +7,17 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ConversationsService } from './conversations.service';
 import {
   CreateConversationDto,
+  DeleteConversationDto,
   GetAllConversationDto,
   GetOneConversationDto,
   UpdateConversationDto,
 } from './dto';
 
+@ApiTags('conversations')
 @ApiBearerAuth()
 @Controller('conversations')
 export class ConversationsController {
@@ -48,7 +50,10 @@ export class ConversationsController {
   }
 
   @Delete(':id')
-  deleteConversationById(@Param('id') id: string) {
-    return this.conversationsService.deleteConversationById(id);
+  deleteConversationById(
+    @Param('id') id: string,
+    @Body() dto: DeleteConversationDto,
+  ) {
+    return this.conversationsService.deleteConversationById(id, dto);
   }
 }

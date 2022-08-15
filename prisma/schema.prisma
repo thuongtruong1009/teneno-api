@@ -49,6 +49,8 @@ model Conversation {
   updatedAt   DateTime  @updatedAt
   messages    Message[]
   members     String[]  @default([])
+  creator     String
+  admins      String[]  @default([])
 
   @@map("conversations")
 }

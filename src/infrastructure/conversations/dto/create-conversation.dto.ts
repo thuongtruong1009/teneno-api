@@ -51,8 +51,22 @@ export class CreateConversationDto {
 
   @ApiProperty({
     type: String,
-    example: 'group01',
+    example: ['user01', 'user02'],
   })
   @IsArray()
   members: string[];
+
+  @ApiProperty({
+    type: String,
+    example: ['admin01', 'admin02'],
+  })
+  @IsArray()
+  admins: string[];
+
+  @ApiProperty({
+    type: String,
+    example: 'creator01',
+  })
+  @IsString()
+  creator: string;
 }

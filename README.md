@@ -59,7 +59,7 @@
 
   ⬜️  Delete member out of current conversation by creator-conversation
 
-  ⬜️  Delete conversation by creator-conversation
+  ✅  Delete conversation by creator-conversation
 
 * **Chat**
 
