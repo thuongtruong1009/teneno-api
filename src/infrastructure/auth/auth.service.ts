@@ -4,8 +4,8 @@ import { ITokens } from './types';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { comparePassword, hashPassword } from 'src/core/helpers/hash';
-import { LoginDto } from './dto/sigin.dto';
-import { SignupDto } from './dto/signup.dto';
+import { LoginDto, SignupDto } from './dto/';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +16,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async getTokens(userId: number, email: string): Promise<ITokens> {
+  async getTokens(userId: string, email: string): Promise<ITokens> {
     const [at, rt] = await Promise.all([
       this.jwtService.signAsync(
         {
@@ -42,7 +42,7 @@ export class AuthService {
     return { accessToken: at, refreshToken: rt };
   }
 
-  async updateRtHash(userId: number, rt: string) {
+  async updateRtHash(userId: string, rt: string) {
     const hash = await hashPassword(rt);
     await this.prismaService.user.update({
       where: {
@@ -59,6 +59,7 @@ export class AuthService {
 
     const newUser = await this.prismaService.user.create({
       data: {
+        id: uuid(),
         email: dto.email,
         password: hash,
         username: dto.username,
@@ -77,6 +78,7 @@ export class AuthService {
             gender: 0,
           },
         },
+        role: ['USER'],
       },
     });
 
@@ -101,7 +103,7 @@ export class AuthService {
     return tokens;
   }
 
-  async logout(userId: number) {
+  async logout(userId: string) {
     await this.prismaService.user.updateMany({
       where: {
         id: userId,
@@ -113,7 +115,7 @@ export class AuthService {
     });
   }
 
-  async refreshToken(userId: number, refreshToken: string) {
+  async refreshToken(userId: string, refreshToken: string) {
     const user = await this.prismaService.user.findUnique({
       where: {
         id: userId,

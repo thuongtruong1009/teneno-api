@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id                 Int          @id @unique @default(autoincrement())
+  id                 String       @id @unique @default(uuid())
   email              String       @unique
   username           String       @unique
   password           String
@@ -35,9 +35,38 @@ model UserProfile {
   age            Int      @default(0)
   gender         Int      @default(0)
   user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
-  userId         Int      @unique
+  userId         String   @unique
 
   @@map("profiles")
+}
+
+model Conversation {
+  id          String    @id @unique @default(uuid())
+  name        String
+  description String
+  avatar      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  messages    Message[]
+  members     String[]  @default([])
+  creator     String
+  admins      String[]  @default([])
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String        @id @unique @default(uuid())
+  text           String
+  reactions      Int?          @default(0)
+  description    String?       @default("")
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  conversations  Conversation? @relation(fields: [conversationId], references: [id], onDelete: SetNull)
+  conversationId String        @unique
+  senderId       String        @unique
+
+  @@map("messages")
 }
 
 // model Post {
