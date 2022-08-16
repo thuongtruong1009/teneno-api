@@ -10,3 +10,5 @@ export class GetAllConversationDto {
   @IsNotEmpty()
   userId: string;
 }
+
+export class GetOneConversationDto extends GetAllConversationDto {}

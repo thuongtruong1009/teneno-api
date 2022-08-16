@@ -1,3 +1,3 @@
-import { GetAllConversationDto } from './get-all-conversation.dto';
+import { GetAllConversationDto } from './get-conversation.dto';
 
 export class DeleteConversationDto extends GetAllConversationDto {}

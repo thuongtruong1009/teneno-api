@@ -53,13 +53,15 @@
 
   ✅  Get conversation information has current user
 
-  ⬜️  Add new member to current conversation
+  ✅  Update members to current conversation
 
   ✅  Update conversation information (name, description, avatar)
 
-  ⬜️  Delete member out of current conversation by creator-conversation
+  ✅  Delete admin out of current conversation by creator-conversation
 
   ✅  Delete conversation by creator-conversation
+
+  ⬜  Change roles in current conversation
 
 * **Chat**
 

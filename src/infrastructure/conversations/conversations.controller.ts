@@ -12,12 +12,14 @@ import { ConversationsService } from './conversations.service';
 import {
   CreateConversationDto,
   DeleteConversationDto,
+  DeleteOneAdminConversationDto,
   GetAllConversationDto,
   GetOneConversationDto,
   UpdateConversationDto,
+  UpdateMembersConversationDto,
 } from './dto';
 
-@ApiTags('conversations')
+@ApiTags('Conversations')
 @ApiBearerAuth()
 @Controller('conversations')
 export class ConversationsController {
@@ -55,5 +57,27 @@ export class ConversationsController {
     @Body() dto: DeleteConversationDto,
   ) {
     return this.conversationsService.deleteConversationById(id, dto);
+  }
+
+  @Patch(':conversationId/updateMembers')
+  updateMembersConversation(
+    @Param('conversationId') conversationId: string,
+    @Body() dto: UpdateMembersConversationDto,
+  ) {
+    return this.conversationsService.updateMembersConversation(
+      conversationId,
+      dto,
+    );
+  }
+
+  @Patch(':conversationId/deleteAdmins')
+  deleteOneAdminConversation(
+    @Param('conversationId') conversationId: string,
+    @Body() dto: DeleteOneAdminConversationDto,
+  ) {
+    return this.conversationsService.deleteOneAdminConversation(
+      conversationId,
+      dto,
+    );
   }
 }
