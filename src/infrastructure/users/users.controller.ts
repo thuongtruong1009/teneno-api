@@ -13,6 +13,9 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiForbiddenResponse,
+  ApiNotAcceptableResponse,
+  ApiNotFoundResponse,
   ApiOperation,
   ApiResponse,
   ApiTags,
@@ -30,6 +33,11 @@ import {
 import { UsersService } from './users.service';
 
 @ApiTags('Users')
+@ApiForbiddenResponse({ description: 'Forbidden' })
+@ApiNotFoundResponse({ description: 'Not found' })
+@ApiNotAcceptableResponse({
+  description: 'Provided inputs are not in correct form.',
+})
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {
@@ -39,12 +47,11 @@ export class UsersController {
   @Public()
   @Get()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Get list all public user' })
+  @ApiOperation({ summary: 'Get list all public user (all)' })
   @ApiResponse({
     status: 200,
-    description: '{code: 1, data: {user}, message: ""',
+    description: 'Success',
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   getAllUsers(@Query() dto: PaginationDto) {
     return this.usersService.getAllUsers(dto);
   }
@@ -52,12 +59,11 @@ export class UsersController {
   @Get(':userId')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Get user profile by user id' })
+  @ApiOperation({ summary: 'Get user profile by user id (all)' })
   @ApiResponse({
     status: 200,
-    description: '{code: 1, data: {user}, message: ""',
+    description: 'Success',
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   getUsersById(@Param('userId') userId: string) {
     return this.usersService.getUsersById(userId);
   }
@@ -65,12 +71,11 @@ export class UsersController {
   @Put('profile/:userId')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update user profile by user id' })
+  @ApiOperation({ summary: 'Update user profile by user id (user)' })
   @ApiResponse({
     status: 200,
-    description: '{code: 1, data: {user}, message: ""',
+    description: 'Success',
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   updateUsersProfile(
     @Param('userId') userId: string,
     @Body() dto: UserProfileDto,
@@ -81,12 +86,11 @@ export class UsersController {
   @Put('profile/avatar/:userId')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update user avatar image by user id' })
+  @ApiOperation({ summary: 'Update user avatar image by user id (user)' })
   @ApiResponse({
     status: 200,
-    description: '{code: 1, data: {user}, message: ""',
+    description: 'Success',
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   updateUsersAvatar(
     @Param('userId') userId: string,
     @Body() dto: UserAvatarDto,
@@ -97,12 +101,11 @@ export class UsersController {
   @Put('profile/cover/:userId')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update user cover image by user id' })
+  @ApiOperation({ summary: 'Update user cover image by user id (user)' })
   @ApiResponse({
     status: 200,
-    description: '{code: 1, data: {user}, message: ""',
+    description: 'Success',
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   updateUsersCover(@Param('userId') userId: string, @Body() dto: UserCoverDto) {
     return this.usersService.updateUsersCover(userId, dto);
   }
@@ -115,13 +118,12 @@ export class UsersController {
     status: 200,
     description: '{code: 1, data: {}, message: ""',
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   deleteUserByEmail(@Param('userId') userId: string, @Body() dto: LoginDto) {
     return this.usersService.deleteUserByEmail(userId, dto);
   }
 
   @Delete(':userId')
-  // @RoleDecorator(ROLE.ADMIN)
+  @RoleDecorator(ROLE.ADMIN)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete user by user-id (admin)' })
@@ -129,7 +131,6 @@ export class UsersController {
     status: 200,
     description: '{code: 1, data: {}, message: ""',
   })
-  @ApiResponse({ status: 404, description: 'Not found' })
   deleteUserById(@Param('userId') userId: string) {
     return this.usersService.deleteUserById(userId);
   }
