@@ -8,6 +8,7 @@ import {
   GetOneConversationDto,
   UpdateConversationDto,
   UpdateMembersConversationDto,
+  UpdateRolesConversationDto,
 } from './dto';
 import { v4 as uuid } from 'uuid';
 
@@ -159,6 +160,38 @@ export class ConversationsService {
       },
       data: {
         admins: updated,
+      },
+    });
+    return updated;
+  }
+
+  async updateRolesConversation(
+    conversationId: string,
+    dto: UpdateRolesConversationDto,
+  ) {
+    const list = await this.prismaService.conversation.findMany({
+      where: {
+        OR: [
+          {
+            creator: dto.creator,
+          },
+        ],
+        AND: {
+          id: conversationId,
+        },
+      },
+    });
+    if (list.length === 0) {
+      return 'You not creator of this conversation';
+    }
+
+    const updated = await this.prismaService.conversation.update({
+      where: {
+        id: conversationId,
+      },
+      data: {
+        admins: dto.admins,
+        members: dto.members,
       },
     });
     return updated;

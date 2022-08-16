@@ -26,3 +26,11 @@ export class DeleteOneAdminConversationDto extends PartialType(
   @IsNotEmpty()
   userId: string;
 }
+
+export class UpdateRolesConversationDto extends PartialType(
+  CreateConversationDto,
+) {
+  creator: string;
+  admins: string[];
+  members: string[];
+}

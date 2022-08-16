@@ -17,6 +17,7 @@ import {
   GetOneConversationDto,
   UpdateConversationDto,
   UpdateMembersConversationDto,
+  UpdateRolesConversationDto,
 } from './dto';
 
 @ApiTags('Conversations')
@@ -76,6 +77,17 @@ export class ConversationsController {
     @Body() dto: DeleteOneAdminConversationDto,
   ) {
     return this.conversationsService.deleteOneAdminConversation(
+      conversationId,
+      dto,
+    );
+  }
+
+  @Patch(':conversationId/updateRoles')
+  updateRolesConversation(
+    @Param('conversationId') conversationId: string,
+    @Body() dto: UpdateRolesConversationDto,
+  ) {
+    return this.conversationsService.updateRolesConversation(
       conversationId,
       dto,
     );
