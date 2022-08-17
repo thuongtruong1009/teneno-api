@@ -8,11 +8,11 @@ const pattern = /^[a-z]\w/;
 
 @ValidatorConstraint({ name: 'customText', async: false })
 export class usenameValidator implements ValidatorConstraintInterface {
-  validate(text: string, args: ValidationArguments) {
+  validate(text: string) {
     return pattern.test(text);
   }
 
   defaultMessage(args: ValidationArguments) {
-    return 'Username has must filled !';
+    return 'Username has must filled !' + args;
   }
 }

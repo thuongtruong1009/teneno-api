@@ -49,25 +49,25 @@
 
   ✅  Create new conversation
 
-  ✅  Get all conversations of user
+  ✅  Get all conversations of the user
 
   ✅  Get one conversation information has current user
 
-  ✅  Update members to current conversation
+  ✅  Update members on the current conversation
 
   ✅  Update conversation information (name, description, avatar)
 
-  ✅  Delete admin out of current conversation by creator
+  ✅  Delete admin out of the current conversation by the creator
 
   ✅  Delete conversation by creator
 
-  ✅  Change users role in current conversation
+  ✅  Change the user's role in the current conversation
 
 * **Chat**
 
   ✅  Join conversation by conversation-id
 
-  ✅  Get all messages in conversation
+  ✅  Get all messages in the conversation
 
   ✅  Create new messages
 

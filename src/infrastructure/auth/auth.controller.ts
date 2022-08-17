@@ -16,7 +16,7 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
-  ApiResponse,
+  // ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
@@ -26,6 +26,10 @@ import { LoginDto, SignupDto } from './dto';
 import { ITokens } from './types';
 
 @ApiTags('Auth')
+@ApiHeader({
+  name: 'X-MyHeader',
+  description: 'Custom header',
+})
 @ApiForbiddenResponse({ description: 'Forbidden.' })
 @ApiNotFoundResponse({
   description: 'Not Found.',

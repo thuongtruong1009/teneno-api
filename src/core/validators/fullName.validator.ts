@@ -8,7 +8,7 @@ const pattern = /^[a-z]\w/;
 
 @ValidatorConstraint({ name: 'customText', async: false })
 export class fullNameValidator implements ValidatorConstraintInterface {
-  validate(text: string, args: ValidationArguments) {
+  validate(text: string) {
     return pattern.test(text);
   }
 

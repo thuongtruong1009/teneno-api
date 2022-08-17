@@ -1,8 +1,6 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsAlphanumeric,
   IsArray,
-  IsEmail,
   IsNotEmpty,
   IsString,
   Length,
@@ -10,7 +8,7 @@ import {
   MinLength,
   Validate,
 } from 'class-validator';
-import { passwordValidator, usenameValidator } from 'src/core/validators';
+import { usenameValidator } from 'src/core/validators';
 
 export class CreateConversationDto {
   @ApiProperty({

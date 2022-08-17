@@ -6,10 +6,8 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  Post,
   Put,
   Query,
-  SetMetadata,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,

@@ -18,20 +18,22 @@ import { LoggerMiddleware } from './core/middleware/logger.middleware';
 import { UsersController } from './infrastructure/users/users.controller';
 import { MessagesModule } from './infrastructure/messages/messages.module';
 import { ConversationsModule } from './infrastructure/conversations/conversations.module';
+import { OauthModule } from './infrastructure/oauth/oauth.module';
 
 @Module({
   imports: [
     CoreModule,
     AuthModule,
+    OauthModule,
     PrismaModule,
     UsersModule,
     FilesModule,
+    ConversationsModule,
     MessagesModule,
     ConfigModule.forRoot({
       isGlobal: true,
       // envFilePath: ['.env'],
     }),
-    ConversationsModule,
   ],
   controllers: [AppController],
   providers: [
