@@ -17,7 +17,7 @@ model User {
   hashedRefreshToken String?
   profile            UserProfile?
   role               String[]     @default(["USER"])
-  //   posts   Post[]
+  posts              Post[]
 
   @@map("users")
 }
@@ -56,31 +56,48 @@ model Conversation {
 }
 
 model Message {
-  id             String        @id @unique @default(uuid())
+  id             String       @id @unique @default(uuid())
   text           String
-  reactions      Int?          @default(0)
-  description    String?       @default("")
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  conversations  Conversation? @relation(fields: [conversationId], references: [id], onDelete: SetNull)
-  conversationId String        @unique
-  senderId       String        @unique
+  reactions      Int?         @default(0)
+  description    String?      @default("")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  conversations  Conversation @relation(fields: [conversationId], references: [id], onDelete: SetNull)
+  conversationId String       @unique
+  senderId       String       @unique
 
   @@map("messages")
 }
 
-// model Post {
-//   id         Int        @id @default(autoincrement())
-//   createdAt  DateTime   @default(now())
-//   title      String
-//   published  Boolean    @default(false)
-//   author     User       @relation(fields: [authorId], references: [id])
-//   authorId   Int
-//   categories Category[] @relation(references: [id])
-// }
+model Category {
+  id    String              @id @unique @default(uuid())
+  name  String              @unique
+  posts CategoriesOnPosts[]
 
-// model Category {
-//   id    Int    @id @default(autoincrement())
-//   name  String
-//   posts Post[] @relation(references: [id])
-// }
+  @@map("categories")
+}
+
+model CategoriesOnPosts {
+  id         String   @unique @default(uuid())
+  post       Post     @relation(fields: [postId], references: [id])
+  postId     String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+  createAt   DateTime @default(now())
+
+  @@id([postId, categoryId])
+  @@map("categories_on_posts")
+}
+
+model Post {
+  id          String              @id @unique @default(uuid())
+  description String
+  files       String[]            @default([])
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  categories  CategoriesOnPosts[]
+  user        User                @relation(fields: [userId], references: [id])
+  userId      String
+
+  @@map("posts")
+}
