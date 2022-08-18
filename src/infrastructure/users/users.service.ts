@@ -139,4 +139,15 @@ export class UsersService {
     });
     return user;
   }
+
+  async getAllPostsOfUser(userId: string) {
+    return await this.prismaService.user.findMany({
+      where: {
+        id: userId,
+      },
+      select: {
+        posts: true,
+      },
+    });
+  }
 }

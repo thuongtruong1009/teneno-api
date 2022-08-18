@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { v4 as uuid } from 'uuid';
+import { GetPostByUserIdDto } from './dto';
 
 @Injectable()
 export class PostsService {
@@ -32,12 +33,12 @@ export class PostsService {
     return post;
   }
 
-  findAll() {
-    return `This action returns all posts`;
-  }
-
-  findOne(id: string) {
-    return `This action returns a #${id} post`;
+  async getOnePostById(postId: string) {
+    return await this.prismaService.post.findUnique({
+      where: {
+        id: postId,
+      },
+    });
   }
 
   update(id: string, dto: UpdatePostDto) {

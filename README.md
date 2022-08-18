@@ -9,7 +9,13 @@
 
 * [API Document](http://localhost:5500/api)
 
+* [Database diagram](https://dbdiagram.io/d/62fe42dec2d9cf52fad1848c)
+
 ## Description
+
+```sh
+The purpose of Teneno webapp is create a new network platform where everyone can sharing their feels, thinks or experiences together. Make an easily life with Teneno
+```
 
 ## Features
 
@@ -36,6 +42,8 @@
   ✅  Delete user-profile by email & password
 
   ✅  Delete user by user-id (admin)
+
+  ✅  Get all posts of user by user-id
 
 * **File**
 
@@ -75,6 +83,13 @@
 
   ✅  Delete messages by message-id
 
+* **Post**
+
+  ✅  Create a new post
+
+  ✅  Match a new category with new post
+
+  ✅  Get a post by post-id
 
 <!-- ⬜️ ✅ -->
 

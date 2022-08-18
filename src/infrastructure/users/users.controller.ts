@@ -6,16 +6,15 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  Post,
   Put,
   Query,
-  SetMetadata,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiForbiddenResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
+  ApiOkResponse,
   ApiOperation,
   ApiResponse,
   ApiTags,
@@ -116,7 +115,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user profile by email & password (user)' })
   @ApiResponse({
     status: 200,
-    description: '{code: 1, data: {}, message: ""',
+    description: 'Success',
   })
   deleteUserByEmail(@Param('userId') userId: string, @Body() dto: LoginDto) {
     return this.usersService.deleteUserByEmail(userId, dto);
@@ -129,9 +128,21 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user by user-id (admin)' })
   @ApiResponse({
     status: 200,
-    description: '{code: 1, data: {}, message: ""',
+    description: 'Success',
   })
   deleteUserById(@Param('userId') userId: string) {
     return this.usersService.deleteUserById(userId);
+  }
+
+  @Get(':userId/posts')
+  @Public()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get all posts of user by user-id (all)' })
+  @ApiResponse({
+    status: 200,
+    description: 'Success',
+  })
+  getAllPostsOfUser(@Param('userId') userId: string) {
+    return this.usersService.getAllPostsOfUser(userId);
   }
 }

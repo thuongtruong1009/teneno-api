@@ -11,7 +11,10 @@ import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Public } from '../auth/common/decorators';
+import { GetPostByUserIdDto } from './dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Posts')
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
@@ -22,14 +25,10 @@ export class PostsController {
     return this.postsService.createPost(dto);
   }
 
-  @Get()
-  findAll() {
-    return this.postsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.postsService.findOne(id);
+  @Get(':postId')
+  @Public()
+  getOnePostById(@Param('postId') postId: string) {
+    return this.postsService.getOnePostById(postId);
   }
 
   @Patch(':id')
