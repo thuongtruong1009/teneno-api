@@ -17,8 +17,10 @@ model User {
   hashedRefreshToken String?
   profile            UserProfile?
   role               String[]     @default(["USER"])
-  posts              Post[]
+  writtenPosts       Post[]       @relation("WrittenPosts")
+  favouritedPosts    Post[]       @relation("FavouritedPosts")
 
+  @@index([username, email])
   @@map("users")
 }
 
@@ -58,7 +60,7 @@ model Conversation {
 model Message {
   id             String       @id @unique @default(uuid())
   text           String
-  reactions      Int?         @default(0)
+  reactions      Int[]        @default([])
   description    String?      @default("")
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
@@ -67,6 +69,22 @@ model Message {
   senderId       String       @unique
 
   @@map("messages")
+}
+
+model Post {
+  id           String              @id @unique @default(uuid())
+  title        String
+  description  String
+  files        String[]            @default([])
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  categories   CategoriesOnPosts[]
+  author       User                @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: SetNull)
+  authorId     String
+  favouritor   User?               @relation("FavouritedPosts", fields: [favouritorId], references: [id])
+  favouritorId String?
+
+  @@map("posts")
 }
 
 model Category {
@@ -87,17 +105,4 @@ model CategoriesOnPosts {
 
   @@id([postId, categoryId])
   @@map("categories_on_posts")
-}
-
-model Post {
-  id          String              @id @unique @default(uuid())
-  description String
-  files       String[]            @default([])
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
-  categories  CategoriesOnPosts[]
-  user        User                @relation(fields: [userId], references: [id])
-  userId      String
-
-  @@map("posts")
 }

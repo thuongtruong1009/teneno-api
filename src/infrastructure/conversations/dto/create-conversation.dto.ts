@@ -34,6 +34,8 @@ export class CreateConversationDto {
   @ApiProperty({
     type: String,
     example: 'group01',
+    required: false,
+    nullable: true,
   })
   @IsString()
   @IsNotEmpty()
@@ -47,7 +49,7 @@ export class CreateConversationDto {
   @Validate(usenameValidator, {
     message: 'Description must be not begin with number!',
   })
-  description: string;
+  description?: string;
 
   @ApiProperty({
     type: String,

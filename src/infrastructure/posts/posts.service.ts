@@ -1,36 +1,54 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
 import { v4 as uuid } from 'uuid';
-import { GetPostByUserIdDto } from './dto';
+import { CreatePostDto, GetPostByUserIdDto, UpdatePostDto } from './dto';
 
 @Injectable()
 export class PostsService {
   constructor(private prismaService: PrismaService) {}
   async createPost(dto: CreatePostDto) {
+    const findUser = await this.prismaService.user.findUnique({
+      where: {
+        id: dto.authorId,
+      },
+    });
+    if (!findUser) {
+      return new NotFoundException('User not found');
+    }
     const post = await this.prismaService.post.create({
       data: {
         id: uuid(),
+        title: dto.title,
         description: dto.description,
         files: dto.files,
-        userId: dto.userId,
-        categories: {
-          create: [
-            {
-              createAt: new Date(),
-              category: {
-                create: {
-                  id: uuid(),
-                  name: 'New category',
-                },
-              },
-            },
-          ],
-        },
+        authorId: dto.authorId,
+        // categories: {
+        //   create: [
+        //     {
+        //       createAt: new Date(),
+        //       category: {
+        //         create: {
+        //           id: uuid(),
+        //           name: 'New category',
+        //         },
+        //       },
+        //     },
+        //   ],
+        // },
       },
     });
     return post;
+  }
+
+  async getAllPostsOfUser(userId: string) {
+    return await this.prismaService.user.findMany({
+      where: {
+        id: userId,
+      },
+      select: {
+        writtenPosts: true,
+      },
+    });
   }
 
   async getOnePostById(postId: string) {
@@ -41,11 +59,38 @@ export class PostsService {
     });
   }
 
-  update(id: string, dto: UpdatePostDto) {
-    return `This action updates a #${id} post`;
+  async updatePost(dto: UpdatePostDto) {
+    console.log(dto);
+    const identify = await this.prismaService.user.update({
+      where: {
+        id: dto.authorId,
+      },
+      data: [
+        {
+          writtenPosts: {
+            update: {
+              title: dto.title,
+              description: dto.description,
+              files: dto.files,
+            },
+            where: {
+              id: dto.postId,
+            },
+          },
+        },
+      ],
+    });
+    return identify;
   }
 
-  remove(id: string) {
+  deletePost(id: string) {
+    return `This action removes a #${id} post`;
+  }
+
+  deleteOnePostById(id: string) {
+    return `This action removes a #${id} post`;
+  }
+  deleteManyPostById(id: string) {
     return `This action removes a #${id} post`;
   }
 }

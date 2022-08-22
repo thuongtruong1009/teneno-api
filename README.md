@@ -43,8 +43,6 @@ The purpose of Teneno webapp is create a new network platform where everyone can
 
   ✅  Delete user by user-id (admin)
 
-  ✅  Get all posts of user by user-id
-
 * **File**
 
   ✅  Upload single field file data (avatar, cover)
@@ -86,6 +84,8 @@ The purpose of Teneno webapp is create a new network platform where everyone can
 * **Post**
 
   ✅  Create a new post
+
+  ✅  Get all posts of user by user-id
 
   ✅  Match a new category with new post
 
