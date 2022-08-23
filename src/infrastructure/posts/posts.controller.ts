@@ -14,8 +14,9 @@ import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Public } from '../auth/common/decorators';
-import { GetPostByUserIdDto } from './dto';
+import { DeleteOnePost, GetPostByUserIdDto } from './dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ROLE, RoleDecorator } from 'src/core/roles';
 
 @ApiTags('Posts')
 @Controller('posts')
@@ -51,18 +52,9 @@ export class PostsController {
     return this.postsService.updatePost(dto);
   }
 
-  @Delete()
-  deletePost(@Param('id') id: string) {
-    return this.postsService.deletePost(id);
-  }
-
-  @Delete(':id')
-  deleteOnePostById(@Param('id') id: string) {
-    return this.postsService.deleteOnePostById(id);
-  }
-
-  @Delete(':id')
-  deleteManyPostById(@Param('id') id: string) {
-    return this.postsService.deleteManyPostById(id);
+  @Delete('delete')
+  @Public()
+  deletePost(@Body() dto: DeleteOnePost) {
+    return this.postsService.deletePost(dto);
   }
 }

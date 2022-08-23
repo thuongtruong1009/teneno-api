@@ -91,6 +91,8 @@ The purpose of Teneno webapp is create a new network platform where everyone can
 
   ✅  Get a post by post-id
 
+  ✅  Delete a post by post-id
+
 <!-- ⬜️ ✅ -->
 
 ## Plugins & Dependencies

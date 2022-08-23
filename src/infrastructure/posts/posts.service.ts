@@ -1,7 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { v4 as uuid } from 'uuid';
-import { CreatePostDto, GetPostByUserIdDto, UpdatePostDto } from './dto';
+import {
+  CreatePostDto,
+  DeleteOnePost,
+  GetPostByUserIdDto,
+  UpdatePostDto,
+} from './dto';
 
 @Injectable()
 export class PostsService {
@@ -83,14 +88,29 @@ export class PostsService {
     return identify;
   }
 
-  deletePost(id: string) {
-    return `This action removes a #${id} post`;
-  }
+  async deletePost(dto: DeleteOnePost) {
+    const list = await this.prismaService.user.findUnique({
+      where: {
+        id: dto.authorId,
+      },
+      select: {
+        writtenPosts: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    const identify = list.writtenPosts.find((post) => post.id === dto.postId);
+    if (!identify) {
+      return new NotFoundException('Post not found');
+    }
 
-  deleteOnePostById(id: string) {
-    return `This action removes a #${id} post`;
-  }
-  deleteManyPostById(id: string) {
-    return `This action removes a #${id} post`;
+    await this.prismaService.post.delete({
+      where: {
+        id: dto.postId,
+      },
+    });
+    return '';
   }
 }
