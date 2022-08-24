@@ -1,10 +1,15 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { v4 as uuid } from 'uuid';
 import {
   CreatePostDto,
   DeleteOnePost,
-  GetPostByUserIdDto,
+  GetAllPostOfUserDto,
+  ReactionsPost,
   UpdatePostDto,
 } from './dto';
 
@@ -17,12 +22,13 @@ export class PostsService {
         id: dto.authorId,
       },
     });
+
     if (!findUser) {
       return new NotFoundException('User not found');
     }
+
     const post = await this.prismaService.post.create({
       data: {
-        id: uuid(),
         title: dto.title,
         description: dto.description,
         files: dto.files,
@@ -45,13 +51,73 @@ export class PostsService {
     return post;
   }
 
-  async getAllPostsOfUser(userId: string) {
-    return await this.prismaService.user.findMany({
+  async getAllPostsOfUser(dto: GetAllPostOfUserDto) {
+    const list = await this.prismaService.user.findMany({
+      where: {
+        id: dto.userId,
+      },
+      select: {
+        writtenPosts: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (!list) {
+      return new NotFoundException('User not found');
+    }
+    if (list.length === 0) {
+      return new NotFoundException('User not have post!');
+    }
+    return await this.prismaService.post.findMany({
+      where: {
+        authorId: dto.userId,
+      },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        files: true,
+        authorId: true,
+        createdAt: true,
+        reactions: true,
+      },
+    });
+  }
+
+  async getAllPublicPosts(userId: string) {
+    const list = await this.prismaService.user.findMany({
       where: {
         id: userId,
       },
       select: {
-        writtenPosts: true,
+        writtenPosts: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (!list) {
+      return new NotFoundException('User not found');
+    }
+    if (list.length === 0) {
+      return new NotFoundException('User not have post!');
+    }
+    return await this.prismaService.post.findMany({
+      where: {
+        authorId: userId,
+        published: true,
+      },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        files: true,
+        authorId: true,
+        createdAt: true,
+        reactions: true,
       },
     });
   }
@@ -65,27 +131,26 @@ export class PostsService {
   }
 
   async updatePost(dto: UpdatePostDto) {
-    console.log(dto);
-    const identify = await this.prismaService.user.update({
+    const list = await this.getOnePostById(dto.postId);
+
+    if (!list) {
+      return new NotFoundException('Post not found');
+    }
+
+    if (list.authorId !== dto.authorId) {
+      return new ForbiddenException('You are not author of this post');
+    }
+
+    return await this.prismaService.post.update({
       where: {
-        id: dto.authorId,
+        id: dto.postId,
       },
-      data: [
-        {
-          writtenPosts: {
-            update: {
-              title: dto.title,
-              description: dto.description,
-              files: dto.files,
-            },
-            where: {
-              id: dto.postId,
-            },
-          },
-        },
-      ],
+      data: {
+        title: dto.title,
+        description: dto.description,
+        files: dto.files,
+      },
     });
-    return identify;
   }
 
   async deletePost(dto: DeleteOnePost) {
@@ -112,5 +177,31 @@ export class PostsService {
       },
     });
     return '';
+  }
+
+  async reactionPost(dto: ReactionsPost) {
+    const list = await this.getOnePostById(dto.postId);
+
+    if (!list) {
+      return new NotFoundException('Post not found');
+    }
+
+    const checkExist = await this.prismaService.reaction.findMany({
+      where: {
+        postId: dto.postId,
+        userId: dto.favouritorId,
+      },
+    });
+
+    if (checkExist.length > 0) {
+      return new BadRequestException('You already reacted to this post');
+    }
+    return this.prismaService.reaction.create({
+      data: {
+        userId: dto.favouritorId,
+        postId: dto.postId,
+        type: dto.reactionType,
+      },
+    });
   }
 }

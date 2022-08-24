@@ -1,11 +1,7 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class GetPostByUserIdDto {
+export class GetAllPostOfUserDto {
   @IsString()
   @IsNotEmpty()
   userId: string;
-
-  @IsString()
-  @IsNotEmpty()
-  postId: string;
 }
