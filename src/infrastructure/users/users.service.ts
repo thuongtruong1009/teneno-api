@@ -7,6 +7,7 @@ import { LoginDto } from 'src/infrastructure/auth/dto';
 import { comparePassword } from 'src/core/helpers/hash';
 import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
 import {
+  GetUserProfileByEmailNameDto,
   PaginationDto,
   UserAvatarDto,
   UserCoverDto,
@@ -55,6 +56,28 @@ export class UsersService {
         updatedAt: true,
       },
     });
+  }
+
+  async getUsersByEmailAndName(dto: GetUserProfileByEmailNameDto) {
+    const user = await this.prismaService.user.findMany({
+      where: {
+        AND: [
+          {
+            email: dto.email,
+            username: dto.username,
+          },
+        ],
+      },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        profile: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+    return user;
   }
 
   async updateUsersProfile(userId: string, dto: UserProfileDto) {

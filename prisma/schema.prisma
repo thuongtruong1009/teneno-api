@@ -17,8 +17,11 @@ model User {
   hashedRefreshToken String?
   profile            UserProfile?
   role               String[]     @default(["USER"])
-  //   posts   Post[]
+  writtenPosts       Post[]       @relation("WrittenPosts")
+  // favouritedPosts    Post[]       @relation("FavouritedPosts")
+  reactions          Reaction[]
 
+  @@index([username, email])
   @@map("users")
 }
 
@@ -56,31 +59,79 @@ model Conversation {
 }
 
 model Message {
-  id             String        @id @unique @default(uuid())
+  id             String       @id @unique @default(uuid())
   text           String
-  reactions      Int?          @default(0)
-  description    String?       @default("")
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  conversations  Conversation? @relation(fields: [conversationId], references: [id], onDelete: SetNull)
-  conversationId String        @unique
-  senderId       String        @unique
+  reactions      Int[]        @default([])
+  description    String?      @default("")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  conversations  Conversation @relation(fields: [conversationId], references: [id], onDelete: SetNull)
+  conversationId String       @unique
+  senderId       String       @unique
 
   @@map("messages")
 }
 
-// model Post {
-//   id         Int        @id @default(autoincrement())
-//   createdAt  DateTime   @default(now())
-//   title      String
-//   published  Boolean    @default(false)
-//   author     User       @relation(fields: [authorId], references: [id])
-//   authorId   Int
-//   categories Category[] @relation(references: [id])
+model Post {
+  id          String              @id @unique @default(uuid())
+  title       String              @db.VarChar(50)
+  description String              @db.VarChar(255)
+  files       String[]            @default([])
+  published   Boolean             @default(true)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  categories  CategoriesOnPosts[]
+  author      User                @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: SetNull)
+  authorId    String
+  // favouritor   User?               @relation("FavouritedPosts", fields: [favouritorId], references: [id])
+  // favouritorId String?
+  reactions   Reaction[]
+  // comments    Comment[]           @relation("Comments")
+
+  @@map("posts")
+}
+
+model Reaction {
+  id        String   @id @unique @default(uuid())
+  type      Int
+  createdAt DateTime @default(now())
+  post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
+  postId    String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+
+  @@map("reactions")
+}
+
+// model Comment{
+//   id          String              @id @unique @default(uuid())
+//   text        String
+//   createdAt   DateTime            @default(now())
+//   updatedAt   DateTime            @updatedAt
+//   reactions   Int[]                @default([])
+//   author      User                @relation("Comments", fields: [authorId], references: [id], onDelete: SetNull)
+//   authorId    String
+//   post        Post                @relation("Comments", fields: [postId], references: [id], onDelete: SetNull)
+//   postId      String
+//   replies     Comment[]           @relation("Replies")
 // }
 
-// model Category {
-//   id    Int    @id @default(autoincrement())
-//   name  String
-//   posts Post[] @relation(references: [id])
-// }
+model Category {
+  id    String              @id @unique @default(uuid())
+  name  String              @unique
+  posts CategoriesOnPosts[]
+
+  @@map("categories")
+}
+
+model CategoriesOnPosts {
+  id         String   @unique @default(uuid())
+  post       Post     @relation(fields: [postId], references: [id])
+  postId     String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+  createAt   DateTime @default(now())
+
+  @@id([postId, categoryId])
+  @@map("categories_on_posts")
+}

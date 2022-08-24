@@ -31,6 +31,7 @@ import {
   UpdateMembersConversationDto,
   UpdateRolesConversationDto,
 } from './dto';
+import { ConversationEntity } from './entities';
 
 @ApiTags('Conversations')
 @ApiBearerAuth()
@@ -42,6 +43,7 @@ import {
   description: 'Provided inputs are not in correct form.',
 })
 @Controller('conversations')
+//https://www.youtube.com/watch?v=LMjj1_EK4y8&ab_channel=Prisma
 export class ConversationsController {
   constructor(private conversationsService: ConversationsService) {
     this.conversationsService = conversationsService;
@@ -54,6 +56,7 @@ export class ConversationsController {
     description: 'Success.',
   })
   @ApiCreatedResponse({
+    type: ConversationEntity,
     description: 'The new conversation has been created.',
   })
   async createConversation(@Body() dto: CreateConversationDto) {
@@ -64,6 +67,8 @@ export class ConversationsController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get all conversations of current user (user)' })
   @ApiOkResponse({
+    type: ConversationEntity,
+    isArray: true,
     description: 'Success.',
   })
   getAllConversations(@Body() dto: GetAllConversationDto) {
@@ -76,6 +81,7 @@ export class ConversationsController {
     summary: 'Get one conversation information of current user (user)',
   })
   @ApiOkResponse({
+    type: ConversationEntity,
     description: 'Success.',
   })
   getConversationById(

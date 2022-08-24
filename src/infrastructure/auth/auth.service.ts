@@ -5,7 +5,6 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { comparePassword, hashPassword } from 'src/core/helpers/hash';
 import { LoginDto, SignupDto } from './dto/';
-import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class AuthService {
@@ -59,7 +58,6 @@ export class AuthService {
 
     const newUser = await this.prismaService.user.create({
       data: {
-        id: uuid(),
         email: dto.email,
         password: hash,
         username: dto.username,

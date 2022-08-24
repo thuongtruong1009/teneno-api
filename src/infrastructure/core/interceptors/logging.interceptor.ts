@@ -12,6 +12,7 @@ export class LoggingInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     console.log('Before...');
 
+    console.log('Running ' + context.getClass().name);
     const now = Date.now();
     return next
       .handle()

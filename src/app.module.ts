@@ -18,6 +18,7 @@ import { LoggerMiddleware } from './core/middleware/logger.middleware';
 import { UsersController } from './infrastructure/users/users.controller';
 import { MessagesModule } from './infrastructure/messages/messages.module';
 import { ConversationsModule } from './infrastructure/conversations/conversations.module';
+import { PostsModule } from './infrastructure/posts/posts.module';
 
 @Module({
   imports: [
@@ -26,17 +27,18 @@ import { ConversationsModule } from './infrastructure/conversations/conversation
     PrismaModule,
     UsersModule,
     FilesModule,
+    PostsModule,
+    ConversationsModule,
     MessagesModule,
     ConfigModule.forRoot({
       isGlobal: true,
       // envFilePath: ['.env'],
     }),
-    ConversationsModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
-    // tuong tự dòng app.useGlobalGuards(new AtGuard(new Reflector())); trong main.ts
+    // the same app.useGlobalGuards(new AtGuard(new Reflector())); in main.ts
     {
       provide: APP_GUARD,
       useClass: AtGuard,
@@ -50,7 +52,7 @@ export class AppModule implements NestModule {
       .exclude({ path: 'users', method: RequestMethod.GET }, 'users/(.*)')
       .forRoutes(UsersController);
     //.forRoutes('users');
-    //.forRoutes({ path: 'auth', method: RequestMethod.GET });  // apply middleware cho GET request tại router /auth
-    //.forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });  // apply middleware cho tất cả request khớp pattern ab*cd
+    //.forRoutes({ path: 'auth', method: RequestMethod.GET });  // apply middleware for GET request at router /auth
+    //.forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });  // apply middleware for all requesta matching pattern ab*cd
   }
 }
