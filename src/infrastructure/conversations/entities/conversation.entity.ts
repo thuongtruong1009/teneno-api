@@ -1,7 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Conversation } from '@prisma/client';
 
-export class ConversationEntity implements Conversation {
+export class ConversationEntity {
   @ApiProperty()
   id: string;
 

@@ -13,7 +13,7 @@
 
 ## Description
 
-```sh
+```
 The purpose of Teneno webapp is create a new network platform where everyone can sharing their feels, thinks or experiences together. Make an easily life with Teneno
 ```
 

@@ -13,5 +13,4 @@ RUN npm install --omit=dev && npm cache clean --force
 COPY --chown=node:node --from=build /app/dist ./dist
 CMD npm run start:prod
 
-
 EXPOSE 5500
