@@ -11,27 +11,27 @@ import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiForbiddenResponse,
-  ApiHeader,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
-  ApiResponse,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './common/decorators';
 import { AtGuard, RtGuard } from './common/guards';
 import { LoginDto, SignupDto } from './dto';
-import { ITokens } from './types';
+import { UpdatePasswordDto } from './dto/password.dto';
+import { ITokens } from './interfaces';
 
 @ApiTags('Auth')
+@ApiUnauthorizedResponse({ description: 'Unauthorized.' })
 @ApiForbiddenResponse({ description: 'Forbidden.' })
 @ApiNotFoundResponse({
   description: 'Not Found.',
   type: Error,
 })
-@ApiOkResponse({ description: 'Success.' })
 @ApiNotAcceptableResponse({
   description: 'Provided fields are not in correct form.',
 })
@@ -42,9 +42,10 @@ export class AuthController {
   }
 
   @Public()
-  @Post('local/signup')
+  @Post('signup')
+  @ApiOperation({ summary: 'Create new user account (user)' })
+  @ApiOkResponse({ description: 'Success.' })
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create new user account' })
   @ApiCreatedResponse({
     description: 'The new account has been created.',
     type: SignupDto,
@@ -54,9 +55,10 @@ export class AuthController {
   }
 
   @Public()
-  @Post('local/signin')
+  @Post('signin')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Login to user account' })
+  @ApiOkResponse({ description: 'Success.' })
+  @ApiOperation({ summary: 'Login to user account (user)' })
   signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
     return this.authService.signinLocal(dto);
   }
@@ -64,21 +66,23 @@ export class AuthController {
   @Post('logout')
   @ApiBearerAuth()
   @UseGuards(AtGuard)
-  @ApiOperation({ summary: 'Logout user account' })
-  logout(@GetCurrentUserId() userId: string) {
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({ description: 'Success.' })
+  @ApiOperation({ summary: 'Logout user account (user)' })
+  logout(@GetCurrentUserId() userId: string): Promise<void> {
     return this.authService.logout(userId);
   }
 
-  @Public()
   @Post('refresh')
   @ApiBearerAuth()
   @UseGuards(RtGuard)
+  @ApiOkResponse({ description: 'Success.' })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Logout account on all devices' })
+  @ApiOperation({ summary: 'Logout account on all devices (user)' })
   refreshToken(
     @GetCurrentUserId() userId: string,
     @GetCurrentUser('refreshToken') refreshToken: string,
-  ) {
+  ): Promise<ITokens> {
     return this.authService.refreshToken(userId, refreshToken);
   }
 
@@ -86,8 +90,9 @@ export class AuthController {
   @ApiBearerAuth()
   @UseGuards(AtGuard)
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update user password' })
-  updatePassWord(@Body() dto: LoginDto): Promise<ITokens> {
+  @ApiOkResponse({ description: 'Success.' })
+  @ApiOperation({ summary: 'Update user password (all)' })
+  updatePassWord(@Body() dto: UpdatePasswordDto): Promise<ITokens> {
     return this.authService.updatePassWord(dto);
   }
 }
