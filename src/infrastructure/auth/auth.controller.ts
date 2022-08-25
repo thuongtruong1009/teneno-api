@@ -11,13 +11,12 @@ import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiForbiddenResponse,
-  ApiHeader,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
-  ApiResponse,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './common/decorators';
@@ -26,6 +25,7 @@ import { LoginDto, SignupDto, UpdatePasswordDto } from './dto';
 import { ITokens } from './interfaces';
 
 @ApiTags('Auth')
+@ApiUnauthorizedResponse({ description: 'Unauthorized' })
 @ApiForbiddenResponse({ description: 'Forbidden.' })
 @ApiNotFoundResponse({
   description: 'Not Found.',

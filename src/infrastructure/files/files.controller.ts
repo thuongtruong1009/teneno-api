@@ -14,8 +14,8 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
-  ApiResponse,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { Express } from 'express';
 import {
@@ -24,11 +24,16 @@ import {
   MultiFieldDecorator,
 } from './decorators';
 import { FilesService } from './files.service';
+import { IArrayFile, ISingleFile } from './interfaces';
 
 @ApiTags('Files')
 @ApiBearerAuth()
+@ApiUnauthorizedResponse({ description: 'Unauthorized' })
 @ApiForbiddenResponse({ description: 'Forbidden' })
-@ApiNotFoundResponse({ description: 'Not found' })
+@ApiNotFoundResponse({
+  description: 'Not Found.',
+  type: Error,
+})
 @ApiNotAcceptableResponse({
   description: 'Provided inputs are not in correct form.',
 })
@@ -38,35 +43,38 @@ export class FileController {
 
   @Post('avatar')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Upload avatar file form data' })
+  @ApiOperation({ summary: 'Upload avatar file form data (all)' })
   @ApiOkResponse({ description: 'Success' })
   @SingleFieldDecorator('./public/avatars')
-  uploadAvatar(@UploadedFile() file: Express.Multer.File) {
+  uploadAvatar(
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<ISingleFile> {
     return this.fileService.uploadAvatar(file);
   }
 
   @Post('cover')
+  @ApiOperation({ summary: 'Upload cover file form data (all)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Upload cover file form data' })
   @ApiOkResponse({ description: 'Success' })
   @SingleFieldDecorator('./public/covers')
-  uploadCover(@UploadedFile() file: Express.Multer.File) {
+  uploadCover(@UploadedFile() file: Express.Multer.File): Promise<ISingleFile> {
     return this.fileService.uploadCover(file);
   }
 
   @Post('posts')
+  @ApiOperation({ summary: 'Upload post with multi images (user)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Upload post with multi images' })
   @ApiOkResponse({ description: 'Success' })
   @ArrayFieldDecorator('files', true, 10, './public/posts')
-  uploadPosts(@UploadedFiles() files: Array<Express.Multer.File>) {
-    console.log(files);
+  uploadPosts(
+    @UploadedFiles() files: Array<Express.Multer.File>,
+  ): Promise<IArrayFile> {
     return this.fileService.uploadPosts(files);
   }
 
   @Post('multi')
+  @ApiOperation({ summary: 'Upload multi fields form data (user)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Upload multi fields' })
   @ApiOkResponse({ description: 'Success' })
   @MultiFieldDecorator(
     [
@@ -78,7 +86,7 @@ export class FileController {
     ],
     './public/multi',
   )
-  uploadMulti(@UploadedFiles() files: Express.Multer.File[]) {
+  uploadMulti(@UploadedFiles() files: Express.Multer.File[]): Promise<any> {
     return this.fileService.uploadMulti(files);
   }
 }
