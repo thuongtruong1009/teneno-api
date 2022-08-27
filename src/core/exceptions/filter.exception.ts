@@ -10,7 +10,7 @@ import { HttpArgumentsHost } from '@nestjs/common/interfaces/features/arguments-
 import { Response } from 'express';
 
 @Catch()
-export class AllExceptionFilter implements ExceptionFilter {
+export class AllExceptionsFilter implements ExceptionFilter {
   constructor(private logger: LoggerService) {}
 
   catch(exception: HttpException | Error, host: ArgumentsHost): void {
@@ -19,7 +19,7 @@ export class AllExceptionFilter implements ExceptionFilter {
 
     this.handleMessage(exception);
 
-    AllExceptionFilter.handleResponse(response, exception);
+    AllExceptionsFilter.handleResponse(response, exception);
   }
 
   private handleMessage(exception: HttpException | Error): void {
@@ -31,7 +31,7 @@ export class AllExceptionFilter implements ExceptionFilter {
       message = exception.stack.toString();
     }
 
-    this.logger.error(message);
+    this.logger.error(message, exception);
   }
 
   private static handleResponse(

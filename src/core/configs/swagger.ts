@@ -1,6 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ISwaggerOptions } from './interfaces/option.interface';
 
 export const initSwagger = (app: INestApplication) => {
   const config: ConfigService = app.get(ConfigService);
@@ -33,7 +34,11 @@ export const initSwagger = (app: INestApplication) => {
     })
 
     .build();
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
+
+  const options: ISwaggerOptions = {
+    operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
+  };
+  const document = SwaggerModule.createDocument(app, swaggerConfig, options);
   SwaggerModule.setup('api', app, document, {
     swaggerOptions: {
       persistAuthorization: true,

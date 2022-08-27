@@ -45,9 +45,9 @@ export class UsersController {
     this.usersService = usersService;
   }
 
-  @Public()
   @RoleDecorator(ROLE.ADMIN)
   @Get('all')
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Get list all public user (admin)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })

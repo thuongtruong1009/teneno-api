@@ -14,8 +14,7 @@ import { UsersModule } from './infrastructure/users/users.module';
 import { FilesModule } from './infrastructure/files/files.module';
 import { ConfigModule } from '@nestjs/config';
 import { InterceptorModule } from './core/interceptors/interceptor.module';
-import { LoggerMiddleware } from './core/middleware/logger.middleware';
-import { UsersController } from './infrastructure/users/users.controller';
+import { LoggerContextMiddleware } from './core/middleware/logger-context.middleware';
 import { MessagesModule } from './infrastructure/messages/messages.module';
 import { ConversationsModule } from './infrastructure/conversations/conversations.module';
 import { PostsModule } from './infrastructure/posts/posts.module';
@@ -36,6 +35,10 @@ import { LoggerModule } from './core/logger/logger.module';
       // envFilePath: ['.env'],
     }),
     LoggerModule.forRoot(),
+    // ServeStaticModule.forRoot({
+    //   rootPath: `${__dirname}/../public`,  //join(__dirname, '..', 'client'),
+    //   renderPath: '/',
+    // }),
   ],
   controllers: [AppController],
   providers: [
@@ -48,11 +51,10 @@ import { LoggerModule } from './core/logger/logger.module';
   ],
 })
 export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(LoggerMiddleware)
-      .exclude({ path: 'users', method: RequestMethod.GET }, 'users/(.*)')
-      .forRoutes(UsersController);
+  public configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(LoggerContextMiddleware).forRoutes('*');
+    //   .exclude({ path: 'users', method: RequestMethod.GET }, 'users/(.*)')
+    //   .forRoutes(UsersController);
     //.forRoutes('users');
     //.forRoutes({ path: 'auth', method: RequestMethod.GET });  // apply middleware for GET request at router /auth
     //.forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });  // apply middleware for all requesta matching pattern ab*cd

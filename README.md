@@ -74,6 +74,10 @@
 * [Cookies-Parser](https://anonystick.com/blog-developer/cookie-parser-la-gi-middleware-can-thiet-ma-hoa-cookie-trong-expressjs-2020112687915577) middleware parsing of cookies in Nodejs and Expressjs.
 * [Multer](https://docs.nestjs.com/techniques/file-upload) upload file data form in Expressjs
 * [Cookie-parser](https://www.npmjs.com/package/cookie-parser) Parse Cookie header and signed cookie support
+* [Helmet](https://www.npmjs.com/package/helmet) secure Express apps by setting various HTTP headers
+* [Compression](https://www.npmjs.com/package/compression) compress response bodies for all request
+* [Read-Eval-Print-Loop (REPL)](https://docs.nestjs.com/recipes/repl) takes - executes single user inputs, and returns the result to the user, interactive environment, inspect dependency graph and call methods on providers - controllers directly from terminal
+* [Serve Static](https://docs.nestjs.com/recipes/serve-static) serve static content like a Single Page Application (SPA)
 
 ## Conventions & Tools
 
@@ -88,7 +92,12 @@
 * [Fix upload file on Postman](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)
 * [File upload with Nest](https://notiz.dev/blog/type-safe-file-uploads)
 * [Base roles example](https://www.youtube.com/watch?v=wdsp7BNmJRc&list=PL2eJaT2jJV7Ku72gl8YSSVRC0D7IQRJJZ&index=9&ab_channel=MariusEspejo)
-* [Logger](https://viblo.asia/p/xay-dung-bo-logger-xu-ly-exception-tap-trung-trong-nestjs-ORNZq1qMZ0n)
+* [Logger 1](https://viblo.asia/p/xay-dung-bo-logger-xu-ly-exception-tap-trung-trong-nestjs-ORNZq1qMZ0n)
+* [Nest example](https://github.com/hantsy/nestjs-rest-sample)
+* [Nest awesome](https://github.com/nestjs/awesome-nestjs)
+* [Nest structure](https://github.com/CatsMiaow/nestjs-project-structure)
+* [Postgre x Heroku](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
+* [Nest x Prisma](https://docs.nestjs.com/recipes/prisma)
 * [Database for chat](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bchat%2Bapplication%26sxsrf%3DALiCzsZVJGO-Xg7f0j6bm04uemOFXQOCow%3A1661272422354%26source%3Dlnms%26tbm%3Disch%26sa%3DX%26ved%3D2ahUKEwjH3u-Est35AhUFmlYBHQe4BikQ_AUoAXoECAEQAw%26biw%3D1920%26bih%3D948%26dpr%3D1&h=AT1rz92_FbaMniK5W8han8NWXAfairaSKCmfkCu3TPLJWm48IqSIYii-aIRJ16hF-Vt_Y7Ju8l2B8YvIqo-5fIndTxa4Koo62fgJN7fGuUcbuMg9XU-5Y7IYHdhWjOESt9SEOvAGrud8_5c&s=1)
 * [Database for social](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%2Bapp%26tbm%3Disch%26ved%3D2ahUKEwj2_M6Tst35AhUKVPUHHefeDpkQ2-cCegQIABAA%26oq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%26gs_lcp%3DCgNpbWcQARgAMgQIABAYMgQIABAYOgQIIxAnOgYIABAeEAg6BQgAEIAEUN4HWOodYNYlaABwAHgAgAGFAYgB3AySAQQwLjE0mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE%26sclient%3Dimg%26ei%3DhQEFY7amEIqo1e8P5727yAk%26bih%3D948%26biw%3D1920&h=AT2bN5utpmugfzrrq3LxJL2taNOV2GVjJPB9MXZ3kkPt5MBwUuqo6O-m-g_xeLO-c0MBe3_P6H_hrFvp53MmQ8msV1DFVay8_JdoXpgmkCp8LQwiiTzYktBVKIMNN_kEWLxUjRQLqsOIZyE&s=1)
 

@@ -4,3 +4,6 @@ node_modules
 npm-debug.log
 dist
 public
+
+*/node_modules
+*.log
