@@ -16,10 +16,10 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
-  ApiResponse,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { Public } from 'src/infrastructure/auth/common/decorators';
+import { Public } from 'src/infrastructure/auth/decorators';
 import { LoginDto } from 'src/infrastructure/auth/dto';
 import { RoleDecorator } from 'src/core/roles';
 import { ROLE } from 'src/core/roles/roles.enum';
@@ -33,6 +33,7 @@ import {
 import { UsersService } from './users.service';
 
 @ApiTags('Users')
+@ApiUnauthorizedResponse({ description: 'Unauthorized' })
 @ApiForbiddenResponse({ description: 'Forbidden' })
 @ApiNotFoundResponse({ description: 'Not found' })
 @ApiNotAcceptableResponse({
@@ -45,20 +46,19 @@ export class UsersController {
   }
 
   @Public()
+  @RoleDecorator(ROLE.ADMIN)
   @Get('all')
+  @ApiOperation({ summary: 'Get list all public user (admin)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Get list all public user (all)' })
-  @ApiOkResponse({
-    description: 'Success',
-  })
+  @ApiOkResponse({ description: 'Success' })
   getAllUsers(@Query() dto: PaginationDto) {
     return this.usersService.getAllUsers(dto);
   }
 
-  @Get(':userId')
   @Public()
-  @HttpCode(HttpStatus.OK)
+  @Get(':userId')
   @ApiOperation({ summary: 'Get public user by user id (all)' })
+  @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Success',
   })
@@ -68,24 +68,20 @@ export class UsersController {
 
   @Get()
   @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
   @ApiOperation({
     summary: 'Get user profile by user email and username (user)',
   })
-  @ApiOkResponse({
-    description: 'Success',
-  })
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({ description: 'Success' })
   getUsersByEmailAndName(@Body() dto: GetUserProfileByEmailNameDto) {
     return this.usersService.getUsersByEmailAndName(dto);
   }
 
   @Put('profile/:userId')
   @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update user profile by user id (user)' })
-  @ApiOkResponse({
-    description: 'Success',
-  })
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({ description: 'Success' })
   updateUsersProfile(
     @Param('userId') userId: string,
     @Body() dto: UserProfileDto,
@@ -95,8 +91,8 @@ export class UsersController {
 
   @Put('profile/avatar/:userId')
   @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update user avatar image by user id (user)' })
+  @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Success',
   })
@@ -109,8 +105,8 @@ export class UsersController {
 
   @Put('profile/cover/:userId')
   @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update user cover image by user id (user)' })
+  @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Success',
   })
@@ -120,20 +116,18 @@ export class UsersController {
 
   @Delete('profile/:userId')
   @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete user profile by email & password (user)' })
-  @ApiOkResponse({
-    description: 'Success',
-  })
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({ description: 'Success' })
   deleteUserByEmail(@Param('userId') userId: string, @Body() dto: LoginDto) {
     return this.usersService.deleteUserByEmail(userId, dto);
   }
 
-  @Delete(':userId')
   @RoleDecorator(ROLE.ADMIN)
+  @Delete(':userId')
   @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete user by user-id (admin)' })
+  @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Success',
   })

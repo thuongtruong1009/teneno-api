@@ -19,8 +19,8 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
-import { GetCurrentUser, GetCurrentUserId, Public } from './common/decorators';
-import { AtGuard, RtGuard } from './common/guards';
+import { GetCurrentUser, GetCurrentUserId, Public } from './decorators';
+import { AtGuard, RtGuard } from './guards';
 import { LoginDto, SignupDto, UpdatePasswordDto } from './dto';
 import { ITokens } from './interfaces';
 

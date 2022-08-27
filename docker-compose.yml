@@ -1,13 +1,20 @@
 version: '3'
 services:
   db:
-    image: postgres:12
+    image: postgres:14-alpine
     ports:
-      - 5432:5432
+      - ${DB_PORT}:5432
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1233456789
-      POSTGRES_DB: teneno-api
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+
+  adminer:
+      image: adminer
+      restart: always
+      ports:
+      - ${ADMIN_PORT}:8080
+
   # app:
   #   image: teneno-api
   #   ports:

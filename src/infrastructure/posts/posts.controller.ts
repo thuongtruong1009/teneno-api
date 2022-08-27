@@ -10,7 +10,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { Public } from '../auth/common/decorators';
+import { Public } from '../auth/decorators';
 import {
   CreatePostDto,
   DeleteOnePost,

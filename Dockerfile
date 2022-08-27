@@ -1,4 +1,5 @@
 FROM node:18-alpine as build
+LABEL maintainer="thuongtruong1009 <"
 WORKDIR /app
 COPY --chown=node:node package*.json .
 RUN npm install

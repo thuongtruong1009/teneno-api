@@ -13,6 +13,7 @@ async function bootstrap() {
 
   app.enableCors(corsOptions);
   app.use(cookieParser());
+  app.enableShutdownHooks();
 
   // const { httpAdapter } = app.get(HttpAdapterHost);
   // app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
