@@ -1,11 +1,19 @@
+[![Dev.to](https://img.shields.io/twitter/url?color=green&label=Dev.to&logo=dev.to&logoColor=yellow&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](https://dev.to/thuongtruong1009)
+[![Github](https://img.shields.io/twitter/url?color=green&label=Github&logo=github&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](https://github.com/thuongtruong1009)
+[![Email](https://img.shields.io/twitter/url?color=green&label=Email&logo=gmail&logoColor=red&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](mailto:ititiu19228@student.hcmiu.edu.vn)
+
 <div align="center">
   <h1>Teneno API</h1>
-  <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Logo" />
+  <img src="public/refs/logo.svg" width="200" alt="Logo" />
 </div>
 
-<p align="center">A official api for teneno application</p>
+<div align="center">
+<em>A official api for teneno application</em>
+</div>
 
 ## Preview
+
+* [Frontend connect](https://github.com/thuongtruong1009/teneno)
 
 * [API Document](http://localhost:5500/api)
 
@@ -13,86 +21,42 @@
 
 ## Description
 
-* The purpose of Teneno webapp is create a new network platform where everyone can sharing their feels, thinks or experiences together. Make an easily life with Teneno
+* The purpose of Teneno webapp is create a new network platform where everyone can sharing their feels, thinks or experiences together
+* Make an easily life with Teneno
+* Practice Backend skills and improve programming thinking
 
 ## Features
 
-* **Auth**
+| **Auth** | **Files** |
+| ---| --- |
+| ✅  Signup | ✅  Upload single file (avatar, cover) |
+| ✅  Signin | ✅  Upload multi files |
+| ✅  Signout | ✅  Upload array-field files (post, sample_image) |
+| ✅  Signout |  |
+| ✅  Refresh access-token |  |
+| ✅  Update password |  |
 
-  ✅  Signup
+| **Users** | **Posts** |
+| ---| --- |
+| ✅  Get list all users | ✅  Create a new post |
+| ✅  Get user data by user-id | ✅  Get all posts of user by user-id |
+| ✅  Get public user profile by user-id / username / email | ✅  Match a new category with new post |
+| ✅  Update user profile | Get a post by post-id |
+| ✅  Delete user-profile by email & password | Delete a post by post-id |
+| ✅  Delete user by user-id (admin) | Reaction to post |
 
-  ✅  Signin
+| **Conversations** | **Chats** |
+| ---| --- |
+| ✅  Create new conversation | ✅  Join conversation by conversation-id |
+| ✅  Get all conversations of user| ✅  Get all messages in conversation |
+| ✅  Get one conversation information has current user | ✅  Create new messages |
+| ✅  Update members to current conversation | Update message by message-id |
+| ✅  Update conversation information (name, description, avatar) | Delete messages by message-id |
+| ✅  Delete admin out of current conversation by creator |  |
+| ✅  Delete conversation by creator |  |
+| ✅  Change users role in current conversation |  |
 
-  ✅  Signout
-
-  ✅  Refresh access-token
-  
-* **Users**
-
-  ✅  Get list all users
-  
-  ✅  Get user data by user-id
-
-  ✅  Get public user profile by user-id / username / email
-
-  ✅  Update user profile
-
-  ✅  Delete user-profile by email & password
-
-  ✅  Delete user by user-id (admin)
-
-* **File**
-
-  ✅  Upload single field file data (avatar, cover)
-
-  ✅  Upload multi fields file data
-
-  ✅  Upload array-field files data (post, sample_image)
-
-* **Conversation**
-
-  ✅  Create new conversation
-
-  ✅  Get all conversations of user
-
-  ✅  Get one conversation information has current user
-
-  ✅  Update members to current conversation
-
-  ✅  Update conversation information (name, description, avatar)
-
-  ✅  Delete admin out of current conversation by creator
-
-  ✅  Delete conversation by creator
-
-  ✅  Change users role in current conversation
-
-* **Chat**
-
-  ✅  Join conversation by conversation-id
-
-  ✅  Get all messages in conversation
-
-  ✅  Create new messages
-
-  ✅  Update message by message-id
-
-  ✅  Delete messages by message-id
-
-* **Post**
-
-  ✅  Create a new post
-
-  ✅  Get all posts of user by user-id
-
-  ✅  Match a new category with new post
-
-  ✅  Get a post by post-id
-
-  ✅  Delete a post by post-id
-
-  ✅  Reaction to post
-
+<!-- | <ul><li>item1</li><li>item2</li></ul>| See the list | -->
 <!-- ⬜️ ✅ -->
 
 ## Plugins & Dependencies
@@ -124,6 +88,7 @@
 * [Fix upload file on Postman](https://stackoverflow.com/questions/60036239/upload-file-failed-postman)
 * [File upload with Nest](https://notiz.dev/blog/type-safe-file-uploads)
 * [Base roles example](https://www.youtube.com/watch?v=wdsp7BNmJRc&list=PL2eJaT2jJV7Ku72gl8YSSVRC0D7IQRJJZ&index=9&ab_channel=MariusEspejo)
+* [Logger](https://viblo.asia/p/xay-dung-bo-logger-xu-ly-exception-tap-trung-trong-nestjs-ORNZq1qMZ0n)
 * [Database for chat](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bchat%2Bapplication%26sxsrf%3DALiCzsZVJGO-Xg7f0j6bm04uemOFXQOCow%3A1661272422354%26source%3Dlnms%26tbm%3Disch%26sa%3DX%26ved%3D2ahUKEwjH3u-Est35AhUFmlYBHQe4BikQ_AUoAXoECAEQAw%26biw%3D1920%26bih%3D948%26dpr%3D1&h=AT1rz92_FbaMniK5W8han8NWXAfairaSKCmfkCu3TPLJWm48IqSIYii-aIRJ16hF-Vt_Y7Ju8l2B8YvIqo-5fIndTxa4Koo62fgJN7fGuUcbuMg9XU-5Y7IYHdhWjOESt9SEOvAGrud8_5c&s=1)
 * [Database for social](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%2Bapp%26tbm%3Disch%26ved%3D2ahUKEwj2_M6Tst35AhUKVPUHHefeDpkQ2-cCegQIABAA%26oq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%26gs_lcp%3DCgNpbWcQARgAMgQIABAYMgQIABAYOgQIIxAnOgYIABAeEAg6BQgAEIAEUN4HWOodYNYlaABwAHgAgAGFAYgB3AySAQQwLjE0mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE%26sclient%3Dimg%26ei%3DhQEFY7amEIqo1e8P5727yAk%26bih%3D948%26biw%3D1920&h=AT2bN5utpmugfzrrq3LxJL2taNOV2GVjJPB9MXZ3kkPt5MBwUuqo6O-m-g_xeLO-c0MBe3_P6H_hrFvp53MmQ8msV1DFVay8_JdoXpgmkCp8LQwiiTzYktBVKIMNN_kEWLxUjRQLqsOIZyE&s=1)
 
@@ -208,6 +173,34 @@ Teneno is an MIT-licensed open source project. It can grow thanks to the sponsor
 - Devto - [@thuongtruong1009](https://dev.to/thuongtruong1009)
 - Linkedin - [@thuongtruong1009](https://linkedin.com/in/thuongtruong1009)
 
-## License
+## References
 
-Teneno is [MIT licensed](LICENSE).
+-   Get idea inspiration: [bee-music](https://dribbble.com/shots/16618273-Bee-Music-Music-Media-Player-Dashboard?fbclid=IwAR35hkSSs2dB2Ek66GAX-yPDfx3JYxxJgeQdwweuEiEtne02IUYk13kxDnk)
+-   Follow progresses at [latest project updated](https://github.com/thuongtruong1009/bee-music/projects)
+-   Trading and shopping your style with [e-shopee](https://github.com/thuongtruong1009/e-shopee)
+-   Enhance front-end skills through [twitter-meta](https://github.com/thuongtruong1009/twitter-meta)
+-   Generate your GitHub informations by [gitbox](https://github.com/thuongtruong1009/gitbox)
+-   Begining Vue through [notedev](https://github.com/thuongtruong1009/notedev)
+-   Learning front-end web full course at [frontend-master](https://github.com/thuongtruong1009/frontend-master)
+-   Learn Object-Oriented-Programming tutorial at [Snake-Game-OOP](https://github.com/thuongtruong1009/Snake-Game-OOP)
+-   Become Java master for new beginner at [Java-training](https://github.com/thuongtruong1009/java-oop-training)
+-   Pratice UI/UX at [league-fo-legend](https://github.com/thuongtruong1009/league-of-legends-clone)
+-   Make flip card game at [flip-card](https://github.com/thuongtruong1009/flip-cards)
+-   Learn computer architecture at [computer-architecture](https://github.com/thuongtruong1009/computer-architecture)
+
+## ❤️ [Support me](https://www.paypal.me/thuongtruong1009)
+
+> We are looking for sponsors to join us to have better community reach and impact.
+
+[![MOMO](https://img.shields.io/badge/-MOMO-red?style=flat&labelColor=RED&logo=MOMO&logoColor=black)](https://nhantien.momo.vn/0917085937)
+<a href="https://www.paypal.me/thuongtruong1009">
+<img height="25" marginTop="10" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Blue_PayPal_Pill_Button.png">
+</a>
+<a href='https://ko-fi.com/thuongtruong1009' target='_blank'>
+<img height='25' style='border:0px;height:28px;color:blue' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+</a>
+
+## 📰 [License](LICENSE)
+
+-   ##### This project is distributed under the [MIT License](LICENSE).
+-   ##### Copyright of [@thuongtruong1009](https://github.com/thuongtruong1009), 2022.

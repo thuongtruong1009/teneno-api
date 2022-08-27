@@ -13,16 +13,17 @@ import { PrismaModule } from './infrastructure/prisma/prisma.module';
 import { UsersModule } from './infrastructure/users/users.module';
 import { FilesModule } from './infrastructure/files/files.module';
 import { ConfigModule } from '@nestjs/config';
-import { CoreModule } from './infrastructure/core/core.module';
+import { InterceptorModule } from './core/interceptors/interceptor.module';
 import { LoggerMiddleware } from './core/middleware/logger.middleware';
 import { UsersController } from './infrastructure/users/users.controller';
 import { MessagesModule } from './infrastructure/messages/messages.module';
 import { ConversationsModule } from './infrastructure/conversations/conversations.module';
 import { PostsModule } from './infrastructure/posts/posts.module';
+import { LoggerModule } from './core/logger/logger.module';
 
 @Module({
   imports: [
-    CoreModule,
+    InterceptorModule,
     AuthModule,
     PrismaModule,
     UsersModule,
@@ -34,6 +35,7 @@ import { PostsModule } from './infrastructure/posts/posts.module';
       isGlobal: true,
       // envFilePath: ['.env'],
     }),
+    LoggerModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [

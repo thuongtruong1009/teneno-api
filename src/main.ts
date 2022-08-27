@@ -6,13 +6,15 @@ import { HttpExceptionFilter } from './core/filters/http.filter';
 import * as cookieParser from 'cookie-parser';
 import { corsOptions } from './core/configs/cors.config';
 import { initSwagger } from './core/configs/swagger';
-import { LoggingInterceptor } from './infrastructure/core/interceptors/logging.interceptor';
+import { LoggingInterceptor } from './core/interceptors/logging.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
   app.enableCors(corsOptions);
   app.use(cookieParser());
+
+  // enable shutdown hooks explicitly.
   app.enableShutdownHooks();
 
   // const { httpAdapter } = app.get(HttpAdapterHost);
