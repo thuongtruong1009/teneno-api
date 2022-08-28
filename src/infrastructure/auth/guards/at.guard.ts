@@ -8,7 +8,7 @@ export class AtGuard extends AuthGuard('jwt') {
     super();
   }
 
-  //nếu true thì cho phép truy cập bằng access-token , và ngược lại
+  // nếu true thì cho phép truy cập bằng access-token , và ngược lại
   public canActivate(context: ExecutionContext) {
     const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
       context.getHandler(),

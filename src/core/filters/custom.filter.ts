@@ -93,5 +93,5 @@ export class ErrorGatewayTimeoutException extends GatewayTimeoutException {
 // NotImplementedException
 // ImATeapotException
 
-//https://github.dev/NarHakobyan/awesome-nest-boilerplate
-//https://viblo.asia/p/framework-nestjs-exception-filters-bWrZn7qrlxw
+// https://github.dev/NarHakobyan/awesome-nest-boilerplate
+// https://viblo.asia/p/framework-nestjs-exception-filters-bWrZn7qrlxw

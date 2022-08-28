@@ -7,9 +7,10 @@ import { corsOptions } from './core/configs/cors.config';
 import { initSwagger } from './core/configs/swagger';
 import { LoggingInterceptor } from './core/interceptors/logging.interceptor';
 import { LoggerService } from './core/logger/logger.service';
-import { AllExceptionsFilter } from './core/exceptions/filter.exception';
+import { AllExceptionsFilter } from './core/filters/exception.filter';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { PrismaService } from './infrastructure/prisma/prisma.service';
+import { middleware } from './core/middleware/app.middleware';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -17,11 +18,18 @@ async function bootstrap() {
     bufferLogs: true,
   });
 
-  await repl(AppModule);
-
   app.enableCors(corsOptions);
   app.use(cookieParser());
 
+  const isProduction = process.env.NODE_ENV === 'production';
+  if (isProduction) {
+    app.enable('trust proxy');
+  }
+  middleware(app);
+
+  initSwagger(app);
+
+  await repl(AppModule);
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);
 
@@ -31,15 +39,8 @@ async function bootstrap() {
   );
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
-  initSwagger(app);
 
   app.useGlobalInterceptors(new LoggingInterceptor());
-
-  const isProduction = process.env.NODE_ENV === 'production';
-  if (isProduction) {
-    app.enable('trust proxy');
-  }
-  // middleware(app);
 
   const config: ConfigService = app.get(ConfigService);
   const port: number = config.get<number>('BASE_PORT');
@@ -61,4 +62,4 @@ async function bootstrap() {
   });
 }
 
-bootstrap();
+void bootstrap();

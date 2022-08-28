@@ -4,7 +4,7 @@
 
 <div align="center">
   <h1>Teneno API</h1>
-  <img src="public/refs/logo.svg" width="200" alt="Logo" />
+  <img src="public/logo.svg" width="200" alt="Logo" />
 </div>
 
 <div align="center">
@@ -41,17 +41,17 @@
 | ✅  Get list all users | ✅  Create a new post |
 | ✅  Get user data by user-id | ✅  Get all posts of user by user-id |
 | ✅  Get public user profile by user-id / username / email | ✅  Match a new category with new post |
-| ✅  Update user profile | Get a post by post-id |
-| ✅  Delete user-profile by email & password | Delete a post by post-id |
-| ✅  Delete user by user-id (admin) | Reaction to post |
+| ✅  Update user profile | ✅ Get a post by post-id |
+| ✅  Delete user-profile by email & password | ✅ Delete a post by post-id |
+| ✅  Delete user by user-id (admin) | ✅ Reaction to post |
 
 | **Conversations** | **Chats** |
 | ---| --- |
 | ✅  Create new conversation | ✅  Join conversation by conversation-id |
 | ✅  Get all conversations of user| ✅  Get all messages in conversation |
 | ✅  Get one conversation information has current user | ✅  Create new messages |
-| ✅  Update members to current conversation | Update message by message-id |
-| ✅  Update conversation information (name, description, avatar) | Delete messages by message-id |
+| ✅  Update members to current conversation | ✅ Update message by message-id |
+| ✅  Update conversation information (name, description, avatar) | ✅ Delete messages by message-id |
 | ✅  Delete admin out of current conversation by creator |  |
 | ✅  Delete conversation by creator |  |
 | ✅  Change users role in current conversation |  |

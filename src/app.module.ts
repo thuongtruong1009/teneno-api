@@ -19,6 +19,7 @@ import { MessagesModule } from './infrastructure/messages/messages.module';
 import { ConversationsModule } from './infrastructure/conversations/conversations.module';
 import { PostsModule } from './infrastructure/posts/posts.module';
 import { LoggerModule } from './core/logger/logger.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
@@ -35,10 +36,12 @@ import { LoggerModule } from './core/logger/logger.module';
       // envFilePath: ['.env'],
     }),
     LoggerModule.forRoot(),
-    // ServeStaticModule.forRoot({
-    //   rootPath: `${__dirname}/../public`,  //join(__dirname, '..', 'client'),
-    //   renderPath: '/',
-    // }),
+    ServeStaticModule.forRoot({
+      rootPath: `${__dirname}/../public`,
+      // join(__dirname, '..', 'client'),
+      renderPath: '/',
+      // exclude: ['/api*'],
+    }),
   ],
   controllers: [AppController],
   providers: [
@@ -55,8 +58,8 @@ export class AppModule implements NestModule {
     consumer.apply(LoggerContextMiddleware).forRoutes('*');
     //   .exclude({ path: 'users', method: RequestMethod.GET }, 'users/(.*)')
     //   .forRoutes(UsersController);
-    //.forRoutes('users');
-    //.forRoutes({ path: 'auth', method: RequestMethod.GET });  // apply middleware for GET request at router /auth
-    //.forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });  // apply middleware for all requesta matching pattern ab*cd
+    // .forRoutes('users');
+    // .forRoutes({ path: 'auth', method: RequestMethod.GET });  // apply middleware for GET request at router /auth
+    // .forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });  // apply middleware for all requesta matching pattern ab*cd
   }
 }

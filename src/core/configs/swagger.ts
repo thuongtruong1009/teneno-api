@@ -32,7 +32,6 @@ export const initSwagger = (app: INestApplication) => {
       name: 'api_key',
       in: 'header',
     })
-
     .build();
 
   const options: ISwaggerOptions = {

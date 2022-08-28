@@ -10,13 +10,16 @@ module.exports = {
         'prettier',
         'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
+        // "eslint:recommended",
+        // "plugin:@typescript-eslint/recommended-requiring-type-checking"
+
     ],
+    ignorePatterns: ['.eslintrc.js', "**/node_modules/**", "dist/**", "build/**"],
     root: true,
     env: {
         node: true,
         jest: true,
     },
-    ignorePatterns: ['.eslintrc.js'],
     rules: {
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -26,6 +29,34 @@ module.exports = {
         'prettier/prettier': ['off', { singleQuote: true }],
         "@typescript-eslint/no-parameter-properties": 0,
         "@typescript-eslint/ban-types": 0,
-        "@typescript-eslint/no-var-requires": 0
+        "@typescript-eslint/no-var-requires": 0,
+
+        "no-void": ["error", { "allowAsStatement": true }],
+        "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+        "spaced-comment": ["error", "always", { "line": { "markers": ["/", "#region", "#endregion"] } }],
+        // "@typescript-eslint/naming-convention": ["error",
+        //     { "selector": "default", "format": ["strictCamelCase"] },
+        //     { "selector": "variable", "format": ["strictCamelCase", "UPPER_CASE", "StrictPascalCase"] },
+        //     { "selector": "parameter", "modifiers": ["unused"], "format": ["strictCamelCase"], "leadingUnderscore": "allow" },
+        //     { "selector": "property", "format": null },
+        //     { "selector": "typeProperty", "format": null },
+        //     { "selector": "typeLike", "format": ["StrictPascalCase"] },
+        //     { "selector": "interface", "format": ["StrictPascalCase"], "custom": { "regex": "^I[A-Z]", "match": true } },
+        //     { "selector": "enumMember", "format": ["UPPER_CASE"] }
+        // ],
+        "@typescript-eslint/no-dupe-class-members": "error",
+        "@typescript-eslint/no-duplicate-imports": "error",
+        "@typescript-eslint/promise-function-async": "error",
+        "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
+        "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+        "@typescript-eslint/no-unnecessary-qualifier": "error",
+        "@typescript-eslint/no-unnecessary-type-arguments": "error",
+        "@typescript-eslint/no-unnecessary-type-assertion": "error",
+        "@typescript-eslint/no-unnecessary-type-constraint": "error",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unused-expressions": "error",
+        // "@typescript-eslint/typedef": ["error", { "arrowParameter": true, "memberVariableDeclaration": true, "parameter": true, "propertyDeclaration": true }],
+
     },
 };
