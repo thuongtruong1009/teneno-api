@@ -1,9 +1,10 @@
-[<div style="display:flex; justify-content:center; text-align:center">
+[<div align="center" style="display:flex; justify-content:center; text-align:center">
 <img src="https://github.com/thuongtruong1009/teneno-api/raw/main/public/logo.svg" width="200"/><h1 style="color:#E0234E;">Teneno API</h1><p style="color:purple;"><em>A official api for teneno application</em></p></div>](public/logo.svg)
 
-[![Dev.to](https://img.shields.io/twitter/url?color=green&label=Dev.to&logo=dev.to&logoColor=yellow&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](https://dev.to/thuongtruong1009)
-[![Github](https://img.shields.io/twitter/url?color=green&label=Github&logo=github&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](https://github.com/thuongtruong1009)
-[![Email](https://img.shields.io/twitter/url?color=green&label=Email&logo=gmail&logoColor=red&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](mailto:ititiu19228@student.hcmiu.edu.vn)
+[![Dev.to](https://img.shields.io/twitter/url?color=449DE0&label=Dev.to&logo=dev.to&logoColor=449DE0&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](https://dev.to/thuongtruong1009)
+[![Github](https://img.shields.io/twitter/url?color=green&label=Github&logo=github&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Fthuongtruong1009)](https://github.com/thuongtruong1009)
+[![Email](https://img.shields.io/twitter/url?color=red&label=Email&logo=gmail&logoColor=red&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](mailto:ititiu19228@student.hcmiu.edu.vn)
+[![LinkedIn](https://img.shields.io/twitter/url?color=0A66C2&label=Linkedin&logo=linkedin&logoColor=0A66C2&style=for-the-badge&url=https%3A%2F%2Flinkedin.com%2Fin%2Fthuongtruong1009)](https://linkedin.com/in/thuongtruong1009)
 ## Preview
 
 * [Frontend connect](https://github.com/thuongtruong1009/teneno)
@@ -54,9 +55,9 @@
 <!-- | <ul><li>item1</li><li>item2</li></ul>| See the list | -->
 <!-- ⬜️ ✅ -->
 
-## structure
+## Structure
 
-![Schema structure](/public/docs/schema_structure.svg)
+![Schema structure](public/docs/schema_structure.svg)
 
 ## Plugins & Dependencies
 
@@ -101,7 +102,7 @@
 * [Database for chat](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bchat%2Bapplication%26sxsrf%3DALiCzsZVJGO-Xg7f0j6bm04uemOFXQOCow%3A1661272422354%26source%3Dlnms%26tbm%3Disch%26sa%3DX%26ved%3D2ahUKEwjH3u-Est35AhUFmlYBHQe4BikQ_AUoAXoECAEQAw%26biw%3D1920%26bih%3D948%26dpr%3D1&h=AT1rz92_FbaMniK5W8han8NWXAfairaSKCmfkCu3TPLJWm48IqSIYii-aIRJ16hF-Vt_Y7Ju8l2B8YvIqo-5fIndTxa4Koo62fgJN7fGuUcbuMg9XU-5Y7IYHdhWjOESt9SEOvAGrud8_5c&s=1)
 * [Database for social](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%2Bapp%26tbm%3Disch%26ved%3D2ahUKEwj2_M6Tst35AhUKVPUHHefeDpkQ2-cCegQIABAA%26oq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%26gs_lcp%3DCgNpbWcQARgAMgQIABAYMgQIABAYOgQIIxAnOgYIABAeEAg6BQgAEIAEUN4HWOodYNYlaABwAHgAgAGFAYgB3AySAQQwLjE0mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE%26sclient%3Dimg%26ei%3DhQEFY7amEIqo1e8P5727yAk%26bih%3D948%26biw%3D1920&h=AT2bN5utpmugfzrrq3LxJL2taNOV2GVjJPB9MXZ3kkPt5MBwUuqo6O-m-g_xeLO-c0MBe3_P6H_hrFvp53MmQ8msV1DFVay8_JdoXpgmkCp8LQwiiTzYktBVKIMNN_kEWLxUjRQLqsOIZyE&s=1)
 
-### Prisma
+### Setup Prisma
 
 ```bash
 # Installation
@@ -134,17 +135,10 @@ npx prisma studio
 npx prisma db push
 ```
 
-### Database
+### Running with local
 
 ```bash
-# Start db
-$ docker-compose up
-```
-
-### Running
-
-```bash
-# Running the app in local
+# Intall dependencies
 $ npm install
 ```
 
@@ -157,6 +151,17 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+
+### Running with Docker
+```bash
+# Pull image
+$ docker pull thuongtruong1009/teneno-api:latest
+```
+
+```bash
+# Start container
+$ docker-compose up
 ```
 
 ### Test
@@ -177,12 +182,6 @@ $ npm run test:cov
 Teneno is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://github.com/sponsors/thuongtruong1009).
 
 ## Stay in touch
-
-- Author - [Tran Nguyen Thuong Truong](https://github.com/thuongtruong1009)
-- Devto - [@thuongtruong1009](https://dev.to/thuongtruong1009)
-- Linkedin - [@thuongtruong1009](https://linkedin.com/in/thuongtruong1009)
-
-## References
 
 -   Get idea inspiration: [bee-music](https://dribbble.com/shots/16618273-Bee-Music-Music-Media-Player-Dashboard?fbclid=IwAR35hkSSs2dB2Ek66GAX-yPDfx3JYxxJgeQdwweuEiEtne02IUYk13kxDnk)
 -   Follow progresses at [latest project updated](https://github.com/thuongtruong1009/bee-music/projects)

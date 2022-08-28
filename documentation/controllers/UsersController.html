@@ -162,8 +162,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="122"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:122</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:125</a></div>
                 </td>
             </tr>
 
@@ -252,8 +252,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:140</a></div>
                 </td>
             </tr>
 
@@ -921,7 +921,10 @@ export class UsersController {
   @ApiOkResponse({
     description: &#x27;Success&#x27;,
   })
-  async updateUsersCover(@Param(&#x27;userId&#x27;) userId: string, @Body() dto: UserCoverDto) {
+  async updateUsersCover(
+    @Param(&#x27;userId&#x27;) userId: string,
+    @Body() dto: UserCoverDto,
+  ) {
     return this.usersService.updateUsersCover(userId, dto);
   }
 
@@ -930,7 +933,10 @@ export class UsersController {
   @ApiOperation({ summary: &#x27;Delete user profile by email &amp; password (user)&#x27; })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success&#x27; })
-  async deleteUserByEmail(@Param(&#x27;userId&#x27;) userId: string, @Body() dto: LoginDto) {
+  async deleteUserByEmail(
+    @Param(&#x27;userId&#x27;) userId: string,
+    @Body() dto: LoginDto,
+  ) {
     return this.usersService.deleteUserByEmail(userId, dto);
   }
 

@@ -296,8 +296,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/app.module.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app.module.ts:52</a></div>
                 </td>
             </tr>
 
@@ -366,6 +366,7 @@ import { MessagesModule } from &#x27;./infrastructure/messages/messages.module&#
 import { ConversationsModule } from &#x27;./infrastructure/conversations/conversations.module&#x27;;
 import { PostsModule } from &#x27;./infrastructure/posts/posts.module&#x27;;
 import { LoggerModule } from &#x27;./core/logger/logger.module&#x27;;
+import { ServeStaticModule } from &#x27;@nestjs/serve-static&#x27;;
 
 @Module({
   imports: [
@@ -382,11 +383,12 @@ import { LoggerModule } from &#x27;./core/logger/logger.module&#x27;;
       // envFilePath: [&#x27;.env&#x27;],
     }),
     LoggerModule.forRoot(),
-    // ServeStaticModule.forRoot({
-    //   rootPath: &#x60;${__dirname}/../public&#x60;,
-    //   renderPath: &#x27;/&#x27;,
-    //   exclude: [&#x27;/api*&#x27;],
-    // }),
+    ServeStaticModule.forRoot({
+      rootPath: &#x60;${__dirname}/../documentation&#x60;,
+      // join(__dirname, &#x27;..&#x27;, &#x27;client&#x27;),
+      renderPath: &#x27;/&#x27;,
+      // exclude: [&#x27;/api*&#x27;],
+    }),
   ],
   controllers: [AppController],
   providers: [

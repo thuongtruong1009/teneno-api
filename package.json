@@ -35,7 +35,8 @@
         "API",
         "typescript",
         "express",
-        "docker"
+        "docker",
+        "github"
     ],
     "scripts": {
         "prebuild": "rimraf dist",
@@ -78,7 +79,7 @@
         "@nestjs/serve-static": "^3.0.0",
         "@nestjs/swagger": "^6.0.4",
         "@nestjs/websockets": "^9.0.9",
-        "@prisma/client": "^4.1.0",
+        "@prisma/client": "^4.2.1",
         "@types/passport-jwt": "^3.0.6",
         "bcrypt": "^5.0.1",
         "class-transformer": "^0.5.1",
@@ -90,7 +91,7 @@
         "husky": "^8.0.1",
         "passport": "^0.6.0",
         "passport-jwt": "^4.0.0",
-        "prisma": "^4.1.0",
+        "prisma": "^4.2.1",
         "reflect-metadata": "^0.1.13",
         "rimraf": "^3.0.2",
         "rxjs": "^7.2.0",

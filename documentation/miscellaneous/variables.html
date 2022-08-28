@@ -313,7 +313,7 @@
   const swaggerConfig &#x3D; new DocumentBuilder()
     .setTitle(&#x27;Teneno API&#x27;)
     .setDescription(
-      &quot;This is CRUD API for Teneno - the webapp project builded with NestJS. View the source at &lt;a href&#x3D;&#x27;https://github.com/thuongtruong1009/teneno-api&#x27;&gt;teneno-api&lt;/a&gt;&quot;,
+      &#x60;This is CRUD Rest API endpoints for Teneno - the webapp project builded with NestJS. View the documentation at &lt;a href&#x3D;${process.env.DOCUMENTATION_URL}&gt;Teneno-API documentation&lt;/a&gt;&#x60;,
     )
     .setContact(
       &#x27;Thuong Truong&#x27;,
@@ -331,6 +331,7 @@
       description: &#x27;Paste a valid access token here.&#x27;,
       in: &#x27;Header&#x27;,
     })
+    .addBasicAuth()
     .addSecurity(&#x27;api_key&#x27;, {
       type: &#x27;apiKey&#x27;,
       name: &#x27;api_key&#x27;,

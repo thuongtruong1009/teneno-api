@@ -9,7 +9,7 @@ export const initSwagger = (app: INestApplication) => {
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Teneno API')
     .setDescription(
-      `This is CRUD Rest API for Teneno - the webapp project builded with NestJS. View the documentation at <a href=${process.env.DOCUMENTATION_URL}>teneno-api documentation</a>`,
+      `This is CRUD Rest API endpoints for Teneno - the webapp project builded with NestJS. View the documentation at <a href=${process.env.DOCUMENTATION_URL}>Teneno-API documentation</a>`,
     )
     .setContact(
       'Thuong Truong',

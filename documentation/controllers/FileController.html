@@ -302,8 +302,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:91</a></div>
                 </td>
             </tr>
 
@@ -380,8 +380,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:71</a></div>
                 </td>
             </tr>
 
@@ -492,7 +492,9 @@ export class FileController {
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success&#x27; })
   @SingleFieldDecorator(&#x27;./public/covers&#x27;)
-  async uploadCover(@UploadedFile() file: Express.Multer.File): Promise&lt;ISingleFile&gt; {
+  async uploadCover(
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise&lt;ISingleFile&gt; {
     return this.fileService.uploadCover(file);
   }
 
@@ -521,7 +523,9 @@ export class FileController {
     ],
     &#x27;./public/multi&#x27;,
   )
-  async uploadMulti(@UploadedFiles() files: Express.Multer.File[]): Promise&lt;any&gt; {
+  async uploadMulti(
+    @UploadedFiles() files: Express.Multer.File[],
+  ): Promise&lt;any&gt; {
     return this.fileService.uploadMulti(files);
   }
 }
