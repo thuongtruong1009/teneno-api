@@ -50,7 +50,7 @@ export class AuthController {
     description: 'The new account has been created.',
     type: SignupDto,
   })
-  signupLocal(@Body() dto: SignupDto): Promise<ITokens> {
+  async signupLocal(@Body() dto: SignupDto): Promise<ITokens> {
     return this.authService.signupLocal(dto);
   }
 
@@ -59,7 +59,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success.' })
   @ApiOperation({ summary: 'Login to user account (user)' })
-  signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
+  async signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
     return this.authService.signinLocal(dto);
   }
 
@@ -69,7 +69,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success.' })
   @ApiOperation({ summary: 'Logout user account (user)' })
-  logout(@GetCurrentUserId() userId: string): Promise<void> {
+  async logout(@GetCurrentUserId() userId: string): Promise<void> {
     return this.authService.logout(userId);
   }
 
@@ -79,7 +79,7 @@ export class AuthController {
   @ApiOkResponse({ description: 'Success.' })
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Logout account on all devices (user)' })
-  refreshToken(
+  async refreshToken(
     @GetCurrentUserId() userId: string,
     @GetCurrentUser('refreshToken') refreshToken: string,
   ): Promise<ITokens> {
@@ -92,7 +92,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success.' })
   @ApiOperation({ summary: 'Update user password (all)' })
-  updatePassWord(@Body() dto: UpdatePasswordDto): Promise<ITokens> {
+  async updatePassWord(@Body() dto: UpdatePasswordDto): Promise<ITokens> {
     return this.authService.updatePassWord(dto);
   }
 }

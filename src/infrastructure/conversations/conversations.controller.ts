@@ -43,7 +43,7 @@ import { ConversationEntity } from './entities';
   description: 'Provided inputs are not in correct form.',
 })
 @Controller('conversations')
-//https://www.youtube.com/watch?v=LMjj1_EK4y8&ab_channel=Prisma
+// https://www.youtube.com/watch?v=LMjj1_EK4y8&ab_channel=Prisma
 export class ConversationsController {
   constructor(private conversationsService: ConversationsService) {
     this.conversationsService = conversationsService;
@@ -71,7 +71,7 @@ export class ConversationsController {
     isArray: true,
     description: 'Success.',
   })
-  getAllConversations(@Body() dto: GetAllConversationDto) {
+  async getAllConversations(@Body() dto: GetAllConversationDto) {
     return this.conversationsService.getAllConversations(dto);
   }
 
@@ -84,7 +84,7 @@ export class ConversationsController {
     type: ConversationEntity,
     description: 'Success.',
   })
-  getConversationById(
+  async getConversationById(
     @Param('id') id: string,
     @Body() dto: GetOneConversationDto,
   ) {
@@ -114,7 +114,7 @@ export class ConversationsController {
   @ApiOkResponse({
     description: 'Success.',
   })
-  deleteConversationById(
+  async deleteConversationById(
     @Param('id') id: string,
     @Body() dto: DeleteConversationDto,
   ) {
@@ -129,7 +129,7 @@ export class ConversationsController {
   @ApiOkResponse({
     description: 'Success.',
   })
-  updateMembersConversation(
+  async updateMembersConversation(
     @Param('conversationId') conversationId: string,
     @Body() dto: UpdateMembersConversationDto,
   ) {
@@ -148,7 +148,7 @@ export class ConversationsController {
   @ApiOkResponse({
     description: 'Success.',
   })
-  deleteOneAdminConversation(
+  async deleteOneAdminConversation(
     @Param('conversationId') conversationId: string,
     @Body() dto: DeleteOneAdminConversationDto,
   ) {
@@ -167,7 +167,7 @@ export class ConversationsController {
   @ApiOkResponse({
     description: 'Success.',
   })
-  updateRolesConversation(
+  async updateRolesConversation(
     @Param('conversationId') conversationId: string,
     @Body() dto: UpdateRolesConversationDto,
   ) {

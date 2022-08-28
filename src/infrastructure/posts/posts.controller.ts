@@ -47,7 +47,7 @@ export class PostsController {
     description: 'Success',
   })
   @ApiCreatedResponse({ description: 'Create new post successfuly' })
-  createPost(@Body() dto: CreatePostDto) {
+  async createPost(@Body() dto: CreatePostDto) {
     return this.postsService.createPost(dto);
   }
 
@@ -60,7 +60,7 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  getAllPostsOfUser(@Body() dto: GetAllPostOfUserDto) {
+  async getAllPostsOfUser(@Body() dto: GetAllPostOfUserDto) {
     return this.postsService.getAllPostsOfUser(dto);
   }
 
@@ -71,7 +71,7 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  getAllPublicPosts(@Param('userId') userId: string) {
+  async getAllPublicPosts(@Param('userId') userId: string) {
     return this.postsService.getAllPublicPosts(userId);
   }
 
@@ -81,7 +81,7 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  getOnePostById(@Param('postId') postId: string) {
+  async getOnePostById(@Param('postId') postId: string) {
     return this.postsService.getOnePostById(postId);
   }
 
@@ -91,7 +91,7 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  updatePost(@Body() dto: UpdatePostDto) {
+  async updatePost(@Body() dto: UpdatePostDto) {
     return this.postsService.updatePost(dto);
   }
 
@@ -101,7 +101,7 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  deletePost(@Body() dto: DeleteOnePost) {
+  async deletePost(@Body() dto: DeleteOnePost) {
     return this.postsService.deletePost(dto);
   }
 
@@ -111,7 +111,7 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  reactionPost(@Body() dto: ReactionsPost) {
+  async reactionPost(@Body() dto: ReactionsPost) {
     return this.postsService.reactionPost(dto);
   }
 }

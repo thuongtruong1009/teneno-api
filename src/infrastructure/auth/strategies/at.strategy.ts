@@ -12,6 +12,7 @@ export class AtStrategy extends PassportStrategy(Strategy, 'jwt') {
       secretOrKey: config.get<string>('ACCESS_TOKEN_SECRET'),
     });
   }
+
   validate(payload: IJwtPayload): IJwtPayload {
     return payload;
   }

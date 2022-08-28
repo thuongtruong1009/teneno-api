@@ -51,7 +51,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Get list all public user (admin)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  getAllUsers(@Query() dto: PaginationDto) {
+  async getAllUsers(@Query() dto: PaginationDto) {
     return this.usersService.getAllUsers(dto);
   }
 
@@ -62,7 +62,7 @@ export class UsersController {
   @ApiOkResponse({
     description: 'Success',
   })
-  getUsersById(@Param('userId') userId: string) {
+  async getUsersById(@Param('userId') userId: string) {
     return this.usersService.getUsersById(userId);
   }
 
@@ -73,7 +73,7 @@ export class UsersController {
   })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  getUsersByEmailAndName(@Body() dto: GetUserProfileByEmailNameDto) {
+  async getUsersByEmailAndName(@Body() dto: GetUserProfileByEmailNameDto) {
     return this.usersService.getUsersByEmailAndName(dto);
   }
 
@@ -82,7 +82,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Update user profile by user id (user)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  updateUsersProfile(
+  async updateUsersProfile(
     @Param('userId') userId: string,
     @Body() dto: UserProfileDto,
   ) {
@@ -96,7 +96,7 @@ export class UsersController {
   @ApiOkResponse({
     description: 'Success',
   })
-  updateUsersAvatar(
+  async updateUsersAvatar(
     @Param('userId') userId: string,
     @Body() dto: UserAvatarDto,
   ) {
@@ -110,7 +110,10 @@ export class UsersController {
   @ApiOkResponse({
     description: 'Success',
   })
-  updateUsersCover(@Param('userId') userId: string, @Body() dto: UserCoverDto) {
+  async updateUsersCover(
+    @Param('userId') userId: string,
+    @Body() dto: UserCoverDto,
+  ) {
     return this.usersService.updateUsersCover(userId, dto);
   }
 
@@ -119,7 +122,10 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user profile by email & password (user)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  deleteUserByEmail(@Param('userId') userId: string, @Body() dto: LoginDto) {
+  async deleteUserByEmail(
+    @Param('userId') userId: string,
+    @Body() dto: LoginDto,
+  ) {
     return this.usersService.deleteUserByEmail(userId, dto);
   }
 
@@ -131,7 +137,7 @@ export class UsersController {
   @ApiOkResponse({
     description: 'Success',
   })
-  deleteUserById(@Param('userId') userId: string) {
+  async deleteUserById(@Param('userId') userId: string) {
     return this.usersService.deleteUserById(userId);
   }
 }

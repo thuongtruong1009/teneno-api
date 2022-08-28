@@ -1,21 +1,16 @@
+[<div style="display:flex; justify-content:center; text-align:center">
+<img src="https://github.com/thuongtruong1009/teneno-api/raw/main/public/logo.svg" width="200"/><h1 style="color:#E0234E;">Teneno API</h1><p style="color:purple;"><em>A official api for teneno application</em></p></div>](public/logo.svg)
+
 [![Dev.to](https://img.shields.io/twitter/url?color=green&label=Dev.to&logo=dev.to&logoColor=yellow&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](https://dev.to/thuongtruong1009)
 [![Github](https://img.shields.io/twitter/url?color=green&label=Github&logo=github&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](https://github.com/thuongtruong1009)
 [![Email](https://img.shields.io/twitter/url?color=green&label=Email&logo=gmail&logoColor=red&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009)](mailto:ititiu19228@student.hcmiu.edu.vn)
-
-<div align="center">
-  <h1>Teneno API</h1>
-  <img src="public/logo.svg" width="200" alt="Logo" />
-</div>
-
-<div align="center">
-<em>A official api for teneno application</em>
-</div>
-
 ## Preview
 
 * [Frontend connect](https://github.com/thuongtruong1009/teneno)
 
-* [API Document](http://localhost:5500/api)
+<!-- * [API document](http://localhost:5500/api) -->
+
+<!-- * [Project documentation](http://localhost:5500/index.html) -->
 
 * [Database diagram](https://dbdiagram.io/d/62fe42dec2d9cf52fad1848c)
 
@@ -59,6 +54,10 @@
 <!-- | <ul><li>item1</li><li>item2</li></ul>| See the list | -->
 <!-- ⬜️ ✅ -->
 
+## structure
+
+![Schema structure](/public/docs/schema_structure.svg)
+
 ## Plugins & Dependencies
 
 * [Nodejs](http://nodejs.org) framework for building efficient and scalable server-side applications
@@ -78,6 +77,7 @@
 * [Compression](https://www.npmjs.com/package/compression) compress response bodies for all request
 * [Read-Eval-Print-Loop (REPL)](https://docs.nestjs.com/recipes/repl) takes - executes single user inputs, and returns the result to the user, interactive environment, inspect dependency graph and call methods on providers - controllers directly from terminal
 * [Serve Static](https://docs.nestjs.com/recipes/serve-static) serve static content like a Single Page Application (SPA)
+* [Compodoc](https://docs.nestjs.com/recipes/documentation) Generate project documentation
 
 ## Conventions & Tools
 

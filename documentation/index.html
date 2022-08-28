@@ -1,0 +1,367 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Teneno API documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+        <link rel="stylesheet" href="./styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">Teneno API documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<p><a href="public/logo.svg"><div style="display:flex; justify-content:center; text-align:center">
+<img src="https://github.com/thuongtruong1009/teneno-api/raw/main/public/logo.svg" width="200"/><h1 style="color:#E0234E;">Teneno API</h1><p style="color:purple;"><em>A official api for teneno application</em></p></div></a></p>
+<p><a href="https://dev.to/thuongtruong1009"><img src="https://img.shields.io/twitter/url?color=green&label=Dev.to&logo=dev.to&logoColor=yellow&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009" alt="Dev.to" class="img-responsive"></a>
+<a href="https://github.com/thuongtruong1009"><img src="https://img.shields.io/twitter/url?color=green&label=Github&logo=github&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009" alt="Github" class="img-responsive"></a>
+<a href="mailto:ititiu19228@student.hcmiu.edu.vn"><img src="https://img.shields.io/twitter/url?color=green&label=Email&logo=gmail&logoColor=red&style=for-the-badge&url=https%3A%2F%2Fdev.to%2Fthuongtruong1009" alt="Email" class="img-responsive"></a></p>
+<h2 id="preview">Preview</h2>
+<ul>
+<li><a href="https://github.com/thuongtruong1009/teneno">Frontend connect</a></li>
+</ul>
+<!-- * [API document](http://localhost:5500/api) -->
+
+<!-- * [Project documentation](http://localhost:5500/index.html) -->
+
+<ul>
+<li><a href="https://dbdiagram.io/d/62fe42dec2d9cf52fad1848c">Database diagram</a></li>
+</ul>
+<h2 id="description">Description</h2>
+<ul>
+<li>The purpose of Teneno webapp is create a new network platform where everyone can sharing their feels, thinks or experiences together</li>
+<li>Make an easily life with Teneno</li>
+<li>Practice Backend skills and improve programming thinking</li>
+</ul>
+<h2 id="features">Features</h2>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th><strong>Auth</strong></th>
+<th><strong>Files</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅  Signup</td>
+<td>✅  Upload single file (avatar, cover)</td>
+</tr>
+<tr>
+<td>✅  Signin</td>
+<td>✅  Upload multi files</td>
+</tr>
+<tr>
+<td>✅  Signout</td>
+<td>✅  Upload array-field files (post, sample_image)</td>
+</tr>
+<tr>
+<td>✅  Signout</td>
+<td></td>
+</tr>
+<tr>
+<td>✅  Refresh access-token</td>
+<td></td>
+</tr>
+<tr>
+<td>✅  Update password</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th><strong>Users</strong></th>
+<th><strong>Posts</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅  Get list all users</td>
+<td>✅  Create a new post</td>
+</tr>
+<tr>
+<td>✅  Get user data by user-id</td>
+<td>✅  Get all posts of user by user-id</td>
+</tr>
+<tr>
+<td>✅  Get public user profile by user-id / username / email</td>
+<td>✅  Match a new category with new post</td>
+</tr>
+<tr>
+<td>✅  Update user profile</td>
+<td>✅ Get a post by post-id</td>
+</tr>
+<tr>
+<td>✅  Delete user-profile by email &amp; password</td>
+<td>✅ Delete a post by post-id</td>
+</tr>
+<tr>
+<td>✅  Delete user by user-id (admin)</td>
+<td>✅ Reaction to post</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th><strong>Conversations</strong></th>
+<th><strong>Chats</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅  Create new conversation</td>
+<td>✅  Join conversation by conversation-id</td>
+</tr>
+<tr>
+<td>✅  Get all conversations of user</td>
+<td>✅  Get all messages in conversation</td>
+</tr>
+<tr>
+<td>✅  Get one conversation information has current user</td>
+<td>✅  Create new messages</td>
+</tr>
+<tr>
+<td>✅  Update members to current conversation</td>
+<td>✅ Update message by message-id</td>
+</tr>
+<tr>
+<td>✅  Update conversation information (name, description, avatar)</td>
+<td>✅ Delete messages by message-id</td>
+</tr>
+<tr>
+<td>✅  Delete admin out of current conversation by creator</td>
+<td></td>
+</tr>
+<tr>
+<td>✅  Delete conversation by creator</td>
+<td></td>
+</tr>
+<tr>
+<td>✅  Change users role in current conversation</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- | <ul><li>item1</li><li>item2</li></ul>| See the list | -->
+<!-- ⬜️ ✅ -->
+
+<h2 id="structure">structure</h2>
+<p><img src="/public/docs/schema_structure.svg" alt="Schema structure" class="img-responsive"></p>
+<h2 id="plugins--dependencies">Plugins &amp; Dependencies</h2>
+<ul>
+<li><a href="http://nodejs.org">Nodejs</a> framework for building efficient and scalable server-side applications</li>
+<li><a href="https://github.com/nestjs/nest">Nest</a> framework TypeScript starter repository</li>
+<li><a href="https://www.prisma.io/">Prisma</a> query builder and auto-generated schema with types tailored</li>
+<li><a href="https://www.npmjs.com/package/cors">CORS</a> connect middleware that can be used to enable CORS with various options</li>
+<li><a href="https://swagger.io/">Swagger</a> describe definition format and design document APIs at scale</li>
+<li><a href="https://www.npmjs.com/package/bcrypt">Bcrypt</a> a library to help you hash passwords</li>
+<li><a href="https://www.npmjs.com/package/jsonwebtoken">JWT</a> decode, verify and generate access tokens</li>
+<li><a href="https://www.npmjs.com/package/class-validator">Class-validator</a> use of decorator and non-decorator to perform validation</li>
+<li><a href="https://www.npmjs.com/package/class-transformer">Class-transformer</a> transform plain object to some instance of class and versa and serialize / deserialize object based on criteria</li>
+<li><a href="https://www.npmjs.com/package/passport">Passport</a> compatible authentication requests middleware for Node.js</li>
+<li><a href="https://anonystick.com/blog-developer/cookie-parser-la-gi-middleware-can-thiet-ma-hoa-cookie-trong-expressjs-2020112687915577">Cookies-Parser</a> middleware parsing of cookies in Nodejs and Expressjs.</li>
+<li><a href="https://docs.nestjs.com/techniques/file-upload">Multer</a> upload file data form in Expressjs</li>
+<li><a href="https://www.npmjs.com/package/cookie-parser">Cookie-parser</a> Parse Cookie header and signed cookie support</li>
+<li><a href="https://www.npmjs.com/package/helmet">Helmet</a> secure Express apps by setting various HTTP headers</li>
+<li><a href="https://www.npmjs.com/package/compression">Compression</a> compress response bodies for all request</li>
+<li><a href="https://docs.nestjs.com/recipes/repl">Read-Eval-Print-Loop (REPL)</a> takes - executes single user inputs, and returns the result to the user, interactive environment, inspect dependency graph and call methods on providers - controllers directly from terminal</li>
+<li><a href="https://docs.nestjs.com/recipes/serve-static">Serve Static</a> serve static content like a Single Page Application (SPA)</li>
+<li><a href="https://docs.nestjs.com/recipes/documentation">Compodoc</a> Generate project documentation</li>
+</ul>
+<h2 id="conventions--tools">Conventions &amp; Tools</h2>
+<ul>
+<li><a href="https://prettier.io/">Prettier</a> opinionated code formatter</li>
+<li><a href="https://eslint.org/">Eslint</a> analyzes code to quickly find problems and built with continuous integration pipeline</li>
+<li><a href="https://medium.com/angular-in-depth/husky-6-lint-prettier-eslint-and-commitlint-for-javascript-project-d7174d44735a">Husky x Lintstage x Commitlint</a> linter conventions for clean code</li>
+<li><a href="https://jwt.io">JWT Playground</a></li>
+</ul>
+<h2 id="references--tips">References &amp; Tips</h2>
+<ul>
+<li><a href="https://docs.nestjs.com/recipes/prisma#getting-started">Prisma x Nest</a> build CRUD API endpoints rapidy</li>
+<li><a href="https://stackoverflow.com/questions/60036239/upload-file-failed-postman">Fix upload file on Postman</a></li>
+<li><a href="https://notiz.dev/blog/type-safe-file-uploads">File upload with Nest</a></li>
+<li><a href="https://www.youtube.com/watch?v=wdsp7BNmJRc&amp;list=PL2eJaT2jJV7Ku72gl8YSSVRC0D7IQRJJZ&amp;index=9&amp;ab_channel=MariusEspejo">Base roles example</a></li>
+<li><a href="https://viblo.asia/p/xay-dung-bo-logger-xu-ly-exception-tap-trung-trong-nestjs-ORNZq1qMZ0n">Logger 1</a></li>
+<li><a href="https://github.com/hantsy/nestjs-rest-sample">Nest example</a></li>
+<li><a href="https://github.com/nestjs/awesome-nestjs">Nest awesome</a></li>
+<li><a href="https://github.com/CatsMiaow/nestjs-project-structure">Nest structure</a></li>
+<li><a href="https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1">Postgre x Heroku</a></li>
+<li><a href="https://docs.nestjs.com/recipes/prisma">Nest x Prisma</a></li>
+<li><a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bchat%2Bapplication%26sxsrf%3DALiCzsZVJGO-Xg7f0j6bm04uemOFXQOCow%3A1661272422354%26source%3Dlnms%26tbm%3Disch%26sa%3DX%26ved%3D2ahUKEwjH3u-Est35AhUFmlYBHQe4BikQ_AUoAXoECAEQAw%26biw%3D1920%26bih%3D948%26dpr%3D1&amp;h=AT1rz92_FbaMniK5W8han8NWXAfairaSKCmfkCu3TPLJWm48IqSIYii-aIRJ16hF-Vt_Y7Ju8l2B8YvIqo-5fIndTxa4Koo62fgJN7fGuUcbuMg9XU-5Y7IYHdhWjOESt9SEOvAGrud8_5c&amp;s=1">Database for chat</a></li>
+<li><a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%2Bapp%26tbm%3Disch%26ved%3D2ahUKEwj2_M6Tst35AhUKVPUHHefeDpkQ2-cCegQIABAA%26oq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%26gs_lcp%3DCgNpbWcQARgAMgQIABAYMgQIABAYOgQIIxAnOgYIABAeEAg6BQgAEIAEUN4HWOodYNYlaABwAHgAgAGFAYgB3AySAQQwLjE0mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE%26sclient%3Dimg%26ei%3DhQEFY7amEIqo1e8P5727yAk%26bih%3D948%26biw%3D1920&amp;h=AT2bN5utpmugfzrrq3LxJL2taNOV2GVjJPB9MXZ3kkPt5MBwUuqo6O-m-g_xeLO-c0MBe3_P6H_hrFvp53MmQ8msV1DFVay8_JdoXpgmkCp8LQwiiTzYktBVKIMNN_kEWLxUjRQLqsOIZyE&amp;s=1">Database for social</a></li>
+</ul>
+<h3 id="prisma">Prisma</h3>
+<div><pre class="line-numbers"><code class="language-bash"># Installation
+npm install prisma&#64;latest &#64;prisma/client</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Init prisma
+npx prisma init
+
+# turn database schema into a Prisma schema
+prisma db pull
+
+# generate the Prisma Client
+prisma generate</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Create env and migrate db
+npx prisma migrate dev --create-only</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Open prisma studio
+npx prisma studio</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Sync migrate change to db
+npx prisma db push</code></pre></div><h3 id="database">Database</h3>
+<div><pre class="line-numbers"><code class="language-bash"># Start db
+$ docker-compose up</code></pre></div><h3 id="running">Running</h3>
+<div><pre class="line-numbers"><code class="language-bash"># Running the app in local
+$ npm install</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod</code></pre></div><h3 id="test">Test</h3>
+<div><pre class="line-numbers"><code class="language-bash"># unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov</code></pre></div><h2 id="support">Support</h2>
+<p>Teneno is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you&#39;d like to join them, please <a href="https://github.com/sponsors/thuongtruong1009">read more here</a>.</p>
+<h2 id="stay-in-touch">Stay in touch</h2>
+<ul>
+<li>Author - <a href="https://github.com/thuongtruong1009">Tran Nguyen Thuong Truong</a></li>
+<li>Devto - <a href="https://dev.to/thuongtruong1009">@thuongtruong1009</a></li>
+<li>Linkedin - <a href="https://linkedin.com/in/thuongtruong1009">@thuongtruong1009</a></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Get idea inspiration: <a href="https://dribbble.com/shots/16618273-Bee-Music-Music-Media-Player-Dashboard?fbclid=IwAR35hkSSs2dB2Ek66GAX-yPDfx3JYxxJgeQdwweuEiEtne02IUYk13kxDnk">bee-music</a></li>
+<li>Follow progresses at <a href="https://github.com/thuongtruong1009/bee-music/projects">latest project updated</a></li>
+<li>Trading and shopping your style with <a href="https://github.com/thuongtruong1009/e-shopee">e-shopee</a></li>
+<li>Enhance front-end skills through <a href="https://github.com/thuongtruong1009/twitter-meta">twitter-meta</a></li>
+<li>Generate your GitHub informations by <a href="https://github.com/thuongtruong1009/gitbox">gitbox</a></li>
+<li>Begining Vue through <a href="https://github.com/thuongtruong1009/notedev">notedev</a></li>
+<li>Learning front-end web full course at <a href="https://github.com/thuongtruong1009/frontend-master">frontend-master</a></li>
+<li>Learn Object-Oriented-Programming tutorial at <a href="https://github.com/thuongtruong1009/Snake-Game-OOP">Snake-Game-OOP</a></li>
+<li>Become Java master for new beginner at <a href="https://github.com/thuongtruong1009/java-oop-training">Java-training</a></li>
+<li>Pratice UI/UX at <a href="https://github.com/thuongtruong1009/league-of-legends-clone">league-fo-legend</a></li>
+<li>Make flip card game at <a href="https://github.com/thuongtruong1009/flip-cards">flip-card</a></li>
+<li>Learn computer architecture at <a href="https://github.com/thuongtruong1009/computer-architecture">computer-architecture</a></li>
+</ul>
+<h2 id="❤️-support-me">❤️ <a href="https://www.paypal.me/thuongtruong1009">Support me</a></h2>
+<blockquote>
+<p>We are looking for sponsors to join us to have better community reach and impact.</p>
+</blockquote>
+<p><a href="https://nhantien.momo.vn/0917085937"><img src="https://img.shields.io/badge/-MOMO-red?style=flat&labelColor=RED&logo=MOMO&logoColor=black" alt="MOMO" class="img-responsive"></a>
+<a href="https://www.paypal.me/thuongtruong1009">
+<img height="25" marginTop="10" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Blue_PayPal_Pill_Button.png">
+</a>
+<a href='https://ko-fi.com/thuongtruong1009' target='_blank'>
+<img height='25' style='border:0px;height:28px;color:blue' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+</a></p>
+<h2 id="📰-license">📰 <a href="LICENSE">License</a></h2>
+<ul>
+<li><h5 id="this-project-is-distributed-under-the-mit-license">This project is distributed under the <a href="LICENSE">MIT License</a>.</h5>
+</li>
+<li><h5 id="copyright-of-thuongtruong1009-2022">Copyright of <a href="https://github.com/thuongtruong1009">@thuongtruong1009</a>, 2022.</h5>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

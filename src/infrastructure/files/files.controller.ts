@@ -46,7 +46,7 @@ export class FileController {
   @ApiOperation({ summary: 'Upload avatar file form data (all)' })
   @ApiOkResponse({ description: 'Success' })
   @SingleFieldDecorator('./public/avatars')
-  uploadAvatar(
+  async uploadAvatar(
     @UploadedFile() file: Express.Multer.File,
   ): Promise<ISingleFile> {
     return this.fileService.uploadAvatar(file);
@@ -57,7 +57,9 @@ export class FileController {
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
   @SingleFieldDecorator('./public/covers')
-  uploadCover(@UploadedFile() file: Express.Multer.File): Promise<ISingleFile> {
+  async uploadCover(
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<ISingleFile> {
     return this.fileService.uploadCover(file);
   }
 
@@ -66,7 +68,7 @@ export class FileController {
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
   @ArrayFieldDecorator('files', true, 10, './public/posts')
-  uploadPosts(
+  async uploadPosts(
     @UploadedFiles() files: Array<Express.Multer.File>,
   ): Promise<IArrayFile> {
     return this.fileService.uploadPosts(files);
@@ -86,7 +88,9 @@ export class FileController {
     ],
     './public/multi',
   )
-  uploadMulti(@UploadedFiles() files: Express.Multer.File[]): Promise<any> {
+  async uploadMulti(
+    @UploadedFiles() files: Express.Multer.File[],
+  ): Promise<any> {
     return this.fileService.uploadMulti(files);
   }
 }

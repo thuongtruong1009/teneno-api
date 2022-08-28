@@ -9,7 +9,7 @@ export const initSwagger = (app: INestApplication) => {
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Teneno API')
     .setDescription(
-      "This is CRUD API for Teneno - the webapp project builded with NestJS. View the source at <a href='https://github.com/thuongtruong1009/teneno-api'>teneno-api</a>",
+      `This is CRUD Rest API for Teneno - the webapp project builded with NestJS. View the documentation at <a href=${process.env.DOCUMENTATION_URL}>teneno-api documentation</a>`,
     )
     .setContact(
       'Thuong Truong',
@@ -27,6 +27,7 @@ export const initSwagger = (app: INestApplication) => {
       description: 'Paste a valid access token here.',
       in: 'Header',
     })
+    .addBasicAuth()
     .addSecurity('api_key', {
       type: 'apiKey',
       name: 'api_key',

@@ -48,6 +48,10 @@ async function bootstrap() {
   await app.listen(port, () => {
     console.log('[⚡ Server] is running on ', config.get<string>('BASE_URL'));
     console.log(
+      '[⚡ Documentation] is running on ',
+      config.get<string>('DOCUMENTATION_URL'),
+    );
+    console.log(
       '[⚡ Swagger] is running on ',
       config.get<string>('SWAGGER_URL'),
     );
