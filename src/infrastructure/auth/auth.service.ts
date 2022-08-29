@@ -1,4 +1,9 @@
-import { ForbiddenException, Inject, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  ForbiddenException,
+  Inject,
+  Injectable,
+} from '@nestjs/common';
 import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
 import { ITokens } from './interfaces';
 import { JwtService } from '@nestjs/jwt';
@@ -56,27 +61,20 @@ export class AuthService {
   async signupLocal(dto: SignupDto): Promise<ITokens> {
     const hash = await hashPassword(dto.password);
 
+    const userExist = await this.prismaService.user.findMany({
+      where: {
+        OR: [{ email: dto.email }, { username: dto.username }],
+      },
+    });
+
+    if (userExist.length > 0)
+      throw new ConflictException('User already exists');
+
     const newUser = await this.prismaService.user.create({
       data: {
         email: dto.email,
         password: hash,
         username: dto.username,
-        profile: {
-          create: {
-            fullName: '',
-            birthdate: new Date(),
-            avatar: '',
-            cover: '',
-            marriageStatus: '',
-            interests: [],
-            bio: '',
-            address: '',
-            phone: '',
-            age: 0,
-            gender: 0,
-          },
-        },
-        role: ['USER'],
       },
     });
 

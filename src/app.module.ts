@@ -9,7 +9,7 @@ import { UsersModule } from './infrastructure/users/users.module';
 import { FilesModule } from './infrastructure/files/files.module';
 import { ConfigModule } from '@nestjs/config';
 import { InterceptorModule } from './core/interceptors/interceptor.module';
-import { LoggerContextMiddleware } from './core/middleware/logger-context.middleware';
+import { LoggerContextMiddleware } from './core/middlewares/logger-context.middleware';
 import { MessagesModule } from './infrastructure/messages/messages.module';
 import { ConversationsModule } from './infrastructure/conversations/conversations.module';
 import { PostsModule } from './infrastructure/posts/posts.module';

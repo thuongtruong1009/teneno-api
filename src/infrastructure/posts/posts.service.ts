@@ -180,12 +180,6 @@ export class PostsService {
   }
 
   async reactionPost(dto: ReactionsPost) {
-    const list = await this.getOnePostById(dto.postId);
-
-    if (!list) {
-      return new NotFoundException('Post not found');
-    }
-
     const checkExist = await this.prismaService.reaction.findMany({
       where: {
         postId: dto.postId,

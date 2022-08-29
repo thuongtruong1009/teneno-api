@@ -6,6 +6,8 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseUUIDPipe,
+  Patch,
   Put,
   Query,
 } from '@nestjs/common';
@@ -45,8 +47,8 @@ export class UsersController {
     this.usersService = usersService;
   }
 
-  @RoleDecorator(ROLE.ADMIN)
   @Get('all')
+  @RoleDecorator(ROLE.ADMIN)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Get list all public user (admin)' })
   @HttpCode(HttpStatus.OK)
@@ -62,7 +64,7 @@ export class UsersController {
   @ApiOkResponse({
     description: 'Success',
   })
-  async getUsersById(@Param('userId') userId: string) {
+  async getUsersById(@Param('userId', new ParseUUIDPipe()) userId: string) {
     return this.usersService.getUsersById(userId);
   }
 
@@ -77,7 +79,7 @@ export class UsersController {
     return this.usersService.getUsersByEmailAndName(dto);
   }
 
-  @Put('profile/:userId')
+  @Patch('profile/:userId')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update user profile by user id (user)' })
   @HttpCode(HttpStatus.OK)

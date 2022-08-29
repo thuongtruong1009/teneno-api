@@ -10,7 +10,7 @@ import { LoggerService } from './core/logger/logger.service';
 import { AllExceptionsFilter } from './core/filters/exception.filter';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { PrismaService } from './infrastructure/prisma/prisma.service';
-import { middleware } from './core/middleware/app.middleware';
+import { helmetMiddleware } from './core/middlewares/helmet.middleware';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -25,7 +25,7 @@ async function bootstrap() {
   if (isProduction) {
     app.enable('trust proxy');
   }
-  middleware(app);
+  helmetMiddleware(app);
 
   initSwagger(app);
 

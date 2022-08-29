@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { Public } from '../auth/decorators';
@@ -81,7 +82,7 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  async getOnePostById(@Param('postId') postId: string) {
+  async getOnePostById(@Param('postId', new ParseUUIDPipe()) postId: string) {
     return this.postsService.getOnePostById(postId);
   }
 

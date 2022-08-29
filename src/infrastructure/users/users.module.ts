@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { ExistedUserMiddleware } from 'src/core/middlewares/existed-user.middleware';
 import { AuthModule } from 'src/infrastructure/auth/auth.module';
 import { PrismaModule } from 'src/infrastructure/prisma/prisma.module';
 import { UsersController } from './users.controller';
@@ -9,4 +10,10 @@ import { UsersService } from './users.service';
   controllers: [UsersController],
   providers: [UsersService],
 })
-export class UsersModule {}
+export class UsersModule {
+  public configure(consumer: MiddlewareConsumer): void {
+    // consumer
+    //   .apply(ExistedUserMiddleware)
+    //   .forRoutes({ path: 'users', method: RequestMethod.GET });
+  }
+}

@@ -18,7 +18,7 @@ model User {
   profile            UserProfile?
   role               String[]     @default(["USER"])
   writtenPosts       Post[]       @relation("WrittenPosts")
-  // favouritedPosts    Post[]       @relation("FavouritedPosts")
+  commentPosts       Comment[]    @relation("CommentPosts")
   reactions          Reaction[]
 
   @@index([username, email])
@@ -83,10 +83,8 @@ model Post {
   categories  CategoriesOnPosts[]
   author      User                @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String
-  // favouritor   User?               @relation("FavouritedPosts", fields: [favouritorId], references: [id])
-  // favouritorId String?
   reactions   Reaction[]
-  // comments    Comment[]           @relation("Comments")
+  comments    Comment[]
 
   @@map("posts")
 }
@@ -103,18 +101,20 @@ model Reaction {
   @@map("reactions")
 }
 
-// model Comment{
-//   id          String              @id @unique @default(uuid())
-//   text        String
-//   createdAt   DateTime            @default(now())
-//   updatedAt   DateTime            @updatedAt
-//   reactions   Int[]                @default([])
-//   author      User                @relation("Comments", fields: [authorId], references: [id], onDelete: SetNull)
-//   authorId    String
-//   post        Post                @relation("Comments", fields: [postId], references: [id], onDelete: SetNull)
-//   postId      String
-//   replies     Comment[]           @relation("Replies")
-// }
+model Comment {
+  id        String   @id @unique @default(uuid())
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation("CommentPosts", fields: [authorId], references: [id], onDelete: SetNull)
+  authorId  String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
+  postId    String
+  reactions Json[]
+  replies   Json[]
+
+  @@map("comments")
+}
 
 model Category {
   id    String              @id @unique @default(uuid())

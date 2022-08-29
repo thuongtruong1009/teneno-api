@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiNotAcceptableResponse,
@@ -20,18 +21,19 @@ import {
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './decorators';
-import { AtGuard, RtGuard } from './guards';
+import { RtGuard } from './guards';
 import { LoginDto, SignupDto, UpdatePasswordDto } from './dto';
 import { ITokens } from './interfaces';
 
 @ApiTags('Auth')
+@ApiOkResponse({ description: 'Success.' })
 @ApiUnauthorizedResponse({ description: 'Unauthorized' })
 @ApiForbiddenResponse({ description: 'Forbidden.' })
 @ApiNotFoundResponse({
   description: 'Not Found.',
   type: Error,
 })
-@ApiOkResponse({ description: 'Success.' })
+@ApiConflictResponse({ description: 'Conflict existed.' })
 @ApiNotAcceptableResponse({
   description: 'Provided fields are not in correct form.',
 })
@@ -65,7 +67,6 @@ export class AuthController {
 
   @Post('logout')
   @ApiBearerAuth()
-  @UseGuards(AtGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success.' })
   @ApiOperation({ summary: 'Logout user account (user)' })
@@ -88,7 +89,6 @@ export class AuthController {
 
   @Put('password')
   @ApiBearerAuth()
-  @UseGuards(AtGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success.' })
   @ApiOperation({ summary: 'Update user password (all)' })

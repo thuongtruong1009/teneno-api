@@ -1,9 +1,9 @@
 import type { INestApplication } from '@nestjs/common';
-import compression from 'compression';
 import helmet from 'helmet';
-import passport from 'passport';
+// import compression from 'compression';
+// import passport from 'passport';
 
-export function middleware(app: INestApplication): INestApplication {
+export function helmetMiddleware(app: INestApplication): INestApplication {
   // function shouldCompress(req, res) {
   //   if (req.headers['x-no-compression']) {
   //     return false;

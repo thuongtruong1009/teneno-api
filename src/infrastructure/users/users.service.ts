@@ -81,14 +81,16 @@ export class UsersService {
   }
 
   async updateUsersProfile(userId: string, dto: UserProfileDto) {
-    await this.prismaService.user.update({
-      where: { id: userId },
-      data: {
-        profile: {
-          update: {
-            ...dto,
-          },
-        },
+    await this.prismaService.userProfile.upsert({
+      where: {
+        userId: userId,
+      },
+      create: {
+        ...dto,
+        userId: userId,
+      },
+      update: {
+        ...dto,
       },
     });
     const newProfile = await this.getUsersById(userId);
