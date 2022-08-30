@@ -144,14 +144,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;logout&#x27;)<br />@ApiBearerAuth()<br />@UseGuards(AtGuard)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Logout user account (user)&#x27;})<br /></code>
+                    <code>@Post(&#x27;logout&#x27;)<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Logout user account (user)&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:73</a></div>
                 </td>
             </tr>
 
@@ -228,8 +228,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:83</a></div>
                 </td>
             </tr>
 
@@ -318,8 +318,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:64</a></div>
                 </td>
             </tr>
 
@@ -396,8 +396,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:55</a></div>
                 </td>
             </tr>
 
@@ -468,7 +468,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;password&#x27;)<br />@ApiBearerAuth()<br />@UseGuards(AtGuard)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Update user password (all)&#x27;})<br /></code>
+                    <code>@Put(&#x27;password&#x27;)<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Update user password (all)&#x27;})<br /></code>
                 </td>
             </tr>
 
@@ -538,6 +538,7 @@
 } from &#x27;@nestjs/common&#x27;;
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiNotAcceptableResponse,
@@ -549,18 +550,19 @@ import {
 } from &#x27;@nestjs/swagger&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { GetCurrentUser, GetCurrentUserId, Public } from &#x27;./decorators&#x27;;
-import { AtGuard, RtGuard } from &#x27;./guards&#x27;;
+import { RtGuard } from &#x27;./guards&#x27;;
 import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto&#x27;;
 import { ITokens } from &#x27;./interfaces&#x27;;
 
 @ApiTags(&#x27;Auth&#x27;)
+@ApiOkResponse({ description: &#x27;Success.&#x27; })
 @ApiUnauthorizedResponse({ description: &#x27;Unauthorized&#x27; })
 @ApiForbiddenResponse({ description: &#x27;Forbidden.&#x27; })
 @ApiNotFoundResponse({
   description: &#x27;Not Found.&#x27;,
   type: Error,
 })
-@ApiOkResponse({ description: &#x27;Success.&#x27; })
+@ApiConflictResponse({ description: &#x27;Conflict existed.&#x27; })
 @ApiNotAcceptableResponse({
   description: &#x27;Provided fields are not in correct form.&#x27;,
 })
@@ -594,7 +596,6 @@ export class AuthController {
 
   @Post(&#x27;logout&#x27;)
   @ApiBearerAuth()
-  @UseGuards(AtGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success.&#x27; })
   @ApiOperation({ summary: &#x27;Logout user account (user)&#x27; })
@@ -617,7 +618,6 @@ export class AuthController {
 
   @Put(&#x27;password&#x27;)
   @ApiBearerAuth()
-  @UseGuards(AtGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success.&#x27; })
   @ApiOperation({ summary: &#x27;Update user password (all)&#x27; })

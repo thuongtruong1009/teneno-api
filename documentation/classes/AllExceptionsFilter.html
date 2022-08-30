@@ -272,8 +272,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/core/filters/exception.filter.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/core/filters/exception.filter.ts:26</a></div>
                 </td>
             </tr>
 
@@ -337,15 +337,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>handleResponse(response: <a href="../interfaces/Response.html" target="_self">Response</a>, exception: HttpException | Error)</code>
+                    <code>handleResponse(request: Request, response: <a href="../interfaces/Response.html" target="_self">Response</a>, exception: HttpException | Error)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/core/filters/exception.filter.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/core/filters/exception.filter.ts:38</a></div>
                 </td>
             </tr>
 
@@ -365,6 +365,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td>request</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
                                 <tr>
                                     <td>response</td>
                                     <td>
@@ -424,7 +436,7 @@
   LoggerService,
 } from &#x27;@nestjs/common&#x27;;
 import { HttpArgumentsHost } from &#x27;@nestjs/common/interfaces/features/arguments-host.interface&#x27;;
-import { Response } from &#x27;express&#x27;;
+import { Request, Response } from &#x27;express&#x27;;
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
@@ -432,11 +444,12 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
   catch(exception: HttpException | Error, host: ArgumentsHost): void {
     const ctx: HttpArgumentsHost &#x3D; host.switchToHttp();
-    const response: Response &#x3D; ctx.getResponse();
+    const request: Request &#x3D; ctx.getRequest&lt;Request&gt;();
+    const response: Response &#x3D; ctx.getResponse&lt;Response&gt;();
 
     this.handleMessage(exception);
 
-    AllExceptionsFilter.handleResponse(response, exception);
+    AllExceptionsFilter.handleResponse(request, response, exception);
   }
 
   private handleMessage(exception: HttpException | Error): void {
@@ -452,6 +465,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
   }
 
   private static handleResponse(
+    request: Request,
     response: Response,
     exception: HttpException | Error,
   ): void {
@@ -464,7 +478,9 @@ export class AllExceptionsFilter implements ExceptionFilter {
     } else if (exception instanceof Error) {
       responseBody &#x3D; {
         statusCode: statusCode,
+        timestamp: new Date().toISOString(),
         message: exception.stack,
+        path: request.url,
       };
     }
 

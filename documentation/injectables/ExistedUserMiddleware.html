@@ -29,7 +29,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -39,13 +39,9 @@
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li >usenameValidator</li>
+  <li>Injectables</li>
+  <li >ExistedUserMiddleware</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,18 +59,11 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/core/validators/username.validator.ts</code>
+            <code>src/core/middlewares/existed-user.middleware.ts</code>
         </p>
 
 
 
-
-            <p class="comment">
-                <h3>Implements</h3>
-            </p>
-            <p class="comment">
-                        <code>ValidatorConstraintInterface</code>
-            </p>
 
 
             <section>
@@ -91,10 +80,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#defaultMessage" >defaultMessage</a>
-                            </li>
-                            <li>
-                                <a href="#validate" >validate</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#use" >use</a>
                             </li>
                         </ul>
                     </td>
@@ -108,7 +95,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(prismaService: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/core/middlewares/existed-user.middleware.ts:6</a></div>
+                            </td>
+                        </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>prismaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PrismaService.html" target="_self" >PrismaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -119,24 +153,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="defaultMessage"></a>
+                    <a name="use"></a>
                     <span class="name">
-                        <span ><b>defaultMessage</b></span>
-                        <a href="#defaultMessage"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>use</b></span>
+                        <a href="#use"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>defaultMessage(args: ValidationArguments)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>use(req: Request, res: <a href="../interfaces/Response.html" target="_self">Response</a>, next: NextFunction)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/core/validators/username.validator.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="9"
+                            class="link-to-prism">src/core/middlewares/existed-user.middleware.ts:9</a></div>
                 </td>
             </tr>
 
@@ -157,9 +193,33 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>args</td>
+                                    <td>req</td>
                                     <td>
-                                            <code>ValidationArguments</code>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>res</td>
+                                    <td>
+                                                <code><a href="../interfaces/Response.html" target="_self" >Response</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>next</td>
+                                    <td>
+                                            <code>NextFunction</code>
                                     </td>
 
                                     <td>
@@ -174,88 +234,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="validate"></a>
-                    <span class="name">
-                        <span ><b>validate</b></span>
-                        <a href="#validate"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>validate(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, args: ValidationArguments)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/core/validators/username.validator.ts:11</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>text</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>args</td>
-                                    <td>
-                                            <code>ValidationArguments</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -267,35 +246,40 @@
     </table>
 </section>
 
-
-
-
-
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ValidatorConstraint,
-  ValidatorConstraintInterface,
-  ValidationArguments,
-} from &#x27;class-validator&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NestMiddleware, NotFoundException } from &#x27;@nestjs/common&#x27;;
+import { Request, Response, NextFunction } from &#x27;express&#x27;;
+import { PrismaService } from &#x27;src/infrastructure/prisma/prisma.service&#x27;;
 
-const pattern &#x3D; /^[a-z]\w/;
+@Injectable()
+export class ExistedUserMiddleware implements NestMiddleware {
+  constructor(private prismaService: PrismaService) {}
 
-@ValidatorConstraint({ name: &#x27;customText&#x27;, async: false })
-export class usenameValidator implements ValidatorConstraintInterface {
-  validate(text: string, args: ValidationArguments): boolean {
-    return pattern.test(text);
-  }
-
-  defaultMessage(args: ValidationArguments): string {
-    return &#x60;Username has must filled ! Args: ${args}&#x60;;
+  async use(req: Request, res: Response, next: NextFunction) {
+    const userId &#x3D; req.params.userId;
+    const userExist &#x3D; await this.prismaService.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+      },
+    });
+    if (userExist &#x3D;&#x3D;&#x3D; null || userExist &#x3D;&#x3D;&#x3D; undefined || userExist.id &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+      throw new NotFoundException(&#x27;User not found&#x27;);
+    }
+    next();
   }
 }
 </code></pre>
     </div>
+
 </div>
+
+
+
+
 
 
 
@@ -330,8 +314,8 @@ export class usenameValidator implements ValidatorConstraintInterface {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'usenameValidator.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExistedUserMiddleware.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

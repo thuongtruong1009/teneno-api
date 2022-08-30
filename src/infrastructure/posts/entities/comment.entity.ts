@@ -1,6 +1,16 @@
-import { IsJSON, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsJSON,
+  IsNotEmpty,
+  IsObject,
+  IsString,
+} from 'class-validator';
 
 export class CommentEntity {
+  @IsNotEmpty()
+  @IsString()
+  id: string;
+
   @IsString()
   @IsNotEmpty()
   text: string;
@@ -13,11 +23,11 @@ export class CommentEntity {
   @IsNotEmpty()
   postId: string;
 
-  @IsJSON()
-  @IsOptional()
-  reactions?: JSON[];
+  @IsArray()
+  @IsNotEmpty()
+  reactions: number[];
 
-  @IsJSON()
-  @IsOptional()
-  replies?: JSON[];
+  @IsArray()
+  @IsNotEmpty()
+  replies: any[];
 }

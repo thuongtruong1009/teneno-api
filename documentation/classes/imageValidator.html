@@ -45,7 +45,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li >usenameValidator</li>
+  <li >imageValidator</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/core/validators/username.validator.ts</code>
+            <code>src/core/validators/image.validator.ts</code>
         </p>
 
 
@@ -135,8 +135,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/core/validators/username.validator.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/core/validators/image.validator.ts:18</a></div>
                 </td>
             </tr>
 
@@ -197,15 +197,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validate(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, args: ValidationArguments)</code>
+<code>validate(image: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, args: ValidationArguments)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/core/validators/username.validator.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="10"
+                            class="link-to-prism">src/core/validators/image.validator.ts:10</a></div>
                 </td>
             </tr>
 
@@ -226,7 +226,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>text</td>
+                                    <td>image</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -255,7 +255,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <b>Returns : </b>    <code>boolean | Promise</code>
 
                     </div>
                     <div class="io-description">
@@ -276,21 +276,24 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ValidationArguments,
   ValidatorConstraint,
   ValidatorConstraintInterface,
-  ValidationArguments,
 } from &#x27;class-validator&#x27;;
 
-const pattern &#x3D; /^[a-z]\w/;
-
-@ValidatorConstraint({ name: &#x27;customText&#x27;, async: false })
-export class usenameValidator implements ValidatorConstraintInterface {
-  validate(text: string, args: ValidationArguments): boolean {
-    return pattern.test(text);
+const parttern &#x3D; /\.(jpeg|jpg|gif|png)$/;
+@ValidatorConstraint({ name: &#x27;customeImage&#x27;, async: false })
+export class imageValidator implements ValidatorConstraintInterface {
+  validate(
+    image: string,
+    args: ValidationArguments,
+  ): boolean | Promise&lt;boolean&gt; {
+    const isMatched &#x3D; image.match(parttern);
+    return isMatched &amp;&amp; isMatched !&#x3D; null ? true : false;
   }
 
   defaultMessage(args: ValidationArguments): string {
-    return &#x60;Username has must filled ! Args: ${args}&#x60;;
+    return &#x60;Image has must filled ! Args: ${args}&#x60;;
   }
 }
 </code></pre>
@@ -331,7 +334,7 @@ export class usenameValidator implements ValidatorConstraintInterface {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'usenameValidator.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'imageValidator.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

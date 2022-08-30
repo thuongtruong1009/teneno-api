@@ -130,7 +130,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/infrastructure/auth/auth.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/infrastructure/auth/auth.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -219,8 +219,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:23</a></div>
                 </td>
             </tr>
 
@@ -302,8 +302,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:102</a></div>
                 </td>
             </tr>
 
@@ -373,8 +373,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="116"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:116</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:114</a></div>
                 </td>
             </tr>
 
@@ -456,8 +456,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:86</a></div>
                 </td>
             </tr>
 
@@ -527,8 +527,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -598,8 +598,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="136"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:136</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:134</a></div>
                 </td>
             </tr>
 
@@ -669,8 +669,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:49</a></div>
                 </td>
             </tr>
 
@@ -736,7 +736,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ForbiddenException, Inject, Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ConflictException,
+  ForbiddenException,
+  Inject,
+  Injectable,
+} from &#x27;@nestjs/common&#x27;;
 import { PrismaService } from &#x27;src/infrastructure/prisma/prisma.service&#x27;;
 import { ITokens } from &#x27;./interfaces&#x27;;
 import { JwtService } from &#x27;@nestjs/jwt&#x27;;
@@ -794,27 +799,20 @@ export class AuthService {
   async signupLocal(dto: SignupDto): Promise&lt;ITokens&gt; {
     const hash &#x3D; await hashPassword(dto.password);
 
+    const userExist &#x3D; await this.prismaService.user.findMany({
+      where: {
+        OR: [{ email: dto.email }, { username: dto.username }],
+      },
+    });
+
+    if (userExist.length &gt; 0)
+      throw new ConflictException(&#x27;User already exists&#x27;);
+
     const newUser &#x3D; await this.prismaService.user.create({
       data: {
         email: dto.email,
         password: hash,
         username: dto.username,
-        profile: {
-          create: {
-            fullName: &#x27;&#x27;,
-            birthdate: new Date(),
-            avatar: &#x27;&#x27;,
-            cover: &#x27;&#x27;,
-            marriageStatus: &#x27;&#x27;,
-            interests: [],
-            bio: &#x27;&#x27;,
-            address: &#x27;&#x27;,
-            phone: &#x27;&#x27;,
-            age: 0,
-            gender: 0,
-          },
-        },
-        role: [&#x27;USER&#x27;],
       },
     });
 

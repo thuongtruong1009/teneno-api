@@ -9,6 +9,7 @@ import {
   HttpCode,
   HttpStatus,
   ParseUUIDPipe,
+  Put,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { Public } from '../auth/decorators';
@@ -29,7 +30,11 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
-import { CreateCommentDto } from './dto/comment';
+import {
+  CreateCommentDto,
+  DeleteCommentDto,
+  UpdateCommentTextDto,
+} from './dto/comment';
 
 @ApiTags('Posts')
 @ApiForbiddenResponse({ description: 'Forbidden' })
@@ -128,7 +133,6 @@ export class PostsController {
     return this.postsService.getAllComments(postId);
   }
 
-  @Public()
   @Post('comments')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Add a new comment to post of user (user)' })
@@ -139,25 +143,23 @@ export class PostsController {
     return this.postsService.addComment(dto);
   }
 
-  @Public()
-  @Patch('comments')
+  @Put('comments/update/text')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update a comment to post (user)' })
+  @ApiOperation({ summary: 'Update a comment in post (user)' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async updateComment(@Body() dto: string) {
+  async updateComment(@Body() dto: UpdateCommentTextDto) {
     return this.postsService.updateComment(dto);
   }
 
-  @Public()
   @Delete('comments')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Delete a comment to post (user)' })
+  @ApiOperation({ summary: 'Delete a comment in post (user)' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async deleteComment(@Body() dto: string) {
+  async deleteComment(@Body() dto: DeleteCommentDto) {
     return this.postsService.deleteComment(dto);
   }
 }

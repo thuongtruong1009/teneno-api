@@ -68,6 +68,9 @@
                             <a href="#corsOptions" title="src/core/configs/cors.config.ts" ><b>corsOptions</b>&nbsp;&nbsp;&nbsp;(src/.../cors.config.ts)</a>
                         </li>
                         <li>
+                            <a href="#currentAge" title="src/core/helpers/age.ts" ><b>currentAge</b>&nbsp;&nbsp;&nbsp;(src/.../age.ts)</a>
+                        </li>
+                        <li>
                             <a href="#GetCurrentUser" title="src/infrastructure/auth/decorators/get-current-user.decorator.ts" ><b>GetCurrentUser</b>&nbsp;&nbsp;&nbsp;(src/.../get-current-user.decorator.ts)</a>
                         </li>
                         <li>
@@ -78,6 +81,9 @@
                         </li>
                         <li>
                             <a href="#initSwagger" title="src/core/configs/swagger.ts" ><b>initSwagger</b>&nbsp;&nbsp;&nbsp;(src/.../swagger.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#parttern" title="src/core/validators/image.validator.ts" ><b>parttern</b>&nbsp;&nbsp;&nbsp;(src/.../image.validator.ts)</a>
                         </li>
                         <li>
                             <a href="#pattern" title="src/core/validators/fullName.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../fullName.validator.ts)</a>
@@ -235,6 +241,33 @@
         </tbody>
     </table>
 </section>
+    <h3>src/core/helpers/age.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentAge"></a>
+                    <span class="name">
+                        <span ><b>currentAge</b></span>
+                        <a href="#currentAge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(birthDate: Date): number &#x3D;&gt; {
+  const diff &#x3D; Date.now() - new Date(birthDate).getTime();
+  const ageDate &#x3D; new Date(diff);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>src/infrastructure/auth/decorators/get-current-user.decorator.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -320,8 +353,8 @@
       &#x27;https://github.com/thuongtruong1009&#x27;,
       &#x27;ititiu19228@student.hcmiu.edu.vn&#x27;,
     )
-    .addServer(config.get&lt;string&gt;(&#x27;HOST_URL&#x27;))
     .addServer(config.get&lt;string&gt;(&#x27;BASE_URL&#x27;))
+    .addServer(config.get&lt;string&gt;(&#x27;HOST_URL&#x27;))
     .setVersion(&#x27;1.4&#x27;)
     .addTag(&#x27;cats&#x27;, &#x27;default description&#x27;)
     .addBearerAuth({
@@ -349,6 +382,29 @@
     },
   });
 }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/validators/image.validator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parttern"></a>
+                    <span class="name">
+                        <span ><b>parttern</b></span>
+                        <a href="#parttern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/\.(jpeg|jpg|gif|png)$/</code>
                     </td>
                 </tr>
 

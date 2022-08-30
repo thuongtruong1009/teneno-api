@@ -179,12 +179,89 @@
             </div>
         </div>
 
+        <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="configure"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>configure</b></span>
+                        <a href="#configure"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>configure(consumer: MiddlewareConsumer)</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/infrastructure/users/users.module.ts:14</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>consumer</td>
+                                    <td>
+                                            <code>MiddlewareConsumer</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MiddlewareConsumer, Module, RequestMethod } from &#x27;@nestjs/common&#x27;;
+import { ExistedUserMiddleware } from &#x27;src/core/middlewares/existed-user.middleware&#x27;;
 import { AuthModule } from &#x27;src/infrastructure/auth/auth.module&#x27;;
 import { PrismaModule } from &#x27;src/infrastructure/prisma/prisma.module&#x27;;
 import { UsersController } from &#x27;./users.controller&#x27;;
@@ -195,7 +272,13 @@ import { UsersService } from &#x27;./users.service&#x27;;
   controllers: [UsersController],
   providers: [UsersService],
 })
-export class UsersModule {}
+export class UsersModule {
+  public configure(consumer: MiddlewareConsumer): void {
+    // consumer
+    //   .apply(ExistedUserMiddleware)
+    //   .forRoutes({ path: &#x27;users&#x27;, method: RequestMethod.GET });
+  }
+}
 </code></pre>
     </div>
 </div>
