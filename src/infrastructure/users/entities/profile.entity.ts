@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
-  IsAlphanumeric,
   IsArray,
   IsDate,
+  IsNotEmpty,
   IsNumber,
   IsString,
   Length,
@@ -13,13 +13,9 @@ import {
   MinLength,
   Validate,
 } from 'class-validator';
-import {
-  fullNameValidator,
-  imageValidator,
-  phoneNumberValidator,
-} from '../../../core/validators';
+import { fullNameValidator, phoneNumberValidator } from 'src/core/validators';
 
-export class UserProfileDto {
+export class ProfileEntity {
   @ApiProperty({
     type: String,
     example: 'Hello ABC',
@@ -42,9 +38,7 @@ export class UserProfileDto {
     example: 'Avatar example 1 url',
   })
   @IsString()
-  @Validate(imageValidator, {
-    message: 'Avatar format is invalid!',
-  })
+  @IsNotEmpty()
   avatar: string;
 
   @ApiProperty({
@@ -52,9 +46,7 @@ export class UserProfileDto {
     example: 'Cover example 1 url',
   })
   @IsString()
-  @Validate(imageValidator, {
-    message: 'Cover format is invalid!',
-  })
+  @IsNotEmpty()
   cover: string;
 
   @ApiProperty({

@@ -21,7 +21,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { Public } from 'src/infrastructure/auth/decorators';
+import { GetCurrentUserId, Public } from 'src/infrastructure/auth/decorators';
 import { LoginDto } from 'src/infrastructure/auth/dto';
 import { RoleDecorator } from 'src/core/roles';
 import { ROLE } from 'src/core/roles/roles.enum';
@@ -79,19 +79,19 @@ export class UsersController {
     return this.usersService.getUsersByEmailAndName(dto);
   }
 
-  @Patch('profile/:userId')
+  @Patch('profile')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update user profile by user id (user)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
   async updateUsersProfile(
-    @Param('userId') userId: string,
+    @GetCurrentUserId() userId: string,
     @Body() dto: UserProfileDto,
   ) {
     return this.usersService.updateUsersProfile(userId, dto);
   }
 
-  @Put('profile/avatar/:userId')
+  @Put('profile/avatar')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update user avatar image by user id (user)' })
   @HttpCode(HttpStatus.OK)
@@ -99,13 +99,13 @@ export class UsersController {
     description: 'Success',
   })
   async updateUsersAvatar(
-    @Param('userId') userId: string,
+    @GetCurrentUserId() userId: string,
     @Body() dto: UserAvatarDto,
   ) {
     return this.usersService.updateUsersAvatar(userId, dto);
   }
 
-  @Put('profile/cover/:userId')
+  @Put('profile/cover')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update user cover image by user id (user)' })
   @HttpCode(HttpStatus.OK)
@@ -113,19 +113,19 @@ export class UsersController {
     description: 'Success',
   })
   async updateUsersCover(
-    @Param('userId') userId: string,
+    @GetCurrentUserId() userId: string,
     @Body() dto: UserCoverDto,
   ) {
     return this.usersService.updateUsersCover(userId, dto);
   }
 
-  @Delete('profile/:userId')
+  @Delete('profile')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete user profile by email & password (user)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
   async deleteUserByEmail(
-    @Param('userId') userId: string,
+    @GetCurrentUserId() userId: string,
     @Body() dto: LoginDto,
   ) {
     return this.usersService.deleteUserByEmail(userId, dto);
