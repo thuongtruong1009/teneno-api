@@ -15,6 +15,7 @@ import {
 } from 'class-validator';
 import {
   fullNameValidator,
+  imageValidator,
   phoneNumberValidator,
 } from '../../../core/validators';
 
@@ -41,6 +42,9 @@ export class UserProfileDto {
     example: 'Avatar example 1 url',
   })
   @IsString()
+  @Validate(imageValidator, {
+    message: 'Avatar format is invalid!',
+  })
   avatar: string;
 
   @ApiProperty({
@@ -48,6 +52,9 @@ export class UserProfileDto {
     example: 'Cover example 1 url',
   })
   @IsString()
+  @Validate(imageValidator, {
+    message: 'Cover format is invalid!',
+  })
   cover: string;
 
   @ApiProperty({
