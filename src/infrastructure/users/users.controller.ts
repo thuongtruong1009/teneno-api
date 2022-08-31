@@ -68,16 +68,6 @@ export class UsersController {
     this.usersService = usersService;
   }
 
-  @Get('all')
-  @RoleDecorator(ROLE.ADMIN)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Get list all public user (admin)' })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
-  async getAllUsers(@Query() dto: PaginationDto): Promise<IAllUsers> {
-    return this.usersService.getAllUsers(dto);
-  }
-
   @Public()
   @Get('profile/:userIdOrUsername')
   @ApiOperation({ summary: 'Get public user by user-id or username (all)' })
@@ -107,7 +97,7 @@ export class UsersController {
   @Get()
   @ApiBearerAuth()
   @ApiOperation({
-    summary: 'Find user account by user email (all)',
+    summary: 'Get user profile by user-id (all)',
   })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
@@ -159,7 +149,7 @@ export class UsersController {
 
   @Delete('profile')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Delete user profile by email & password (user)' })
+  @ApiOperation({ summary: 'Delete user profile by email & password' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
   async deleteUser(
@@ -167,17 +157,5 @@ export class UsersController {
     @Body() dto: LoginDto,
   ): Promise<string> {
     return this.usersService.deleteUser(userId, dto);
-  }
-
-  @RoleDecorator(ROLE.ADMIN)
-  @Delete(':userId')
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Delete user by user-id (admin)' })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: 'Success',
-  })
-  async deleteUserById(@Param('userId') userId: string): Promise<string> {
-    return this.usersService.deleteUserById(userId);
   }
 }

@@ -15,17 +15,11 @@ import { ConversationsModule } from './infrastructure/conversations/conversation
 import { PostsModule } from './infrastructure/posts/posts.module';
 import { LoggerModule } from './core/logger/logger.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { AdminModule } from './infrastructure/admin/admin.module';
 
 @Module({
   imports: [
     InterceptorModule,
-    AuthModule,
-    PrismaModule,
-    UsersModule,
-    FilesModule,
-    PostsModule,
-    ConversationsModule,
-    MessagesModule,
     ConfigModule.forRoot({
       isGlobal: true,
       // envFilePath: ['.env'],
@@ -37,6 +31,14 @@ import { ServeStaticModule } from '@nestjs/serve-static';
       renderPath: '/',
       // exclude: ['/api*'],
     }),
+    PrismaModule,
+    AuthModule,
+    AdminModule,
+    UsersModule,
+    FilesModule,
+    PostsModule,
+    ConversationsModule,
+    MessagesModule,
   ],
   controllers: [AppController],
   providers: [

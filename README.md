@@ -23,23 +23,22 @@
 
 ## Features
 
-| **Auth** | **Files** |
-| ---| --- |
-| ✅  Signup | ✅  Upload single file (avatar, cover) |
-| ✅  Signin | ✅  Upload multi files |
-| ✅  Signout | ✅  Upload array-field files (post, sample_image) |
-| ✅  Signout |  |
-| ✅  Refresh access-token |  |
-| ✅  Update password |  |
+| **Admin** | **Auth** | **Files** |
+| --- | ---| --- |
+| ✅ Get list all users | ✅  Signup | ✅  Upload single file (avatar, cover) |
+| ✅ Get user profile by id | ✅  Signin | ✅  Upload multi files |
+| ⬜️ Update user profile | ✅  Signout | ✅  Upload array-field files (post, sample_image) |
+| ⬜️ Change user role| ✅  Refresh access-token |  |
+| ✅ Delete user by user-id | ✅  Update password |  |
 
 | **Users** | **Posts** |
 | ---| --- |
-| ✅  Get list all users | ✅  Create a new post |
-| ✅  Get user data by user-id | ✅  Get all posts of user by user-id |
-| ✅  Get public user profile by user-id / username / email | ✅  Match a new category with new post |
-| ✅  Update user profile | ✅ Get a post by post-id |
-| ✅  Delete user-profile by email & password | ✅ Delete a post by post-id |
-| ✅  Delete user by user-id (admin) | ✅ Reaction to post |
+| ✅ Get public user by user-id or username  | ✅  Create a new post |
+| ✅ Find user account by email | ✅  Get all posts of user by user-id |
+| ✅ Get user profile by id | ✅  Match a new category with new post |
+| ✅ Update user profile | ✅ Get a post by post-id |
+| ✅ Delete user-profile by email & password | ✅ Delete a post by post-id |
+|  | ✅ Reaction to post |
 |  | ✅ Get all comments of post |
 |  | ✅ Add a new comment to post |
 |  | ✅ Update a comment of post |
@@ -47,14 +46,14 @@
 
 | **Conversations** | **Chats** |
 | ---| --- |
-| ✅  Create new conversation | ✅  Join conversation by conversation-id |
-| ✅  Get all conversations of user| ✅  Get all messages in conversation |
-| ✅  Get one conversation information has current user | ✅  Create new messages |
-| ✅  Update members to current conversation | ✅ Update message by message-id |
-| ✅  Update conversation information (name, description, avatar) | ✅ Delete messages by message-id |
-| ✅  Delete admin out of current conversation by creator |  |
-| ✅  Delete conversation by creator |  |
-| ✅  Change users role in current conversation |  |
+| ✅ Create new conversation | ✅  Join conversation by conversation-id |
+| ✅ Get all conversations of user| ✅  Get all messages in conversation |
+| ✅ Get one conversation information has current user | ✅  Create new messages |
+| ✅ Update members to current conversation | ✅ Update message by message-id |
+| ✅ Update conversation information (name, description, avatar) | ✅ Delete messages by message-id |
+| ✅ Delete admin out of current conversation by creator |  |
+| ✅ Delete conversation by creator |  |
+| ✅ Change users role in current conversation |  |
 
 <!-- | <ul><li>item1</li><li>item2</li></ul>| See the list | -->
 <!-- ⬜️ ✅ -->
