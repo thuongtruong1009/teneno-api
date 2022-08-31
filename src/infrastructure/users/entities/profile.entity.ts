@@ -5,6 +5,7 @@ import {
   IsDate,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   Length,
   Max,
@@ -16,6 +17,26 @@ import {
 import { fullNameValidator, phoneNumberValidator } from 'src/core/validators';
 
 export class ProfileEntity {
+  @IsString()
+  @IsOptional()
+  @ApiProperty({ type: Number, example: 1, nullable: true })
+  current: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiProperty({ type: Number, example: 10, nullable: true })
+  limit: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiProperty({
+    type: String,
+    description: 'asc, desc',
+    example: 'asc',
+    nullable: true,
+  })
+  order: string;
+
   @ApiProperty({
     type: String,
     example: 'Hello ABC',

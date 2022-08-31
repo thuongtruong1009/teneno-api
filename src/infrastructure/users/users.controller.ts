@@ -6,19 +6,23 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  ParseUUIDPipe,
   Patch,
   Put,
   Query,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { GetCurrentUserId, Public } from 'src/infrastructure/auth/decorators';
@@ -26,21 +30,38 @@ import { LoginDto } from 'src/infrastructure/auth/dto';
 import { RoleDecorator } from 'src/core/roles';
 import { ROLE } from 'src/core/roles/roles.enum';
 import {
-  GetUserProfileByEmailNameDto,
   PaginationDto,
   UserAvatarDto,
   UserCoverDto,
   UserProfileDto,
 } from './dto';
 import { UsersService } from './users.service';
+import {
+  IAllUsers,
+  IFindUserByEmail,
+  IGetUserProfile,
+  IPublicUser,
+  IUpdateAvatar,
+  IUpdateCover,
+} from './dto/response';
 
 @ApiTags('Users')
 @ApiUnauthorizedResponse({ description: 'Unauthorized' })
 @ApiForbiddenResponse({ description: 'Forbidden' })
-@ApiNotFoundResponse({ description: 'Not found' })
-@ApiNotAcceptableResponse({
-  description: 'Provided inputs are not in correct form.',
+@ApiNotFoundResponse({
+  description: 'Not Found.',
+  type: Error,
 })
+@ApiMethodNotAllowedResponse({ description: 'Method Not Allowed.' })
+@ApiNotAcceptableResponse({
+  description: 'Provided fields are not in correct form.',
+})
+@ApiRequestTimeoutResponse({ description: 'Request Timeout.' })
+@ApiConflictResponse({
+  description: 'Conflict existed.',
+})
+@ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
+@ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {
@@ -53,30 +74,47 @@ export class UsersController {
   @ApiOperation({ summary: 'Get list all public user (admin)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  async getAllUsers(@Query() dto: PaginationDto) {
+  async getAllUsers(@Query() dto: PaginationDto): Promise<IAllUsers> {
     return this.usersService.getAllUsers(dto);
   }
 
   @Public()
-  @Get(':userId')
-  @ApiOperation({ summary: 'Get public user by user id (all)' })
+  @Get('profile/:userIdOrUsername')
+  @ApiOperation({ summary: 'Get public user by user-id or username (all)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Success',
   })
-  async getUsersById(@Param('userId', new ParseUUIDPipe()) userId: string) {
-    return this.usersService.getUsersById(userId);
+  async getPublicUserByIdOrUsername(
+    @Param('userIdOrUsername') userIdOrUsername: string,
+  ): Promise<IPublicUser> {
+    return this.usersService.getPublicUserByIdOrUsername(userIdOrUsername);
+  }
+
+  @Public()
+  @Get('find/:email')
+  @ApiOperation({ summary: 'Find user account by email' })
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Success',
+  })
+  async getUserByEmail(
+    @Param('email') email: string,
+  ): Promise<IFindUserByEmail> {
+    return this.usersService.getUserByEmail(email);
   }
 
   @Get()
   @ApiBearerAuth()
   @ApiOperation({
-    summary: 'Get user profile by user email and username (user)',
+    summary: 'Find user account by user email (all)',
   })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  async getUsersByEmailAndName(@Body() dto: GetUserProfileByEmailNameDto) {
-    return this.usersService.getUsersByEmailAndName(dto);
+  async getUserProfile(
+    @GetCurrentUserId() userId: string,
+  ): Promise<IGetUserProfile> {
+    return this.usersService.getUserProfile(userId);
   }
 
   @Patch('profile')
@@ -87,7 +125,7 @@ export class UsersController {
   async updateUsersProfile(
     @GetCurrentUserId() userId: string,
     @Body() dto: UserProfileDto,
-  ) {
+  ): Promise<IPublicUser> {
     return this.usersService.updateUsersProfile(userId, dto);
   }
 
@@ -101,7 +139,7 @@ export class UsersController {
   async updateUsersAvatar(
     @GetCurrentUserId() userId: string,
     @Body() dto: UserAvatarDto,
-  ) {
+  ): Promise<IUpdateAvatar> {
     return this.usersService.updateUsersAvatar(userId, dto);
   }
 
@@ -115,7 +153,7 @@ export class UsersController {
   async updateUsersCover(
     @GetCurrentUserId() userId: string,
     @Body() dto: UserCoverDto,
-  ) {
+  ): Promise<IUpdateCover> {
     return this.usersService.updateUsersCover(userId, dto);
   }
 
@@ -124,11 +162,11 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user profile by email & password (user)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  async deleteUserByEmail(
+  async deleteUser(
     @GetCurrentUserId() userId: string,
     @Body() dto: LoginDto,
-  ) {
-    return this.usersService.deleteUserByEmail(userId, dto);
+  ): Promise<string> {
+    return this.usersService.deleteUser(userId, dto);
   }
 
   @RoleDecorator(ROLE.ADMIN)
@@ -139,7 +177,7 @@ export class UsersController {
   @ApiOkResponse({
     description: 'Success',
   })
-  async deleteUserById(@Param('userId') userId: string) {
+  async deleteUserById(@Param('userId') userId: string): Promise<string> {
     return this.usersService.deleteUserById(userId);
   }
 }
