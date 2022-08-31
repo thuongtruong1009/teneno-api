@@ -18,7 +18,7 @@ export const initSwagger = (app: INestApplication) => {
     )
     .addServer(config.get<string>('BASE_URL'))
     .addServer(config.get<string>('HOST_URL'))
-    .setVersion('1.4')
+    .setVersion('1.5.0')
     .addTag('cats', 'default description')
     .addBearerAuth({
       type: 'http',

@@ -199,8 +199,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="128"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:128</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:130</a></div>
                 </td>
             </tr>
 
@@ -282,8 +282,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="149"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:149</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:151</a></div>
                 </td>
             </tr>
 
@@ -566,8 +566,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:100</a></div>
                 </td>
             </tr>
 
@@ -649,8 +649,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:115</a></div>
                 </td>
             </tr>
 
@@ -882,14 +882,16 @@ export class UsersService {
   }
 
   async updateUsersProfile(userId: string, dto: UserProfileDto) {
-    await this.prismaService.user.update({
-      where: { id: userId },
-      data: {
-        profile: {
-          update: {
-            ...dto,
-          },
-        },
+    await this.prismaService.userProfile.upsert({
+      where: {
+        userId: userId,
+      },
+      create: {
+        ...dto,
+        userId: userId,
+      },
+      update: {
+        ...dto,
       },
     });
     const newProfile &#x3D; await this.getUsersById(userId);

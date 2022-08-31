@@ -81,11 +81,23 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#addComment" >addComment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#createPost" >createPost</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#deleteComment" >deleteComment</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#deletePost" >deletePost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getAllComments" >getAllComments</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -102,6 +114,10 @@
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#reactionPost" >reactionPost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateComment" >updateComment</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -130,7 +146,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/infrastructure/posts/posts.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/infrastructure/posts/posts.service.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -177,6 +193,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="addComment"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>addComment</b></span>
+                        <a href="#addComment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addComment(dto: <a href="../classes/CreateCommentDto.html" target="_self">CreateCommentDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="220"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:220</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dto</td>
+                                    <td>
+                                                <code><a href="../classes/CreateCommentDto.html" target="_self" >CreateCommentDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="createPost"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -195,8 +282,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -248,6 +335,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="deleteComment"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>deleteComment</b></span>
+                        <a href="#deleteComment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteComment(dto: <a href="../classes/DeleteCommentDto.html" target="_self">DeleteCommentDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:250</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dto</td>
+                                    <td>
+                                                <code><a href="../classes/DeleteCommentDto.html" target="_self" >DeleteCommentDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="deletePost"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -266,8 +424,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="156"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:156</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="161"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:161</a></div>
                 </td>
             </tr>
 
@@ -319,6 +477,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getAllComments"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getAllComments</b></span>
+                        <a href="#getAllComments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAllComments(postId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:207</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>postId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getAllPostsOfUser"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -337,8 +566,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:59</a></div>
                 </td>
             </tr>
 
@@ -408,8 +637,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:94</a></div>
                 </td>
             </tr>
 
@@ -479,8 +708,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:130</a></div>
                 </td>
             </tr>
 
@@ -550,8 +779,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="182"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:182</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:187</a></div>
                 </td>
             </tr>
 
@@ -603,6 +832,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="updateComment"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>updateComment</b></span>
+                        <a href="#updateComment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateComment(dto: <a href="../classes/UpdateCommentTextDto.html" target="_self">UpdateCommentTextDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="239"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:239</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdateCommentTextDto.html" target="_self" >UpdateCommentTextDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="updatePost"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -621,8 +921,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="133"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:133</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:138</a></div>
                 </td>
             </tr>
 
@@ -690,6 +990,11 @@ import {
   ReactionsPost,
   UpdatePostDto,
 } from &#x27;./dto&#x27;;
+import {
+  CreateCommentDto,
+  DeleteCommentDto,
+  UpdateCommentTextDto,
+} from &#x27;./dto/comment&#x27;;
 
 @Injectable()
 export class PostsService {
@@ -858,12 +1163,6 @@ export class PostsService {
   }
 
   async reactionPost(dto: ReactionsPost) {
-    const list &#x3D; await this.getOnePostById(dto.postId);
-
-    if (!list) {
-      return new NotFoundException(&#x27;Post not found&#x27;);
-    }
-
     const checkExist &#x3D; await this.prismaService.reaction.findMany({
       where: {
         postId: dto.postId,
@@ -874,13 +1173,65 @@ export class PostsService {
     if (checkExist.length &gt; 0) {
       return new BadRequestException(&#x27;You already reacted to this post&#x27;);
     }
-    return this.prismaService.reaction.create({
+    return await this.prismaService.reaction.create({
       data: {
         userId: dto.favouritorId,
         postId: dto.postId,
         type: dto.reactionType,
       },
     });
+  }
+
+  async getAllComments(postId: string) {
+    console.log(postId);
+
+    return await this.prismaService.post.findUnique({
+      where: {
+        id: postId,
+      },
+      select: {
+        comments: true,
+      },
+    });
+  }
+
+  async addComment(dto: CreateCommentDto) {
+    const checkPost &#x3D; await this.prismaService.post.findUnique({
+      where: {
+        id: dto.postId,
+      },
+    });
+
+    if (!checkPost) {
+      return new NotFoundException(&#x27;Post not found&#x27;);
+    }
+    return this.prismaService.comment.create({
+      data: {
+        text: dto.text,
+        postId: dto.postId,
+        authorId: dto.userId,
+      },
+    });
+  }
+
+  async updateComment(dto: UpdateCommentTextDto) {
+    return await this.prismaService.comment.update({
+      where: {
+        id: dto.id,
+      },
+      data: {
+        text: dto.text,
+      },
+    });
+  }
+
+  async deleteComment(dto: DeleteCommentDto) {
+    await this.prismaService.comment.delete({
+      where: {
+        id: dto.id,
+      },
+    });
+    return &#x27;&#x27;;
   }
 }
 </code></pre>

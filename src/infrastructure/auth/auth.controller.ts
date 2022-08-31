@@ -12,18 +12,22 @@ import {
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './decorators';
 import { RtGuard } from './guards';
 import { LoginDto, SignupDto, UpdatePasswordDto } from './dto';
-import { ITokens } from './interfaces';
+import { ITokens } from './dto/response';
 
 @ApiTags('Auth')
 @ApiOkResponse({ description: 'Success.' })
@@ -33,10 +37,16 @@ import { ITokens } from './interfaces';
   description: 'Not Found.',
   type: Error,
 })
-@ApiConflictResponse({ description: 'Conflict existed.' })
+@ApiMethodNotAllowedResponse({ description: 'Method Not Allowed.' })
 @ApiNotAcceptableResponse({
   description: 'Provided fields are not in correct form.',
 })
+@ApiRequestTimeoutResponse({ description: 'Request Timeout.' })
+@ApiConflictResponse({
+  description: 'Conflict existed.',
+})
+@ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
+@ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {
@@ -60,7 +70,7 @@ export class AuthController {
   @Post('signin')
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success.' })
-  @ApiOperation({ summary: 'Login to user account (user)' })
+  @ApiOperation({ summary: 'Login to user account' })
   async signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
     return this.authService.signinLocal(dto);
   }
@@ -79,7 +89,7 @@ export class AuthController {
   @UseGuards(RtGuard)
   @ApiOkResponse({ description: 'Success.' })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Logout account on all devices (user)' })
+  @ApiOperation({ summary: 'Logout account on all devices' })
   async refreshToken(
     @GetCurrentUserId() userId: string,
     @GetCurrentUser('refreshToken') refreshToken: string,
@@ -91,7 +101,7 @@ export class AuthController {
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success.' })
-  @ApiOperation({ summary: 'Update user password (all)' })
+  @ApiOperation({ summary: 'Update user password' })
   async updatePassWord(@Body() dto: UpdatePasswordDto): Promise<ITokens> {
     return this.authService.updatePassWord(dto);
   }

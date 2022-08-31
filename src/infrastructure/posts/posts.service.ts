@@ -12,6 +12,11 @@ import {
   ReactionsPost,
   UpdatePostDto,
 } from './dto';
+import {
+  CreateCommentDto,
+  DeleteCommentDto,
+  UpdateCommentTextDto,
+} from './dto/comment';
 
 @Injectable()
 export class PostsService {
@@ -190,12 +195,64 @@ export class PostsService {
     if (checkExist.length > 0) {
       return new BadRequestException('You already reacted to this post');
     }
-    return this.prismaService.reaction.create({
+    return await this.prismaService.reaction.create({
       data: {
         userId: dto.favouritorId,
         postId: dto.postId,
         type: dto.reactionType,
       },
     });
+  }
+
+  async getAllComments(postId: string) {
+    console.log(postId);
+
+    return await this.prismaService.post.findUnique({
+      where: {
+        id: postId,
+      },
+      select: {
+        comments: true,
+      },
+    });
+  }
+
+  async addComment(dto: CreateCommentDto) {
+    const checkPost = await this.prismaService.post.findUnique({
+      where: {
+        id: dto.postId,
+      },
+    });
+
+    if (!checkPost) {
+      return new NotFoundException('Post not found');
+    }
+    return this.prismaService.comment.create({
+      data: {
+        text: dto.text,
+        postId: dto.postId,
+        authorId: dto.userId,
+      },
+    });
+  }
+
+  async updateComment(dto: UpdateCommentTextDto) {
+    return await this.prismaService.comment.update({
+      where: {
+        id: dto.id,
+      },
+      data: {
+        text: dto.text,
+      },
+    });
+  }
+
+  async deleteComment(dto: DeleteCommentDto) {
+    await this.prismaService.comment.delete({
+      where: {
+        id: dto.id,
+      },
+    });
+    return '';
   }
 }

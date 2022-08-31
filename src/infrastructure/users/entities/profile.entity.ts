@@ -1,10 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
-  IsAlphanumeric,
   IsArray,
   IsDate,
+  IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   Length,
   Max,
@@ -13,12 +14,29 @@ import {
   MinLength,
   Validate,
 } from 'class-validator';
-import {
-  fullNameValidator,
-  phoneNumberValidator,
-} from '../../../core/validators';
+import { fullNameValidator, phoneNumberValidator } from 'src/core/validators';
 
-export class UserProfileDto {
+export class ProfileEntity {
+  @IsString()
+  @IsOptional()
+  @ApiProperty({ type: Number, example: 1, nullable: true })
+  current: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiProperty({ type: Number, example: 10, nullable: true })
+  limit: string;
+
+  @IsString()
+  @IsOptional()
+  @ApiProperty({
+    type: String,
+    description: 'asc, desc',
+    example: 'asc',
+    nullable: true,
+  })
+  order: string;
+
   @ApiProperty({
     type: String,
     example: 'Hello ABC',
@@ -41,6 +59,7 @@ export class UserProfileDto {
     example: 'Avatar example 1 url',
   })
   @IsString()
+  @IsNotEmpty()
   avatar: string;
 
   @ApiProperty({
@@ -48,6 +67,7 @@ export class UserProfileDto {
     example: 'Cover example 1 url',
   })
   @IsString()
+  @IsNotEmpty()
   cover: string;
 
   @ApiProperty({

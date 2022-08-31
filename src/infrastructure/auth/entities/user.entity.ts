@@ -1,4 +1,4 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsAlphanumeric,
   IsEmail,
@@ -11,7 +11,7 @@ import {
 } from 'class-validator';
 import { passwordValidator, usenameValidator } from 'src/core/validators';
 
-export class SignupDto {
+export class UserEntity {
   @IsNotEmpty()
   @IsEmail()
   @ApiProperty({
@@ -39,6 +39,24 @@ export class SignupDto {
       'Password must be at contain at least one number, one uppercase letter and one special character',
   })
   password: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty({
+    type: String,
+    description: 'This is a required property',
+    example: 'password123',
+  })
+  oldPassword: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty({
+    type: String,
+    description: 'This is a required property',
+    example: 'password123',
+  })
+  newPassword: string;
 
   @ApiProperty({
     type: String,

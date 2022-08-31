@@ -162,8 +162,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:127</a></div>
                 </td>
             </tr>
 
@@ -252,8 +252,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="140"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:140</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:142</a></div>
                 </td>
             </tr>
 
@@ -324,14 +324,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@RoleDecorator(ROLE.ADMIN)<br />@Get(&#x27;all&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Get list all public user (admin)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Get(&#x27;all&#x27;)<br />@RoleDecorator(ROLE.ADMIN)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Get list all public user (admin)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:56</a></div>
                 </td>
             </tr>
 
@@ -408,8 +408,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:78</a></div>
                 </td>
             </tr>
 
@@ -486,8 +486,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="65"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:65</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:67</a></div>
                 </td>
             </tr>
 
@@ -564,8 +564,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="99"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:99</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:101</a></div>
                 </td>
             </tr>
 
@@ -654,8 +654,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:115</a></div>
                 </td>
             </tr>
 
@@ -738,14 +738,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;profile/:userId&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user profile by user id (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Patch(&#x27;profile/:userId&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user profile by user id (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:87</a></div>
                 </td>
             </tr>
 
@@ -817,6 +817,8 @@
   HttpCode,
   HttpStatus,
   Param,
+  ParseUUIDPipe,
+  Patch,
   Put,
   Query,
 } from &#x27;@nestjs/common&#x27;;
@@ -856,8 +858,8 @@ export class UsersController {
     this.usersService &#x3D; usersService;
   }
 
-  @RoleDecorator(ROLE.ADMIN)
   @Get(&#x27;all&#x27;)
+  @RoleDecorator(ROLE.ADMIN)
   @ApiBearerAuth()
   @ApiOperation({ summary: &#x27;Get list all public user (admin)&#x27; })
   @HttpCode(HttpStatus.OK)
@@ -873,7 +875,7 @@ export class UsersController {
   @ApiOkResponse({
     description: &#x27;Success&#x27;,
   })
-  async getUsersById(@Param(&#x27;userId&#x27;) userId: string) {
+  async getUsersById(@Param(&#x27;userId&#x27;, new ParseUUIDPipe()) userId: string) {
     return this.usersService.getUsersById(userId);
   }
 
@@ -888,7 +890,7 @@ export class UsersController {
     return this.usersService.getUsersByEmailAndName(dto);
   }
 
-  @Put(&#x27;profile/:userId&#x27;)
+  @Patch(&#x27;profile/:userId&#x27;)
   @ApiBearerAuth()
   @ApiOperation({ summary: &#x27;Update user profile by user id (user)&#x27; })
   @HttpCode(HttpStatus.OK)

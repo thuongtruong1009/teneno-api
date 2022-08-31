@@ -40,6 +40,10 @@
 | ✅  Update user profile | ✅ Get a post by post-id |
 | ✅  Delete user-profile by email & password | ✅ Delete a post by post-id |
 | ✅  Delete user by user-id (admin) | ✅ Reaction to post |
+|  | ✅ Get all comments of post |
+|  | ✅ Add a new comment to post |
+|  | ✅ Update a comment of post |
+|  | ✅ Delete a comment of post |
 
 | **Conversations** | **Chats** |
 | ---| --- |

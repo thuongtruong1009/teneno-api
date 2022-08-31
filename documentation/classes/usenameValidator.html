@@ -255,7 +255,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                     <div class="io-description">
@@ -285,12 +285,12 @@ const pattern &#x3D; /^[a-z]\w/;
 
 @ValidatorConstraint({ name: &#x27;customText&#x27;, async: false })
 export class usenameValidator implements ValidatorConstraintInterface {
-  validate(text: string, args: ValidationArguments) {
+  validate(text: string, args: ValidationArguments): boolean {
     return pattern.test(text);
   }
 
-  defaultMessage(args: ValidationArguments) {
-    return &#x27;Username has must filled !&#x27;;
+  defaultMessage(args: ValidationArguments): string {
+    return &#x60;Username has must filled ! Args: ${args}&#x60;;
   }
 }
 </code></pre>
