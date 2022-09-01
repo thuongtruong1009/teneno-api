@@ -16,6 +16,7 @@ import { PostsModule } from './infrastructure/posts/posts.module';
 import { LoggerModule } from './core/logger/logger.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { AdminModule } from './infrastructure/admin/admin.module';
+import { RolesGuard } from './core/roles';
 
 @Module({
   imports: [
@@ -23,12 +24,11 @@ import { AdminModule } from './infrastructure/admin/admin.module';
     ConfigModule.forRoot({
       isGlobal: true,
       // envFilePath: ['.env'],
-      // envFilePath: `env/.env.${process.env.NODE_ENV || "local"}`,
+      // envFilePath: `.env.${process.env.NODE_ENV} || .env`,
     }),
     LoggerModule.forRoot(),
     ServeStaticModule.forRoot({
-      rootPath: `${__dirname}/../documentation`,
-      // join(__dirname, '..', 'client'),
+      rootPath: `${__dirname}/../documentation`, // join(__dirname, '..', 'client'),
       renderPath: '/',
       // exclude: ['/api*'],
     }),
@@ -48,6 +48,10 @@ import { AdminModule } from './infrastructure/admin/admin.module';
     {
       provide: APP_GUARD,
       useClass: AtGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
 })

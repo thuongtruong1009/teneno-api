@@ -150,8 +150,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:83</a></div>
                 </td>
             </tr>
 
@@ -222,14 +222,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;refresh&#x27;)<br />@ApiBearerAuth()<br />@UseGuards(RtGuard)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Logout account on all devices (user)&#x27;})<br /></code>
+                    <code>@Post(&#x27;refresh&#x27;)<br />@ApiBearerAuth()<br />@UseGuards(RtGuard)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Logout account on all devices&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:93</a></div>
                 </td>
             </tr>
 
@@ -312,14 +312,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Public()<br />@Post(&#x27;signin&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Login to user account (user)&#x27;})<br /></code>
+                    <code>@Public()<br />@Post(&#x27;signin&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Login to user account&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:74</a></div>
                 </td>
             </tr>
 
@@ -396,8 +396,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:65</a></div>
                 </td>
             </tr>
 
@@ -468,14 +468,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;password&#x27;)<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Update user password (all)&#x27;})<br /></code>
+                    <code>@Put(&#x27;password&#x27;)<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success.&#x27;})<br />@ApiOperation({summary: &#x27;Update user password&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:105</a></div>
                 </td>
             </tr>
 
@@ -541,18 +541,22 @@ import {
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from &#x27;@nestjs/swagger&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { GetCurrentUser, GetCurrentUserId, Public } from &#x27;./decorators&#x27;;
 import { RtGuard } from &#x27;./guards&#x27;;
 import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto&#x27;;
-import { ITokens } from &#x27;./interfaces&#x27;;
+import { ITokens } from &#x27;./dto/response&#x27;;
 
 @ApiTags(&#x27;Auth&#x27;)
 @ApiOkResponse({ description: &#x27;Success.&#x27; })
@@ -562,10 +566,16 @@ import { ITokens } from &#x27;./interfaces&#x27;;
   description: &#x27;Not Found.&#x27;,
   type: Error,
 })
-@ApiConflictResponse({ description: &#x27;Conflict existed.&#x27; })
+@ApiMethodNotAllowedResponse({ description: &#x27;Method Not Allowed.&#x27; })
 @ApiNotAcceptableResponse({
   description: &#x27;Provided fields are not in correct form.&#x27;,
 })
+@ApiRequestTimeoutResponse({ description: &#x27;Request Timeout.&#x27; })
+@ApiConflictResponse({
+  description: &#x27;Conflict existed.&#x27;,
+})
+@ApiTooManyRequestsResponse({ description: &#x27;Too Many Requests.&#x27; })
+@ApiInternalServerErrorResponse({ description: &#x27;Internal Server Error.&#x27; })
 @Controller(&#x27;auth&#x27;)
 export class AuthController {
   constructor(private authService: AuthService) {
@@ -589,7 +599,7 @@ export class AuthController {
   @Post(&#x27;signin&#x27;)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success.&#x27; })
-  @ApiOperation({ summary: &#x27;Login to user account (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Login to user account&#x27; })
   async signinLocal(@Body() dto: LoginDto): Promise&lt;ITokens&gt; {
     return this.authService.signinLocal(dto);
   }
@@ -608,7 +618,7 @@ export class AuthController {
   @UseGuards(RtGuard)
   @ApiOkResponse({ description: &#x27;Success.&#x27; })
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: &#x27;Logout account on all devices (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Logout account on all devices&#x27; })
   async refreshToken(
     @GetCurrentUserId() userId: string,
     @GetCurrentUser(&#x27;refreshToken&#x27;) refreshToken: string,
@@ -620,7 +630,7 @@ export class AuthController {
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success.&#x27; })
-  @ApiOperation({ summary: &#x27;Update user password (all)&#x27; })
+  @ApiOperation({ summary: &#x27;Update user password&#x27; })
   async updatePassWord(@Body() dto: UpdatePasswordDto): Promise&lt;ITokens&gt; {
     return this.authService.updatePassWord(dto);
   }

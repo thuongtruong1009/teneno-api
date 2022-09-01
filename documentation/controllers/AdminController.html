@@ -29,23 +29,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li >LoginDto</li>
+  <li>Controllers</li>
+  <li >AdminController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,16 +56,15 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/infrastructure/auth/dto/request/sigin.dto.ts</code>
+            <code>src/infrastructure/admin/admin.controller.ts</code>
         </p>
 
-
-
-
-
-
-
-
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>admin</code>
+            </p>
 
 
 
@@ -84,13 +76,53 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PickType } from &#x27;@nestjs/swagger&#x27;;
-import { UserEntity } from &#x27;../../entities/user.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller } from &#x27;@nestjs/common&#x27;;
+import {
+  ApiBearerAuth,
+  ApiConflictResponse,
+  ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
+  ApiNotAcceptableResponse,
+  ApiNotFoundResponse,
+  ApiRequestTimeoutResponse,
+  ApiTags,
+  ApiTooManyRequestsResponse,
+  ApiUnauthorizedResponse,
+} from &#x27;@nestjs/swagger&#x27;;
+import { ROLE, RoleDecorator } from &#x27;src/core/roles&#x27;;
 
-export class LoginDto extends PickType(UserEntity, [&#x27;email&#x27;, &#x27;password&#x27;]) {}
+@ApiTags(&#x27;Admin&#x27;)
+@ApiBearerAuth()
+@ApiUnauthorizedResponse({ description: &#x27;Unauthorized&#x27; })
+@ApiForbiddenResponse({ description: &#x27;Forbidden&#x27; })
+@ApiNotFoundResponse({
+  description: &#x27;Not Found.&#x27;,
+  type: Error,
+})
+@ApiMethodNotAllowedResponse({ description: &#x27;Method Not Allowed.&#x27; })
+@ApiNotAcceptableResponse({
+  description: &#x27;Provided fields are not in correct form.&#x27;,
+})
+@ApiRequestTimeoutResponse({ description: &#x27;Request Timeout.&#x27; })
+@ApiConflictResponse({
+  description: &#x27;Conflict existed.&#x27;,
+})
+@ApiTooManyRequestsResponse({ description: &#x27;Too Many Requests.&#x27; })
+@ApiInternalServerErrorResponse({ description: &#x27;Internal Server Error.&#x27; })
+@RoleDecorator(ROLE.ADMIN)
+@Controller(&#x27;admin&#x27;)
+export class AdminController {}
 </code></pre>
     </div>
 </div>
+
+
+
+
+
+
+
 
 
 
@@ -125,8 +157,8 @@ export class LoginDto extends PickType(UserEntity, [&#x27;email&#x27;, &#x27;pas
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'LoginDto.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
