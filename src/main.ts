@@ -38,7 +38,14 @@ async function bootstrap() {
     new AllExceptionsFilter(await app.resolve(LoggerService)),
   );
 
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+      forbidNonWhitelisted: true,
+      transformOptions: { enableImplicitConversion: true },
+    }),
+  );
 
   app.useGlobalInterceptors(new LoggingInterceptor());
 

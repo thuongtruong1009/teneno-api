@@ -23,6 +23,7 @@ import { AdminModule } from './infrastructure/admin/admin.module';
     ConfigModule.forRoot({
       isGlobal: true,
       // envFilePath: ['.env'],
+      // envFilePath: `env/.env.${process.env.NODE_ENV || "local"}`,
     }),
     LoggerModule.forRoot(),
     ServeStaticModule.forRoot({

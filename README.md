@@ -9,7 +9,7 @@
 
 * [Frontend connect](https://github.com/thuongtruong1009/teneno)
 
-<!-- * [API document](http://localhost:5500/api) -->
+* [API document](http://localhost:5500/api)
 
 <!-- * [Project documentation](http://localhost:5500/index.html) -->
 
@@ -20,6 +20,7 @@
 * The purpose of Teneno webapp is create a new network platform where everyone can sharing their feels, thinks or experiences together
 * Make an easily life with Teneno
 * Practice Backend skills and improve programming thinking
+* Advancing about REST API and WebSocket
 
 ## Features
 
@@ -27,8 +28,8 @@
 | --- | ---| --- |
 | ✅ Get list all users | ✅  Signup | ✅  Upload single file (avatar, cover) |
 | ✅ Get user profile by id | ✅  Signin | ✅  Upload multi files |
-| ⬜️ Update user profile | ✅  Signout | ✅  Upload array-field files (post, sample_image) |
-| ⬜️ Change user role| ✅  Refresh access-token |  |
+| ✅ Update user profile | ✅  Signout | ✅  Upload array-field files (post, sample_image) |
+| ✅ Update user profile | ✅  Refresh access-token |  |
 | ✅ Delete user by user-id | ✅  Update password |  |
 
 | **Users** | **Posts** |

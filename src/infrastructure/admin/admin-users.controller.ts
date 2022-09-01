@@ -25,19 +25,24 @@ import {
   ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { GetCurrentUserId, Public } from 'src/infrastructure/auth/decorators';
-import { LoginDto } from 'src/infrastructure/auth/dto';
-import { UserAvatarDto, UserCoverDto, UserProfileDto } from './dto';
-import { UsersService } from './users.service';
+import { ROLE, RoleDecorator } from 'src/core/roles';
+import { Public } from '../auth/decorators';
 import {
-  IFindUserByEmail,
+  PaginationDto,
+  UserAvatarDto,
+  UserCoverDto,
+  UserProfileDto,
+} from '../users/dto';
+import {
+  IAllUsers,
   IGetUserProfile,
   IPublicUser,
   IUpdateAvatar,
   IUpdateCover,
-} from './dto/response';
+} from '../users/dto/response';
+import { UsersService } from '../users/users.service';
 
-@ApiTags('Users')
+@ApiTags('Admin')
 @ApiUnauthorizedResponse({ description: 'Unauthorized' })
 @ApiForbiddenResponse({ description: 'Forbidden' })
 @ApiNotFoundResponse({
@@ -54,100 +59,81 @@ import {
 })
 @ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
 @ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
-@Controller('users')
-export class UsersController {
-  constructor(private usersService: UsersService) {
-    this.usersService = usersService;
+@RoleDecorator(ROLE.ADMIN)
+@Controller('admin')
+export class AdminUsersController {
+  constructor(private readonly usersService: UsersService) {}
+
+  @Public()
+  @Get('users/all')
+  @ApiOperation({ summary: 'Get list all public users' })
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({ description: 'Success' })
+  async getAllUsers(@Query() dto: PaginationDto): Promise<IAllUsers> {
+    return this.usersService.getAllUsers(dto);
   }
 
   @Public()
-  @Get('profile/:userIdOrUsername')
-  @ApiOperation({ summary: 'Get public user by user-id or username (all)' })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: 'Success',
-  })
-  async getPublicUserByIdOrUsername(
-    @Param('userIdOrUsername') userIdOrUsername: string,
-  ): Promise<IPublicUser> {
-    return this.usersService.getPublicUserByIdOrUsername(userIdOrUsername);
-  }
-
-  @Public()
-  @Get('find/:email')
-  @ApiOperation({ summary: 'Find user account by email' })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: 'Success',
-  })
-  async getUserByEmail(
-    @Param('email') email: string,
-  ): Promise<IFindUserByEmail> {
-    return this.usersService.getUserByEmail(email);
-  }
-
-  @Get()
-  @ApiBearerAuth()
+  @Get('users/:userId')
   @ApiOperation({
-    summary: 'Get user profile by user-id (all)',
+    summary: 'Get user profile by user-id',
   })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
   async getUserProfile(
-    @GetCurrentUserId() userId: string,
+    @Param('userId') userId: string,
   ): Promise<IGetUserProfile> {
     return this.usersService.getUserProfile(userId);
   }
 
-  @Patch('profile')
+  @Patch('users/profile/:userId')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update user profile by user id (user)' })
+  @ApiOperation({ summary: 'Update user profile' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: 'Success' })
-  async updateUsersProfile(
-    @GetCurrentUserId() userId: string,
+  async update(
+    @Param('userId') userId: string,
     @Body() dto: UserProfileDto,
   ): Promise<IPublicUser> {
     return this.usersService.updateUsersProfile(userId, dto);
   }
 
-  @Put('profile/avatar')
+  @Put('users/avatar/:userId')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update user avatar image by user id (user)' })
+  @ApiOperation({ summary: 'Update user avatar image' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Success',
   })
   async updateUsersAvatar(
-    @GetCurrentUserId() userId: string,
+    @Param() userId: string,
     @Body() dto: UserAvatarDto,
   ): Promise<IUpdateAvatar> {
     return this.usersService.updateUsersAvatar(userId, dto);
   }
 
-  @Put('profile/cover')
+  @Put('users/cover/:userId')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update user cover image by user id' })
+  @ApiOperation({ summary: 'Update user cover image' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Success',
   })
   async updateUsersCover(
-    @GetCurrentUserId() userId: string,
+    @Param() userId: string,
     @Body() dto: UserCoverDto,
   ): Promise<IUpdateCover> {
     return this.usersService.updateUsersCover(userId, dto);
   }
 
-  @Delete('profile')
+  @Delete('users/:userId')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Delete user profile by email & password' })
+  @ApiOperation({ summary: 'Delete user by user-id' })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
-  async deleteUser(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: LoginDto,
-  ): Promise<string> {
-    return this.usersService.deleteUser(userId, dto);
+  @ApiOkResponse({
+    description: 'Success',
+  })
+  async deleteUserById(@Param('userId') userId: string): Promise<string> {
+    return this.usersService.deleteUserById(userId);
   }
 }
