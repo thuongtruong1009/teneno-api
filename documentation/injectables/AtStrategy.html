@@ -223,15 +223,15 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
 import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
 import { ConfigService } from &#x27;@nestjs/config&#x27;;
-import { IJwtPayload } from &#x27;../interfaces&#x27;;
+import { IJwtPayload } from &#x27;../dto/response&#x27;;
 
 @Injectable()
 export class AtStrategy extends PassportStrategy(Strategy, &#x27;jwt&#x27;) {
-  constructor(config: ConfigService) {
+  constructor(private config: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: config.get&lt;string&gt;(&#x27;ACCESS_TOKEN_SECRET&#x27;),

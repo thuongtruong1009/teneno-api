@@ -15,28 +15,31 @@ import { ConversationsModule } from './infrastructure/conversations/conversation
 import { PostsModule } from './infrastructure/posts/posts.module';
 import { LoggerModule } from './core/logger/logger.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { AdminModule } from './infrastructure/admin/admin.module';
+import { RolesGuard } from './core/roles';
 
 @Module({
   imports: [
     InterceptorModule,
-    AuthModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      // envFilePath: ['.env'],
+      // envFilePath: `.env.${process.env.NODE_ENV} || .env`,
+    }),
+    LoggerModule.forRoot(),
+    ServeStaticModule.forRoot({
+      rootPath: `${__dirname}/../documentation`, // join(__dirname, '..', 'client'),
+      renderPath: '/',
+      // exclude: ['/api*'],
+    }),
     PrismaModule,
+    AuthModule,
+    AdminModule,
     UsersModule,
     FilesModule,
     PostsModule,
     ConversationsModule,
     MessagesModule,
-    ConfigModule.forRoot({
-      isGlobal: true,
-      // envFilePath: ['.env'],
-    }),
-    LoggerModule.forRoot(),
-    ServeStaticModule.forRoot({
-      rootPath: `${__dirname}/../documentation`,
-      // join(__dirname, '..', 'client'),
-      renderPath: '/',
-      // exclude: ['/api*'],
-    }),
   ],
   controllers: [AppController],
   providers: [
@@ -45,6 +48,10 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     {
       provide: APP_GUARD,
       useClass: AtGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
 })

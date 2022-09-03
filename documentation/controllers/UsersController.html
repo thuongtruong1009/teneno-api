@@ -86,23 +86,19 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#deleteUserByEmail" >deleteUserByEmail</a>
+                                <a href="#deleteUser" >deleteUser</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#deleteUserById" >deleteUserById</a>
+                                <a href="#getPublicUserByIdOrUsername" >getPublicUserByIdOrUsername</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getAllUsers" >getAllUsers</a>
+                                <a href="#getUserByEmail" >getUserByEmail</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getUsersByEmailAndName" >getUsersByEmailAndName</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#getUsersById" >getUsersById</a>
+                                <a href="#getUserProfile" >getUserProfile</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -137,18 +133,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="deleteUserByEmail"></a>
+                    <a name="deleteUser"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>deleteUserByEmail</b></span>
-                        <a href="#deleteUserByEmail"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>deleteUser</b></span>
+                        <a href="#deleteUser"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>deleteUserByEmail(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/LoginDto.html" target="_self">LoginDto</a>)</code>
+                    <code>deleteUser(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/LoginDto.html" target="_self">LoginDto</a>)</code>
                 </td>
             </tr>
 
@@ -156,14 +152,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;profile/:userId&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Delete user profile by email &amp; password (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Delete(&#x27;profile&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Delete user profile by email &amp; password&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="127"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:127</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:147</a></div>
                 </td>
             </tr>
 
@@ -213,7 +209,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -227,18 +223,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="deleteUserById"></a>
+                    <a name="getPublicUserByIdOrUsername"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>deleteUserById</b></span>
-                        <a href="#deleteUserById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getPublicUserByIdOrUsername</b></span>
+                        <a href="#getPublicUserByIdOrUsername"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>deleteUserById(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>getPublicUserByIdOrUsername(userIdOrUsername: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -246,14 +242,170 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@RoleDecorator(ROLE.ADMIN)<br />@Delete(&#x27;:userId&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Delete user by user-id (admin)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Public()<br />@Get(&#x27;profile/:userIdOrUsername&#x27;)<br />@ApiOperation({summary: &#x27;Get public user by user-id or username (all)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="142"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:142</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userIdOrUsername</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#Public" target="_self" >Promise&lt;IPublicUser&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserByEmail"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getUserByEmail</b></span>
+                        <a href="#getUserByEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUserByEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Public()<br />@Get(&#x27;find/:email&#x27;)<br />@ApiOperation({summary: &#x27;Find user account by email&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:83</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>email</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;IFindUserByEmail&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserProfile"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getUserProfile</b></span>
+                        <a href="#getUserProfile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUserProfile(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get()<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Get user profile by user-id (all)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:96</a></div>
                 </td>
             </tr>
 
@@ -291,241 +443,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAllUsers"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>getAllUsers</b></span>
-                        <a href="#getAllUsers"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getAllUsers(dto: <a href="../classes/PaginationDto.html" target="_self">PaginationDto</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;all&#x27;)<br />@RoleDecorator(ROLE.ADMIN)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Get list all public user (admin)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:56</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>dto</td>
-                                    <td>
-                                                <code><a href="../classes/PaginationDto.html" target="_self" >PaginationDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getUsersByEmailAndName"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>getUsersByEmailAndName</b></span>
-                        <a href="#getUsersByEmailAndName"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getUsersByEmailAndName(dto: <a href="../classes/GetUserProfileByEmailNameDto.html" target="_self">GetUserProfileByEmailNameDto</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get()<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Get user profile by user email and username (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="78"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:78</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>dto</td>
-                                    <td>
-                                                <code><a href="../classes/GetUserProfileByEmailNameDto.html" target="_self" >GetUserProfileByEmailNameDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getUsersById"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>getUsersById</b></span>
-                        <a href="#getUsersById"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getUsersById(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Public()<br />@Get(&#x27;:userId&#x27;)<br />@ApiOperation({summary: &#x27;Get public user by user id (all)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:67</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>userId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IGetUserProfile&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -558,14 +476,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;profile/avatar/:userId&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user avatar image by user id (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Put(&#x27;profile/avatar&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user avatar image by user id (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:121</a></div>
                 </td>
             </tr>
 
@@ -615,7 +533,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IUpdateAvatar&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -648,14 +566,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;profile/cover/:userId&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user cover image by user id (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Put(&#x27;profile/cover&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user cover image by user id&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="115"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:115</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:135</a></div>
                 </td>
             </tr>
 
@@ -705,7 +623,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IUpdateCover&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -738,14 +656,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;profile/:userId&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user profile by user id (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Patch(&#x27;profile&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update user profile by user id (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:107</a></div>
                 </td>
             </tr>
 
@@ -795,7 +713,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#Public" target="_self" >Promise&lt;IPublicUser&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -817,92 +735,112 @@
   HttpCode,
   HttpStatus,
   Param,
-  ParseUUIDPipe,
   Patch,
   Put,
   Query,
 } from &#x27;@nestjs/common&#x27;;
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from &#x27;@nestjs/swagger&#x27;;
-import { Public } from &#x27;src/infrastructure/auth/decorators&#x27;;
+import { GetCurrentUserId, Public } from &#x27;src/infrastructure/auth/decorators&#x27;;
 import { LoginDto } from &#x27;src/infrastructure/auth/dto&#x27;;
-import { RoleDecorator } from &#x27;src/core/roles&#x27;;
-import { ROLE } from &#x27;src/core/roles/roles.enum&#x27;;
-import {
-  GetUserProfileByEmailNameDto,
-  PaginationDto,
-  UserAvatarDto,
-  UserCoverDto,
-  UserProfileDto,
-} from &#x27;./dto&#x27;;
+import { UserAvatarDto, UserCoverDto, UserProfileDto } from &#x27;./dto&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
+import {
+  IFindUserByEmail,
+  IGetUserProfile,
+  IPublicUser,
+  IUpdateAvatar,
+  IUpdateCover,
+} from &#x27;./dto/response&#x27;;
 
 @ApiTags(&#x27;Users&#x27;)
 @ApiUnauthorizedResponse({ description: &#x27;Unauthorized&#x27; })
 @ApiForbiddenResponse({ description: &#x27;Forbidden&#x27; })
-@ApiNotFoundResponse({ description: &#x27;Not found&#x27; })
-@ApiNotAcceptableResponse({
-  description: &#x27;Provided inputs are not in correct form.&#x27;,
+@ApiNotFoundResponse({
+  description: &#x27;Not Found.&#x27;,
+  type: Error,
 })
+@ApiMethodNotAllowedResponse({ description: &#x27;Method Not Allowed.&#x27; })
+@ApiNotAcceptableResponse({
+  description: &#x27;Provided fields are not in correct form.&#x27;,
+})
+@ApiRequestTimeoutResponse({ description: &#x27;Request Timeout.&#x27; })
+@ApiConflictResponse({
+  description: &#x27;Conflict existed.&#x27;,
+})
+@ApiTooManyRequestsResponse({ description: &#x27;Too Many Requests.&#x27; })
+@ApiInternalServerErrorResponse({ description: &#x27;Internal Server Error.&#x27; })
 @Controller(&#x27;users&#x27;)
 export class UsersController {
   constructor(private usersService: UsersService) {
     this.usersService &#x3D; usersService;
   }
 
-  @Get(&#x27;all&#x27;)
-  @RoleDecorator(ROLE.ADMIN)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Get list all public user (admin)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: &#x27;Success&#x27; })
-  async getAllUsers(@Query() dto: PaginationDto) {
-    return this.usersService.getAllUsers(dto);
-  }
-
   @Public()
-  @Get(&#x27;:userId&#x27;)
-  @ApiOperation({ summary: &#x27;Get public user by user id (all)&#x27; })
+  @Get(&#x27;profile/:userIdOrUsername&#x27;)
+  @ApiOperation({ summary: &#x27;Get public user by user-id or username (all)&#x27; })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: &#x27;Success&#x27;,
   })
-  async getUsersById(@Param(&#x27;userId&#x27;, new ParseUUIDPipe()) userId: string) {
-    return this.usersService.getUsersById(userId);
+  async getPublicUserByIdOrUsername(
+    @Param(&#x27;userIdOrUsername&#x27;) userIdOrUsername: string,
+  ): Promise&lt;IPublicUser&gt; {
+    return this.usersService.getPublicUserByIdOrUsername(userIdOrUsername);
+  }
+
+  @Public()
+  @Get(&#x27;find/:email&#x27;)
+  @ApiOperation({ summary: &#x27;Find user account by email&#x27; })
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: &#x27;Success&#x27;,
+  })
+  async getUserByEmail(
+    @Param(&#x27;email&#x27;) email: string,
+  ): Promise&lt;IFindUserByEmail&gt; {
+    return this.usersService.getUserByEmail(email);
   }
 
   @Get()
   @ApiBearerAuth()
   @ApiOperation({
-    summary: &#x27;Get user profile by user email and username (user)&#x27;,
+    summary: &#x27;Get user profile by user-id (all)&#x27;,
   })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success&#x27; })
-  async getUsersByEmailAndName(@Body() dto: GetUserProfileByEmailNameDto) {
-    return this.usersService.getUsersByEmailAndName(dto);
+  async getUserProfile(
+    @GetCurrentUserId() userId: string,
+  ): Promise&lt;IGetUserProfile&gt; {
+    return this.usersService.getUserProfile(userId);
   }
 
-  @Patch(&#x27;profile/:userId&#x27;)
+  @Patch(&#x27;profile&#x27;)
   @ApiBearerAuth()
   @ApiOperation({ summary: &#x27;Update user profile by user id (user)&#x27; })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success&#x27; })
   async updateUsersProfile(
-    @Param(&#x27;userId&#x27;) userId: string,
+    @GetCurrentUserId() userId: string,
     @Body() dto: UserProfileDto,
-  ) {
+  ): Promise&lt;IPublicUser&gt; {
     return this.usersService.updateUsersProfile(userId, dto);
   }
 
-  @Put(&#x27;profile/avatar/:userId&#x27;)
+  @Put(&#x27;profile/avatar&#x27;)
   @ApiBearerAuth()
   @ApiOperation({ summary: &#x27;Update user avatar image by user id (user)&#x27; })
   @HttpCode(HttpStatus.OK)
@@ -910,48 +848,36 @@ export class UsersController {
     description: &#x27;Success&#x27;,
   })
   async updateUsersAvatar(
-    @Param(&#x27;userId&#x27;) userId: string,
+    @GetCurrentUserId() userId: string,
     @Body() dto: UserAvatarDto,
-  ) {
+  ): Promise&lt;IUpdateAvatar&gt; {
     return this.usersService.updateUsersAvatar(userId, dto);
   }
 
-  @Put(&#x27;profile/cover/:userId&#x27;)
+  @Put(&#x27;profile/cover&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update user cover image by user id (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Update user cover image by user id&#x27; })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: &#x27;Success&#x27;,
   })
   async updateUsersCover(
-    @Param(&#x27;userId&#x27;) userId: string,
+    @GetCurrentUserId() userId: string,
     @Body() dto: UserCoverDto,
-  ) {
+  ): Promise&lt;IUpdateCover&gt; {
     return this.usersService.updateUsersCover(userId, dto);
   }
 
-  @Delete(&#x27;profile/:userId&#x27;)
+  @Delete(&#x27;profile&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Delete user profile by email &amp; password (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Delete user profile by email &amp; password&#x27; })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({ description: &#x27;Success&#x27; })
-  async deleteUserByEmail(
-    @Param(&#x27;userId&#x27;) userId: string,
+  async deleteUser(
+    @GetCurrentUserId() userId: string,
     @Body() dto: LoginDto,
-  ) {
-    return this.usersService.deleteUserByEmail(userId, dto);
-  }
-
-  @RoleDecorator(ROLE.ADMIN)
-  @Delete(&#x27;:userId&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Delete user by user-id (admin)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: &#x27;Success&#x27;,
-  })
-  async deleteUserById(@Param(&#x27;userId&#x27;) userId: string) {
-    return this.usersService.deleteUserById(userId);
+  ): Promise&lt;string&gt; {
+    return this.usersService.deleteUser(userId, dto);
   }
 }
 </code></pre>

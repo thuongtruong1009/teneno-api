@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/infrastructure/posts/dto/update-post.dto.ts</code>
+            <code>src/infrastructure/posts/dto/post/request/update-post.dto.ts</code>
         </p>
 
 
@@ -71,152 +71,8 @@
 
 
 
-            <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#favouritorId" >favouritorId</a>
-                            </li>
-                            <li>
-                                <a href="#postId" >postId</a>
-                            </li>
-                            <li>
-                                <a href="#reactionType" >reactionType</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
-
-
-
-
-        </tbody>
-    </table>
-</section>
-
-
-            <section>
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="favouritorId"></a>
-                    <span class="name">
-                        <span ><b>favouritorId</b></span>
-                        <a href="#favouritorId"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @IsString()<br />@IsNotEmpty()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/infrastructure/posts/dto/update-post.dto.ts:23</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="postId"></a>
-                    <span class="name">
-                        <span ><b>postId</b></span>
-                        <a href="#postId"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @IsString()<br />@IsNotEmpty()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/infrastructure/posts/dto/update-post.dto.ts:19</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="reactionType"></a>
-                    <span class="name">
-                        <span ><b>reactionType</b></span>
-                        <a href="#reactionType"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @IsNumber()<br />@IsNotEmpty()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/infrastructure/posts/dto/update-post.dto.ts:27</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
 
 
 
@@ -228,34 +84,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PartialType } from &#x27;@nestjs/swagger&#x27;;
-import { IsJSON, IsNotEmpty, IsNumber, IsString } from &#x27;class-validator&#x27;;
-import { CreatePostDto } from &#x27;./create-post.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PickType } from &#x27;@nestjs/swagger&#x27;;
+import { PostEntity } from &#x27;src/infrastructure/posts/entities/post.entity&#x27;;
 
-export class UpdatePostDto extends PartialType(CreatePostDto) {
-  title?: string;
-  description?: string;
-  files?: string[];
-  authorId: string;
+export class UpdatePostDto extends PickType(PostEntity, [
+  &#x27;title&#x27;,
+  &#x27;description&#x27;,
+  &#x27;files&#x27;,
+  &#x27;authorId&#x27;,
+  &#x27;postId&#x27;,
+]) {}
 
-  @IsString()
-  @IsNotEmpty()
-  postId: string;
-}
-
-export class ReactionsPost {
-  @IsString()
-  @IsNotEmpty()
-  postId: string;
-
-  @IsString()
-  @IsNotEmpty()
-  favouritorId: string;
-
-  @IsNumber()
-  @IsNotEmpty()
-  reactionType: number;
-}
+export class ReactionsPost extends PickType(PostEntity, [
+  &#x27;postId&#x27;,
+  &#x27;favouritorId&#x27;,
+  &#x27;reactionType&#x27;,
+]) {}
 </code></pre>
     </div>
 </div>
