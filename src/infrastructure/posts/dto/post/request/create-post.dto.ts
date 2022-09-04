@@ -5,5 +5,4 @@ export class CreatePostDto extends PickType(PostEntity, [
   'title',
   'description',
   'files',
-  'authorId',
 ]) {}

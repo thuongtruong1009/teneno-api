@@ -28,4 +28,8 @@ export class PostEntity {
   @IsNumber()
   @IsNotEmpty()
   reactionType: number;
+
+  @IsString()
+  @IsNotEmpty()
+  userId: string;
 }

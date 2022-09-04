@@ -8,36 +8,31 @@ import { PrismaService } from '../prisma/prisma.service';
 import {
   CreatePostDto,
   DeleteOnePost,
-  GetAllPostOfUserDto,
   ReactionsPost,
   UpdatePostDto,
-} from './dto';
+} from './dto/post/request';
 import {
   CreateCommentDto,
   DeleteCommentDto,
   UpdateCommentTextDto,
 } from './dto/comment';
+import {
+  ICreatePost,
+  IGetAllPostsOfUser,
+  IGetAllPublicPosts,
+} from './dto/post/response';
 
 @Injectable()
 export class PostsService {
   constructor(private prismaService: PrismaService) {}
-  async createPost(dto: CreatePostDto) {
-    const findUser = await this.prismaService.user.findUnique({
-      where: {
-        id: dto.authorId,
-      },
-    });
 
-    if (!findUser) {
-      return new NotFoundException('User not found');
-    }
-
+  async createPost(userId: string, dto: CreatePostDto): Promise<ICreatePost> {
     const post = await this.prismaService.post.create({
       data: {
         title: dto.title,
         description: dto.description,
         files: dto.files,
-        authorId: dto.authorId,
+        authorId: userId,
         // categories: {
         //   create: [
         //     {
@@ -52,38 +47,32 @@ export class PostsService {
         //   ],
         // },
       },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        files: true,
+        published: true,
+        authorId: true,
+        createdAt: true,
+      },
     });
     return post;
   }
 
-  async getAllPostsOfUser(dto: GetAllPostOfUserDto) {
-    const list = await this.prismaService.user.findMany({
-      where: {
-        id: dto.userId,
-      },
-      select: {
-        writtenPosts: {
-          select: {
-            id: true,
-          },
-        },
-      },
-    });
-    if (!list) {
-      return new NotFoundException('User not found');
-    }
-    if (list.length === 0) {
-      return new NotFoundException('User not have post!');
-    }
+  async getAllPostsOfUser(
+    userId: string,
+  ): Promise<IGetAllPostsOfUser[]> | null {
     return await this.prismaService.post.findMany({
       where: {
-        authorId: dto.userId,
+        authorId: userId,
       },
       select: {
         id: true,
         title: true,
         description: true,
         files: true,
+        published: true,
         authorId: true,
         createdAt: true,
         reactions: true,
@@ -91,7 +80,9 @@ export class PostsService {
     });
   }
 
-  async getAllPublicPosts(userId: string) {
+  async getAllPublicPosts(
+    userId: string,
+  ): Promise<IGetAllPublicPosts[]> | null {
     const list = await this.prismaService.user.findMany({
       where: {
         id: userId,
@@ -105,10 +96,10 @@ export class PostsService {
       },
     });
     if (!list) {
-      return new NotFoundException('User not found');
+      throw new NotFoundException('User not found');
     }
     if (list.length === 0) {
-      return new NotFoundException('User not have post!');
+      throw new NotFoundException('User not have post!');
     }
     return await this.prismaService.post.findMany({
       where: {

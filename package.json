@@ -55,11 +55,12 @@
         "test:e2e": "jest --config ./test/jest-e2e.json",
         "prepare": "husky install",
         "pre-commit": "lint-staged",
-        "generate": "npx prisma generate",
-        "deploy": "npx prisma migrate deploy",
-        "migrate": "npx prisma migrate dev --create-only",
-        "prisma:studio": "npx prisma studio",
+        "prisma:pull": "prisma db pull",
+        "prisma:generate": "npx prisma generate",
+        "prisma:migrate": "npx prisma migrate dev --create-only",
         "prisma:push": "npx prisma db push",
+        "prisma:deploy": "npx prisma migrate deploy",
+        "prisma:studio": "npx prisma studio",
         "documentation": "npx @compodoc/compodoc -p tsconfig.json -s -n \"Teneno API documentation\" -r 5500 -w -o --hideGenerator --customFavicon \"/public/favicon.ico\" --theme \"postmark\""
     },
     "prisma": {

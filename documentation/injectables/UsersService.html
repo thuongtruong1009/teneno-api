@@ -634,7 +634,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateUsersAvatar(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/UserAvatarDto.html" target="_self">UserAvatarDto</a>)</code>
+                    <code>updateUsersAvatar(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/UpdateUserAvatarDto.html" target="_self">UpdateUserAvatarDto</a>)</code>
                 </td>
             </tr>
 
@@ -677,7 +677,7 @@
                                 <tr>
                                     <td>dto</td>
                                     <td>
-                                                <code><a href="../classes/UserAvatarDto.html" target="_self" >UserAvatarDto</a></code>
+                                                <code><a href="../classes/UpdateUserAvatarDto.html" target="_self" >UpdateUserAvatarDto</a></code>
                                     </td>
 
                                     <td>
@@ -717,7 +717,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateUsersCover(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/UserCoverDto.html" target="_self">UserCoverDto</a>)</code>
+                    <code>updateUsersCover(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/UpdateUserCoverDto.html" target="_self">UpdateUserCoverDto</a>)</code>
                 </td>
             </tr>
 
@@ -760,7 +760,7 @@
                                 <tr>
                                     <td>dto</td>
                                     <td>
-                                                <code><a href="../classes/UserCoverDto.html" target="_self" >UserCoverDto</a></code>
+                                                <code><a href="../classes/UpdateUserCoverDto.html" target="_self" >UpdateUserCoverDto</a></code>
                                     </td>
 
                                     <td>
@@ -800,7 +800,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateUsersProfile(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/UserProfileDto.html" target="_self">UserProfileDto</a>)</code>
+                    <code>updateUsersProfile(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/UpdateUserProfileDto.html" target="_self">UpdateUserProfileDto</a>)</code>
                 </td>
             </tr>
 
@@ -843,7 +843,7 @@
                                 <tr>
                                     <td>dto</td>
                                     <td>
-                                                <code><a href="../classes/UserProfileDto.html" target="_self" >UserProfileDto</a></code>
+                                                <code><a href="../classes/UpdateUserProfileDto.html" target="_self" >UpdateUserProfileDto</a></code>
                                     </td>
 
                                     <td>
@@ -880,15 +880,14 @@
   NotAcceptableException,
   NotFoundException,
 } from &#x27;@nestjs/common&#x27;;
-import { LoginDto } from &#x27;src/infrastructure/auth/dto&#x27;;
+import { LoginDto } from &#x27;src/infrastructure/auth/dto/request&#x27;;
 import { comparePassword } from &#x27;src/core/helpers/hash&#x27;;
 import { PrismaService } from &#x27;src/infrastructure/prisma/prisma.service&#x27;;
 import {
-  PaginationDto,
-  UserAvatarDto,
-  UserCoverDto,
-  UserProfileDto,
-} from &#x27;./dto&#x27;;
+  UpdateUserAvatarDto,
+  UpdateUserCoverDto,
+  UpdateUserProfileDto,
+} from &#x27;./dto/request&#x27;;
 import {
   IAllUsers,
   IFindUserByEmail,
@@ -897,6 +896,7 @@ import {
   IUpdateAvatar,
   IUpdateCover,
 } from &#x27;./dto/response&#x27;;
+import { PaginationDto } from &#x27;src/core/common/pagination.dto&#x27;;
 
 @Injectable()
 export class UsersService {
@@ -982,7 +982,7 @@ export class UsersService {
 
   async updateUsersProfile(
     userId: string,
-    dto: UserProfileDto,
+    dto: UpdateUserProfileDto,
   ): Promise&lt;IPublicUser&gt; {
     await this.prismaService.userProfile.upsert({
       where: {
@@ -1002,7 +1002,7 @@ export class UsersService {
 
   async updateUsersAvatar(
     userId: string,
-    dto: UserAvatarDto,
+    dto: UpdateUserAvatarDto,
   ): Promise&lt;IUpdateAvatar&gt; {
     await this.prismaService.user.update({
       where: { id: userId },
@@ -1031,7 +1031,7 @@ export class UsersService {
 
   async updateUsersCover(
     userId: string,
-    dto: UserCoverDto,
+    dto: UpdateUserCoverDto,
   ): Promise&lt;IUpdateCover&gt; {
     await this.prismaService.user.update({
       where: { id: userId },

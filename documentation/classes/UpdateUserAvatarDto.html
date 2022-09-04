@@ -45,7 +45,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li >LoginDto</li>
+  <li >UpdateUserAvatarDto</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/infrastructure/auth/dto/request/sigin.dto.ts</code>
+            <code>src/infrastructure/users/dto/request/update-users.dto.ts</code>
         </p>
 
 
@@ -85,9 +85,13 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PickType } from &#x27;@nestjs/swagger&#x27;;
-import { UserEntity } from &#x27;../../../users/entities/user.entity&#x27;;
+import { ProfileEntity } from &#x27;../../entities/profile.entity&#x27;;
 
-export class LoginDto extends PickType(UserEntity, [&#x27;email&#x27;, &#x27;password&#x27;]) {}
+export class UpdateUserAvatarDto extends PickType(ProfileEntity, [&#x27;avatar&#x27;]) {}
+
+export class UpdateUserCoverDto extends PickType(ProfileEntity, [&#x27;cover&#x27;]) {}
+
+export class UpdateUserProfileDto extends ProfileEntity {}
 </code></pre>
     </div>
 </div>
@@ -126,7 +130,7 @@ export class LoginDto extends PickType(UserEntity, [&#x27;email&#x27;, &#x27;pas
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'LoginDto.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'UpdateUserAvatarDto.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

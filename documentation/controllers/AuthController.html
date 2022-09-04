@@ -150,8 +150,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:84</a></div>
                 </td>
             </tr>
 
@@ -228,8 +228,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:94</a></div>
                 </td>
             </tr>
 
@@ -318,8 +318,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:75</a></div>
                 </td>
             </tr>
 
@@ -396,8 +396,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="65"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:65</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:66</a></div>
                 </td>
             </tr>
 
@@ -474,8 +474,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="105"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:105</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:106</a></div>
                 </td>
             </tr>
 
@@ -555,8 +555,9 @@ import {
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { GetCurrentUser, GetCurrentUserId, Public } from &#x27;./decorators&#x27;;
 import { RtGuard } from &#x27;./guards&#x27;;
-import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto&#x27;;
+import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto/request&#x27;;
 import { ITokens } from &#x27;./dto/response&#x27;;
+import { UsersService } from &#x27;../users/users.service&#x27;;
 
 @ApiTags(&#x27;Auth&#x27;)
 @ApiOkResponse({ description: &#x27;Success.&#x27; })

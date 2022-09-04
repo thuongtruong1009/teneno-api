@@ -12,36 +12,63 @@ import {
   Put,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { Public } from '../auth/decorators';
+import { GetCurrentUserId, Public } from '../auth/decorators';
 import {
   CreatePostDto,
   DeleteOnePost,
   UpdatePostDto,
   ReactionsPost,
-  GetAllPostOfUserDto,
-} from './dto';
+} from './dto/post/request';
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiPayloadTooLargeResponse,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
+  ApiUnauthorizedResponse,
+  ApiUnsupportedMediaTypeResponse,
 } from '@nestjs/swagger';
 import {
   CreateCommentDto,
   DeleteCommentDto,
   UpdateCommentTextDto,
 } from './dto/comment';
+import {
+  ICreatePost,
+  IGetAllPostsOfUser,
+  IGetAllPublicPosts,
+} from './dto/post/response';
 
 @ApiTags('Posts')
+@ApiUnauthorizedResponse({ description: 'Unauthorized' })
 @ApiForbiddenResponse({ description: 'Forbidden' })
-@ApiNotFoundResponse({ description: 'Not found' })
+@ApiNotFoundResponse({
+  description: 'Not Found.',
+  type: Error,
+})
+@ApiMethodNotAllowedResponse({ description: 'Method Not Allowed.' })
 @ApiNotAcceptableResponse({
   description: 'Provided inputs are not in correct form.',
 })
+@ApiRequestTimeoutResponse({ description: 'Request Timeout.' })
+@ApiConflictResponse({
+  description: 'Conflict existed.',
+})
+@ApiPayloadTooLargeResponse({ description: 'Payload Too Large.' })
+@ApiUnsupportedMediaTypeResponse({
+  description: 'Unsupported Media Type.',
+})
+@ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
+@ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
 @Controller('posts')
 export class PostsController {
   constructor(private postsService: PostsService) {}
@@ -54,8 +81,11 @@ export class PostsController {
     description: 'Success',
   })
   @ApiCreatedResponse({ description: 'Create new post successfuly' })
-  async createPost(@Body() dto: CreatePostDto) {
-    return this.postsService.createPost(dto);
+  async createPost(
+    @GetCurrentUserId() userId: string,
+    @Body() dto: CreatePostDto,
+  ): Promise<ICreatePost> {
+    return this.postsService.createPost(userId, dto);
   }
 
   @Post('private/all')
@@ -67,8 +97,10 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  async getAllPostsOfUser(@Body() dto: GetAllPostOfUserDto) {
-    return this.postsService.getAllPostsOfUser(dto);
+  async getAllPostsOfUser(
+    @GetCurrentUserId() userId: string,
+  ): Promise<IGetAllPostsOfUser[]> | null {
+    return this.postsService.getAllPostsOfUser(userId);
   }
 
   @Get(':userId/all')
@@ -78,7 +110,9 @@ export class PostsController {
   @ApiOkResponse({
     description: 'Success',
   })
-  async getAllPublicPosts(@Param('userId') userId: string) {
+  async getAllPublicPosts(
+    @Param('userId', new ParseUUIDPipe()) userId: string,
+  ): Promise<IGetAllPublicPosts[]> | null {
     return this.postsService.getAllPublicPosts(userId);
   }
 

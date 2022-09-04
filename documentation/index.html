@@ -40,11 +40,10 @@
 <a href="https://linkedin.com/in/thuongtruong1009"><img src="https://img.shields.io/twitter/url?color=0A66C2&label=Linkedin&logo=linkedin&logoColor=0A66C2&style=for-the-badge&url=https%3A%2F%2Flinkedin.com%2Fin%2Fthuongtruong1009" alt="LinkedIn" class="img-responsive"></a></p>
 <h2 id="preview">Preview</h2>
 <ul>
-<li><p><a href="https://github.com/thuongtruong1009/teneno">Frontend connect</a></p>
-</li>
-<li><p><a href="http://localhost:5500/api">API document</a></p>
-</li>
+<li><a href="https://github.com/thuongtruong1009/teneno">Frontend connect</a></li>
 </ul>
+<!-- * [API document](http://localhost:5500/api) -->
+
 <!-- * [Project documentation](http://localhost:5500/index.html) -->
 
 <ul>
@@ -55,7 +54,6 @@
 <li>The purpose of Teneno webapp is create a new network platform where everyone can sharing their feels, thinks or experiences together</li>
 <li>Make an easily life with Teneno</li>
 <li>Practice Backend skills and improve programming thinking</li>
-<li>Advancing about REST API and WebSocket</li>
 </ul>
 <h2 id="features">Features</h2>
 <table class="table table-bordered compodoc-table">
@@ -83,12 +81,12 @@
 <td>✅  Upload array-field files (post, sample_image)</td>
 </tr>
 <tr>
-<td>✅ Update user profile</td>
+<td>✅ Delete user by user-id</td>
 <td>✅  Refresh access-token</td>
 <td></td>
 </tr>
 <tr>
-<td>✅ Delete user by user-id</td>
+<td></td>
 <td>✅  Update password</td>
 <td></td>
 </tr>
@@ -211,6 +209,7 @@
 <li><a href="https://docs.nestjs.com/recipes/repl">Read-Eval-Print-Loop (REPL)</a> takes - executes single user inputs, and returns the result to the user, interactive environment, inspect dependency graph and call methods on providers - controllers directly from terminal</li>
 <li><a href="https://docs.nestjs.com/recipes/serve-static">Serve Static</a> serve static content like a Single Page Application (SPA)</li>
 <li><a href="https://docs.nestjs.com/recipes/documentation">Compodoc</a> Generate project documentation</li>
+<li><a href="https://docs.nestjs.com/recipes/hot-reload">Webpack hot-reload</a> auto recompile the entire project each time a change occurs</li>
 </ul>
 <h2 id="conventions--tools">Conventions &amp; Tools</h2>
 <ul>
@@ -240,13 +239,17 @@ npm install prisma&#64;latest &#64;prisma/client</code></pre></div><div><pre cla
 npx prisma init
 
 # turn database schema into a Prisma schema
-prisma db pull
+npm run prisma:pull
 
 # generate the Prisma Client
-prisma generate</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Create env and migrate db
-npx prisma migrate dev --create-only</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Open prisma studio
-npx prisma studio</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Sync migrate change to db
-npx prisma db push</code></pre></div><h3 id="running-with-local">Running with local</h3>
+npm run prisma:generate
+
+# Create env and migrate db
+npm run prisma:migrate
+
+# Sync migrate change to db
+npm run prisma:push</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># Open prisma studio
+npm run prisma:studio</code></pre></div><h3 id="running-with-local">Running with local</h3>
 <div><pre class="line-numbers"><code class="language-bash"># Intall dependencies
 $ npm install</code></pre></div><div><pre class="line-numbers"><code class="language-bash"># development
 $ npm run start
