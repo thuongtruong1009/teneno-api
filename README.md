@@ -29,8 +29,8 @@
 | ✅ Get list all users | ✅  Signup | ✅  Upload single file (avatar, cover) |
 | ✅ Get user profile by id | ✅  Signin | ✅  Upload multi files |
 | ✅ Update user profile | ✅  Signout | ✅  Upload array-field files (post, sample_image) |
-| ✅ Update user profile | ✅  Refresh access-token |  |
-| ✅ Delete user by user-id | ✅  Update password |  |
+| ✅ Delete user by user-id | ✅  Refresh access-token |  |
+|  | ✅  Update password |  |
 
 | **Users** | **Posts** |
 | ---| --- |

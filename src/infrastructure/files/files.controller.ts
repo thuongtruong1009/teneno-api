@@ -9,13 +9,20 @@ import {
 import {} from '@nestjs/platform-express';
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiPayloadTooLargeResponse,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
+  ApiUnsupportedMediaTypeResponse,
 } from '@nestjs/swagger';
 import { Express } from 'express';
 import {
@@ -34,9 +41,20 @@ import { IArrayFile, ISingleFile } from './interfaces';
   description: 'Not Found.',
   type: Error,
 })
+@ApiMethodNotAllowedResponse({ description: 'Method Not Allowed.' })
 @ApiNotAcceptableResponse({
   description: 'Provided inputs are not in correct form.',
 })
+@ApiRequestTimeoutResponse({ description: 'Request Timeout.' })
+@ApiConflictResponse({
+  description: 'Conflict existed.',
+})
+@ApiPayloadTooLargeResponse({ description: 'Payload Too Large.' })
+@ApiUnsupportedMediaTypeResponse({
+  description: 'Unsupported Media Type.',
+})
+@ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
+@ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
 @Controller('files')
 export class FileController {
   constructor(private readonly fileService: FilesService) {}

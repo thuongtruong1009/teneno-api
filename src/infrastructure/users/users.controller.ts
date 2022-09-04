@@ -26,8 +26,12 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { GetCurrentUserId, Public } from 'src/infrastructure/auth/decorators';
-import { LoginDto } from 'src/infrastructure/auth/dto';
-import { UserAvatarDto, UserCoverDto, UserProfileDto } from './dto';
+import { LoginDto } from 'src/infrastructure/auth/dto/request';
+import {
+  UpdateUserAvatarDto,
+  UpdateUserCoverDto,
+  UpdateUserProfileDto,
+} from './dto/request';
 import { UsersService } from './users.service';
 import {
   IFindUserByEmail,
@@ -106,7 +110,7 @@ export class UsersController {
   @ApiOkResponse({ description: 'Success' })
   async updateUsersProfile(
     @GetCurrentUserId() userId: string,
-    @Body() dto: UserProfileDto,
+    @Body() dto: UpdateUserProfileDto,
   ): Promise<IPublicUser> {
     return this.usersService.updateUsersProfile(userId, dto);
   }
@@ -120,7 +124,7 @@ export class UsersController {
   })
   async updateUsersAvatar(
     @GetCurrentUserId() userId: string,
-    @Body() dto: UserAvatarDto,
+    @Body() dto: UpdateUserAvatarDto,
   ): Promise<IUpdateAvatar> {
     return this.usersService.updateUsersAvatar(userId, dto);
   }
@@ -134,7 +138,7 @@ export class UsersController {
   })
   async updateUsersCover(
     @GetCurrentUserId() userId: string,
-    @Body() dto: UserCoverDto,
+    @Body() dto: UpdateUserCoverDto,
   ): Promise<IUpdateCover> {
     return this.usersService.updateUsersCover(userId, dto);
   }

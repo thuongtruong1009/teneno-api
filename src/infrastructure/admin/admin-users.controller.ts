@@ -25,14 +25,14 @@ import {
   ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { PaginationDto } from 'src/core/common/pagination.dto';
 import { ROLE, RoleDecorator } from 'src/core/roles';
 import { Public } from '../auth/decorators';
 import {
-  PaginationDto,
-  UserAvatarDto,
-  UserCoverDto,
-  UserProfileDto,
-} from '../users/dto';
+  UpdateUserAvatarDto,
+  UpdateUserCoverDto,
+  UpdateUserProfileDto,
+} from '../users/dto/request';
 import {
   IAllUsers,
   IGetUserProfile,
@@ -93,7 +93,7 @@ export class AdminUsersController {
   @ApiOkResponse({ description: 'Success' })
   async update(
     @Param('userId') userId: string,
-    @Body() dto: UserProfileDto,
+    @Body() dto: UpdateUserProfileDto,
   ): Promise<IPublicUser> {
     return this.usersService.updateUsersProfile(userId, dto);
   }
@@ -107,7 +107,7 @@ export class AdminUsersController {
   })
   async updateUsersAvatar(
     @Param() userId: string,
-    @Body() dto: UserAvatarDto,
+    @Body() dto: UpdateUserAvatarDto,
   ): Promise<IUpdateAvatar> {
     return this.usersService.updateUsersAvatar(userId, dto);
   }
@@ -121,7 +121,7 @@ export class AdminUsersController {
   })
   async updateUsersCover(
     @Param() userId: string,
-    @Body() dto: UserCoverDto,
+    @Body() dto: UpdateUserCoverDto,
   ): Promise<IUpdateCover> {
     return this.usersService.updateUsersCover(userId, dto);
   }

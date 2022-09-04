@@ -9,7 +9,7 @@ import { ITokens } from './dto/response';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { comparePassword, hashPassword } from 'src/core/helpers/hash';
-import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/';
+import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
 
 @Injectable()
 export class AuthService {

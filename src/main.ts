@@ -12,6 +12,8 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { PrismaService } from './infrastructure/prisma/prisma.service';
 import { helmetMiddleware } from './core/middlewares/helmet.middleware';
 
+declare const module: any;
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: true,
@@ -71,6 +73,11 @@ async function bootstrap() {
       config.get<string>('ADMINER_URL'),
     );
   });
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(async () => await app.close());
+  }
 }
 
 void bootstrap();

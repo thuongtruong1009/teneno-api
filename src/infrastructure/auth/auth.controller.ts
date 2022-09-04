@@ -26,8 +26,9 @@ import {
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './decorators';
 import { RtGuard } from './guards';
-import { LoginDto, SignupDto, UpdatePasswordDto } from './dto';
+import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
 import { ITokens } from './dto/response';
+import { UsersService } from '../users/users.service';
 
 @ApiTags('Auth')
 @ApiOkResponse({ description: 'Success.' })

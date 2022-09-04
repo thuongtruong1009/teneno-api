@@ -4,15 +4,14 @@ import {
   NotAcceptableException,
   NotFoundException,
 } from '@nestjs/common';
-import { LoginDto } from 'src/infrastructure/auth/dto';
+import { LoginDto } from 'src/infrastructure/auth/dto/request';
 import { comparePassword } from 'src/core/helpers/hash';
 import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
 import {
-  PaginationDto,
-  UserAvatarDto,
-  UserCoverDto,
-  UserProfileDto,
-} from './dto';
+  UpdateUserAvatarDto,
+  UpdateUserCoverDto,
+  UpdateUserProfileDto,
+} from './dto/request';
 import {
   IAllUsers,
   IFindUserByEmail,
@@ -21,6 +20,7 @@ import {
   IUpdateAvatar,
   IUpdateCover,
 } from './dto/response';
+import { PaginationDto } from 'src/core/common/pagination.dto';
 
 @Injectable()
 export class UsersService {
@@ -106,7 +106,7 @@ export class UsersService {
 
   async updateUsersProfile(
     userId: string,
-    dto: UserProfileDto,
+    dto: UpdateUserProfileDto,
   ): Promise<IPublicUser> {
     await this.prismaService.userProfile.upsert({
       where: {
@@ -126,7 +126,7 @@ export class UsersService {
 
   async updateUsersAvatar(
     userId: string,
-    dto: UserAvatarDto,
+    dto: UpdateUserAvatarDto,
   ): Promise<IUpdateAvatar> {
     await this.prismaService.user.update({
       where: { id: userId },
@@ -155,7 +155,7 @@ export class UsersService {
 
   async updateUsersCover(
     userId: string,
-    dto: UserCoverDto,
+    dto: UpdateUserCoverDto,
   ): Promise<IUpdateCover> {
     await this.prismaService.user.update({
       where: { id: userId },
