@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/infrastructure/posts/dto/comment/create-comment.dto.ts</code>
+            <code>src/infrastructure/posts/dto/comment/request/create-comment.dto.ts</code>
         </p>
 
 
@@ -85,12 +85,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PickType } from &#x27;@nestjs/swagger&#x27;;
-import { CommentEntity } from &#x27;../../entities/comment.entity&#x27;;
+import { CommentEntity } from &#x27;../../../entities/comment.entity&#x27;;
 
 export class CreateCommentDto extends PickType(CommentEntity, [
   &#x27;text&#x27;,
   &#x27;postId&#x27;,
-  &#x27;userId&#x27;,
 ]) {}
 </code></pre>
     </div>

@@ -26,6 +26,10 @@ import {
 } from '@nestjs/swagger';
 import { Express } from 'express';
 import {
+  STATUS_MESSAGE,
+  SYSTEM_ERROR,
+} from 'src/core/constants/status-message';
+import {
   ArrayFieldDecorator,
   SingleFieldDecorator,
   MultiFieldDecorator,
@@ -35,26 +39,28 @@ import { IArrayFile, ISingleFile } from './interfaces';
 
 @ApiTags('Files')
 @ApiBearerAuth()
-@ApiUnauthorizedResponse({ description: 'Unauthorized' })
-@ApiForbiddenResponse({ description: 'Forbidden' })
+@ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
+@ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: 'Not Found.',
+  description: SYSTEM_ERROR.NOT_FOUND,
   type: Error,
 })
-@ApiMethodNotAllowedResponse({ description: 'Method Not Allowed.' })
+@ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: 'Provided inputs are not in correct form.',
+  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
-@ApiRequestTimeoutResponse({ description: 'Request Timeout.' })
+@ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: 'Conflict existed.',
+  description: SYSTEM_ERROR.CONFLICT,
 })
-@ApiPayloadTooLargeResponse({ description: 'Payload Too Large.' })
+@ApiPayloadTooLargeResponse({ description: SYSTEM_ERROR.PAYLOAD_TOO_LARGE })
 @ApiUnsupportedMediaTypeResponse({
-  description: 'Unsupported Media Type.',
+  description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
 })
-@ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
-@ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+@ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
+@ApiInternalServerErrorResponse({
+  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+})
 @Controller('files')
 export class FileController {
   constructor(private readonly fileService: FilesService) {}
@@ -62,7 +68,7 @@ export class FileController {
   @Post('avatar')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Upload avatar file form data (all)' })
-  @ApiOkResponse({ description: 'Success' })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @SingleFieldDecorator('./public/avatars')
   async uploadAvatar(
     @UploadedFile() file: Express.Multer.File,
@@ -73,7 +79,7 @@ export class FileController {
   @Post('cover')
   @ApiOperation({ summary: 'Upload cover file form data (all)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @SingleFieldDecorator('./public/covers')
   async uploadCover(
     @UploadedFile() file: Express.Multer.File,
@@ -84,7 +90,7 @@ export class FileController {
   @Post('posts')
   @ApiOperation({ summary: 'Upload post with multi images (user)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @ArrayFieldDecorator('files', true, 10, './public/posts')
   async uploadPosts(
     @UploadedFiles() files: Array<Express.Multer.File>,
@@ -95,7 +101,7 @@ export class FileController {
   @Post('multi')
   @ApiOperation({ summary: 'Upload multi fields form data (user)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @MultiFieldDecorator(
     [
       { name: 'item_1', maxCount: 1, required: true },

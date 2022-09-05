@@ -140,14 +140,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;avatar&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Upload avatar file form data (all)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br />@SingleFieldDecorator(&#x27;./public/avatars&#x27;)<br /></code>
+                    <code>@Post(&#x27;avatar&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Upload avatar file form data (all)&#x27;})<br />@ApiOkResponse({description: undefined})<br />@SingleFieldDecorator(&#x27;./public/avatars&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:73</a></div>
                 </td>
             </tr>
 
@@ -218,14 +218,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;cover&#x27;)<br />@ApiOperation({summary: &#x27;Upload cover file form data (all)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br />@SingleFieldDecorator(&#x27;./public/covers&#x27;)<br /></code>
+                    <code>@Post(&#x27;cover&#x27;)<br />@ApiOperation({summary: &#x27;Upload cover file form data (all)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br />@SingleFieldDecorator(&#x27;./public/covers&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="78"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:78</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:84</a></div>
                 </td>
             </tr>
 
@@ -296,14 +296,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;multi&#x27;)<br />@ApiOperation({summary: &#x27;Upload multi fields form data (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br />@MultiFieldDecorator([&#x27;undefined&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;], &#x27;./public/multi&#x27;)<br /></code>
+                    <code>@Post(&#x27;multi&#x27;)<br />@ApiOperation({summary: &#x27;Upload multi fields form data (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br />@MultiFieldDecorator([&#x27;undefined&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;, &#x27;undefined&#x27;], &#x27;./public/multi&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="109"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:109</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:115</a></div>
                 </td>
             </tr>
 
@@ -374,14 +374,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;posts&#x27;)<br />@ApiOperation({summary: &#x27;Upload post with multi images (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br />@ArrayFieldDecorator(&#x27;files&#x27;, undefined, 10, &#x27;./public/posts&#x27;)<br /></code>
+                    <code>@Post(&#x27;posts&#x27;)<br />@ApiOperation({summary: &#x27;Upload post with multi images (user)&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br />@ArrayFieldDecorator(&#x27;files&#x27;, undefined, 10, &#x27;./public/posts&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:95</a></div>
                 </td>
             </tr>
 
@@ -461,6 +461,10 @@ import {
 } from &#x27;@nestjs/swagger&#x27;;
 import { Express } from &#x27;express&#x27;;
 import {
+  STATUS_MESSAGE,
+  SYSTEM_ERROR,
+} from &#x27;src/core/constants/status-message&#x27;;
+import {
   ArrayFieldDecorator,
   SingleFieldDecorator,
   MultiFieldDecorator,
@@ -470,26 +474,28 @@ import { IArrayFile, ISingleFile } from &#x27;./interfaces&#x27;;
 
 @ApiTags(&#x27;Files&#x27;)
 @ApiBearerAuth()
-@ApiUnauthorizedResponse({ description: &#x27;Unauthorized&#x27; })
-@ApiForbiddenResponse({ description: &#x27;Forbidden&#x27; })
+@ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
+@ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: &#x27;Not Found.&#x27;,
+  description: SYSTEM_ERROR.NOT_FOUND,
   type: Error,
 })
-@ApiMethodNotAllowedResponse({ description: &#x27;Method Not Allowed.&#x27; })
+@ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: &#x27;Provided inputs are not in correct form.&#x27;,
+  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
-@ApiRequestTimeoutResponse({ description: &#x27;Request Timeout.&#x27; })
+@ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: &#x27;Conflict existed.&#x27;,
+  description: SYSTEM_ERROR.CONFLICT,
 })
-@ApiPayloadTooLargeResponse({ description: &#x27;Payload Too Large.&#x27; })
+@ApiPayloadTooLargeResponse({ description: SYSTEM_ERROR.PAYLOAD_TOO_LARGE })
 @ApiUnsupportedMediaTypeResponse({
-  description: &#x27;Unsupported Media Type.&#x27;,
+  description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
 })
-@ApiTooManyRequestsResponse({ description: &#x27;Too Many Requests.&#x27; })
-@ApiInternalServerErrorResponse({ description: &#x27;Internal Server Error.&#x27; })
+@ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
+@ApiInternalServerErrorResponse({
+  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+})
 @Controller(&#x27;files&#x27;)
 export class FileController {
   constructor(private readonly fileService: FilesService) {}
@@ -497,7 +503,7 @@ export class FileController {
   @Post(&#x27;avatar&#x27;)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: &#x27;Upload avatar file form data (all)&#x27; })
-  @ApiOkResponse({ description: &#x27;Success&#x27; })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @SingleFieldDecorator(&#x27;./public/avatars&#x27;)
   async uploadAvatar(
     @UploadedFile() file: Express.Multer.File,
@@ -508,7 +514,7 @@ export class FileController {
   @Post(&#x27;cover&#x27;)
   @ApiOperation({ summary: &#x27;Upload cover file form data (all)&#x27; })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: &#x27;Success&#x27; })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @SingleFieldDecorator(&#x27;./public/covers&#x27;)
   async uploadCover(
     @UploadedFile() file: Express.Multer.File,
@@ -519,7 +525,7 @@ export class FileController {
   @Post(&#x27;posts&#x27;)
   @ApiOperation({ summary: &#x27;Upload post with multi images (user)&#x27; })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: &#x27;Success&#x27; })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @ArrayFieldDecorator(&#x27;files&#x27;, true, 10, &#x27;./public/posts&#x27;)
   async uploadPosts(
     @UploadedFiles() files: Array&lt;Express.Multer.File&gt;,
@@ -530,7 +536,7 @@ export class FileController {
   @Post(&#x27;multi&#x27;)
   @ApiOperation({ summary: &#x27;Upload multi fields form data (user)&#x27; })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: &#x27;Success&#x27; })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   @MultiFieldDecorator(
     [
       { name: &#x27;item_1&#x27;, maxCount: 1, required: true },

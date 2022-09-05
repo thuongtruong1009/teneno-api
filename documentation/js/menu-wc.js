@@ -399,9 +399,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/GetAllConversationDto.html" data-type="entity-link" >GetAllConversationDto</a>
                             </li>
                             <li class="link">
-                                <a href="classes/GetAllPostOfUserDto.html" data-type="entity-link" >GetAllPostOfUserDto</a>
-                            </li>
-                            <li class="link">
                                 <a href="classes/GetOneConversationDto.html" data-type="entity-link" >GetOneConversationDto</a>
                             </li>
                             <li class="link">

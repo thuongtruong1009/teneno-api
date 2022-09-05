@@ -160,7 +160,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>addComment(dto: <a href="../classes/CreateCommentDto.html" target="_self">CreateCommentDto</a>)</code>
+                    <code>addComment(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/CreateCommentDto.html" target="_self">CreateCommentDto</a>)</code>
                 </td>
             </tr>
 
@@ -168,14 +168,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;comments&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Add a new comment to post of user (user)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Post(&#x27;comments&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Add a new comment to post of user&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="142"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:142</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:196</a></div>
                 </td>
             </tr>
 
@@ -196,6 +196,18 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
                                     <td>dto</td>
                                     <td>
                                                 <code><a href="../classes/CreateCommentDto.html" target="_self" >CreateCommentDto</a></code>
@@ -213,7 +225,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;ICreateComment&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -238,7 +250,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createPost(dto: <a href="../classes/CreatePostDto.html" target="_self">CreatePostDto</a>)</code>
+                    <code>createPost(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/CreatePostDto.html" target="_self">CreatePostDto</a>)</code>
                 </td>
             </tr>
 
@@ -246,14 +258,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.CREATED)<br />@ApiOperation({summary: &#x27;Get all posts of user by user-id (all)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br />@ApiCreatedResponse({description: &#x27;Create new post successfuly&#x27;})<br /></code>
+                    <code>@Post()<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.CREATED)<br />@ApiOperation({summary: &#x27;Get all posts of user by user-id&#x27;})<br />@ApiOkResponse({description: undefined})<br />@ApiCreatedResponse({description: &#x27;Create new post successfuly&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:97</a></div>
                 </td>
             </tr>
 
@@ -274,6 +286,18 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
                                     <td>dto</td>
                                     <td>
                                                 <code><a href="../classes/CreatePostDto.html" target="_self" >CreatePostDto</a></code>
@@ -291,7 +315,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;ICreatePost&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -324,14 +348,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;comments&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Delete a comment in post (user)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Delete(&#x27;comments&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Delete a comment in post&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="162"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:162</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:221</a></div>
                 </td>
             </tr>
 
@@ -369,7 +393,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -394,7 +418,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>deletePost(dto: <a href="../classes/DeleteOnePost.html" target="_self">DeleteOnePost</a>)</code>
+                    <code>deletePost(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/DeleteOnePost.html" target="_self">DeleteOnePost</a>)</code>
                 </td>
             </tr>
 
@@ -402,14 +426,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;delete&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Delete one post of user (all)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Delete(&#x27;delete&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Delete one post of user&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="160"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:160</a></div>
                 </td>
             </tr>
 
@@ -430,6 +454,18 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
                                     <td>dto</td>
                                     <td>
                                                 <code><a href="../classes/DeleteOnePost.html" target="_self" >DeleteOnePost</a></code>
@@ -447,7 +483,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -480,14 +516,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Public()<br />@Get(&#x27;:postId/comments&#x27;)<br />@ApiOperation({summary: &#x27;Get all comments of the post (user)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Public()<br />@Get(&#x27;:postId/comments&#x27;)<br />@ApiOperation({summary: &#x27;Get all comments of the post&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="131"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:131</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="183"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:183</a></div>
                 </td>
             </tr>
 
@@ -525,7 +561,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IGetComment&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -550,7 +586,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getAllPostsOfUser(dto: <a href="../classes/GetAllPostOfUserDto.html" target="_self">GetAllPostOfUserDto</a>)</code>
+                    <code>getAllPostsOfUser(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -558,92 +594,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;private/all&#x27;)<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Get all public and private posts of user (user)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Post(&#x27;private/all&#x27;)<br />@ApiBearerAuth()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Get all public and private posts of user&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="70"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:70</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>dto</td>
-                                    <td>
-                                                <code><a href="../classes/GetAllPostOfUserDto.html" target="_self" >GetAllPostOfUserDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAllPublicPosts"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>getAllPublicPosts</b></span>
-                        <a href="#getAllPublicPosts"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getAllPublicPosts(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;:userId/all&#x27;)<br />@Public()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Get all public posts of user by user-id (all)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:113</a></div>
                 </td>
             </tr>
 
@@ -681,7 +639,85 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllPublicPosts"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getAllPublicPosts</b></span>
+                        <a href="#getAllPublicPosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAllPublicPosts(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;:userId/all&#x27;)<br />@Public()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Get all public posts of user by user-id&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="126"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:126</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise | null</code>
 
                     </div>
                     <div class="io-description">
@@ -714,14 +750,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:postId&#x27;)<br />@Public()<br />@ApiOperation({summary: &#x27;Get one post of user (all)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Get(&#x27;:postId&#x27;)<br />@Public()<br />@ApiOperation({summary: &#x27;Get one post of user&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:138</a></div>
                 </td>
             </tr>
 
@@ -759,7 +795,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IGetPostOfUser&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -792,14 +828,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;reaction&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;React to post of user (user)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Post(&#x27;reaction&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;React to post of user&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="173"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:173</a></div>
                 </td>
             </tr>
 
@@ -837,7 +873,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IUpdateReaction&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -870,14 +906,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;comments/update/text&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update a comment in post (user)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Put(&#x27;comments/update/text&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update a comment in post&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="152"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:152</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="209"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:209</a></div>
                 </td>
             </tr>
 
@@ -915,7 +951,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IUpdateComment&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -948,14 +984,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;update&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update one post of user (all)&#x27;})<br />@ApiOkResponse({description: &#x27;Success&#x27;})<br /></code>
+                    <code>@Patch(&#x27;update&#x27;)<br />@ApiBearerAuth()<br />@ApiOperation({summary: &#x27;Update one post of user&#x27;})<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:150</a></div>
                 </td>
             </tr>
 
@@ -993,7 +1029,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IUpdatePost&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -1021,35 +1057,75 @@
   Put,
 } from &#x27;@nestjs/common&#x27;;
 import { PostsService } from &#x27;./posts.service&#x27;;
-import { Public } from &#x27;../auth/decorators&#x27;;
+import { GetCurrentUserId, Public } from &#x27;../auth/decorators&#x27;;
 import {
   CreatePostDto,
   DeleteOnePost,
   UpdatePostDto,
   ReactionsPost,
-  GetAllPostOfUserDto,
-} from &#x27;./dto&#x27;;
+} from &#x27;./dto/post/request&#x27;;
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiPayloadTooLargeResponse,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
+  ApiUnauthorizedResponse,
+  ApiUnsupportedMediaTypeResponse,
 } from &#x27;@nestjs/swagger&#x27;;
 import {
   CreateCommentDto,
   DeleteCommentDto,
   UpdateCommentTextDto,
-} from &#x27;./dto/comment&#x27;;
+} from &#x27;./dto/comment/request&#x27;;
+import {
+  ICreatePost,
+  IGetPostOfUser,
+  IGetPublicPost,
+  IUpdatePost,
+  IUpdateReaction,
+} from &#x27;./dto/post/response&#x27;;
+import {
+  ICreateComment,
+  IGetComment,
+  IUpdateComment,
+} from &#x27;./dto/comment/response&#x27;;
+import {
+  STATUS_MESSAGE,
+  SYSTEM_ERROR,
+} from &#x27;src/core/constants/status-message&#x27;;
 
 @ApiTags(&#x27;Posts&#x27;)
-@ApiForbiddenResponse({ description: &#x27;Forbidden&#x27; })
-@ApiNotFoundResponse({ description: &#x27;Not found&#x27; })
+@ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
+@ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
+@ApiNotFoundResponse({
+  description: SYSTEM_ERROR.NOT_FOUND,
+  type: Error,
+})
+@ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: &#x27;Provided inputs are not in correct form.&#x27;,
+  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
+})
+@ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
+@ApiConflictResponse({
+  description: SYSTEM_ERROR.CONFLICT,
+})
+@ApiPayloadTooLargeResponse({ description: SYSTEM_ERROR.PAYLOAD_TOO_LARGE })
+@ApiUnsupportedMediaTypeResponse({
+  description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
+})
+@ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
+@ApiInternalServerErrorResponse({
+  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
 @Controller(&#x27;posts&#x27;)
 export class PostsController {
@@ -1058,117 +1134,136 @@ export class PostsController {
   @Post()
   @ApiBearerAuth()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: &#x27;Get all posts of user by user-id (all)&#x27; })
+  @ApiOperation({ summary: &#x27;Get all posts of user by user-id&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
   @ApiCreatedResponse({ description: &#x27;Create new post successfuly&#x27; })
-  async createPost(@Body() dto: CreatePostDto) {
-    return this.postsService.createPost(dto);
+  async createPost(
+    @GetCurrentUserId() userId: string,
+    @Body() dto: CreatePostDto,
+  ): Promise&lt;ICreatePost&gt; {
+    return this.postsService.createPost(userId, dto);
   }
 
   @Post(&#x27;private/all&#x27;)
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: &#x27;Get all public and private posts of user (user)&#x27;,
+    summary: &#x27;Get all public and private posts of user&#x27;,
   })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async getAllPostsOfUser(@Body() dto: GetAllPostOfUserDto) {
-    return this.postsService.getAllPostsOfUser(dto);
+  async getAllPostsOfUser(
+    @GetCurrentUserId() userId: string,
+  ): Promise&lt;IGetPostOfUser[]&gt; | null {
+    return this.postsService.getAllPostsOfUser(userId);
   }
 
   @Get(&#x27;:userId/all&#x27;)
   @Public()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: &#x27;Get all public posts of user by user-id (all)&#x27; })
+  @ApiOperation({ summary: &#x27;Get all public posts of user by user-id&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async getAllPublicPosts(@Param(&#x27;userId&#x27;) userId: string) {
+  async getAllPublicPosts(
+    @Param(&#x27;userId&#x27;, new ParseUUIDPipe()) userId: string,
+  ): Promise&lt;IGetPublicPost[]&gt; | null {
     return this.postsService.getAllPublicPosts(userId);
   }
 
   @Get(&#x27;:postId&#x27;)
   @Public()
-  @ApiOperation({ summary: &#x27;Get one post of user (all)&#x27; })
+  @ApiOperation({ summary: &#x27;Get one post of user&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async getOnePostById(@Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string) {
+  async getOnePostById(
+    @Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string,
+  ): Promise&lt;IGetPostOfUser&gt; {
     return this.postsService.getOnePostById(postId);
   }
 
   @Patch(&#x27;update&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update one post of user (all)&#x27; })
+  @ApiOperation({ summary: &#x27;Update one post of user&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async updatePost(@Body() dto: UpdatePostDto) {
+  async updatePost(@Body() dto: UpdatePostDto): Promise&lt;IUpdatePost&gt; {
     return this.postsService.updatePost(dto);
   }
 
   @Delete(&#x27;delete&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Delete one post of user (all)&#x27; })
+  @ApiOperation({ summary: &#x27;Delete one post of user&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async deletePost(@Body() dto: DeleteOnePost) {
-    return this.postsService.deletePost(dto);
+  async deletePost(
+    @GetCurrentUserId() userId: string,
+    @Body() dto: DeleteOnePost,
+  ): Promise&lt;string&gt; {
+    return this.postsService.deletePost(userId, dto);
   }
 
   @Post(&#x27;reaction&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;React to post of user (user)&#x27; })
+  @ApiOperation({ summary: &#x27;React to post of user&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async reactionPost(@Body() dto: ReactionsPost) {
+  async reactionPost(@Body() dto: ReactionsPost): Promise&lt;IUpdateReaction&gt; {
     return this.postsService.reactionPost(dto);
   }
 
   @Public()
   @Get(&#x27;:postId/comments&#x27;)
-  @ApiOperation({ summary: &#x27;Get all comments of the post (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Get all comments of the post&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async getAllComments(@Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string) {
+  async getAllComments(
+    @Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string,
+  ): Promise&lt;IGetComment&gt; {
     console.log(postId);
     return this.postsService.getAllComments(postId);
   }
 
   @Post(&#x27;comments&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Add a new comment to post of user (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Add a new comment to post of user&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async addComment(@Body() dto: CreateCommentDto) {
-    return this.postsService.addComment(dto);
+  async addComment(
+    @GetCurrentUserId() userId: string,
+    @Body() dto: CreateCommentDto,
+  ): Promise&lt;ICreateComment&gt; {
+    return this.postsService.addComment(userId, dto);
   }
 
   @Put(&#x27;comments/update/text&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update a comment in post (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Update a comment in post&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async updateComment(@Body() dto: UpdateCommentTextDto) {
+  async updateComment(
+    @Body() dto: UpdateCommentTextDto,
+  ): Promise&lt;IUpdateComment&gt; {
     return this.postsService.updateComment(dto);
   }
 
   @Delete(&#x27;comments&#x27;)
   @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Delete a comment in post (user)&#x27; })
+  @ApiOperation({ summary: &#x27;Delete a comment in post&#x27; })
   @ApiOkResponse({
-    description: &#x27;Success&#x27;,
+    description: STATUS_MESSAGE.SUCCESS,
   })
-  async deleteComment(@Body() dto: DeleteCommentDto) {
+  async deleteComment(@Body() dto: DeleteCommentDto): Promise&lt;string&gt; {
     return this.postsService.deleteComment(dto);
   }
 }

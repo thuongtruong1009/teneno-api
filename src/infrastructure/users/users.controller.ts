@@ -40,24 +40,30 @@ import {
   IUpdateAvatar,
   IUpdateCover,
 } from './dto/response';
+import {
+  STATUS_MESSAGE,
+  SYSTEM_ERROR,
+} from 'src/core/constants/status-message';
 
 @ApiTags('Users')
-@ApiUnauthorizedResponse({ description: 'Unauthorized' })
-@ApiForbiddenResponse({ description: 'Forbidden' })
+@ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
+@ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: 'Not Found.',
+  description: SYSTEM_ERROR.NOT_FOUND,
   type: Error,
 })
-@ApiMethodNotAllowedResponse({ description: 'Method Not Allowed.' })
+@ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: 'Provided fields are not in correct form.',
+  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
-@ApiRequestTimeoutResponse({ description: 'Request Timeout.' })
+@ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: 'Conflict existed.',
+  description: SYSTEM_ERROR.CONFLICT,
 })
-@ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
-@ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+@ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
+@ApiInternalServerErrorResponse({
+  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+})
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {
@@ -69,7 +75,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Get public user by user-id or username (all)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getPublicUserByIdOrUsername(
     @Param('userIdOrUsername') userIdOrUsername: string,
@@ -82,7 +88,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Find user account by email' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getUserByEmail(
     @Param('email') email: string,
@@ -96,7 +102,7 @@ export class UsersController {
     summary: 'Get user profile by user-id (all)',
   })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   async getUserProfile(
     @GetCurrentUserId() userId: string,
   ): Promise<IGetUserProfile> {
@@ -107,7 +113,7 @@ export class UsersController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update user profile by user id (user)' })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   async updateUsersProfile(
     @GetCurrentUserId() userId: string,
     @Body() dto: UpdateUserProfileDto,
@@ -120,7 +126,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Update user avatar image by user id (user)' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async updateUsersAvatar(
     @GetCurrentUserId() userId: string,
@@ -134,7 +140,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Update user cover image by user id' })
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async updateUsersCover(
     @GetCurrentUserId() userId: string,
@@ -147,7 +153,7 @@ export class UsersController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete user profile by email & password' })
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Success' })
+  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
   async deleteUser(
     @GetCurrentUserId() userId: string,
     @Body() dto: LoginDto,

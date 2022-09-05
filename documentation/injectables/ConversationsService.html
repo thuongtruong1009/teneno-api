@@ -133,7 +133,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -198,8 +198,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:20</a></div>
                 </td>
             </tr>
 
@@ -269,8 +269,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:104</a></div>
                 </td>
             </tr>
 
@@ -352,8 +352,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="135"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:135</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:136</a></div>
                 </td>
             </tr>
 
@@ -435,8 +435,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -506,8 +506,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:63</a></div>
                 </td>
             </tr>
 
@@ -587,8 +587,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:89</a></div>
                 </td>
             </tr>
 
@@ -670,8 +670,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="120"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:120</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:121</a></div>
                 </td>
             </tr>
 
@@ -753,8 +753,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="168"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:168</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:169</a></div>
                 </td>
             </tr>
 
@@ -833,6 +833,7 @@ import {
   UpdateRolesConversationDto,
 } from &#x27;./dto&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
+import { CONVERSATION_ERROR } from &#x27;src/core/constants/status-message&#x27;;
 
 @Injectable()
 export class ConversationsService {
@@ -972,7 +973,7 @@ export class ConversationsService {
     });
 
     if (list.length &#x3D;&#x3D;&#x3D; 0) {
-      return &#x27;You not creator of this conversation&#x27;;
+      return CONVERSATION_ERROR.NOT_CREATOR;
     }
     const updated &#x3D; list[0][&#x27;admins&#x27;].filter((admin) &#x3D;&gt; admin !&#x3D;&#x3D; dto.userId);
 
@@ -1004,7 +1005,7 @@ export class ConversationsService {
       },
     });
     if (list.length &#x3D;&#x3D;&#x3D; 0) {
-      return &#x27;You not creator of this conversation&#x27;;
+      return CONVERSATION_ERROR.NOT_CREATOR;
     }
 
     const updated &#x3D; await this.prismaService.conversation.update({

@@ -11,15 +11,24 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiInternalServerErrorResponse,
+  ApiMethodNotAllowedResponse,
   ApiNotAcceptableResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
-  ApiResponse,
+  ApiRequestTimeoutResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import {
+  STATUS_MESSAGE,
+  SYSTEM_ERROR,
+} from 'src/core/constants/status-message';
 import { ConversationsService } from './conversations.service';
 import {
   CreateConversationDto,
@@ -35,17 +44,28 @@ import { ConversationEntity } from './entities';
 
 @ApiTags('Conversations')
 @ApiBearerAuth()
-@ApiForbiddenResponse({ description: 'Forbidden.' })
+@ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
+@ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: 'Not Found.',
+  description: SYSTEM_ERROR.NOT_FOUND,
+  type: Error,
 })
+@ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: 'Provided inputs are not in correct form.',
+  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
+})
+@ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
+@ApiConflictResponse({
+  description: SYSTEM_ERROR.CONFLICT,
+})
+@ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
+@ApiInternalServerErrorResponse({
+  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
 @Controller('conversations')
 // https://www.youtube.com/watch?v=LMjj1_EK4y8&ab_channel=Prisma
 export class ConversationsController {
-  constructor(private conversationsService: ConversationsService) {
+  constructor(private readonly conversationsService: ConversationsService) {
     this.conversationsService = conversationsService;
   }
 
@@ -53,7 +73,7 @@ export class ConversationsController {
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create a new conversation (user)' })
   @ApiOkResponse({
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   @ApiCreatedResponse({
     type: ConversationEntity,
@@ -69,7 +89,7 @@ export class ConversationsController {
   @ApiOkResponse({
     type: ConversationEntity,
     isArray: true,
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getAllConversations(@Body() dto: GetAllConversationDto) {
     return this.conversationsService.getAllConversations(dto);
@@ -82,7 +102,7 @@ export class ConversationsController {
   })
   @ApiOkResponse({
     type: ConversationEntity,
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getConversationById(
     @Param('id') id: string,
@@ -97,7 +117,7 @@ export class ConversationsController {
     summary: 'Update one conversation information of current user (user)',
   })
   @ApiOkResponse({
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   updateConversationById(
     @Param('id') id: string,
@@ -112,7 +132,7 @@ export class ConversationsController {
     summary: 'Delete one conversation by creator-conversation (user)',
   })
   @ApiOkResponse({
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async deleteConversationById(
     @Param('id') id: string,
@@ -127,7 +147,7 @@ export class ConversationsController {
     summary: 'Update members list of current conversation (user)',
   })
   @ApiOkResponse({
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async updateMembersConversation(
     @Param('conversationId') conversationId: string,
@@ -146,7 +166,7 @@ export class ConversationsController {
       'Delete one admin of current conversation by creator-conversation (user)',
   })
   @ApiOkResponse({
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async deleteOneAdminConversation(
     @Param('conversationId') conversationId: string,
@@ -165,7 +185,7 @@ export class ConversationsController {
       'Change role of any member of current conversation by creator-conversation (user)',
   })
   @ApiOkResponse({
-    description: 'Success.',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async updateRolesConversation(
     @Param('conversationId') conversationId: string,

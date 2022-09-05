@@ -28,6 +28,11 @@ import {
   IGetComment,
   IUpdateComment,
 } from './dto/comment/response';
+import {
+  POST_ERROR,
+  RESPONSES_MESSAGE,
+  USER_ERROR,
+} from 'src/core/constants/status-message';
 
 @Injectable()
 export class PostsService {
@@ -99,10 +104,10 @@ export class PostsService {
       },
     });
     if (!list) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException(USER_ERROR.NOT_FOUND);
     }
     if (list.length === 0) {
-      throw new NotFoundException('User not have post!');
+      throw new NotFoundException(POST_ERROR.EMPTY);
     }
     return await this.prismaService.post.findMany({
       where: {
@@ -143,11 +148,11 @@ export class PostsService {
     const list = await this.getOnePostById(dto.postId);
 
     if (!list) {
-      throw new NotFoundException('Post not found');
+      throw new NotFoundException(POST_ERROR.NOT_FOUND);
     }
 
     if (list.authorId !== dto.authorId) {
-      throw new ForbiddenException('You are not author of this post');
+      throw new ForbiddenException(POST_ERROR.NOT_AUTHOR);
     }
 
     return await this.prismaService.post.update({
@@ -181,11 +186,11 @@ export class PostsService {
     });
 
     if (!identify) {
-      throw new NotFoundException('Post not found');
+      throw new NotFoundException(POST_ERROR.NOT_FOUND);
     }
 
     if (identify.authorId !== userId) {
-      throw new ForbiddenException('You are not author of this post');
+      throw new ForbiddenException(POST_ERROR.NOT_AUTHOR);
     }
 
     await this.prismaService.post.delete({
@@ -246,7 +251,7 @@ export class PostsService {
     });
 
     if (!checkPost) {
-      throw new NotFoundException('Post not found');
+      throw new NotFoundException(POST_ERROR.NOT_FOUND);
     }
     return this.prismaService.comment.create({
       data: {
@@ -278,6 +283,6 @@ export class PostsService {
         id: dto.id,
       },
     });
-    return 'This comment has been deleted!';
+    return RESPONSES_MESSAGE.DELETE_COMMENT;
   }
 }

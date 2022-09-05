@@ -247,7 +247,7 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsArray()<br />@IsNotEmpty()<br />
+                            @IsJSON()<br />@IsNotEmpty()<br />
                         </code>
                     </td>
                 </tr>
@@ -371,7 +371,7 @@ export class CommentEntity {
   @IsNotEmpty()
   reactions: number[];
 
-  @IsArray()
+  @IsJSON()
   @IsNotEmpty()
   replies: any[];
 }

@@ -21,6 +21,12 @@ import {
   IUpdateCover,
 } from './dto/response';
 import { PaginationDto } from 'src/core/common/pagination.dto';
+import {
+  AUTH_ERROR,
+  RESPONSES_MESSAGE,
+  SYSTEM_ERROR,
+  USER_ERROR,
+} from 'src/core/constants/status-message';
 
 @Injectable()
 export class UsersService {
@@ -66,7 +72,8 @@ export class UsersService {
         createdAt: true,
       },
     });
-    if (identify.length === 0) throw new NotFoundException('User not found');
+    if (identify.length === 0)
+      throw new NotFoundException(USER_ERROR.NOT_FOUND);
     return identify[0];
   }
 
@@ -81,7 +88,7 @@ export class UsersService {
       },
     });
 
-    if (!identify) throw new NotFoundException('User not found');
+    if (!identify) throw new NotFoundException(USER_ERROR.NOT_FOUND);
     return identify;
   }
 
@@ -100,7 +107,7 @@ export class UsersService {
       },
     });
 
-    if (!profile) throw new NotFoundException('User not found');
+    if (!profile) throw new NotFoundException(USER_ERROR.NOT_FOUND);
     return profile;
   }
 
@@ -193,7 +200,7 @@ export class UsersService {
       },
     });
 
-    if (!user) throw new ForbiddenException('Access denied');
+    if (!user) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const matchEmail: number = dto.password.localeCompare(user.password);
     const matchPassword: boolean = await comparePassword(
@@ -202,16 +209,17 @@ export class UsersService {
     );
 
     if (matchEmail === 0 || !matchPassword)
-      throw new ForbiddenException('Access denied');
+      throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-    if (!matchPassword) throw new NotAcceptableException('Password not match!');
+    if (!matchPassword)
+      throw new NotAcceptableException(AUTH_ERROR.PASSWORD_NOT_MATCH);
 
     await this.prismaService.userProfile.delete({
       where: {
         userId: userId,
       },
     });
-    return 'User deleted';
+    return RESPONSES_MESSAGE.DELETE_USER;
   }
 
   async deleteUserById(userId: string): Promise<string> {
@@ -221,13 +229,13 @@ export class UsersService {
       },
     });
 
-    if (!user) throw new NotFoundException('User not found!');
+    if (!user) throw new NotFoundException(USER_ERROR.NOT_FOUND);
 
     await this.prismaService.user.delete({
       where: {
         id: userId,
       },
     });
-    return 'User deleted';
+    return RESPONSES_MESSAGE.DELETE_USER;
   }
 }

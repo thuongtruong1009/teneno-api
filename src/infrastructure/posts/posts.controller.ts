@@ -54,28 +54,34 @@ import {
   IGetComment,
   IUpdateComment,
 } from './dto/comment/response';
+import {
+  STATUS_MESSAGE,
+  SYSTEM_ERROR,
+} from 'src/core/constants/status-message';
 
 @ApiTags('Posts')
-@ApiUnauthorizedResponse({ description: 'Unauthorized' })
-@ApiForbiddenResponse({ description: 'Forbidden' })
+@ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
+@ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: 'Not Found.',
+  description: SYSTEM_ERROR.NOT_FOUND,
   type: Error,
 })
-@ApiMethodNotAllowedResponse({ description: 'Method Not Allowed.' })
+@ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: 'Provided inputs are not in correct form.',
+  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
-@ApiRequestTimeoutResponse({ description: 'Request Timeout.' })
+@ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: 'Conflict existed.',
+  description: SYSTEM_ERROR.CONFLICT,
 })
-@ApiPayloadTooLargeResponse({ description: 'Payload Too Large.' })
+@ApiPayloadTooLargeResponse({ description: SYSTEM_ERROR.PAYLOAD_TOO_LARGE })
 @ApiUnsupportedMediaTypeResponse({
-  description: 'Unsupported Media Type.',
+  description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
 })
-@ApiTooManyRequestsResponse({ description: 'Too Many Requests.' })
-@ApiInternalServerErrorResponse({ description: 'Internal Server Error.' })
+@ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
+@ApiInternalServerErrorResponse({
+  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+})
 @Controller('posts')
 export class PostsController {
   constructor(private postsService: PostsService) {}
@@ -85,7 +91,7 @@ export class PostsController {
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Get all posts of user by user-id' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   @ApiCreatedResponse({ description: 'Create new post successfuly' })
   async createPost(
@@ -102,7 +108,7 @@ export class PostsController {
     summary: 'Get all public and private posts of user',
   })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getAllPostsOfUser(
     @GetCurrentUserId() userId: string,
@@ -115,7 +121,7 @@ export class PostsController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get all public posts of user by user-id' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getAllPublicPosts(
     @Param('userId', new ParseUUIDPipe()) userId: string,
@@ -127,7 +133,7 @@ export class PostsController {
   @Public()
   @ApiOperation({ summary: 'Get one post of user' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getOnePostById(
     @Param('postId', new ParseUUIDPipe()) postId: string,
@@ -139,7 +145,7 @@ export class PostsController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update one post of user' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async updatePost(@Body() dto: UpdatePostDto): Promise<IUpdatePost> {
     return this.postsService.updatePost(dto);
@@ -149,7 +155,7 @@ export class PostsController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete one post of user' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async deletePost(
     @GetCurrentUserId() userId: string,
@@ -162,7 +168,7 @@ export class PostsController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'React to post of user' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async reactionPost(@Body() dto: ReactionsPost): Promise<IUpdateReaction> {
     return this.postsService.reactionPost(dto);
@@ -172,7 +178,7 @@ export class PostsController {
   @Get(':postId/comments')
   @ApiOperation({ summary: 'Get all comments of the post' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async getAllComments(
     @Param('postId', new ParseUUIDPipe()) postId: string,
@@ -185,7 +191,7 @@ export class PostsController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Add a new comment to post of user' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async addComment(
     @GetCurrentUserId() userId: string,
@@ -198,7 +204,7 @@ export class PostsController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update a comment in post' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async updateComment(
     @Body() dto: UpdateCommentTextDto,
@@ -210,7 +216,7 @@ export class PostsController {
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete a comment in post' })
   @ApiOkResponse({
-    description: 'Success',
+    description: STATUS_MESSAGE.SUCCESS,
   })
   async deleteComment(@Body() dto: DeleteCommentDto): Promise<string> {
     return this.postsService.deleteComment(dto);

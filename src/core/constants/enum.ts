@@ -1,38 +1,38 @@
-export enum GenderEnum {
+export enum EGender {
   MALE = 'male',
   FEMALE = 'femail',
   OTHER = 'other',
 }
-export enum UserRolesEnum {
+export enum EUserRoles {
   ADMIN = 'admin',
   USER = 'user',
 }
-export enum OtpStatusEnum {
+export enum EOtpStatus {
   PENDING = 'pending',
   APPROVED = 'approved',
   CANCELED = 'canceled',
 }
-export enum NotificationEnum {
+export enum ENotification {
   LIKE = 'like',
   MESSAGE = 'message',
   MATCH = 'match',
 }
-export enum SocialEnum {
+export enum ESocial {
   FACEBOOK = 'facebook',
   GOOGLE = 'google',
 }
-export enum AlcoholEnum {
+export enum EAlcohol {
   SOMETIMES = 'sometime',
   USUALLY = 'usually',
   NEVER = 'never',
 }
-export enum ReligionEnum {
+export enum EReligion {
   BUDDHISM = 'buddhism',
   GOD = 'god',
   OTHER = 'other',
   NON_RELIGIONS = 'non-religion',
 }
-export enum EducationEnum {
+export enum EEducation {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   HIGH_SCHOOL = 'high_school',
@@ -41,13 +41,13 @@ export enum EducationEnum {
   OTHER = 'other',
 }
 
-export enum MaritalStatusEnum {
+export enum EMaritalStatus {
   SINGLE = 'single',
   MARRIED = 'married',
   DIVORCED = 'divorced',
 }
 
-export enum UpdateUserProfileEnum {
+export enum EUpdateUserProfile {
   OTHER = 'other',
   GENDER = 'gender',
   DESCRIPTION = 'description',
@@ -59,7 +59,7 @@ export enum UpdateUserProfileEnum {
   EDUCATION = 'education',
   PURPOSEID = 'purposeId',
 }
-export enum Order {
+export enum EOrder {
   ASC = 'ASC',
   DESC = 'DESC',
 }

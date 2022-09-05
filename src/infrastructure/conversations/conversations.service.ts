@@ -11,6 +11,7 @@ import {
   UpdateRolesConversationDto,
 } from './dto';
 import { v4 as uuid } from 'uuid';
+import { CONVERSATION_ERROR } from 'src/core/constants/status-message';
 
 @Injectable()
 export class ConversationsService {
@@ -150,7 +151,7 @@ export class ConversationsService {
     });
 
     if (list.length === 0) {
-      return 'You not creator of this conversation';
+      return CONVERSATION_ERROR.NOT_CREATOR;
     }
     const updated = list[0]['admins'].filter((admin) => admin !== dto.userId);
 
@@ -182,7 +183,7 @@ export class ConversationsService {
       },
     });
     if (list.length === 0) {
-      return 'You not creator of this conversation';
+      return CONVERSATION_ERROR.NOT_CREATOR;
     }
 
     const updated = await this.prismaService.conversation.update({

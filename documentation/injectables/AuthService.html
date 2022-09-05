@@ -130,7 +130,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/infrastructure/auth/auth.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/infrastructure/auth/auth.service.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -219,8 +219,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -302,8 +302,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:106</a></div>
                 </td>
             </tr>
 
@@ -373,8 +373,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:118</a></div>
                 </td>
             </tr>
 
@@ -456,8 +456,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:90</a></div>
                 </td>
             </tr>
 
@@ -527,8 +527,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -598,8 +598,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:138</a></div>
                 </td>
             </tr>
 
@@ -669,8 +669,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:54</a></div>
                 </td>
             </tr>
 
@@ -748,6 +748,11 @@ import { JwtService } from &#x27;@nestjs/jwt&#x27;;
 import { ConfigService } from &#x27;@nestjs/config&#x27;;
 import { comparePassword, hashPassword } from &#x27;src/core/helpers/hash&#x27;;
 import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto/request&#x27;;
+import {
+  AUTH_ERROR,
+  SYSTEM_ERROR,
+  USER_ERROR,
+} from &#x27;src/core/constants/status-message&#x27;;
 
 @Injectable()
 export class AuthService {
@@ -805,8 +810,7 @@ export class AuthService {
       },
     });
 
-    if (userExist.length &gt; 0)
-      throw new ConflictException(&#x27;User already exists&#x27;);
+    if (userExist.length &gt; 0) throw new ConflictException(USER_ERROR.DUPLICATE);
 
     const newUser &#x3D; await this.prismaService.user.create({
       data: {
@@ -827,10 +831,10 @@ export class AuthService {
         email: dto.email,
       },
     });
-    if (!user) throw new ForbiddenException(&#x27;Access denied&#x27;);
+    if (!user) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const passwordMatches &#x3D; await comparePassword(dto.password, user.password);
-    if (!passwordMatches) throw new ForbiddenException(&#x27;Access denied&#x27;);
+    if (!passwordMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const tokens &#x3D; await this.getTokens(user.id, user.email);
     await this.updateRtHash(user.id, tokens.refreshToken);
@@ -856,13 +860,13 @@ export class AuthService {
       },
     });
     if (!user || !user.hashedRefreshToken)
-      throw new ForbiddenException(&#x27;Access denied&#x27;);
+      throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const hashMatches &#x3D; await comparePassword(
       refreshToken,
       user.hashedRefreshToken,
     );
-    if (!hashMatches) throw new ForbiddenException(&#x27;Access denied&#x27;);
+    if (!hashMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const tokens &#x3D; await this.getTokens(user.id, user.email);
     await this.updateRtHash(user.id, tokens.refreshToken);
@@ -881,12 +885,10 @@ export class AuthService {
       user.password,
     );
 
-    if (!passwordMatches) throw new ForbiddenException(&#x27;Access denied&#x27;);
+    if (!passwordMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     if (dto.newPassword &#x3D;&#x3D;&#x3D; dto.oldPassword)
-      throw new ForbiddenException(
-        &#x27;New password must be different from old password&#x27;,
-      );
+      throw new ForbiddenException(AUTH_ERROR.SAME_PASSWORD);
 
     if (passwordMatches) {
       await this.prismaService.user.update({

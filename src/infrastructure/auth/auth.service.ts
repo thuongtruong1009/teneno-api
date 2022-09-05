@@ -10,6 +10,11 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { comparePassword, hashPassword } from 'src/core/helpers/hash';
 import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
+import {
+  AUTH_ERROR,
+  SYSTEM_ERROR,
+  USER_ERROR,
+} from 'src/core/constants/status-message';
 
 @Injectable()
 export class AuthService {
@@ -67,8 +72,7 @@ export class AuthService {
       },
     });
 
-    if (userExist.length > 0)
-      throw new ConflictException('User already exists');
+    if (userExist.length > 0) throw new ConflictException(USER_ERROR.DUPLICATE);
 
     const newUser = await this.prismaService.user.create({
       data: {
@@ -89,10 +93,10 @@ export class AuthService {
         email: dto.email,
       },
     });
-    if (!user) throw new ForbiddenException('Access denied');
+    if (!user) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const passwordMatches = await comparePassword(dto.password, user.password);
-    if (!passwordMatches) throw new ForbiddenException('Access denied');
+    if (!passwordMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const tokens = await this.getTokens(user.id, user.email);
     await this.updateRtHash(user.id, tokens.refreshToken);
@@ -118,13 +122,13 @@ export class AuthService {
       },
     });
     if (!user || !user.hashedRefreshToken)
-      throw new ForbiddenException('Access denied');
+      throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const hashMatches = await comparePassword(
       refreshToken,
       user.hashedRefreshToken,
     );
-    if (!hashMatches) throw new ForbiddenException('Access denied');
+    if (!hashMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const tokens = await this.getTokens(user.id, user.email);
     await this.updateRtHash(user.id, tokens.refreshToken);
@@ -143,12 +147,10 @@ export class AuthService {
       user.password,
     );
 
-    if (!passwordMatches) throw new ForbiddenException('Access denied');
+    if (!passwordMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     if (dto.newPassword === dto.oldPassword)
-      throw new ForbiddenException(
-        'New password must be different from old password',
-      );
+      throw new ForbiddenException(AUTH_ERROR.SAME_PASSWORD);
 
     if (passwordMatches) {
       await this.prismaService.user.update({

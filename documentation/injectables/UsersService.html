@@ -138,7 +138,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/infrastructure/users/users.service.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/infrastructure/users/users.service.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -203,8 +203,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="185"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:185</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:192</a></div>
                 </td>
             </tr>
 
@@ -286,8 +286,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="217"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:217</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="225"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:225</a></div>
                 </td>
             </tr>
 
@@ -357,8 +357,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -428,8 +428,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:60</a></div>
                 </td>
             </tr>
 
@@ -499,8 +499,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:80</a></div>
                 </td>
             </tr>
 
@@ -570,8 +570,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:95</a></div>
                 </td>
             </tr>
 
@@ -641,8 +641,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="127"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:127</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:134</a></div>
                 </td>
             </tr>
 
@@ -724,8 +724,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="156"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:156</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:163</a></div>
                 </td>
             </tr>
 
@@ -807,8 +807,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:114</a></div>
                 </td>
             </tr>
 
@@ -897,6 +897,12 @@ import {
   IUpdateCover,
 } from &#x27;./dto/response&#x27;;
 import { PaginationDto } from &#x27;src/core/common/pagination.dto&#x27;;
+import {
+  AUTH_ERROR,
+  RESPONSES_MESSAGE,
+  SYSTEM_ERROR,
+  USER_ERROR,
+} from &#x27;src/core/constants/status-message&#x27;;
 
 @Injectable()
 export class UsersService {
@@ -942,7 +948,8 @@ export class UsersService {
         createdAt: true,
       },
     });
-    if (identify.length &#x3D;&#x3D;&#x3D; 0) throw new NotFoundException(&#x27;User not found&#x27;);
+    if (identify.length &#x3D;&#x3D;&#x3D; 0)
+      throw new NotFoundException(USER_ERROR.NOT_FOUND);
     return identify[0];
   }
 
@@ -957,7 +964,7 @@ export class UsersService {
       },
     });
 
-    if (!identify) throw new NotFoundException(&#x27;User not found&#x27;);
+    if (!identify) throw new NotFoundException(USER_ERROR.NOT_FOUND);
     return identify;
   }
 
@@ -976,7 +983,7 @@ export class UsersService {
       },
     });
 
-    if (!profile) throw new NotFoundException(&#x27;User not found&#x27;);
+    if (!profile) throw new NotFoundException(USER_ERROR.NOT_FOUND);
     return profile;
   }
 
@@ -1069,7 +1076,7 @@ export class UsersService {
       },
     });
 
-    if (!user) throw new ForbiddenException(&#x27;Access denied&#x27;);
+    if (!user) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
     const matchEmail: number &#x3D; dto.password.localeCompare(user.password);
     const matchPassword: boolean &#x3D; await comparePassword(
@@ -1078,16 +1085,17 @@ export class UsersService {
     );
 
     if (matchEmail &#x3D;&#x3D;&#x3D; 0 || !matchPassword)
-      throw new ForbiddenException(&#x27;Access denied&#x27;);
+      throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-    if (!matchPassword) throw new NotAcceptableException(&#x27;Password not match!&#x27;);
+    if (!matchPassword)
+      throw new NotAcceptableException(AUTH_ERROR.PASSWORD_NOT_MATCH);
 
     await this.prismaService.userProfile.delete({
       where: {
         userId: userId,
       },
     });
-    return &#x27;User deleted&#x27;;
+    return RESPONSES_MESSAGE.DELETE_USER;
   }
 
   async deleteUserById(userId: string): Promise&lt;string&gt; {
@@ -1097,14 +1105,14 @@ export class UsersService {
       },
     });
 
-    if (!user) throw new NotFoundException(&#x27;User not found!&#x27;);
+    if (!user) throw new NotFoundException(USER_ERROR.NOT_FOUND);
 
     await this.prismaService.user.delete({
       where: {
         id: userId,
       },
     });
-    return &#x27;User deleted&#x27;;
+    return RESPONSES_MESSAGE.DELETE_USER;
   }
 }
 </code></pre>
