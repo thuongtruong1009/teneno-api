@@ -41,12 +41,19 @@ import {
   CreateCommentDto,
   DeleteCommentDto,
   UpdateCommentTextDto,
-} from './dto/comment';
+} from './dto/comment/request';
 import {
   ICreatePost,
-  IGetAllPostsOfUser,
-  IGetAllPublicPosts,
+  IGetPostOfUser,
+  IGetPublicPost,
+  IUpdatePost,
+  IUpdateReaction,
 } from './dto/post/response';
+import {
+  ICreateComment,
+  IGetComment,
+  IUpdateComment,
+} from './dto/comment/response';
 
 @ApiTags('Posts')
 @ApiUnauthorizedResponse({ description: 'Unauthorized' })
@@ -76,7 +83,7 @@ export class PostsController {
   @Post()
   @ApiBearerAuth()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Get all posts of user by user-id (all)' })
+  @ApiOperation({ summary: 'Get all posts of user by user-id' })
   @ApiOkResponse({
     description: 'Success',
   })
@@ -92,108 +99,120 @@ export class PostsController {
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Get all public and private posts of user (user)',
+    summary: 'Get all public and private posts of user',
   })
   @ApiOkResponse({
     description: 'Success',
   })
   async getAllPostsOfUser(
     @GetCurrentUserId() userId: string,
-  ): Promise<IGetAllPostsOfUser[]> | null {
+  ): Promise<IGetPostOfUser[]> | null {
     return this.postsService.getAllPostsOfUser(userId);
   }
 
   @Get(':userId/all')
   @Public()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Get all public posts of user by user-id (all)' })
+  @ApiOperation({ summary: 'Get all public posts of user by user-id' })
   @ApiOkResponse({
     description: 'Success',
   })
   async getAllPublicPosts(
     @Param('userId', new ParseUUIDPipe()) userId: string,
-  ): Promise<IGetAllPublicPosts[]> | null {
+  ): Promise<IGetPublicPost[]> | null {
     return this.postsService.getAllPublicPosts(userId);
   }
 
   @Get(':postId')
   @Public()
-  @ApiOperation({ summary: 'Get one post of user (all)' })
+  @ApiOperation({ summary: 'Get one post of user' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async getOnePostById(@Param('postId', new ParseUUIDPipe()) postId: string) {
+  async getOnePostById(
+    @Param('postId', new ParseUUIDPipe()) postId: string,
+  ): Promise<IGetPostOfUser> {
     return this.postsService.getOnePostById(postId);
   }
 
   @Patch('update')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update one post of user (all)' })
+  @ApiOperation({ summary: 'Update one post of user' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async updatePost(@Body() dto: UpdatePostDto) {
+  async updatePost(@Body() dto: UpdatePostDto): Promise<IUpdatePost> {
     return this.postsService.updatePost(dto);
   }
 
   @Delete('delete')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Delete one post of user (all)' })
+  @ApiOperation({ summary: 'Delete one post of user' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async deletePost(@Body() dto: DeleteOnePost) {
-    return this.postsService.deletePost(dto);
+  async deletePost(
+    @GetCurrentUserId() userId: string,
+    @Body() dto: DeleteOnePost,
+  ): Promise<string> {
+    return this.postsService.deletePost(userId, dto);
   }
 
   @Post('reaction')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'React to post of user (user)' })
+  @ApiOperation({ summary: 'React to post of user' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async reactionPost(@Body() dto: ReactionsPost) {
+  async reactionPost(@Body() dto: ReactionsPost): Promise<IUpdateReaction> {
     return this.postsService.reactionPost(dto);
   }
 
   @Public()
   @Get(':postId/comments')
-  @ApiOperation({ summary: 'Get all comments of the post (user)' })
+  @ApiOperation({ summary: 'Get all comments of the post' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async getAllComments(@Param('postId', new ParseUUIDPipe()) postId: string) {
+  async getAllComments(
+    @Param('postId', new ParseUUIDPipe()) postId: string,
+  ): Promise<IGetComment> {
     console.log(postId);
     return this.postsService.getAllComments(postId);
   }
 
   @Post('comments')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Add a new comment to post of user (user)' })
+  @ApiOperation({ summary: 'Add a new comment to post of user' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async addComment(@Body() dto: CreateCommentDto) {
-    return this.postsService.addComment(dto);
+  async addComment(
+    @GetCurrentUserId() userId: string,
+    @Body() dto: CreateCommentDto,
+  ): Promise<ICreateComment> {
+    return this.postsService.addComment(userId, dto);
   }
 
   @Put('comments/update/text')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update a comment in post (user)' })
+  @ApiOperation({ summary: 'Update a comment in post' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async updateComment(@Body() dto: UpdateCommentTextDto) {
+  async updateComment(
+    @Body() dto: UpdateCommentTextDto,
+  ): Promise<IUpdateComment> {
     return this.postsService.updateComment(dto);
   }
 
   @Delete('comments')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Delete a comment in post (user)' })
+  @ApiOperation({ summary: 'Delete a comment in post' })
   @ApiOkResponse({
     description: 'Success',
   })
-  async deleteComment(@Body() dto: DeleteCommentDto) {
+  async deleteComment(@Body() dto: DeleteCommentDto): Promise<string> {
     return this.postsService.deleteComment(dto);
   }
 }

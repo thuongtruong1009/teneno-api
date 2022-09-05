@@ -1,4 +1,10 @@
-import { IsArray, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class PostEntity {
   @IsString()
@@ -12,6 +18,10 @@ export class PostEntity {
   @IsArray()
   @IsNotEmpty()
   files: string[];
+
+  @IsBoolean()
+  @IsNotEmpty()
+  published: boolean;
 
   @IsString()
   @IsNotEmpty()

@@ -27,7 +27,7 @@ export class CommentEntity {
   @IsNotEmpty()
   reactions: number[];
 
-  @IsArray()
+  @IsJSON()
   @IsNotEmpty()
   replies: any[];
 }

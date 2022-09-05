@@ -1,6 +1,6 @@
 import { OmitType } from '@nestjs/swagger';
 
-export interface IGetAllPostsOfUser {
+export interface IGetPostOfUser {
   id: string;
   title: string;
   description: string;
@@ -8,6 +8,7 @@ export interface IGetAllPostsOfUser {
   published: boolean;
   authorId: string;
   createdAt: Date;
+  updateAt?: Date;
   reactions:
     | {
         id: string;
@@ -18,4 +19,4 @@ export interface IGetAllPostsOfUser {
     | null;
 }
 
-export type IGetAllPublicPosts = OmitType<IGetAllPostsOfUser, ['published']>;
+export type IGetPublicPost = OmitType<IGetPostOfUser, ['published']>;

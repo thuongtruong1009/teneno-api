@@ -15,12 +15,19 @@ import {
   CreateCommentDto,
   DeleteCommentDto,
   UpdateCommentTextDto,
-} from './dto/comment';
+} from './dto/comment/request';
 import {
   ICreatePost,
-  IGetAllPostsOfUser,
-  IGetAllPublicPosts,
+  IGetPostOfUser,
+  IGetPublicPost,
+  IUpdatePost,
+  IUpdateReaction,
 } from './dto/post/response';
+import {
+  ICreateComment,
+  IGetComment,
+  IUpdateComment,
+} from './dto/comment/response';
 
 @Injectable()
 export class PostsService {
@@ -60,9 +67,7 @@ export class PostsService {
     return post;
   }
 
-  async getAllPostsOfUser(
-    userId: string,
-  ): Promise<IGetAllPostsOfUser[]> | null {
+  async getAllPostsOfUser(userId: string): Promise<IGetPostOfUser[]> | null {
     return await this.prismaService.post.findMany({
       where: {
         authorId: userId,
@@ -80,9 +85,7 @@ export class PostsService {
     });
   }
 
-  async getAllPublicPosts(
-    userId: string,
-  ): Promise<IGetAllPublicPosts[]> | null {
+  async getAllPublicPosts(userId: string): Promise<IGetPublicPost[]> | null {
     const list = await this.prismaService.user.findMany({
       where: {
         id: userId,
@@ -118,23 +121,33 @@ export class PostsService {
     });
   }
 
-  async getOnePostById(postId: string) {
+  async getOnePostById(postId: string): Promise<IGetPostOfUser> {
     return await this.prismaService.post.findUnique({
       where: {
         id: postId,
       },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        published: true,
+        files: true,
+        authorId: true,
+        createdAt: true,
+        reactions: true,
+      },
     });
   }
 
-  async updatePost(dto: UpdatePostDto) {
+  async updatePost(dto: UpdatePostDto): Promise<IUpdatePost> {
     const list = await this.getOnePostById(dto.postId);
 
     if (!list) {
-      return new NotFoundException('Post not found');
+      throw new NotFoundException('Post not found');
     }
 
     if (list.authorId !== dto.authorId) {
-      return new ForbiddenException('You are not author of this post');
+      throw new ForbiddenException('You are not author of this post');
     }
 
     return await this.prismaService.post.update({
@@ -145,26 +158,34 @@ export class PostsService {
         title: dto.title,
         description: dto.description,
         files: dto.files,
+        published: dto.published,
+      },
+      select: {
+        title: true,
+        description: true,
+        published: true,
+        files: true,
+        updatedAt: true,
       },
     });
   }
 
-  async deletePost(dto: DeleteOnePost) {
-    const list = await this.prismaService.user.findUnique({
+  async deletePost(userId: string, dto: DeleteOnePost): Promise<string> {
+    const identify = await this.prismaService.post.findUnique({
       where: {
-        id: dto.authorId,
+        id: dto.postId,
       },
       select: {
-        writtenPosts: {
-          select: {
-            id: true,
-          },
-        },
+        authorId: true,
       },
     });
-    const identify = list.writtenPosts.find((post) => post.id === dto.postId);
+
     if (!identify) {
-      return new NotFoundException('Post not found');
+      throw new NotFoundException('Post not found');
+    }
+
+    if (identify.authorId !== userId) {
+      throw new ForbiddenException('You are not author of this post');
     }
 
     await this.prismaService.post.delete({
@@ -172,10 +193,10 @@ export class PostsService {
         id: dto.postId,
       },
     });
-    return '';
+    return 'This post has been deleted!';
   }
 
-  async reactionPost(dto: ReactionsPost) {
+  async reactionPost(dto: ReactionsPost): Promise<IUpdateReaction> {
     const checkExist = await this.prismaService.reaction.findMany({
       where: {
         postId: dto.postId,
@@ -184,20 +205,26 @@ export class PostsService {
     });
 
     if (checkExist.length > 0) {
-      return new BadRequestException('You already reacted to this post');
+      throw new BadRequestException('You already reacted to this post');
     }
-    return await this.prismaService.reaction.create({
+    await this.prismaService.reaction.create({
       data: {
         userId: dto.favouritorId,
         postId: dto.postId,
         type: dto.reactionType,
       },
     });
+    return await this.prismaService.post.findUnique({
+      where: {
+        id: dto.postId,
+      },
+      select: {
+        reactions: true,
+      },
+    });
   }
 
-  async getAllComments(postId: string) {
-    console.log(postId);
-
+  async getAllComments(postId: string): Promise<IGetComment> {
     return await this.prismaService.post.findUnique({
       where: {
         id: postId,
@@ -208,7 +235,10 @@ export class PostsService {
     });
   }
 
-  async addComment(dto: CreateCommentDto) {
+  async addComment(
+    userId: string,
+    dto: CreateCommentDto,
+  ): Promise<ICreateComment> {
     const checkPost = await this.prismaService.post.findUnique({
       where: {
         id: dto.postId,
@@ -216,18 +246,18 @@ export class PostsService {
     });
 
     if (!checkPost) {
-      return new NotFoundException('Post not found');
+      throw new NotFoundException('Post not found');
     }
     return this.prismaService.comment.create({
       data: {
         text: dto.text,
         postId: dto.postId,
-        authorId: dto.userId,
+        authorId: userId,
       },
     });
   }
 
-  async updateComment(dto: UpdateCommentTextDto) {
+  async updateComment(dto: UpdateCommentTextDto): Promise<IUpdateComment> {
     return await this.prismaService.comment.update({
       where: {
         id: dto.id,
@@ -235,15 +265,19 @@ export class PostsService {
       data: {
         text: dto.text,
       },
+      select: {
+        text: true,
+        updatedAt: true,
+      },
     });
   }
 
-  async deleteComment(dto: DeleteCommentDto) {
+  async deleteComment(dto: DeleteCommentDto): Promise<string> {
     await this.prismaService.comment.delete({
       where: {
         id: dto.id,
       },
     });
-    return '';
+    return 'This comment has been deleted!';
   }
 }

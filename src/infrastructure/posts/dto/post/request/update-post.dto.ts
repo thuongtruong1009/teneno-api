@@ -5,6 +5,7 @@ export class UpdatePostDto extends PickType(PostEntity, [
   'title',
   'description',
   'files',
+  'published',
   'authorId',
   'postId',
 ]) {}
