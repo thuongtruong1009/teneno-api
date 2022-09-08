@@ -1,6 +1,6 @@
 {
     "name": "teneno-api",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "description": "The official Teneno API application",
     "author": "Tran Nguyen Thuong Truong <thuongtruong1009@proton.me>",
     "homepage": "https://github.com/thuongtruong1009/teneno-api#readme",
@@ -35,7 +35,9 @@
         "typescript",
         "express",
         "docker",
-        "github"
+        "github",
+        "chat",
+        "socket"
     ],
     "scripts": {
         "prebuild": "rimraf dist",
@@ -46,7 +48,7 @@
         "start:dev": "nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
-        "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+        "lint": "eslint \"{src,apps,libs,test,client}/**/*.ts\" --fix",
         "tslint": "tslint --fix -c tslint.json 'lib/**/*{.ts,.tsx}'",
         "test": "jest",
         "test:watch": "jest --watch",
@@ -61,6 +63,9 @@
         "prisma:push": "npx prisma db push",
         "prisma:deploy": "npx prisma migrate deploy",
         "prisma:studio": "npx prisma studio",
+        "prisma:seed": "npx prisma db seed --preview-feature",
+        "prisma:reset": "npx prisma migrate reset",
+        "clear": "npm rm -rf node_modules && npm cache clean --force && npm install",
         "documentation": "npx @compodoc/compodoc -p tsconfig.json -s -n \"Teneno API documentation\" -r 5500 -w -o --hideGenerator --customFavicon \"/public/favicon.ico\" --theme \"postmark\""
     },
     "prisma": {
@@ -91,6 +96,7 @@
         "helmet": "^6.0.0",
         "husky": "^8.0.1",
         "passport": "^0.6.0",
+        "passport-google-oauth20": "^2.0.0",
         "passport-jwt": "^4.0.0",
         "prisma": "^4.2.1",
         "reflect-metadata": "^0.1.13",
@@ -112,6 +118,7 @@
         "@types/jest": "28.1.4",
         "@types/multer": "^1.4.7",
         "@types/node": "^16.0.0",
+        "@types/passport-google-oauth20": "^2.0.11",
         "@types/supertest": "^2.0.11",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",

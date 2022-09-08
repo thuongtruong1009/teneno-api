@@ -17,51 +17,53 @@ import { LoggerModule } from './core/logger/logger.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { AdminModule } from './infrastructure/admin/admin.module';
 import { RolesGuard } from './core/roles';
+import { OauthModule } from './infrastructure/oauth/oauth.module';
 
 @Module({
-  imports: [
-    InterceptorModule,
-    ConfigModule.forRoot({
-      isGlobal: true,
-      // envFilePath: ['.env'],
-      // envFilePath: `.env.${process.env.NODE_ENV} || .env`,
-    }),
-    LoggerModule.forRoot(),
-    ServeStaticModule.forRoot({
-      rootPath: `${__dirname}/../documentation`, // join(__dirname, '..', 'client'),
-      renderPath: '/',
-      // exclude: ['/api*'],
-    }),
-    PrismaModule,
-    AuthModule,
-    AdminModule,
-    UsersModule,
-    FilesModule,
-    PostsModule,
-    ConversationsModule,
-    MessagesModule,
-  ],
-  controllers: [AppController],
-  providers: [
-    AppService,
-    // the same app.useGlobalGuards(new AtGuard(new Reflector())); in main.ts
-    {
-      provide: APP_GUARD,
-      useClass: AtGuard,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: RolesGuard,
-    },
-  ],
+    imports: [
+        InterceptorModule,
+        ConfigModule.forRoot({
+            isGlobal: true,
+            // envFilePath: ['.env'],
+            // envFilePath: `.env.${process.env.NODE_ENV} || .env`,
+        }),
+        LoggerModule.forRoot(),
+        ServeStaticModule.forRoot({
+            rootPath: `${__dirname}/../documentation`, // join(__dirname, '..', 'client'),
+            renderPath: '/',
+            // exclude: ['/api*'],
+        }),
+        PrismaModule,
+        AuthModule,
+        OauthModule,
+        AdminModule,
+        UsersModule,
+        FilesModule,
+        PostsModule,
+        ConversationsModule,
+        MessagesModule,
+    ],
+    controllers: [AppController],
+    providers: [
+        AppService,
+        // the same app.useGlobalGuards(new AtGuard(new Reflector())); in main.ts
+        {
+            provide: APP_GUARD,
+            useClass: AtGuard,
+        },
+        {
+            provide: APP_GUARD,
+            useClass: RolesGuard,
+        },
+    ],
 })
 export class AppModule implements NestModule {
-  public configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(LoggerContextMiddleware).forRoutes('*');
-    //   .exclude({ path: 'users', method: RequestMethod.GET }, 'users/(.*)')
-    //   .forRoutes(UsersController);
-    // .forRoutes('users');
-    // .forRoutes({ path: 'auth', method: RequestMethod.GET });  // apply middleware for GET request at router /auth
-    // .forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });  // apply middleware for all requesta matching pattern ab*cd
-  }
+    public configure(consumer: MiddlewareConsumer): void {
+        consumer.apply(LoggerContextMiddleware).forRoutes('*');
+        //   .exclude({ path: 'users', method: RequestMethod.GET }, 'users/(.*)')
+        //   .forRoutes(UsersController);
+        // .forRoutes('users');
+        // .forRoutes({ path: 'auth', method: RequestMethod.GET });  // apply middleware for GET request at router /auth
+        // .forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });  // apply middleware for all requesta matching pattern ab*cd
+    }
 }
