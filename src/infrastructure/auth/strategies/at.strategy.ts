@@ -6,14 +6,17 @@ import { IJwtPayload } from '../dto/response';
 
 @Injectable()
 export class AtStrategy extends PassportStrategy(Strategy, 'jwt') {
-  constructor(private config: ConfigService) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: config.get<string>('ACCESS_TOKEN_SECRET'),
-    });
-  }
+    constructor(private config: ConfigService) {
+        super({
+            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            // secretOrKey: config.get<string>('APP_SECRET'),
+            secretOrKey: process.env.APP_SECRET,
+            ignoreExpiration: false,
+            passReqToCallback: false,
+        });
+    }
 
-  validate(payload: IJwtPayload): IJwtPayload {
-    return payload;
-  }
+    validate(payload: IJwtPayload): IJwtPayload {
+        return payload;
+    }
 }

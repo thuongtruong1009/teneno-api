@@ -6,7 +6,7 @@ import * as supertest from 'supertest';
 import { AppModule } from '../src/app.module';
 
 describe('AuthController (e2e)', () => {
-    let app: INestApplication;
+    let app: Promise<INestApplication>;
     let request: supertest.SuperTest<supertest.Test>;
 
     beforeEach(async () => {
@@ -16,18 +16,18 @@ describe('AuthController (e2e)', () => {
 
         app = setup(moduleFixture.createNestApplication());
 
-        await app.init();
+        await (await app).init();
 
-        request = supertest(app.getHttpServer());
+        request = supertest((await app).getHttpServer());
     });
 
     afterEach(async () => {
-        await app.close();
+        await (await app).close();
     });
 
     it.each([
         [
-            '/auth/login',
+            '/auth/signin',
             {
                 email: 'example1@gail.com',
                 password: 'example1@A',
@@ -35,13 +35,13 @@ describe('AuthController (e2e)', () => {
             HttpStatus.OK,
         ],
         [
-            '/auth/register',
+            '/auth/signup',
             { name: null, email: null, password: null },
             HttpStatus.UNPROCESSABLE_ENTITY,
         ],
-        ['/auth/login', { email: '', password: '' }, HttpStatus.UNAUTHORIZED],
+        ['/auth/signin', { email: '', password: '' }, HttpStatus.UNAUTHORIZED],
         [
-            '/auth/login',
+            '/auth/signin',
             { email: 'john@doe.me', password: '' },
             HttpStatus.UNAUTHORIZED,
         ],
@@ -61,14 +61,14 @@ describe('AuthController (e2e)', () => {
         const {
             header: { authorization },
         } = await request
-            .post('/auth/login')
+            .post('/auth/signin')
             .send({
                 email: 'example1@gmail.com',
                 password: 'example1@A',
             })
             .expect(HttpStatus.OK);
         const resp = await request
-            .get('/auth/me')
+            .get('/auth/refresh-token')
             .set('Authorization', authorization);
 
         expect(resp.body).toBeDefined();

@@ -1,4 +1,4 @@
-import { HttpStatus } from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { setup } from 'src/core/configs';
 import * as request from 'supertest';
@@ -6,7 +6,7 @@ import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
 describe('AppController (e2e)', () => {
-    let app;
+    let app: Promise<INestApplication>;
 
     beforeEach(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -15,22 +15,22 @@ describe('AppController (e2e)', () => {
 
         app = setup(moduleFixture.createNestApplication());
 
-        await app.init();
+        await (await app).init();
     });
 
     afterEach(async () => {
-        await app.close();
+        await (await app).close();
     });
 
     it('/ (GET)', async () => {
-        await request(app.getHttpServer())
+        await request((await app).getHttpServer())
             .get('/')
             .expect(HttpStatus.OK)
             .expect('Hello World!');
     });
 
     it('/health (GET)', async () => {
-        await request(app.getHttpServer())
+        await request((await app).getHttpServer())
             .get('/health')
             .expect(HttpStatus.OK)
             .expect((response) =>

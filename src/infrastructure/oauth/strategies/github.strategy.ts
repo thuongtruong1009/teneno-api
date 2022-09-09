@@ -1,36 +1,27 @@
 import { PassportStrategy } from '@nestjs/passport';
-import { Strategy, VerifyCallback } from 'passport-google-oauth20';
+import { Profile, Strategy } from 'passport-github2';
 import { config } from 'dotenv';
 import { Injectable } from '@nestjs/common';
+import { UsersService } from 'src/infrastructure/users/users.service';
 
 config();
 
 @Injectable()
 export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
-    constructor() {
+    constructor(private usersService: UsersService) {
         super({
             clientID: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_SECRET,
             callbackURL: process.env.GITHUB_CALLBACK_URL,
-            scope: ['email', 'profile'],
+            scope: ['public_profile'],
         });
     }
 
     async validate(
         accessToken: string,
-        refreshToken: string,
-        profile: any,
-        done: VerifyCallback,
-    ): Promise<any> {
-        // const { name, emails, photos } = profile;
-        // const user = {
-        //     email: emails[0].value,
-        //     firstName: name.givenName,
-        //     lastName: name.familyName,
-        //     picture: photos[0].value,
-        //     accessToken,
-        // };
-        // done(null, user);
-        done(null, profile);
+        _refreshToken: string,
+        profile: Profile,
+    ) {
+        return profile;
     }
 }

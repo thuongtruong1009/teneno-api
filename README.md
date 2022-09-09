@@ -114,7 +114,8 @@
 * [Nest example](https://github.com/hantsy/nestjs-rest-sample)
 * [Nest awesome](https://github.com/nestjs/awesome-nestjs)
 * [Nest structure](https://github.com/CatsMiaow/nestjs-project-structure)
-* [Nest auth example](https://github.dev/leosuncin/nest-auth-example)
+* [Nest auth example](https://github.com/leosuncin/nest-auth-example)
+* [Nest social login](https://github.com/m-haecker/nestjs-social-login)
 
 ### Setup Prisma
 

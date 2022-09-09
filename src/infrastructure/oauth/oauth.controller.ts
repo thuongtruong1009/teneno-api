@@ -1,7 +1,9 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthService } from '../auth/auth.service';
 import { Public } from '../auth/decorators';
+import { GithubGuard } from './guards/github.guard';
 import { OauthService } from './oauth.service';
 
 @ApiTags('OAuth')
@@ -23,14 +25,14 @@ export class OauthController {
     }
 
     @Get('github')
-    @UseGuards(AuthGuard('github'))
-    async githubAuth(@Req() req: any) {
+    @UseGuards(GithubGuard)
+    async githubAuth(@Req() req) {
         return req;
     }
 
     @Get('github/redirect')
-    @UseGuards(AuthGuard('github'))
-    githubAuthRedirect(@Req() req: any) {
+    @UseGuards(GithubGuard)
+    githubAuthRedirect(@Req() req) {
         return this.oauthService.githubLogin(req);
     }
 }

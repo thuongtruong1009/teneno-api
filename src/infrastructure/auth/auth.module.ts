@@ -6,20 +6,20 @@ import { AtStrategy, RtStrategy } from './strategies';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({
-  imports: [
-    PrismaModule,
-    JwtModule,
-    // HttpModule,
-    // JwtModule.registerAsync({
-    //   imports: [ConfigModule],
-    //   useFactory: async (configService: ConfigService) => ({
-    //     secret: configService.get("JWT_SECRET"),
-    //     signOptions: { expiresIn: configService.get("JWT_EXPIRATION_TIME") },
-    //   }),
-    //   inject: [ConfigService],
-    // })
-  ],
-  controllers: [AuthController],
-  providers: [AuthService, AtStrategy, RtStrategy],
+    imports: [
+        PrismaModule,
+        JwtModule,
+        // HttpModule,
+        // JwtModule.registerAsync({
+        //   imports: [ConfigModule],
+        //   useFactory: async (configService: ConfigService) => ({
+        //     secret: configService.get<string>("APP_SECRET"),
+        //     signOptions: { expiresIn: configService.get<string>("EXPIRE_AT_TIME") },
+        //   }),
+        //   inject: [ConfigService],
+        // })
+    ],
+    controllers: [AuthController],
+    providers: [AuthService, AtStrategy, RtStrategy],
 })
 export class AuthModule {}
