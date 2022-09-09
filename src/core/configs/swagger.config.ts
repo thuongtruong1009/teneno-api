@@ -27,6 +27,20 @@ export const initSwagger = (app: INestApplication) => {
             description: 'Paste a valid access token here.',
             in: 'Header',
         })
+        .addOAuth2({
+            type: 'oauth2',
+            description: 'Login with Google account',
+            flows: {
+                implicit: {
+                    authorizationUrl: config.get<string>('GOOGLE_CALLBACK_URL'),
+                    scopes: {
+                        'user:write': 'create your account',
+                        'user:read': 'read your account',
+                    },
+                },
+            },
+        })
+        .addCookieAuth('optional-session-id')
         .addBasicAuth()
         .addSecurity('api_key', {
             type: 'apiKey',

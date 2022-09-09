@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { setup } from './core/configs';
+import { initSwagger, setup } from './core/configs';
 
 declare const module: any;
 
@@ -14,6 +14,7 @@ async function bootstrap() {
     });
 
     setup(app);
+    initSwagger(app);
 
     const isProduction = process.env.NODE_ENV === 'production';
     if (isProduction) {

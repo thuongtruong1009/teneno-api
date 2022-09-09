@@ -1,17 +1,17 @@
 import { ValidationPipe, INestApplication } from '@nestjs/common';
 import { repl } from '@nestjs/core';
 import { useContainer } from 'class-validator';
+import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 import * as session from 'express-session';
+import helmet from 'helmet';
 import * as passport from 'passport';
 import { AppModule } from 'src/app.module';
 import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
 import { AllExceptionsFilter } from '../filters/exception.filter';
 import { LoggingInterceptor } from '../interceptors/logging.interceptor';
 import { LoggerService } from '../logger/logger.service';
-import { helmetMiddleware } from '../middlewares/helmet.middleware';
 import { corsOptions } from './cors.config';
-import { initSwagger } from './swagger.config';
 
 export async function setup(app: INestApplication): Promise<INestApplication> {
     app.useGlobalPipes(
@@ -47,6 +47,13 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
 
     app.useGlobalInterceptors(new LoggingInterceptor());
 
+    function shouldCompress(req: any, res: any) {
+        if (req.headers['x-no-compression']) {
+            return false;
+        }
+        return compression.filter(req, res);
+    }
+    app.use(compression({ filter: shouldCompress }));
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -61,10 +68,13 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
     const prismaService = app.get(PrismaService);
     await prismaService.enableShutdownHooks(app);
 
-    helmetMiddleware(app);
-
-    initSwagger(app);
-
+    const isProduction = process.env.NODE_ENV === 'production';
+    app.use(
+        helmet({
+            contentSecurityPolicy: isProduction ? true : false,
+            crossOriginEmbedderPolicy: isProduction ? true : false,
+        }),
+    );
     useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
     return app;
