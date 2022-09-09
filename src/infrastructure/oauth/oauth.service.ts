@@ -2,14 +2,25 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class OauthService {
-    googleLogin(req) {
+    googleLogin(req: any) {
         if (!req.user) {
-            return 'No user from google';
+            return 'Not found user from google';
         }
 
         return {
             message: 'User information from google',
             user: req.user,
+        };
+    }
+
+    githubLogin(req: any) {
+        if (!req) {
+            return 'Not found user from github';
+        }
+
+        return {
+            message: 'User information from github',
+            user: req,
         };
     }
 }

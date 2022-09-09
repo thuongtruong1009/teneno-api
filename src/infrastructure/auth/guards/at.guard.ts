@@ -4,18 +4,18 @@ import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
 export class AtGuard extends AuthGuard('jwt') {
-  constructor(private reflector: Reflector) {
-    super();
-  }
+    constructor(private reflector: Reflector) {
+        super();
+    }
 
-  // nếu true thì cho phép truy cập bằng access-token , và ngược lại
-  public canActivate(context: ExecutionContext) {
-    const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
-      context.getHandler(),
-      context.getClass(),
-    ]);
-    if (isPublic) return true;
+    // if true will enter with access-token , and another hand
+    public canActivate(context: ExecutionContext) {
+        const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
+            context.getHandler(),
+            context.getClass(),
+        ]);
+        if (isPublic) return true;
 
-    return super.canActivate(context);
-  }
+        return super.canActivate(context);
+    }
 }

@@ -8,6 +8,7 @@ import { PrismaModule } from './infrastructure/prisma/prisma.module';
 import { UsersModule } from './infrastructure/users/users.module';
 import { FilesModule } from './infrastructure/files/files.module';
 import { ConfigModule } from '@nestjs/config';
+import { TerminusModule } from '@nestjs/terminus';
 import { InterceptorModule } from './core/interceptors/interceptor.module';
 import { LoggerContextMiddleware } from './core/middlewares/logger-context.middleware';
 import { MessagesModule } from './infrastructure/messages/messages.module';
@@ -34,6 +35,7 @@ import { OauthModule } from './infrastructure/oauth/oauth.module';
             // exclude: ['/api*'],
         }),
         PrismaModule,
+        TerminusModule,
         AuthModule,
         OauthModule,
         AdminModule,

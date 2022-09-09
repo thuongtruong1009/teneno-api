@@ -43,9 +43,11 @@
         "prebuild": "rimraf dist",
         "build": "nest build",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+        "fixtures": "fixtures-ts-node-commonjs load --require=dotenv/config --require=tsconfig-paths/register --dataSource=./src/data-source.ts --ignoreDecorators test/fixtures",
         "webpack": "nest build --webpack --webpackPath webpack-hmr.config.ts --watch",
         "start": "nest start",
         "start:dev": "nest start --watch",
+        "start:repl": "nest start --entryFile repl",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
         "lint": "eslint \"{src,apps,libs,test,client}/**/*.ts\" --fix",
@@ -84,6 +86,7 @@
         "@nestjs/platform-socket.io": "^9.0.9",
         "@nestjs/serve-static": "^3.0.0",
         "@nestjs/swagger": "^6.0.4",
+        "@nestjs/terminus": "^9.1.1",
         "@nestjs/websockets": "^9.0.9",
         "@prisma/client": "^4.2.1",
         "@types/passport-jwt": "^3.0.6",
@@ -93,9 +96,11 @@
         "compression": "^1.7.4",
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
+        "express-session": "^1.17.3",
         "helmet": "^6.0.0",
         "husky": "^8.0.1",
         "passport": "^0.6.0",
+        "passport-github2": "^0.1.12",
         "passport-google-oauth20": "^2.0.0",
         "passport-jwt": "^4.0.0",
         "prisma": "^4.2.1",
@@ -115,6 +120,7 @@
         "@types/compression": "^1.7.2",
         "@types/cookie-parser": "^1.4.3",
         "@types/express": "^4.17.13",
+        "@types/express-session": "^1.17.5",
         "@types/jest": "28.1.4",
         "@types/multer": "^1.4.7",
         "@types/node": "^16.0.0",
@@ -154,6 +160,16 @@
             "**/*.(t|j)s"
         ],
         "coverageDirectory": "../coverage",
-        "testEnvironment": "node"
+        "testEnvironment": "node",
+        "setupFiles": [
+            "@suncin/dotenv",
+            "jest-ts-auto-mock"
+        ],
+        "globals": {
+            "ts-jest": {
+                "compiler": "ttypescript",
+                "tsconfig": "tsconfig.test.json"
+            }
+        }
     }
 }

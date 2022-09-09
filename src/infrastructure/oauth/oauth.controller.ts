@@ -21,4 +21,16 @@ export class OauthController {
     googleAuthRedirect(@Req() req) {
         return this.oauthService.googleLogin(req);
     }
+
+    @Get('github')
+    @UseGuards(AuthGuard('github'))
+    async githubAuth(@Req() req: any) {
+        return req;
+    }
+
+    @Get('github/redirect')
+    @UseGuards(AuthGuard('github'))
+    githubAuthRedirect(@Req() req: any) {
+        return this.oauthService.githubLogin(req);
+    }
 }
