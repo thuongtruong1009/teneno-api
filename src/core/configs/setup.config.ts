@@ -1,4 +1,4 @@
-import { ValidationPipe, INestApplication } from '@nestjs/common';
+import { ValidationPipe, INestApplication, HttpStatus } from '@nestjs/common';
 import { repl } from '@nestjs/core';
 import { useContainer } from 'class-validator';
 import * as compression from 'compression';
@@ -20,6 +20,7 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
             transform: true,
             forbidNonWhitelisted: true,
             transformOptions: { enableImplicitConversion: true },
+            errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
         }),
     );
 

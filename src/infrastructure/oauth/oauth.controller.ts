@@ -3,6 +3,7 @@ import {
     Get,
     HttpCode,
     HttpStatus,
+    Redirect,
     Req,
     Res,
     UseGuards,
@@ -22,6 +23,7 @@ import {
     ApiTags,
     ApiTooManyRequestsResponse,
 } from '@nestjs/swagger';
+import axios from 'axios';
 import {
     RESPONSES_MESSAGE,
     STATUS_MESSAGE,
@@ -29,7 +31,6 @@ import {
 } from 'src/core/constants/status-message';
 import { AuthService } from '../auth/auth.service';
 import { Public } from '../auth/decorators';
-import { GithubGuard } from './guards/github.guard';
 import { OauthService } from './oauth.service';
 
 @ApiTags('OAuth')
@@ -52,6 +53,7 @@ import { OauthService } from './oauth.service';
 @Public()
 @Controller('oauth')
 export class OauthController {
+    private access_token: string;
     constructor(private readonly oauthService: OauthService) {}
 
     @Get('google')
@@ -81,15 +83,46 @@ export class OauthController {
         return this.oauthService.googleLogin(req);
     }
 
-    @Get('github')
-    @UseGuards(GithubGuard)
-    async githubAuth(@Req() req) {
-        return req;
-    }
+    // ------------------------------------------------------
 
     @Get('github/redirect')
-    @UseGuards(GithubGuard)
-    githubAuthRedirect(@Req() req) {
-        return this.oauthService.githubLogin(req);
+    // @Redirect('/success', 302)
+    githubAuthRedirect(@Req() req, @Res() res) {
+        const requestToken = req.query.code;
+        // axios({
+        //     method: 'post',
+        //     url: `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET}&code=${requestToken}`,
+        //     headers: {
+        //         accept: 'application/json',
+        //     },
+        // }).then((response) => {
+        //     this.access_token = response.data.access_token;
+        //     return response;
+        // });
+
+        axios({
+            method: 'get',
+            url: `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.GITHUB_CALLBACK_URL}`,
+            headers: {
+                accept: 'application/json',
+            },
+        }).then((response) => {
+            this.access_token = response.data.access_token;
+            console.log(response);
+            return response;
+        });
+    }
+
+    @Get('success')
+    githubSuccess(@Req() req, @Res() res) {
+        axios({
+            method: 'get',
+            url: `https://api.github.com/user`,
+            headers: {
+                Authorization: 'token ' + this.access_token,
+            },
+        }).then((response) => {
+            res.render('pages/success', { userData: response.data });
+        });
     }
 }

@@ -1,0 +1,1280 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Teneno API documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Teneno API documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Variables</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#app" title="client/src/main.ts" ><b>app</b>&nbsp;&nbsp;&nbsp;(client/.../main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#AUTH_ERROR" title="src/core/constants/status-message.ts" ><b>AUTH_ERROR</b>&nbsp;&nbsp;&nbsp;(src/.../status-message.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#axiosConfig" title="client/src/services/axios.config.ts" ><b>axiosConfig</b>&nbsp;&nbsp;&nbsp;(client/.../axios.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#comparePassword" title="src/core/helpers/hash.ts" ><b>comparePassword</b>&nbsp;&nbsp;&nbsp;(src/.../hash.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CONVERSATION_ERROR" title="src/core/constants/status-message.ts" ><b>CONVERSATION_ERROR</b>&nbsp;&nbsp;&nbsp;(src/.../status-message.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#corsOptions" title="src/core/configs/cors.config.ts" ><b>corsOptions</b>&nbsp;&nbsp;&nbsp;(src/.../cors.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#currentAge" title="src/core/helpers/age.ts" ><b>currentAge</b>&nbsp;&nbsp;&nbsp;(src/.../age.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ENDPOINT" title="client/src/services/auth.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../auth.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ENDPOINT" title="client/src/services/conversations.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../conversations.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ENDPOINT" title="client/src/services/file.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../file.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ENDPOINT" title="client/src/services/posts.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../posts.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ENDPOINT" title="client/src/services/user.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../user.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GetCurrentUser" title="src/infrastructure/auth/decorators/get-current-user.decorator.ts" ><b>GetCurrentUser</b>&nbsp;&nbsp;&nbsp;(src/.../get-current-user.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GetCurrentUserId" title="src/infrastructure/auth/decorators/get-current-user-id.decorator.ts" ><b>GetCurrentUserId</b>&nbsp;&nbsp;&nbsp;(src/.../get-current-user-id.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#hashPassword" title="src/core/helpers/hash.ts" ><b>hashPassword</b>&nbsp;&nbsp;&nbsp;(src/.../hash.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#initSwagger" title="src/core/configs/swagger.config.ts" ><b>initSwagger</b>&nbsp;&nbsp;&nbsp;(src/.../swagger.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#module" title="src/main.ts" ><b>module</b>&nbsp;&nbsp;&nbsp;(src/.../main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#nodeExternals" title="webpack-hmr.config.ts" ><b>nodeExternals</b>&nbsp;&nbsp;&nbsp;(webpack-hmr.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#parttern" title="src/core/validators/image.validator.ts" ><b>parttern</b>&nbsp;&nbsp;&nbsp;(src/.../image.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#pattern" title="src/core/validators/fullName.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../fullName.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#pattern" title="src/core/validators/password.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../password.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#pattern" title="src/core/validators/phoneNumber.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../phoneNumber.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#pattern" title="src/core/validators/username.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../username.validator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#POST_ERROR" title="src/core/constants/status-message.ts" ><b>POST_ERROR</b>&nbsp;&nbsp;&nbsp;(src/.../status-message.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#prefixesForLoggers" title="src/core/logger/logger.decorator.ts" ><b>prefixesForLoggers</b>&nbsp;&nbsp;&nbsp;(src/.../logger.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Public" title="src/infrastructure/auth/decorators/public.decorator.ts" ><b>Public</b>&nbsp;&nbsp;&nbsp;(src/.../public.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RESPONSES_MESSAGE" title="src/core/constants/status-message.ts" ><b>RESPONSES_MESSAGE</b>&nbsp;&nbsp;&nbsp;(src/.../status-message.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RoleDecorator" title="src/core/roles/roles.decorator.ts" ><b>RoleDecorator</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#router" title="client/src/router/index.ts" ><b>router</b>&nbsp;&nbsp;&nbsp;(client/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SALT_ROUNDS" title="src/core/helpers/hash.ts" ><b>SALT_ROUNDS</b>&nbsp;&nbsp;&nbsp;(src/.../hash.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#STATUS_MESSAGE" title="src/core/constants/status-message.ts" ><b>STATUS_MESSAGE</b>&nbsp;&nbsp;&nbsp;(src/.../status-message.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SYSTEM_ERROR" title="src/core/constants/status-message.ts" ><b>SYSTEM_ERROR</b>&nbsp;&nbsp;&nbsp;(src/.../status-message.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#" title="webpack-hmr.config.ts" ><b></b>&nbsp;&nbsp;&nbsp;(webpack-hmr.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#useCounterStore" title="client/src/stores/counter.ts" ><b>useCounterStore</b>&nbsp;&nbsp;&nbsp;(client/.../counter.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#USER_ERROR" title="src/core/constants/status-message.ts" ><b>USER_ERROR</b>&nbsp;&nbsp;&nbsp;(src/.../status-message.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#whiteList" title="src/core/configs/cors.config.ts" ><b>whiteList</b>&nbsp;&nbsp;&nbsp;(src/.../cors.config.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>client/src/main.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="app"></a>
+                    <span class="name">
+                        <span ><b>app</b></span>
+                        <a href="#app"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createApp(App)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/constants/status-message.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AUTH_ERROR"></a>
+                    <span class="name">
+                        <span ><b>AUTH_ERROR</b></span>
+                        <a href="#AUTH_ERROR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  SAME_PASSWORD: &#x27;New password must be different from old password&#x27;,
+  PASSWORD_NOT_MATCH: &#x27;Password does not match&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CONVERSATION_ERROR"></a>
+                    <span class="name">
+                        <span ><b>CONVERSATION_ERROR</b></span>
+                        <a href="#CONVERSATION_ERROR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  NOT_FOUND: &#x27;Conversation not found&#x27;,
+  NOT_CREATOR: &#x27;You are not creator of this conversation&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="POST_ERROR"></a>
+                    <span class="name">
+                        <span ><b>POST_ERROR</b></span>
+                        <a href="#POST_ERROR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  NOT_FOUND: &#x27;Post not found&#x27;,
+  EMPTY: &#x27;User not have post&#x27;,
+  DUPLICATE: &#x27;Post already exist&#x27;,
+  NOT_AUTHOR: &#x27;You are not author of this post&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RESPONSES_MESSAGE"></a>
+                    <span class="name">
+                        <span ><b>RESPONSES_MESSAGE</b></span>
+                        <a href="#RESPONSES_MESSAGE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  CREATE_USER: &#x27;The new account has been created.&#x27;,
+  DELETE_USER: &#x27;The user account has been deleted.&#x27;,
+  DELETE_COMMENT: &#x27;The comment has been deleted.&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="STATUS_MESSAGE"></a>
+                    <span class="name">
+                        <span ><b>STATUS_MESSAGE</b></span>
+                        <a href="#STATUS_MESSAGE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  SUCCESS: &#x27;Success.&#x27;,
+  ERROR: &#x27;Errors.&#x27;,
+  WARNING: &#x27;Warning.&#x27;,
+  INFO: &#x27;Info.&#x27;,
+  UNKNOWN: &#x27;Unknown.&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SYSTEM_ERROR"></a>
+                    <span class="name">
+                        <span ><b>SYSTEM_ERROR</b></span>
+                        <a href="#SYSTEM_ERROR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  FORBIDDEN: &#x27;Access denied&#x27;,
+  NOT_FOUND: &#x27;Not found&#x27;,
+  INTERNAL_SERVER_ERROR: &#x27;Internal server error&#x27;,
+  BAD_REQUEST: &#x27;Bad request&#x27;,
+  UNAUTHORIZED: &#x27;Unauthorized&#x27;,
+  CONFLICT: &#x27;Conflict&#x27;,
+  TOO_MANY_REQUESTS: &#x27;Too many requests&#x27;,
+  METHOD_NOT_ALLOWED: &#x27;Method not allowed&#x27;,
+  NOT_ACCEPTABLE: &#x27;Provided fields are not acceptable&#x27;,
+  REQUEST_TIMEOUT: &#x27;Request timeout&#x27;,
+  PAYLOAD_TOO_LARGE: &#x27;Payload too large&#x27;,
+  UNSUPPORTED_MEDIA_TYPE: &#x27;Unsupported media type&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_ERROR"></a>
+                    <span class="name">
+                        <span ><b>USER_ERROR</b></span>
+                        <a href="#USER_ERROR"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  NOT_FOUND: &#x27;User not found&#x27;,
+  DUPLICATE: &#x27;User already exist&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/services/axios.config.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="axiosConfig"></a>
+                    <span class="name">
+                        <span ><b>axiosConfig</b></span>
+                        <a href="#axiosConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>AxiosInstance</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
+  headers: {
+    &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+    Accept: &#x27;application/json&#x27;,
+  },
+}) as AxiosInstance</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/helpers/hash.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="comparePassword"></a>
+                    <span class="name">
+                        <span ><b>comparePassword</b></span>
+                        <a href="#comparePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(data: string, hash: string) &#x3D;&gt;
+  bcrypt.compare(data, hash)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hashPassword"></a>
+                    <span class="name">
+                        <span ><b>hashPassword</b></span>
+                        <a href="#hashPassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(data: string) &#x3D;&gt; bcrypt.hash(data, SALT_ROUNDS)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SALT_ROUNDS"></a>
+                    <span class="name">
+                        <span ><b>SALT_ROUNDS</b></span>
+                        <a href="#SALT_ROUNDS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/configs/cors.config.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="corsOptions"></a>
+                    <span class="name">
+                        <span ><b>corsOptions</b></span>
+                        <a href="#corsOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>function (req: any, callback: any) {
+  let option;
+
+  if (Array(whiteList).indexOf(req.header(&#x27;Origin&#x27;)) !&#x3D;&#x3D; -1) {
+    option &#x3D; { origin: true };
+  } else {
+    option &#x3D; { origin: false };
+  }
+  callback(null, option);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="whiteList"></a>
+                    <span class="name">
+                        <span ><b>whiteList</b></span>
+                        <a href="#whiteList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>process.env.WHITE_LIST</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/helpers/age.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentAge"></a>
+                    <span class="name">
+                        <span ><b>currentAge</b></span>
+                        <a href="#currentAge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(birthDate: Date): number &#x3D;&gt; {
+  const diff &#x3D; Date.now() - new Date(birthDate).getTime();
+  const ageDate &#x3D; new Date(diff);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/services/auth.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ENDPOINT"></a>
+                    <span class="name">
+                        <span ><b>ENDPOINT</b></span>
+                        <a href="#ENDPOINT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;/auth&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/services/conversations.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ENDPOINT"></a>
+                    <span class="name">
+                        <span ><b>ENDPOINT</b></span>
+                        <a href="#ENDPOINT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;/conversations&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/services/file.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ENDPOINT"></a>
+                    <span class="name">
+                        <span ><b>ENDPOINT</b></span>
+                        <a href="#ENDPOINT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;/files&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/services/posts.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ENDPOINT"></a>
+                    <span class="name">
+                        <span ><b>ENDPOINT</b></span>
+                        <a href="#ENDPOINT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;/posts&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/services/user.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ENDPOINT"></a>
+                    <span class="name">
+                        <span ><b>ENDPOINT</b></span>
+                        <a href="#ENDPOINT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;/users&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/infrastructure/auth/decorators/get-current-user.decorator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetCurrentUser"></a>
+                    <span class="name">
+                        <span ><b>GetCurrentUser</b></span>
+                        <a href="#GetCurrentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createParamDecorator(
+  (data: string | undefined, context: ExecutionContext) &#x3D;&gt; {
+    const request &#x3D; context.switchToHttp().getRequest();
+    if (!data) return request.user;
+    return request.user[data];
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/infrastructure/auth/decorators/get-current-user-id.decorator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetCurrentUserId"></a>
+                    <span class="name">
+                        <span ><b>GetCurrentUserId</b></span>
+                        <a href="#GetCurrentUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createParamDecorator(
+  (data: undefined, context: ExecutionContext): number &#x3D;&gt; {
+    const request &#x3D; context.switchToHttp().getRequest();
+    return request.user[&#x27;sub&#x27;];
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/configs/swagger.config.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initSwagger"></a>
+                    <span class="name">
+                        <span ><b>initSwagger</b></span>
+                        <a href="#initSwagger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(app: INestApplication) &#x3D;&gt; {
+    const config: ConfigService &#x3D; app.get(ConfigService);
+
+    const swaggerConfig &#x3D; new DocumentBuilder()
+        .setTitle(&#x27;Teneno API&#x27;)
+        .setDescription(
+            &#x60;This is CRUD Rest API endpoints for Teneno - the webapp project builded with NestJS. View the documentation at &lt;a href&#x3D;${process.env.DOCUMENTATION_URL}&gt;Teneno-API documentation&lt;/a&gt;&#x60;,
+        )
+        .setContact(
+            &#x27;Thuong Truong&#x27;,
+            &#x27;https://github.com/thuongtruong1009&#x27;,
+            &#x27;ititiu19228@student.hcmiu.edu.vn&#x27;,
+        )
+        .addServer(config.get&lt;string&gt;(&#x27;BASE_URL&#x27;))
+        .addServer(config.get&lt;string&gt;(&#x27;HOST_URL&#x27;))
+        .setVersion(&#x27;1.6.0&#x27;)
+        .addTag(&#x27;cats&#x27;, &#x27;default description&#x27;)
+        .addBearerAuth({
+            type: &#x27;http&#x27;,
+            scheme: &#x27;Bearer&#x27;,
+            bearerFormat: &#x27;JWT&#x27;,
+            description: &#x27;Paste a valid access token here.&#x27;,
+            in: &#x27;Header&#x27;,
+        })
+        .addOAuth2({
+            type: &#x27;oauth2&#x27;,
+            description: &#x27;Login with Google account&#x27;,
+            flows: {
+                implicit: {
+                    authorizationUrl: config.get&lt;string&gt;(&#x27;GOOGLE_CALLBACK_URL&#x27;),
+                    scopes: {
+                        &#x27;user:write&#x27;: &#x27;create your account&#x27;,
+                        &#x27;user:read&#x27;: &#x27;read your account&#x27;,
+                    },
+                },
+            },
+        })
+        .addCookieAuth(&#x27;optional-session-id&#x27;)
+        .addBasicAuth()
+        .addSecurity(&#x27;api_key&#x27;, {
+            type: &#x27;apiKey&#x27;,
+            name: &#x27;api_key&#x27;,
+            in: &#x27;header&#x27;,
+        })
+        .build();
+
+    const options: ISwaggerOptions &#x3D; {
+        operationIdFactory: (controllerKey: string, methodKey: string) &#x3D;&gt;
+            methodKey,
+    };
+    const document &#x3D; SwaggerModule.createDocument(app, swaggerConfig, options);
+    SwaggerModule.setup(&#x27;api&#x27;, app, document, {
+        swaggerOptions: {
+            persistAuthorization: true,
+        },
+    });
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/main.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="module"></a>
+                    <span class="name">
+                        <span ><b>module</b></span>
+                        <a href="#module"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>webpack-hmr.config.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nodeExternals"></a>
+                    <span class="name">
+                        <span ><b>nodeExternals</b></span>
+                        <a href="#nodeExternals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>require(&#x27;webpack-node-externals&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name=""></a>
+                    <span class="name">
+                        <span ><b></b></span>
+                        <a href="#"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>require(&#x27;run-script-webpack-plugin&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/validators/image.validator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parttern"></a>
+                    <span class="name">
+                        <span ><b>parttern</b></span>
+                        <a href="#parttern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/\.(jpeg|jpg|gif|png)$/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/validators/fullName.validator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pattern"></a>
+                    <span class="name">
+                        <span ><b>pattern</b></span>
+                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^[a-z]\w/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/validators/password.validator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pattern"></a>
+                    <span class="name">
+                        <span ><b>pattern</b></span>
+                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z])(?&#x3D;.*\d)(?&#x3D;.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]{8,20}$/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/validators/phoneNumber.validator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pattern"></a>
+                    <span class="name">
+                        <span ><b>pattern</b></span>
+                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^(^\+[0-9]|^0)?[0-9]\d{9,15}$/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/validators/username.validator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pattern"></a>
+                    <span class="name">
+                        <span ><b>pattern</b></span>
+                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^[a-z]\w/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/logger/logger.decorator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prefixesForLoggers"></a>
+                    <span class="name">
+                        <span ><b>prefixesForLoggers</b></span>
+                        <a href="#prefixesForLoggers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;string&gt;()</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/infrastructure/auth/decorators/public.decorator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Public"></a>
+                    <span class="name">
+                        <span ><b>Public</b></span>
+                        <a href="#Public"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): CustomDecorator &#x3D;&gt; SetMetadata(&#x27;isPublic&#x27;, true)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/roles/roles.decorator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RoleDecorator"></a>
+                    <span class="name">
+                        <span ><b>RoleDecorator</b></span>
+                        <a href="#RoleDecorator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(...roles: ROLE[]) &#x3D;&gt; SetMetadata(&#x27;roles&#x27;, roles)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/router/index.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: &#x27;/&#x27;,
+      name: &#x27;home&#x27;,
+      component: () &#x3D;&gt; import(&#x27;../views/home.vue&#x27;),
+    },
+    {
+      path: &#x27;/about&#x27;,
+      name: &#x27;about&#x27;,
+      component: () &#x3D;&gt; import(&#x27;../views/about.vue&#x27;),
+    },
+  ],
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/stores/counter.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useCounterStore"></a>
+                    <span class="name">
+                        <span ><b>useCounterStore</b></span>
+                        <a href="#useCounterStore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>defineStore({
+  id: &#x27;counter&#x27;,
+  state: () &#x3D;&gt; ({
+    counter: 0,
+  }),
+  getters: {
+    doubleCount: (state) &#x3D;&gt; state.counter * 2,
+  },
+  actions: {
+    increment() {
+      this.counter++;
+    },
+  },
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

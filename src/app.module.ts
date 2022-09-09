@@ -19,6 +19,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { AdminModule } from './infrastructure/admin/admin.module';
 import { RolesGuard } from './core/roles';
 import { OauthModule } from './infrastructure/oauth/oauth.module';
+import { join } from 'path';
 
 @Module({
     imports: [
@@ -30,7 +31,8 @@ import { OauthModule } from './infrastructure/oauth/oauth.module';
         }),
         LoggerModule.forRoot(),
         ServeStaticModule.forRoot({
-            rootPath: `${__dirname}/../documentation`, // join(__dirname, '..', 'client'),
+            rootPath: `${__dirname}/../docs`,
+            // rootPath: join(__dirname, '..', 'docs'),
             renderPath: '/',
             // exclude: ['/api*'],
         }),
