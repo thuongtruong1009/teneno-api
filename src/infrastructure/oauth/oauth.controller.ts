@@ -3,6 +3,8 @@ import {
     Get,
     HttpCode,
     HttpStatus,
+    Param,
+    Query,
     Redirect,
     Req,
     Res,
@@ -87,30 +89,32 @@ export class OauthController {
 
     @Get('github/redirect')
     // @Redirect('/success', 302)
-    githubAuthRedirect(@Req() req, @Res() res) {
-        const requestToken = req.query.code;
-        // axios({
-        //     method: 'post',
-        //     url: `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET}&code=${requestToken}`,
-        //     headers: {
-        //         accept: 'application/json',
-        //     },
-        // }).then((response) => {
-        //     this.access_token = response.data.access_token;
-        //     return response;
-        // });
+    // client must request to this url https://github.com/login/oauth/authorize?client_id=358d96685bac18841a23&scope=user:email
+    async githubAuthRedirect(@Query() req: string) {
+        const requestToken = req['code'];
 
-        axios({
-            method: 'get',
-            url: `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.GITHUB_CALLBACK_URL}`,
+        return await axios({
+            method: 'post',
+            url: `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET}&code=${requestToken}`,
             headers: {
                 accept: 'application/json',
             },
-        }).then((response) => {
-            this.access_token = response.data.access_token;
-            console.log(response);
-            return response;
+        }).then(async (response) => {
+            console.log({ Token: response.data.access_token });
+
+            await axios({
+                method: 'get',
+                url: `https://api.github.com/user`,
+                headers: {
+                    Authorization: 'token ' + response.data.access_token,
+                },
+            }).then(async (response) => {
+                console.log({ data: response.data });
+                return response.data;
+            });
         });
+
+        // return req['code'];
     }
 
     @Get('success')
