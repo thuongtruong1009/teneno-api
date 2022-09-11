@@ -23,19 +23,25 @@
 
 ## Features
 
-| **Admin** | **Auth** | **Files** |
-| --- | ---| --- |
-| ✅ Get list all users | ✅  Signup | ✅  Upload single file (avatar, cover) |
-| ✅ Get user profile by id | ✅  Signin | ✅  Upload multi files |
-| ✅ Update user profile | ✅  Signout | ✅  Upload array-field files (post, sample_image) |
-| ✅ Delete user by user-id | ✅  Refresh access-token |  |
-|  | ✅  Update password |  |
+| **Admin** | **Auth** |
+| --- | ---|
+| ✅ Get list all users | ✅ Signup |
+| ✅ Get user profile by id | ✅ Signin |
+| ✅ Update user profile | ✅ Signout  |
+| ✅ Delete user by user-id | ✅ Refresh access-token |
+|  | ✅  Update password |
+
+| **OAuth** | **Files** |
+| --- | --- |
+| ✅ Google signin | ✅ Upload single file (avatar, cover) |
+| ⬜️ Facebook signin | ✅ Upload multi files |
+| ✅ Github signin | ✅ Upload array-field files (post, sample_image) |
 
 | **Users** | **Posts** |
 | ---| --- |
-| ✅ Get public user by user-id or username  | ✅  Create a new post |
-| ✅ Find user account by email | ✅  Get all posts of user by user-id |
-| ✅ Get user profile by id | ✅  Match a new category with new post |
+| ✅ Get public user by user-id or username  | ✅ Create a new post |
+| ✅ Find user account by email | ✅ Get all posts of user by user-id |
+| ✅ Get user profile by id | ✅ Match a new category with new post |
 | ✅ Update user profile | ✅ Get a post by post-id |
 | ✅ Delete user-profile by email & password | ✅ Delete a post by post-id |
 |  | ✅ Reaction to post |
@@ -46,9 +52,9 @@
 
 | **Conversations** | **Chats** |
 | ---| --- |
-| ✅ Create new conversation | ✅  Join conversation by conversation-id |
-| ✅ Get all conversations of user| ✅  Get all messages in conversation |
-| ✅ Get one conversation information has current user | ✅  Create new messages |
+| ✅ Create new conversation | ✅ Join conversation by conversation-id |
+| ✅ Get all conversations of user| ✅ Get all messages in conversation |
+| ✅ Get one conversation information has current user | ✅ Create new messages |
 | ✅ Update members to current conversation | ✅ Update message by message-id |
 | ✅ Update conversation information (name, description, avatar) | ✅ Delete messages by message-id |
 | ✅ Delete admin out of current conversation by creator |  |
@@ -98,13 +104,18 @@
 * [File upload with Nest](https://notiz.dev/blog/type-safe-file-uploads)
 * [Base roles example](https://www.youtube.com/watch?v=wdsp7BNmJRc&list=PL2eJaT2jJV7Ku72gl8YSSVRC0D7IQRJJZ&index=9&ab_channel=MariusEspejo)
 * [Logger 1](https://viblo.asia/p/xay-dung-bo-logger-xu-ly-exception-tap-trung-trong-nestjs-ORNZq1qMZ0n)
-* [Nest example](https://github.com/hantsy/nestjs-rest-sample)
-* [Nest awesome](https://github.com/nestjs/awesome-nestjs)
-* [Nest structure](https://github.com/CatsMiaow/nestjs-project-structure)
 * [Postgre x Heroku](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
 * [Nest x Prisma](https://docs.nestjs.com/recipes/prisma)
 * [Database for chat](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bchat%2Bapplication%26sxsrf%3DALiCzsZVJGO-Xg7f0j6bm04uemOFXQOCow%3A1661272422354%26source%3Dlnms%26tbm%3Disch%26sa%3DX%26ved%3D2ahUKEwjH3u-Est35AhUFmlYBHQe4BikQ_AUoAXoECAEQAw%26biw%3D1920%26bih%3D948%26dpr%3D1&h=AT1rz92_FbaMniK5W8han8NWXAfairaSKCmfkCu3TPLJWm48IqSIYii-aIRJ16hF-Vt_Y7Ju8l2B8YvIqo-5fIndTxa4Koo62fgJN7fGuUcbuMg9XU-5Y7IYHdhWjOESt9SEOvAGrud8_5c&s=1)
 * [Database for social](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%2Bapp%26tbm%3Disch%26ved%3D2ahUKEwj2_M6Tst35AhUKVPUHHefeDpkQ2-cCegQIABAA%26oq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%26gs_lcp%3DCgNpbWcQARgAMgQIABAYMgQIABAYOgQIIxAnOgYIABAeEAg6BQgAEIAEUN4HWOodYNYlaABwAHgAgAGFAYgB3AySAQQwLjE0mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE%26sclient%3Dimg%26ei%3DhQEFY7amEIqo1e8P5727yAk%26bih%3D948%26biw%3D1920&h=AT2bN5utpmugfzrrq3LxJL2taNOV2GVjJPB9MXZ3kkPt5MBwUuqo6O-m-g_xeLO-c0MBe3_P6H_hrFvp53MmQ8msV1DFVay8_JdoXpgmkCp8LQwiiTzYktBVKIMNN_kEWLxUjRQLqsOIZyE&s=1)
+
+## Example templates
+
+* [Nest example](https://github.com/hantsy/nestjs-rest-sample)
+* [Nest awesome](https://github.com/nestjs/awesome-nestjs)
+* [Nest structure](https://github.com/CatsMiaow/nestjs-project-structure)
+* [Nest auth example](https://github.com/leosuncin/nest-auth-example)
+* [Nest social login](https://github.com/m-haecker/nestjs-social-login)
 
 ### Setup Prisma
 
