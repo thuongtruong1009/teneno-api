@@ -746,13 +746,13 @@ import { PrismaService } from &#x27;src/infrastructure/prisma/prisma.service&#x2
 import { ITokens } from &#x27;./dto/response&#x27;;
 import { JwtService } from &#x27;@nestjs/jwt&#x27;;
 import { ConfigService } from &#x27;@nestjs/config&#x27;;
-import { comparePassword, hashPassword } from &#x27;src/core/helpers/hash&#x27;;
 import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto/request&#x27;;
 import {
     AUTH_ERROR,
     SYSTEM_ERROR,
     USER_ERROR,
 } from &#x27;src/core/constants/status-message&#x27;;
+import { comparePassword, hashPassword } from &#x27;src/core/helpers&#x27;;
 
 @Injectable()
 export class AuthService {

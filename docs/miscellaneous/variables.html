@@ -71,6 +71,9 @@
                             <a href="#axiosConfig" title="client/src/services/axios.config.ts" ><b>axiosConfig</b>&nbsp;&nbsp;&nbsp;(client/.../axios.config.ts)</a>
                         </li>
                         <li>
+                            <a href="#axiosRequest" title="src/core/helpers/axios.ts" ><b>axiosRequest</b>&nbsp;&nbsp;&nbsp;(src/.../axios.ts)</a>
+                        </li>
+                        <li>
                             <a href="#comparePassword" title="src/core/helpers/hash.ts" ><b>comparePassword</b>&nbsp;&nbsp;&nbsp;(src/.../hash.ts)</a>
                         </li>
                         <li>
@@ -122,10 +125,10 @@
                             <a href="#pattern" title="src/core/validators/fullName.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../fullName.validator.ts)</a>
                         </li>
                         <li>
-                            <a href="#pattern" title="src/core/validators/password.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../password.validator.ts)</a>
+                            <a href="#pattern" title="src/core/validators/phoneNumber.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../phoneNumber.validator.ts)</a>
                         </li>
                         <li>
-                            <a href="#pattern" title="src/core/validators/phoneNumber.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../phoneNumber.validator.ts)</a>
+                            <a href="#pattern" title="src/core/validators/password.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../password.validator.ts)</a>
                         </li>
                         <li>
                             <a href="#pattern" title="src/core/validators/username.validator.ts" ><b>pattern</b>&nbsp;&nbsp;&nbsp;(src/.../username.validator.ts)</a>
@@ -449,6 +452,41 @@
     Accept: &#x27;application/json&#x27;,
   },
 }) as AxiosInstance</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/helpers/axios.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="axiosRequest"></a>
+                    <span class="name">
+                        <span ><b>axiosRequest</b></span>
+                        <a href="#axiosRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>async (
+    method: string,
+    url: string,
+    headers?: any,
+) &#x3D;&gt; {
+    return await axios({
+        method: method,
+        url: url,
+        headers: headers,
+    }).then(async (response: any) &#x3D;&gt; {
+        return await response.data;
+    });
+}</code>
                     </td>
                 </tr>
 
@@ -999,29 +1037,6 @@
         </tbody>
     </table>
 </section>
-    <h3>src/core/validators/password.validator.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="pattern"></a>
-                    <span class="name">
-                        <span ><b>pattern</b></span>
-                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>/^(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z])(?&#x3D;.*\d)(?&#x3D;.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]{8,20}$/</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
     <h3>src/core/validators/phoneNumber.validator.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -1038,6 +1053,29 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>/^(^\+[0-9]|^0)?[0-9]\d{9,15}$/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/validators/password.validator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pattern"></a>
+                    <span class="name">
+                        <span ><b>pattern</b></span>
+                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z])(?&#x3D;.*\d)(?&#x3D;.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]{8,20}$/</code>
                     </td>
                 </tr>
 

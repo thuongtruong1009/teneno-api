@@ -81,12 +81,14 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findOrCreate" >findOrCreate</a>
+                                <a href="#githubRedirect" >githubRedirect</a>
                             </li>
                             <li>
-                                <a href="#githubLogin" >githubLogin</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#githubSuccess" >githubSuccess</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#googleLogin" >googleLogin</a>
                             </li>
                         </ul>
@@ -101,6 +103,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:8</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -111,26 +161,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findOrCreate"></a>
+                    <a name="githubRedirect"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>findOrCreate</b></span>
-                        <a href="#findOrCreate"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>githubRedirect</b></span>
+                        <a href="#githubRedirect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOrCreate(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, provider: AuthProvider)</code>
+                    <code>githubRedirect(req: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:27</a></div>
                 </td>
             </tr>
 
@@ -151,21 +201,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>userId</td>
+                                    <td>req</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>provider</td>
-                                    <td>
-                                            <code>AuthProvider</code>
                                     </td>
 
                                     <td>
@@ -194,24 +232,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="githubLogin"></a>
+                    <a name="githubSuccess"></a>
                     <span class="name">
-                        <span ><b>githubLogin</b></span>
-                        <a href="#githubLogin"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>githubSuccess</b></span>
+                        <a href="#githubSuccess"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>githubLogin(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>githubSuccess(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:43</a></div>
                 </td>
             </tr>
 
@@ -232,9 +272,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>req</td>
+                                    <td>token</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -249,7 +289,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>&quot;Not found user from github&quot; | { message: string; user: any; }</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -265,6 +305,7 @@
                 <td class="col-md-4">
                     <a name="googleLogin"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>googleLogin</b></span>
                         <a href="#googleLogin"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -272,15 +313,16 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>googleLogin(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>googleLogin(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="6"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:6</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="11"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:11</a></div>
                 </td>
             </tr>
 
@@ -318,7 +360,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>&quot;Not found user from google&quot; | { message: string; user: any; }</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -335,46 +377,60 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { AuthProvider } from &#x27;./interface/provider&#x27;;
+import axios from &#x27;axios&#x27;;
+import { axiosRequest } from &#x27;src/core/helpers&#x27;;
+import { AuthService } from &#x27;../auth/auth.service&#x27;;
+import { SignupDto } from &#x27;../auth/dto/request&#x27;;
 
 @Injectable()
 export class OauthService {
-    googleLogin(req: any) {
+    constructor(private readonly authService: AuthService) {}
+
+    async googleLogin(req: any) {
         if (!req.user) {
             return &#x27;Not found user from google&#x27;;
         }
 
-        return {
-            message: &#x27;User information from google&#x27;,
-            user: req.user,
-        };
+        const payload &#x3D; {
+            email: req.user.email,
+            password: req.user.email,
+            username: req.user.email,
+        } as SignupDto;
+
+        await this.authService.signupLocal(payload);
+
+        return await this.authService.signinLocal(payload);
     }
 
-    githubLogin(req: any) {
+    async githubRedirect(req: string) {
+        // client must request to this url https://github.com/login/oauth/authorize?client_id&#x3D;358d96685bac18841a23&amp;scope&#x3D;user:email
         if (!req) {
             return &#x27;Not found user from github&#x27;;
         }
 
-        return {
-            message: &#x27;User information from github&#x27;,
-            user: req,
-        };
+        const requestToken &#x3D; req[&#x27;code&#x27;];
+
+        const data &#x3D; await axiosRequest(
+            &#x27;post&#x27;,
+            &#x60;https://github.com/login/oauth/access_token?client_id&#x3D;${process.env.GITHUB_CLIENT_ID}&amp;client_secret&#x3D;${process.env.GITHUB_SECRET}&amp;code&#x3D;${requestToken}&#x60;,
+            { accept: &#x27;application/json&#x27; },
+        );
+        return await this.githubSuccess(data.access_token);
     }
 
-    async findOrCreate(userId: string, provider: AuthProvider) {
-        return {
-            id: &#x27;42195&#x27;,
-            provider,
-            providerId: &#x27;123&#x27;,
-            displayName: &#x27;John Doe&#x27;,
-            photos: [
-                { value: &#x27;https://avatars.githubusercontent.com/u/28536201&#x27; },
-            ],
-        };
+    async githubSuccess(token: string) {
+        const data &#x3D; await axiosRequest(&#x27;get&#x27;, &#x27;https://api.github.com/user&#x27;, {
+            Authorization: &#x27;token &#x27; + token,
+        });
+        const payload &#x3D; {
+            email: data.email || &#x60;${data.login}@gmail.com&#x60;,
+            password: data.id.toString(),
+            username: data.login,
+        } as SignupDto;
+        await this.authService.signupLocal(payload);
+        return await this.authService.signinLocal(payload);
     }
 }
-
-// {&quot;data&quot;:{&quot;message&quot;:&quot;User information from google&quot;,&quot;user&quot;:{&quot;email&quot;:&quot;testershopee9@gmail.com&quot;,&quot;firstName&quot;:&quot;Commerce&quot;,&quot;lastName&quot;:&quot;Shopee&quot;,&quot;picture&quot;:&quot;https://lh3.googleusercontent.com/a/AItbvmnEB57ZObrQvXfgLIjSVy0EBphcmbFSqAfgqPNN&#x3D;s96-c&quot;,&quot;accessToken&quot;:&quot;ya29.A0AVA9y1saRvWMVS4qatf0XfNnWghlqrkgOsvWQlhC4bWoZR4dGR2C6XckC-NTg-P8ySbSEsJ1G23UsPZzNNZ1eLpKykZLRnel2Sv1c8SbMZc6wKPyIlNzVyb2I7Lsi5qISqM2rA608q1uwI3nQLa6xZMT_MbGaCgYKATASATASFQE65dr8salWp_aAxzkflweuaHgpGA0163&quot;}}}
 </code></pre>
     </div>
 
