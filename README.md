@@ -35,7 +35,7 @@
 | --- | --- |
 | ✅ Google signin | ✅ Upload single file (avatar, cover) |
 | ⬜️ Facebook signin | ✅ Upload multi files |
-| ⬜️ Github signin | ✅ Upload array-field files (post, sample_image) |
+| ✅ Github signin | ✅ Upload array-field files (post, sample_image) |
 
 | **Users** | **Posts** |
 | ---| --- |

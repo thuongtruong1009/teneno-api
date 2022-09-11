@@ -25,13 +25,11 @@ import {
     ApiTags,
     ApiTooManyRequestsResponse,
 } from '@nestjs/swagger';
-import axios from 'axios';
 import {
     RESPONSES_MESSAGE,
     STATUS_MESSAGE,
     SYSTEM_ERROR,
 } from 'src/core/constants/status-message';
-import { AuthService } from '../auth/auth.service';
 import { Public } from '../auth/decorators';
 import { OauthService } from './oauth.service';
 
@@ -89,44 +87,7 @@ export class OauthController {
 
     @Get('github/redirect')
     // @Redirect('/success', 302)
-    // client must request to this url https://github.com/login/oauth/authorize?client_id=358d96685bac18841a23&scope=user:email
     async githubAuthRedirect(@Query() req: string) {
-        const requestToken = req['code'];
-
-        return await axios({
-            method: 'post',
-            url: `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET}&code=${requestToken}`,
-            headers: {
-                accept: 'application/json',
-            },
-        }).then(async (response) => {
-            console.log({ Token: response.data.access_token });
-
-            await axios({
-                method: 'get',
-                url: `https://api.github.com/user`,
-                headers: {
-                    Authorization: 'token ' + response.data.access_token,
-                },
-            }).then(async (response) => {
-                console.log({ data: response.data });
-                return response.data;
-            });
-        });
-
-        // return req['code'];
-    }
-
-    @Get('success')
-    githubSuccess(@Req() req, @Res() res) {
-        axios({
-            method: 'get',
-            url: `https://api.github.com/user`,
-            headers: {
-                Authorization: 'token ' + this.access_token,
-            },
-        }).then((response) => {
-            res.render('pages/success', { userData: response.data });
-        });
+        return this.oauthService.githubRedirect(req);
     }
 }
