@@ -8,13 +8,13 @@ import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
 import { ITokens } from './dto/response';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { comparePassword, hashPassword } from 'src/core/helpers/hash';
 import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
 import {
     AUTH_ERROR,
     SYSTEM_ERROR,
     USER_ERROR,
 } from 'src/core/constants/status-message';
+import { comparePassword, hashPassword } from 'src/core/helpers';
 
 @Injectable()
 export class AuthService {

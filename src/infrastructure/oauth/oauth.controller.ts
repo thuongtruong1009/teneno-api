@@ -79,11 +79,9 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    googleAuthRedirect(@Req() req) {
+    async googleAuthRedirect(@Req() req) {
         return this.oauthService.googleLogin(req);
     }
-
-    // ------------------------------------------------------
 
     @Get('github/redirect')
     // @Redirect('/success', 302)
