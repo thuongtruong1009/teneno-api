@@ -753,8 +753,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="169"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:169</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:171</a></div>
                 </td>
             </tr>
 
@@ -823,202 +823,204 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { PrismaService } from &#x27;../prisma/prisma.service&#x27;;
 import {
-  CreateConversationDto,
-  DeleteConversationDto,
-  DeleteOneAdminConversationDto,
-  GetAllConversationDto,
-  GetOneConversationDto,
-  UpdateConversationDto,
-  UpdateMembersConversationDto,
-  UpdateRolesConversationDto,
+    CreateConversationDto,
+    DeleteConversationDto,
+    DeleteOneAdminConversationDto,
+    GetAllConversationDto,
+    GetOneConversationDto,
+    UpdateConversationDto,
+    UpdateMembersConversationDto,
+    UpdateRolesConversationDto,
 } from &#x27;./dto&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
-import { CONVERSATION_ERROR } from &#x27;src/core/constants/status-message&#x27;;
+import { CONVERSATION_ERROR } from &#x27;src/core/constants&#x27;;
 
 @Injectable()
 export class ConversationsService {
-  constructor(private prismaService: PrismaService) {}
+    constructor(private prismaService: PrismaService) {}
 
-  async createConversation(dto: CreateConversationDto) {
-    const newConversation &#x3D; await this.prismaService.conversation.create({
-      data: {
-        id: uuid(),
-        name: dto.name,
-        description: dto.description,
-        avatar: &#x27;&#x27;,
-        members: dto.members,
-        admins: dto.admins,
-        creator: dto.creator,
-      },
-    });
-    return newConversation;
-  }
-
-  async getAllConversations(dto: GetAllConversationDto) {
-    const list &#x3D; await this.prismaService.conversation.findMany({
-      where: {
-        OR: [
-          {
-            creator: dto.userId,
-          },
-          {
-            admins: {
-              has: dto.userId,
+    async createConversation(dto: CreateConversationDto) {
+        const newConversation &#x3D; await this.prismaService.conversation.create({
+            data: {
+                id: uuid(),
+                name: dto.name,
+                description: dto.description,
+                avatar: &#x27;&#x27;,
+                members: dto.members,
+                admins: dto.admins,
+                creator: dto.creator,
             },
-          },
-          {
-            members: {
-              has: dto.userId,
-            },
-          },
-        ],
-      },
-      select: {
-        id: true,
-        name: true,
-        avatar: true,
-      },
-    });
-    return list;
-  }
-
-  async getConversationById(id: string, dto: GetOneConversationDto) {
-    const list &#x3D; await this.prismaService.conversation.findMany({
-      where: {
-        OR: [
-          {
-            creator: dto.userId,
-          },
-          {
-            admins: {
-              has: dto.userId,
-            },
-          },
-          {
-            members: {
-              has: dto.userId,
-            },
-          },
-        ],
-        AND: {
-          id: id,
-        },
-      },
-    });
-    return list;
-  }
-
-  updateConversationById(id: string, dto: UpdateConversationDto) {
-    const updated &#x3D; this.prismaService.conversation.update({
-      where: {
-        id: id,
-      },
-      data: {
-        name: dto.name,
-        description: dto.description,
-        avatar: dto.avatar,
-        members: dto.members,
-      },
-    });
-    return updated;
-  }
-
-  async deleteConversationById(id: string, dto: DeleteConversationDto) {
-    const list &#x3D; await this.prismaService.conversation.findUnique({
-      where: {
-        id: id,
-      },
-    });
-    if (list[&#x27;creator&#x27;] &#x3D;&#x3D;&#x3D; dto.userId) {
-      await this.prismaService.conversation.delete({
-        where: {
-          id: id,
-        },
-      });
-      return &#x27;&#x27;;
-    }
-    return false;
-  }
-
-  async updateMembersConversation(
-    conversationId: string,
-    dto: UpdateMembersConversationDto,
-  ) {
-    const updated &#x3D; await this.prismaService.conversation.update({
-      where: {
-        id: conversationId,
-      },
-      data: {
-        members: dto.members,
-      },
-    });
-    return updated;
-  }
-
-  async deleteOneAdminConversation(
-    conversationId: string,
-    dto: DeleteOneAdminConversationDto,
-  ) {
-    const list &#x3D; await this.prismaService.conversation.findMany({
-      where: {
-        OR: [
-          {
-            creator: dto.creator,
-          },
-        ],
-        AND: {
-          id: conversationId,
-        },
-      },
-    });
-
-    if (list.length &#x3D;&#x3D;&#x3D; 0) {
-      return CONVERSATION_ERROR.NOT_CREATOR;
-    }
-    const updated &#x3D; list[0][&#x27;admins&#x27;].filter((admin) &#x3D;&gt; admin !&#x3D;&#x3D; dto.userId);
-
-    await this.prismaService.conversation.update({
-      where: {
-        id: conversationId,
-      },
-      data: {
-        admins: updated,
-      },
-    });
-    return updated;
-  }
-
-  async updateRolesConversation(
-    conversationId: string,
-    dto: UpdateRolesConversationDto,
-  ) {
-    const list &#x3D; await this.prismaService.conversation.findMany({
-      where: {
-        OR: [
-          {
-            creator: dto.creator,
-          },
-        ],
-        AND: {
-          id: conversationId,
-        },
-      },
-    });
-    if (list.length &#x3D;&#x3D;&#x3D; 0) {
-      return CONVERSATION_ERROR.NOT_CREATOR;
+        });
+        return newConversation;
     }
 
-    const updated &#x3D; await this.prismaService.conversation.update({
-      where: {
-        id: conversationId,
-      },
-      data: {
-        admins: dto.admins,
-        members: dto.members,
-      },
-    });
-    return updated;
-  }
+    async getAllConversations(dto: GetAllConversationDto) {
+        const list &#x3D; await this.prismaService.conversation.findMany({
+            where: {
+                OR: [
+                    {
+                        creator: dto.userId,
+                    },
+                    {
+                        admins: {
+                            has: dto.userId,
+                        },
+                    },
+                    {
+                        members: {
+                            has: dto.userId,
+                        },
+                    },
+                ],
+            },
+            select: {
+                id: true,
+                name: true,
+                avatar: true,
+            },
+        });
+        return list;
+    }
+
+    async getConversationById(id: string, dto: GetOneConversationDto) {
+        const list &#x3D; await this.prismaService.conversation.findMany({
+            where: {
+                OR: [
+                    {
+                        creator: dto.userId,
+                    },
+                    {
+                        admins: {
+                            has: dto.userId,
+                        },
+                    },
+                    {
+                        members: {
+                            has: dto.userId,
+                        },
+                    },
+                ],
+                AND: {
+                    id: id,
+                },
+            },
+        });
+        return list;
+    }
+
+    updateConversationById(id: string, dto: UpdateConversationDto) {
+        const updated &#x3D; this.prismaService.conversation.update({
+            where: {
+                id: id,
+            },
+            data: {
+                name: dto.name,
+                description: dto.description,
+                avatar: dto.avatar,
+                members: dto.members,
+            },
+        });
+        return updated;
+    }
+
+    async deleteConversationById(id: string, dto: DeleteConversationDto) {
+        const list &#x3D; await this.prismaService.conversation.findUnique({
+            where: {
+                id: id,
+            },
+        });
+        if (list[&#x27;creator&#x27;] &#x3D;&#x3D;&#x3D; dto.userId) {
+            await this.prismaService.conversation.delete({
+                where: {
+                    id: id,
+                },
+            });
+            return &#x27;&#x27;;
+        }
+        return false;
+    }
+
+    async updateMembersConversation(
+        conversationId: string,
+        dto: UpdateMembersConversationDto,
+    ) {
+        const updated &#x3D; await this.prismaService.conversation.update({
+            where: {
+                id: conversationId,
+            },
+            data: {
+                members: dto.members,
+            },
+        });
+        return updated;
+    }
+
+    async deleteOneAdminConversation(
+        conversationId: string,
+        dto: DeleteOneAdminConversationDto,
+    ) {
+        const list &#x3D; await this.prismaService.conversation.findMany({
+            where: {
+                OR: [
+                    {
+                        creator: dto.creator,
+                    },
+                ],
+                AND: {
+                    id: conversationId,
+                },
+            },
+        });
+
+        if (list.length &#x3D;&#x3D;&#x3D; 0) {
+            return CONVERSATION_ERROR.NOT_CREATOR;
+        }
+        const updated &#x3D; list[0][&#x27;admins&#x27;].filter(
+            (admin) &#x3D;&gt; admin !&#x3D;&#x3D; dto.userId,
+        );
+
+        await this.prismaService.conversation.update({
+            where: {
+                id: conversationId,
+            },
+            data: {
+                admins: updated,
+            },
+        });
+        return updated;
+    }
+
+    async updateRolesConversation(
+        conversationId: string,
+        dto: UpdateRolesConversationDto,
+    ) {
+        const list &#x3D; await this.prismaService.conversation.findMany({
+            where: {
+                OR: [
+                    {
+                        creator: dto.creator,
+                    },
+                ],
+                AND: {
+                    id: conversationId,
+                },
+            },
+        });
+        if (list.length &#x3D;&#x3D;&#x3D; 0) {
+            return CONVERSATION_ERROR.NOT_CREATOR;
+        }
+
+        const updated &#x3D; await this.prismaService.conversation.update({
+            where: {
+                id: conversationId,
+            },
+            data: {
+                admins: dto.admins,
+                members: dto.members,
+            },
+        });
+        return updated;
+    }
 }
 </code></pre>
     </div>

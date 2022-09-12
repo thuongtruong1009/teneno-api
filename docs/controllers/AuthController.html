@@ -528,29 +528,29 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Body,
-  Controller,
-  HttpCode,
-  HttpStatus,
-  Post,
-  Put,
-  UseGuards,
+    Body,
+    Controller,
+    HttpCode,
+    HttpStatus,
+    Post,
+    Put,
+    UseGuards,
 } from &#x27;@nestjs/common&#x27;;
 import {
-  ApiBearerAuth,
-  ApiConflictResponse,
-  ApiCreatedResponse,
-  ApiForbiddenResponse,
-  ApiInternalServerErrorResponse,
-  ApiMethodNotAllowedResponse,
-  ApiNotAcceptableResponse,
-  ApiNotFoundResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiRequestTimeoutResponse,
-  ApiTags,
-  ApiTooManyRequestsResponse,
-  ApiUnauthorizedResponse,
+    ApiBearerAuth,
+    ApiConflictResponse,
+    ApiCreatedResponse,
+    ApiForbiddenResponse,
+    ApiInternalServerErrorResponse,
+    ApiMethodNotAllowedResponse,
+    ApiNotAcceptableResponse,
+    ApiNotFoundResponse,
+    ApiOkResponse,
+    ApiOperation,
+    ApiRequestTimeoutResponse,
+    ApiTags,
+    ApiTooManyRequestsResponse,
+    ApiUnauthorizedResponse,
 } from &#x27;@nestjs/swagger&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { GetCurrentUser, GetCurrentUserId, Public } from &#x27;./decorators&#x27;;
@@ -558,88 +558,88 @@ import { RtGuard } from &#x27;./guards&#x27;;
 import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto/request&#x27;;
 import { ITokens } from &#x27;./dto/response&#x27;;
 import {
-  RESPONSES_MESSAGE,
-  STATUS_MESSAGE,
-  SYSTEM_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
+    RESPONSES_MESSAGE,
+    STATUS_MESSAGE,
+    SYSTEM_ERROR,
+} from &#x27;src/core/constants&#x27;;
 
 @ApiTags(&#x27;Auth&#x27;)
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
 @ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: SYSTEM_ERROR.NOT_FOUND,
-  type: Error,
+    description: SYSTEM_ERROR.NOT_FOUND,
+    type: Error,
 })
 @ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
+    description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
 @ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: SYSTEM_ERROR.CONFLICT,
+    description: SYSTEM_ERROR.CONFLICT,
 })
 @ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
 @ApiInternalServerErrorResponse({
-  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+    description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
 @Controller(&#x27;auth&#x27;)
 export class AuthController {
-  constructor(private readonly authService: AuthService) {
-    this.authService &#x3D; authService;
-  }
+    constructor(private readonly authService: AuthService) {
+        this.authService &#x3D; authService;
+    }
 
-  @Public()
-  @Post(&#x27;signup&#x27;)
-  @ApiOperation({ summary: &#x27;Create new user account.&#x27; })
-  @HttpCode(HttpStatus.CREATED)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @ApiCreatedResponse({
-    description: RESPONSES_MESSAGE.CREATE_USER,
-    type: SignupDto,
-  })
-  async signupLocal(@Body() dto: SignupDto): Promise&lt;ITokens&gt; {
-    return this.authService.signupLocal(dto);
-  }
+    @Public()
+    @Post(&#x27;signup&#x27;)
+    @ApiOperation({ summary: &#x27;Create new user account.&#x27; })
+    @HttpCode(HttpStatus.CREATED)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @ApiCreatedResponse({
+        description: RESPONSES_MESSAGE.CREATE_USER,
+        type: SignupDto,
+    })
+    async signupLocal(@Body() dto: SignupDto): Promise&lt;ITokens&gt; {
+        return this.authService.signupLocal(dto);
+    }
 
-  @Public()
-  @Post(&#x27;signin&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @ApiOperation({ summary: &#x27;Login to user account&#x27; })
-  async signinLocal(@Body() dto: LoginDto): Promise&lt;ITokens&gt; {
-    return this.authService.signinLocal(dto);
-  }
+    @Public()
+    @Post(&#x27;signin&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @ApiOperation({ summary: &#x27;Login to user account&#x27; })
+    async signinLocal(@Body() dto: LoginDto): Promise&lt;ITokens&gt; {
+        return this.authService.signinLocal(dto);
+    }
 
-  @Post(&#x27;logout&#x27;)
-  @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @ApiOperation({ summary: &#x27;Logout user account (user)&#x27; })
-  async logout(@GetCurrentUserId() userId: string): Promise&lt;void&gt; {
-    return this.authService.logout(userId);
-  }
+    @Post(&#x27;logout&#x27;)
+    @ApiBearerAuth()
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @ApiOperation({ summary: &#x27;Logout user account (user)&#x27; })
+    async logout(@GetCurrentUserId() userId: string): Promise&lt;void&gt; {
+        return this.authService.logout(userId);
+    }
 
-  @Post(&#x27;refresh&#x27;)
-  @ApiBearerAuth()
-  @UseGuards(RtGuard)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: &#x27;Logout account on all devices&#x27; })
-  async refreshToken(
-    @GetCurrentUserId() userId: string,
-    @GetCurrentUser(&#x27;refreshToken&#x27;) refreshToken: string,
-  ): Promise&lt;ITokens&gt; {
-    return this.authService.refreshToken(userId, refreshToken);
-  }
+    @Post(&#x27;refresh&#x27;)
+    @ApiBearerAuth()
+    @UseGuards(RtGuard)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: &#x27;Logout account on all devices&#x27; })
+    async refreshToken(
+        @GetCurrentUserId() userId: string,
+        @GetCurrentUser(&#x27;refreshToken&#x27;) refreshToken: string,
+    ): Promise&lt;ITokens&gt; {
+        return this.authService.refreshToken(userId, refreshToken);
+    }
 
-  @Put(&#x27;password&#x27;)
-  @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @ApiOperation({ summary: &#x27;Update user password&#x27; })
-  async updatePassWord(@Body() dto: UpdatePasswordDto): Promise&lt;ITokens&gt; {
-    return this.authService.updatePassWord(dto);
-  }
+    @Put(&#x27;password&#x27;)
+    @ApiBearerAuth()
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @ApiOperation({ summary: &#x27;Update user password&#x27; })
+    async updatePassWord(@Body() dto: UpdatePasswordDto): Promise&lt;ITokens&gt; {
+        return this.authService.updatePassWord(dto);
+    }
 }
 </code></pre>
     </div>

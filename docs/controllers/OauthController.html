@@ -86,6 +86,14 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#facebookAuthRedirect" >facebookAuthRedirect</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#facebookLogin" >facebookLogin</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#githubAuthRedirect" >githubAuthRedirect</a>
                             </li>
                             <li>
@@ -117,6 +125,130 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="facebookAuthRedirect"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>facebookAuthRedirect</b></span>
+                        <a href="#facebookAuthRedirect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>facebookAuthRedirect(req: Request)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;facebook/redirect&#x27;)<br />@ApiOAuth2([&#x27;user:write&#x27;])<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Create login callback with your Facebook account (not execute directly).&#x27;})<br />@HttpCode(HttpStatus.CREATED)<br />@ApiCreatedResponse({description: undefined})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="facebookLogin"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>facebookLogin</b></span>
+                        <a href="#facebookLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>facebookLogin()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;facebook&#x27;)<br />@ApiOAuth2([&#x27;user:read&#x27;])<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Connect to your Facebook account (not execute directly).&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="githubAuthRedirect"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -142,8 +274,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:112</a></div>
                 </td>
             </tr>
 
@@ -206,7 +338,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>googleAuth(req)</code>
+                    <code>googleAuth(req: Request)</code>
                 </td>
             </tr>
 
@@ -220,8 +352,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:91</a></div>
                 </td>
             </tr>
 
@@ -236,12 +368,16 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -255,7 +391,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -280,7 +416,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>googleAuthRedirect(req)</code>
+                    <code>googleAuthRedirect(req: Request)</code>
                 </td>
             </tr>
 
@@ -294,8 +430,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:106</a></div>
                 </td>
             </tr>
 
@@ -310,12 +446,16 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -329,7 +469,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -348,11 +488,8 @@
     Get,
     HttpCode,
     HttpStatus,
-    Param,
     Query,
-    Redirect,
     Req,
-    Res,
     UseGuards,
 } from &#x27;@nestjs/common&#x27;;
 import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
@@ -374,9 +511,10 @@ import {
     RESPONSES_MESSAGE,
     STATUS_MESSAGE,
     SYSTEM_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
+} from &#x27;src/core/constants&#x27;;
 import { Public } from &#x27;../auth/decorators&#x27;;
 import { OauthService } from &#x27;./oauth.service&#x27;;
+import { Request } from &#x27;express&#x27;;
 
 @ApiTags(&#x27;OAuth&#x27;)
 @ApiNotFoundResponse({
@@ -398,8 +536,34 @@ import { OauthService } from &#x27;./oauth.service&#x27;;
 @Public()
 @Controller(&#x27;oauth&#x27;)
 export class OauthController {
-    private access_token: string;
     constructor(private readonly oauthService: OauthService) {}
+
+    @Get(&#x27;facebook&#x27;)
+    @ApiOAuth2([&#x27;user:read&#x27;])
+    @UseGuards(AuthGuard(&#x27;facebook&#x27;))
+    @ApiOperation({
+        summary: &#x27;Connect to your Facebook account (not execute directly).&#x27;,
+    })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async facebookLogin(): Promise&lt;any&gt; {
+        return HttpStatus.OK;
+    }
+
+    @Get(&#x27;facebook/redirect&#x27;)
+    @ApiOAuth2([&#x27;user:write&#x27;])
+    @UseGuards(AuthGuard(&#x27;facebook&#x27;))
+    @ApiOperation({
+        summary:
+            &#x27;Create login callback with your Facebook account (not execute directly).&#x27;,
+    })
+    @HttpCode(HttpStatus.CREATED)
+    @ApiCreatedResponse({
+        description: RESPONSES_MESSAGE.CREATE_USER,
+    })
+    async facebookAuthRedirect(@Req() req: Request): Promise&lt;any&gt; {
+        return this.oauthService.facebookLogin(req);
+    }
 
     @Get(&#x27;google&#x27;)
     @ApiOAuth2([&#x27;user:read&#x27;])
@@ -409,7 +573,7 @@ export class OauthController {
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-    async googleAuth(@Req() req) {
+    async googleAuth(@Req() req: Request): Promise&lt;any&gt; {
         return req;
     }
 
@@ -424,7 +588,7 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async googleAuthRedirect(@Req() req) {
+    async googleAuthRedirect(@Req() req: Request): Promise&lt;any&gt; {
         return this.oauthService.googleLogin(req);
     }
 

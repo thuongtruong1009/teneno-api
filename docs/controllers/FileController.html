@@ -146,8 +146,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:70</a></div>
                 </td>
             </tr>
 
@@ -224,8 +224,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:81</a></div>
                 </td>
             </tr>
 
@@ -302,8 +302,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="115"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:115</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:112</a></div>
                 </td>
             </tr>
 
@@ -380,8 +380,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/infrastructure/files/files.controller.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/infrastructure/files/files.controller.ts:92</a></div>
                 </td>
             </tr>
 
@@ -434,40 +434,37 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Controller,
-  HttpCode,
-  HttpStatus,
-  Post,
-  UploadedFile,
-  UploadedFiles,
+    Controller,
+    HttpCode,
+    HttpStatus,
+    Post,
+    UploadedFile,
+    UploadedFiles,
 } from &#x27;@nestjs/common&#x27;;
 import {} from &#x27;@nestjs/platform-express&#x27;;
 import {
-  ApiBearerAuth,
-  ApiConflictResponse,
-  ApiForbiddenResponse,
-  ApiInternalServerErrorResponse,
-  ApiMethodNotAllowedResponse,
-  ApiNotAcceptableResponse,
-  ApiNotFoundResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiPayloadTooLargeResponse,
-  ApiRequestTimeoutResponse,
-  ApiTags,
-  ApiTooManyRequestsResponse,
-  ApiUnauthorizedResponse,
-  ApiUnsupportedMediaTypeResponse,
+    ApiBearerAuth,
+    ApiConflictResponse,
+    ApiForbiddenResponse,
+    ApiInternalServerErrorResponse,
+    ApiMethodNotAllowedResponse,
+    ApiNotAcceptableResponse,
+    ApiNotFoundResponse,
+    ApiOkResponse,
+    ApiOperation,
+    ApiPayloadTooLargeResponse,
+    ApiRequestTimeoutResponse,
+    ApiTags,
+    ApiTooManyRequestsResponse,
+    ApiUnauthorizedResponse,
+    ApiUnsupportedMediaTypeResponse,
 } from &#x27;@nestjs/swagger&#x27;;
 import { Express } from &#x27;express&#x27;;
+import { STATUS_MESSAGE, SYSTEM_ERROR } from &#x27;src/core/constants&#x27;;
 import {
-  STATUS_MESSAGE,
-  SYSTEM_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
-import {
-  ArrayFieldDecorator,
-  SingleFieldDecorator,
-  MultiFieldDecorator,
+    ArrayFieldDecorator,
+    SingleFieldDecorator,
+    MultiFieldDecorator,
 } from &#x27;./decorators&#x27;;
 import { FilesService } from &#x27;./files.service&#x27;;
 import { IArrayFile, ISingleFile } from &#x27;./interfaces&#x27;;
@@ -477,81 +474,81 @@ import { IArrayFile, ISingleFile } from &#x27;./interfaces&#x27;;
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
 @ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: SYSTEM_ERROR.NOT_FOUND,
-  type: Error,
+    description: SYSTEM_ERROR.NOT_FOUND,
+    type: Error,
 })
 @ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
+    description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
 @ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: SYSTEM_ERROR.CONFLICT,
+    description: SYSTEM_ERROR.CONFLICT,
 })
 @ApiPayloadTooLargeResponse({ description: SYSTEM_ERROR.PAYLOAD_TOO_LARGE })
 @ApiUnsupportedMediaTypeResponse({
-  description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
+    description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
 })
 @ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
 @ApiInternalServerErrorResponse({
-  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+    description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
 @Controller(&#x27;files&#x27;)
 export class FileController {
-  constructor(private readonly fileService: FilesService) {}
+    constructor(private readonly fileService: FilesService) {}
 
-  @Post(&#x27;avatar&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: &#x27;Upload avatar file form data (all)&#x27; })
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @SingleFieldDecorator(&#x27;./public/avatars&#x27;)
-  async uploadAvatar(
-    @UploadedFile() file: Express.Multer.File,
-  ): Promise&lt;ISingleFile&gt; {
-    return this.fileService.uploadAvatar(file);
-  }
+    @Post(&#x27;avatar&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: &#x27;Upload avatar file form data (all)&#x27; })
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @SingleFieldDecorator(&#x27;./public/avatars&#x27;)
+    async uploadAvatar(
+        @UploadedFile() file: Express.Multer.File,
+    ): Promise&lt;ISingleFile&gt; {
+        return this.fileService.uploadAvatar(file);
+    }
 
-  @Post(&#x27;cover&#x27;)
-  @ApiOperation({ summary: &#x27;Upload cover file form data (all)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @SingleFieldDecorator(&#x27;./public/covers&#x27;)
-  async uploadCover(
-    @UploadedFile() file: Express.Multer.File,
-  ): Promise&lt;ISingleFile&gt; {
-    return this.fileService.uploadCover(file);
-  }
+    @Post(&#x27;cover&#x27;)
+    @ApiOperation({ summary: &#x27;Upload cover file form data (all)&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @SingleFieldDecorator(&#x27;./public/covers&#x27;)
+    async uploadCover(
+        @UploadedFile() file: Express.Multer.File,
+    ): Promise&lt;ISingleFile&gt; {
+        return this.fileService.uploadCover(file);
+    }
 
-  @Post(&#x27;posts&#x27;)
-  @ApiOperation({ summary: &#x27;Upload post with multi images (user)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @ArrayFieldDecorator(&#x27;files&#x27;, true, 10, &#x27;./public/posts&#x27;)
-  async uploadPosts(
-    @UploadedFiles() files: Array&lt;Express.Multer.File&gt;,
-  ): Promise&lt;IArrayFile&gt; {
-    return this.fileService.uploadPosts(files);
-  }
+    @Post(&#x27;posts&#x27;)
+    @ApiOperation({ summary: &#x27;Upload post with multi images (user)&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @ArrayFieldDecorator(&#x27;files&#x27;, true, 10, &#x27;./public/posts&#x27;)
+    async uploadPosts(
+        @UploadedFiles() files: Array&lt;Express.Multer.File&gt;,
+    ): Promise&lt;IArrayFile&gt; {
+        return this.fileService.uploadPosts(files);
+    }
 
-  @Post(&#x27;multi&#x27;)
-  @ApiOperation({ summary: &#x27;Upload multi fields form data (user)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  @MultiFieldDecorator(
-    [
-      { name: &#x27;item_1&#x27;, maxCount: 1, required: true },
-      { name: &#x27;item_2&#x27;, maxCount: 1 },
-      { name: &#x27;item_3&#x27;, maxCount: 1 },
-      { name: &#x27;item_4&#x27;, maxCount: 1 },
-      { name: &#x27;item_5&#x27;, maxCount: 1 },
-    ],
-    &#x27;./public/multi&#x27;,
-  )
-  async uploadMulti(
-    @UploadedFiles() files: Express.Multer.File[],
-  ): Promise&lt;any&gt; {
-    return this.fileService.uploadMulti(files);
-  }
+    @Post(&#x27;multi&#x27;)
+    @ApiOperation({ summary: &#x27;Upload multi fields form data (user)&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    @MultiFieldDecorator(
+        [
+            { name: &#x27;item_1&#x27;, maxCount: 1, required: true },
+            { name: &#x27;item_2&#x27;, maxCount: 1 },
+            { name: &#x27;item_3&#x27;, maxCount: 1 },
+            { name: &#x27;item_4&#x27;, maxCount: 1 },
+            { name: &#x27;item_5&#x27;, maxCount: 1 },
+        ],
+        &#x27;./public/multi&#x27;,
+    )
+    async uploadMulti(
+        @UploadedFiles() files: Express.Multer.File[],
+    ): Promise&lt;any&gt; {
+        return this.fileService.uploadMulti(files);
+    }
 }
 </code></pre>
     </div>

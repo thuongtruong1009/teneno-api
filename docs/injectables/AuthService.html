@@ -130,7 +130,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/infrastructure/auth/auth.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/infrastructure/auth/auth.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -219,8 +219,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -302,8 +302,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:107</a></div>
                 </td>
             </tr>
 
@@ -373,8 +373,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="123"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:123</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:119</a></div>
                 </td>
             </tr>
 
@@ -456,8 +456,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:87</a></div>
                 </td>
             </tr>
 
@@ -527,8 +527,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:62</a></div>
                 </td>
             </tr>
 
@@ -598,8 +598,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="143"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:143</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:139</a></div>
                 </td>
             </tr>
 
@@ -669,8 +669,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:50</a></div>
                 </td>
             </tr>
 
@@ -747,11 +747,7 @@ import { ITokens } from &#x27;./dto/response&#x27;;
 import { JwtService } from &#x27;@nestjs/jwt&#x27;;
 import { ConfigService } from &#x27;@nestjs/config&#x27;;
 import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto/request&#x27;;
-import {
-    AUTH_ERROR,
-    SYSTEM_ERROR,
-    USER_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
+import { AUTH_ERROR, SYSTEM_ERROR, USER_ERROR } from &#x27;src/core/constants&#x27;;
 import { comparePassword, hashPassword } from &#x27;src/core/helpers&#x27;;
 
 @Injectable()

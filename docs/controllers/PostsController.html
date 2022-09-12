@@ -174,8 +174,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="196"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:196</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:193</a></div>
                 </td>
             </tr>
 
@@ -264,8 +264,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="97"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:97</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:94</a></div>
                 </td>
             </tr>
 
@@ -354,8 +354,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="221"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:221</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="218"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:218</a></div>
                 </td>
             </tr>
 
@@ -432,8 +432,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="160"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:160</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="157"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:157</a></div>
                 </td>
             </tr>
 
@@ -522,8 +522,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="183"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:183</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="180"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:180</a></div>
                 </td>
             </tr>
 
@@ -600,8 +600,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:110</a></div>
                 </td>
             </tr>
 
@@ -678,8 +678,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:123</a></div>
                 </td>
             </tr>
 
@@ -756,8 +756,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="138"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:138</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:135</a></div>
                 </td>
             </tr>
 
@@ -834,8 +834,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="173"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:173</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:170</a></div>
                 </td>
             </tr>
 
@@ -912,8 +912,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="209"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:209</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:206</a></div>
                 </td>
             </tr>
 
@@ -990,8 +990,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="150"
-                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:150</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">src/infrastructure/posts/posts.controller.ts:147</a></div>
                 </td>
             </tr>
 
@@ -1044,228 +1044,225 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpCode,
-  HttpStatus,
-  ParseUUIDPipe,
-  Put,
+    Controller,
+    Get,
+    Post,
+    Body,
+    Patch,
+    Param,
+    Delete,
+    HttpCode,
+    HttpStatus,
+    ParseUUIDPipe,
+    Put,
 } from &#x27;@nestjs/common&#x27;;
 import { PostsService } from &#x27;./posts.service&#x27;;
 import { GetCurrentUserId, Public } from &#x27;../auth/decorators&#x27;;
 import {
-  CreatePostDto,
-  DeleteOnePost,
-  UpdatePostDto,
-  ReactionsPost,
+    CreatePostDto,
+    DeleteOnePost,
+    UpdatePostDto,
+    ReactionsPost,
 } from &#x27;./dto/post/request&#x27;;
 import {
-  ApiBearerAuth,
-  ApiConflictResponse,
-  ApiCreatedResponse,
-  ApiForbiddenResponse,
-  ApiInternalServerErrorResponse,
-  ApiMethodNotAllowedResponse,
-  ApiNotAcceptableResponse,
-  ApiNotFoundResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiPayloadTooLargeResponse,
-  ApiRequestTimeoutResponse,
-  ApiTags,
-  ApiTooManyRequestsResponse,
-  ApiUnauthorizedResponse,
-  ApiUnsupportedMediaTypeResponse,
+    ApiBearerAuth,
+    ApiConflictResponse,
+    ApiCreatedResponse,
+    ApiForbiddenResponse,
+    ApiInternalServerErrorResponse,
+    ApiMethodNotAllowedResponse,
+    ApiNotAcceptableResponse,
+    ApiNotFoundResponse,
+    ApiOkResponse,
+    ApiOperation,
+    ApiPayloadTooLargeResponse,
+    ApiRequestTimeoutResponse,
+    ApiTags,
+    ApiTooManyRequestsResponse,
+    ApiUnauthorizedResponse,
+    ApiUnsupportedMediaTypeResponse,
 } from &#x27;@nestjs/swagger&#x27;;
 import {
-  CreateCommentDto,
-  DeleteCommentDto,
-  UpdateCommentTextDto,
+    CreateCommentDto,
+    DeleteCommentDto,
+    UpdateCommentTextDto,
 } from &#x27;./dto/comment/request&#x27;;
 import {
-  ICreatePost,
-  IGetPostOfUser,
-  IGetPublicPost,
-  IUpdatePost,
-  IUpdateReaction,
+    ICreatePost,
+    IGetPostOfUser,
+    IGetPublicPost,
+    IUpdatePost,
+    IUpdateReaction,
 } from &#x27;./dto/post/response&#x27;;
 import {
-  ICreateComment,
-  IGetComment,
-  IUpdateComment,
+    ICreateComment,
+    IGetComment,
+    IUpdateComment,
 } from &#x27;./dto/comment/response&#x27;;
-import {
-  STATUS_MESSAGE,
-  SYSTEM_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
+import { STATUS_MESSAGE, SYSTEM_ERROR } from &#x27;src/core/constants&#x27;;
 
 @ApiTags(&#x27;Posts&#x27;)
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
 @ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: SYSTEM_ERROR.NOT_FOUND,
-  type: Error,
+    description: SYSTEM_ERROR.NOT_FOUND,
+    type: Error,
 })
 @ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
+    description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
 @ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: SYSTEM_ERROR.CONFLICT,
+    description: SYSTEM_ERROR.CONFLICT,
 })
 @ApiPayloadTooLargeResponse({ description: SYSTEM_ERROR.PAYLOAD_TOO_LARGE })
 @ApiUnsupportedMediaTypeResponse({
-  description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
+    description: SYSTEM_ERROR.UNSUPPORTED_MEDIA_TYPE,
 })
 @ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
 @ApiInternalServerErrorResponse({
-  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+    description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
 @Controller(&#x27;posts&#x27;)
 export class PostsController {
-  constructor(private postsService: PostsService) {}
+    constructor(private postsService: PostsService) {}
 
-  @Post()
-  @ApiBearerAuth()
-  @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: &#x27;Get all posts of user by user-id&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  @ApiCreatedResponse({ description: &#x27;Create new post successfuly&#x27; })
-  async createPost(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: CreatePostDto,
-  ): Promise&lt;ICreatePost&gt; {
-    return this.postsService.createPost(userId, dto);
-  }
+    @Post()
+    @ApiBearerAuth()
+    @HttpCode(HttpStatus.CREATED)
+    @ApiOperation({ summary: &#x27;Get all posts of user by user-id&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    @ApiCreatedResponse({ description: &#x27;Create new post successfuly&#x27; })
+    async createPost(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: CreatePostDto,
+    ): Promise&lt;ICreatePost&gt; {
+        return this.postsService.createPost(userId, dto);
+    }
 
-  @Post(&#x27;private/all&#x27;)
-  @ApiBearerAuth()
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary: &#x27;Get all public and private posts of user&#x27;,
-  })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getAllPostsOfUser(
-    @GetCurrentUserId() userId: string,
-  ): Promise&lt;IGetPostOfUser[]&gt; | null {
-    return this.postsService.getAllPostsOfUser(userId);
-  }
+    @Post(&#x27;private/all&#x27;)
+    @ApiBearerAuth()
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: &#x27;Get all public and private posts of user&#x27;,
+    })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getAllPostsOfUser(
+        @GetCurrentUserId() userId: string,
+    ): Promise&lt;IGetPostOfUser[]&gt; | null {
+        return this.postsService.getAllPostsOfUser(userId);
+    }
 
-  @Get(&#x27;:userId/all&#x27;)
-  @Public()
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: &#x27;Get all public posts of user by user-id&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getAllPublicPosts(
-    @Param(&#x27;userId&#x27;, new ParseUUIDPipe()) userId: string,
-  ): Promise&lt;IGetPublicPost[]&gt; | null {
-    return this.postsService.getAllPublicPosts(userId);
-  }
+    @Get(&#x27;:userId/all&#x27;)
+    @Public()
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: &#x27;Get all public posts of user by user-id&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getAllPublicPosts(
+        @Param(&#x27;userId&#x27;, new ParseUUIDPipe()) userId: string,
+    ): Promise&lt;IGetPublicPost[]&gt; | null {
+        return this.postsService.getAllPublicPosts(userId);
+    }
 
-  @Get(&#x27;:postId&#x27;)
-  @Public()
-  @ApiOperation({ summary: &#x27;Get one post of user&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getOnePostById(
-    @Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string,
-  ): Promise&lt;IGetPostOfUser&gt; {
-    return this.postsService.getOnePostById(postId);
-  }
+    @Get(&#x27;:postId&#x27;)
+    @Public()
+    @ApiOperation({ summary: &#x27;Get one post of user&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getOnePostById(
+        @Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string,
+    ): Promise&lt;IGetPostOfUser&gt; {
+        return this.postsService.getOnePostById(postId);
+    }
 
-  @Patch(&#x27;update&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update one post of user&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async updatePost(@Body() dto: UpdatePostDto): Promise&lt;IUpdatePost&gt; {
-    return this.postsService.updatePost(dto);
-  }
+    @Patch(&#x27;update&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Update one post of user&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async updatePost(@Body() dto: UpdatePostDto): Promise&lt;IUpdatePost&gt; {
+        return this.postsService.updatePost(dto);
+    }
 
-  @Delete(&#x27;delete&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Delete one post of user&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async deletePost(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: DeleteOnePost,
-  ): Promise&lt;string&gt; {
-    return this.postsService.deletePost(userId, dto);
-  }
+    @Delete(&#x27;delete&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Delete one post of user&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async deletePost(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: DeleteOnePost,
+    ): Promise&lt;string&gt; {
+        return this.postsService.deletePost(userId, dto);
+    }
 
-  @Post(&#x27;reaction&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;React to post of user&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async reactionPost(@Body() dto: ReactionsPost): Promise&lt;IUpdateReaction&gt; {
-    return this.postsService.reactionPost(dto);
-  }
+    @Post(&#x27;reaction&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;React to post of user&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async reactionPost(@Body() dto: ReactionsPost): Promise&lt;IUpdateReaction&gt; {
+        return this.postsService.reactionPost(dto);
+    }
 
-  @Public()
-  @Get(&#x27;:postId/comments&#x27;)
-  @ApiOperation({ summary: &#x27;Get all comments of the post&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getAllComments(
-    @Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string,
-  ): Promise&lt;IGetComment&gt; {
-    console.log(postId);
-    return this.postsService.getAllComments(postId);
-  }
+    @Public()
+    @Get(&#x27;:postId/comments&#x27;)
+    @ApiOperation({ summary: &#x27;Get all comments of the post&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getAllComments(
+        @Param(&#x27;postId&#x27;, new ParseUUIDPipe()) postId: string,
+    ): Promise&lt;IGetComment&gt; {
+        console.log(postId);
+        return this.postsService.getAllComments(postId);
+    }
 
-  @Post(&#x27;comments&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Add a new comment to post of user&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async addComment(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: CreateCommentDto,
-  ): Promise&lt;ICreateComment&gt; {
-    return this.postsService.addComment(userId, dto);
-  }
+    @Post(&#x27;comments&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Add a new comment to post of user&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async addComment(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: CreateCommentDto,
+    ): Promise&lt;ICreateComment&gt; {
+        return this.postsService.addComment(userId, dto);
+    }
 
-  @Put(&#x27;comments/update/text&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update a comment in post&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async updateComment(
-    @Body() dto: UpdateCommentTextDto,
-  ): Promise&lt;IUpdateComment&gt; {
-    return this.postsService.updateComment(dto);
-  }
+    @Put(&#x27;comments/update/text&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Update a comment in post&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async updateComment(
+        @Body() dto: UpdateCommentTextDto,
+    ): Promise&lt;IUpdateComment&gt; {
+        return this.postsService.updateComment(dto);
+    }
 
-  @Delete(&#x27;comments&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Delete a comment in post&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async deleteComment(@Body() dto: DeleteCommentDto): Promise&lt;string&gt; {
-    return this.postsService.deleteComment(dto);
-  }
+    @Delete(&#x27;comments&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Delete a comment in post&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async deleteComment(@Body() dto: DeleteCommentDto): Promise&lt;string&gt; {
+        return this.postsService.deleteComment(dto);
+    }
 }
 </code></pre>
     </div>

@@ -158,8 +158,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:157</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:154</a></div>
                 </td>
             </tr>
 
@@ -248,8 +248,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:77</a></div>
                 </td>
             </tr>
 
@@ -326,8 +326,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:90</a></div>
                 </td>
             </tr>
 
@@ -404,8 +404,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="106"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:106</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:103</a></div>
                 </td>
             </tr>
 
@@ -482,8 +482,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="131"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:131</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:128</a></div>
                 </td>
             </tr>
 
@@ -572,8 +572,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="145"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:142</a></div>
                 </td>
             </tr>
 
@@ -662,8 +662,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="117"
-                            class="link-to-prism">src/infrastructure/users/users.controller.ts:117</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/infrastructure/users/users.controller.ts:114</a></div>
                 </td>
             </tr>
 
@@ -728,167 +728,164 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  HttpCode,
-  HttpStatus,
-  Param,
-  Patch,
-  Put,
-  Query,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpCode,
+    HttpStatus,
+    Param,
+    Patch,
+    Put,
+    Query,
 } from &#x27;@nestjs/common&#x27;;
 import {
-  ApiBearerAuth,
-  ApiConflictResponse,
-  ApiForbiddenResponse,
-  ApiInternalServerErrorResponse,
-  ApiMethodNotAllowedResponse,
-  ApiNotAcceptableResponse,
-  ApiNotFoundResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiRequestTimeoutResponse,
-  ApiTags,
-  ApiTooManyRequestsResponse,
-  ApiUnauthorizedResponse,
+    ApiBearerAuth,
+    ApiConflictResponse,
+    ApiForbiddenResponse,
+    ApiInternalServerErrorResponse,
+    ApiMethodNotAllowedResponse,
+    ApiNotAcceptableResponse,
+    ApiNotFoundResponse,
+    ApiOkResponse,
+    ApiOperation,
+    ApiRequestTimeoutResponse,
+    ApiTags,
+    ApiTooManyRequestsResponse,
+    ApiUnauthorizedResponse,
 } from &#x27;@nestjs/swagger&#x27;;
 import { GetCurrentUserId, Public } from &#x27;src/infrastructure/auth/decorators&#x27;;
 import { LoginDto } from &#x27;src/infrastructure/auth/dto/request&#x27;;
 import {
-  UpdateUserAvatarDto,
-  UpdateUserCoverDto,
-  UpdateUserProfileDto,
+    UpdateUserAvatarDto,
+    UpdateUserCoverDto,
+    UpdateUserProfileDto,
 } from &#x27;./dto/request&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
 import {
-  IFindUserByEmail,
-  IGetUserProfile,
-  IPublicUser,
-  IUpdateAvatar,
-  IUpdateCover,
+    IFindUserByEmail,
+    IGetUserProfile,
+    IPublicUser,
+    IUpdateAvatar,
+    IUpdateCover,
 } from &#x27;./dto/response&#x27;;
-import {
-  STATUS_MESSAGE,
-  SYSTEM_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
+import { STATUS_MESSAGE, SYSTEM_ERROR } from &#x27;src/core/constants&#x27;;
 
 @ApiTags(&#x27;Users&#x27;)
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
 @ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: SYSTEM_ERROR.NOT_FOUND,
-  type: Error,
+    description: SYSTEM_ERROR.NOT_FOUND,
+    type: Error,
 })
 @ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
+    description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
 @ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: SYSTEM_ERROR.CONFLICT,
+    description: SYSTEM_ERROR.CONFLICT,
 })
 @ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
 @ApiInternalServerErrorResponse({
-  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+    description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
 @Controller(&#x27;users&#x27;)
 export class UsersController {
-  constructor(private usersService: UsersService) {
-    this.usersService &#x3D; usersService;
-  }
+    constructor(private usersService: UsersService) {
+        this.usersService &#x3D; usersService;
+    }
 
-  @Public()
-  @Get(&#x27;profile/:userIdOrUsername&#x27;)
-  @ApiOperation({ summary: &#x27;Get public user by user-id or username (all)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getPublicUserByIdOrUsername(
-    @Param(&#x27;userIdOrUsername&#x27;) userIdOrUsername: string,
-  ): Promise&lt;IPublicUser&gt; {
-    return this.usersService.getPublicUserByIdOrUsername(userIdOrUsername);
-  }
+    @Public()
+    @Get(&#x27;profile/:userIdOrUsername&#x27;)
+    @ApiOperation({ summary: &#x27;Get public user by user-id or username (all)&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getPublicUserByIdOrUsername(
+        @Param(&#x27;userIdOrUsername&#x27;) userIdOrUsername: string,
+    ): Promise&lt;IPublicUser&gt; {
+        return this.usersService.getPublicUserByIdOrUsername(userIdOrUsername);
+    }
 
-  @Public()
-  @Get(&#x27;find/:email&#x27;)
-  @ApiOperation({ summary: &#x27;Find user account by email&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getUserByEmail(
-    @Param(&#x27;email&#x27;) email: string,
-  ): Promise&lt;IFindUserByEmail&gt; {
-    return this.usersService.getUserByEmail(email);
-  }
+    @Public()
+    @Get(&#x27;find/:email&#x27;)
+    @ApiOperation({ summary: &#x27;Find user account by email&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getUserByEmail(
+        @Param(&#x27;email&#x27;) email: string,
+    ): Promise&lt;IFindUserByEmail&gt; {
+        return this.usersService.getUserByEmail(email);
+    }
 
-  @Get()
-  @ApiBearerAuth()
-  @ApiOperation({
-    summary: &#x27;Get user profile by user-id (all)&#x27;,
-  })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  async getUserProfile(
-    @GetCurrentUserId() userId: string,
-  ): Promise&lt;IGetUserProfile&gt; {
-    return this.usersService.getUserProfile(userId);
-  }
+    @Get()
+    @ApiBearerAuth()
+    @ApiOperation({
+        summary: &#x27;Get user profile by user-id (all)&#x27;,
+    })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async getUserProfile(
+        @GetCurrentUserId() userId: string,
+    ): Promise&lt;IGetUserProfile&gt; {
+        return this.usersService.getUserProfile(userId);
+    }
 
-  @Patch(&#x27;profile&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update user profile by user id (user)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  async updateUsersProfile(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: UpdateUserProfileDto,
-  ): Promise&lt;IPublicUser&gt; {
-    return this.usersService.updateUsersProfile(userId, dto);
-  }
+    @Patch(&#x27;profile&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Update user profile by user id (user)&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async updateUsersProfile(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: UpdateUserProfileDto,
+    ): Promise&lt;IPublicUser&gt; {
+        return this.usersService.updateUsersProfile(userId, dto);
+    }
 
-  @Put(&#x27;profile/avatar&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update user avatar image by user id (user)&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async updateUsersAvatar(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: UpdateUserAvatarDto,
-  ): Promise&lt;IUpdateAvatar&gt; {
-    return this.usersService.updateUsersAvatar(userId, dto);
-  }
+    @Put(&#x27;profile/avatar&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Update user avatar image by user id (user)&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async updateUsersAvatar(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: UpdateUserAvatarDto,
+    ): Promise&lt;IUpdateAvatar&gt; {
+        return this.usersService.updateUsersAvatar(userId, dto);
+    }
 
-  @Put(&#x27;profile/cover&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Update user cover image by user id&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async updateUsersCover(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: UpdateUserCoverDto,
-  ): Promise&lt;IUpdateCover&gt; {
-    return this.usersService.updateUsersCover(userId, dto);
-  }
+    @Put(&#x27;profile/cover&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Update user cover image by user id&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async updateUsersCover(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: UpdateUserCoverDto,
+    ): Promise&lt;IUpdateCover&gt; {
+        return this.usersService.updateUsersCover(userId, dto);
+    }
 
-  @Delete(&#x27;profile&#x27;)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: &#x27;Delete user profile by email &amp; password&#x27; })
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-  async deleteUser(
-    @GetCurrentUserId() userId: string,
-    @Body() dto: LoginDto,
-  ): Promise&lt;string&gt; {
-    return this.usersService.deleteUser(userId, dto);
-  }
+    @Delete(&#x27;profile&#x27;)
+    @ApiBearerAuth()
+    @ApiOperation({ summary: &#x27;Delete user profile by email &amp; password&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async deleteUser(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: LoginDto,
+    ): Promise&lt;string&gt; {
+        return this.usersService.deleteUser(userId, dto);
+    }
 }
 </code></pre>
     </div>
