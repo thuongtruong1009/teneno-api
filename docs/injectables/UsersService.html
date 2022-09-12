@@ -138,7 +138,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/infrastructure/users/users.service.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/infrastructure/users/users.service.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -203,8 +203,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="192"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:192</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:193</a></div>
                 </td>
             </tr>
 
@@ -286,8 +286,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="225"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:225</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:226</a></div>
                 </td>
             </tr>
 
@@ -357,8 +357,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:36</a></div>
                 </td>
             </tr>
 
@@ -428,8 +428,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -499,8 +499,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:81</a></div>
                 </td>
             </tr>
 
@@ -570,8 +570,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:96</a></div>
                 </td>
             </tr>
 
@@ -641,8 +641,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:135</a></div>
                 </td>
             </tr>
 
@@ -724,8 +724,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="163"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:163</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="164"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:164</a></div>
                 </td>
             </tr>
 
@@ -807,8 +807,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:115</a></div>
                 </td>
             </tr>
 
@@ -882,7 +882,7 @@
 } from &#x27;@nestjs/common&#x27;;
 import { LoginDto } from &#x27;src/infrastructure/auth/dto/request&#x27;;
 import { comparePassword } from &#x27;src/core/helpers/hash&#x27;;
-import { PrismaService } from &#x27;src/infrastructure/prisma/prisma.service&#x27;;
+import { PrismaService } from &#x27;src/abstraction/prisma/prisma.service&#x27;;
 import {
     UpdateUserAvatarDto,
     UpdateUserCoverDto,
@@ -896,9 +896,10 @@ import {
     IUpdateAvatar,
     IUpdateCover,
 } from &#x27;./dto/response&#x27;;
-import { PaginationDto } from &#x27;src/core/common/pagination.dto&#x27;;
+import { PaginationDto } from &#x27;src/core/common/dto/pagination.dto&#x27;;
 import {
     AUTH_ERROR,
+    EORDER,
     RESPONSES_MESSAGE,
     SYSTEM_ERROR,
     USER_ERROR,
@@ -925,7 +926,7 @@ export class UsersService {
         });
         return {
             total,
-            orderBy: dto.order || &#x27;asc&#x27;,
+            orderBy: dto.order || EORDER.ASC,
             pageItems: users.length,
             pageLimit: Number(dto.limit) || 10,
             pageCurrent: Number(dto.current) || 1,

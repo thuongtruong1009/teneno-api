@@ -15,7 +15,6 @@ import {
     ApiMethodNotAllowedResponse,
     ApiNotAcceptableResponse,
     ApiNotFoundResponse,
-    ApiOAuth2,
     ApiOkResponse,
     ApiOperation,
     ApiRequestTimeoutResponse,
@@ -54,10 +53,10 @@ export class OauthController {
     constructor(private readonly oauthService: OauthService) {}
 
     @Get('facebook')
-    @ApiOAuth2(['user:read'])
     @UseGuards(AuthGuard('facebook'))
     @ApiOperation({
-        summary: 'Connect to your Facebook account (not execute directly).',
+        summary:
+            'Connect to your Facebook account (not execute directly here).',
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
@@ -66,11 +65,10 @@ export class OauthController {
     }
 
     @Get('facebook/redirect')
-    @ApiOAuth2(['user:write'])
     @UseGuards(AuthGuard('facebook'))
     @ApiOperation({
         summary:
-            'Create login callback with your Facebook account (not execute directly).',
+            'Create login callback with your Facebook account (not execute directly here).',
     })
     @HttpCode(HttpStatus.CREATED)
     @ApiCreatedResponse({
@@ -81,10 +79,9 @@ export class OauthController {
     }
 
     @Get('google')
-    @ApiOAuth2(['user:read'])
     @UseGuards(AuthGuard('google'))
     @ApiOperation({
-        summary: 'Connect to your Google account (not execute directly).',
+        summary: 'Connect to your Google account (not execute directly here).',
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
@@ -93,11 +90,10 @@ export class OauthController {
     }
 
     @Get('google/redirect')
-    @ApiOAuth2(['user:write'])
     @UseGuards(AuthGuard('google'))
     @ApiOperation({
         summary:
-            'Create login callback with your Google account (not execute directly).',
+            'Create login callback with your Google account (not execute directly here).',
     })
     @HttpCode(HttpStatus.CREATED)
     @ApiCreatedResponse({
@@ -108,7 +104,14 @@ export class OauthController {
     }
 
     @Get('github/redirect')
-    // @Redirect('/success', 302)
+    @ApiOperation({
+        summary:
+            'Create login callback with your Github account (not execute directly here).',
+    })
+    @HttpCode(HttpStatus.CREATED)
+    @ApiCreatedResponse({
+        description: RESPONSES_MESSAGE.CREATE_USER,
+    })
     async githubAuthRedirect(@Query() req: string) {
         return this.oauthService.githubRedirect(req);
     }

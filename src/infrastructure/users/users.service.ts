@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { LoginDto } from 'src/infrastructure/auth/dto/request';
 import { comparePassword } from 'src/core/helpers/hash';
-import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
+import { PrismaService } from 'src/abstraction/prisma/prisma.service';
 import {
     UpdateUserAvatarDto,
     UpdateUserCoverDto,
@@ -20,7 +20,7 @@ import {
     IUpdateAvatar,
     IUpdateCover,
 } from './dto/response';
-import { PaginationDto } from 'src/core/common/pagination.dto';
+import { PaginationDto } from 'src/core/common/dto/pagination.dto';
 import {
     AUTH_ERROR,
     EORDER,

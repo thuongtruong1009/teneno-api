@@ -25,7 +25,7 @@ import {
     ApiTooManyRequestsResponse,
     ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { PaginationDto } from 'src/core/common/pagination.dto';
+import { PaginationDto } from 'src/core/common/dto/pagination.dto';
 import { EROLE, STATUS_MESSAGE, SYSTEM_ERROR } from 'src/core/constants';
 import { RoleDecorator } from 'src/core/roles';
 import { Public } from '../auth/decorators';

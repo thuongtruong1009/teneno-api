@@ -252,7 +252,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NestMiddleware, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { Request, Response, NextFunction } from &#x27;express&#x27;;
-import { PrismaService } from &#x27;src/infrastructure/prisma/prisma.service&#x27;;
+import { PrismaService } from &#x27;src/abstraction/prisma/prisma.service&#x27;;
 
 @Injectable()
 export class ExistedUserMiddleware implements NestMiddleware {

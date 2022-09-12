@@ -106,7 +106,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/infrastructure/auth/guards/at.guard.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/infrastructure/auth/guards/at.guard.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -171,8 +171,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/infrastructure/auth/guards/at.guard.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/infrastructure/auth/guards/at.guard.ts:13</a></div>
                 </td>
             </tr>
 
@@ -229,9 +229,10 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ExecutionContext, Injectable } from &#x27;@nestjs/common&#x27;;
 import { Reflector } from &#x27;@nestjs/core&#x27;;
 import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
+import { ESTRATEGY } from &#x27;src/core/constants&#x27;;
 
 @Injectable()
-export class AtGuard extends AuthGuard(&#x27;jwt&#x27;) {
+export class AtGuard extends AuthGuard(ESTRATEGY.JWT) {
     constructor(private reflector: Reflector) {
         super();
     }

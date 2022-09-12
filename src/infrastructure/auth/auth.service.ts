@@ -4,7 +4,7 @@ import {
     Inject,
     Injectable,
 } from '@nestjs/common';
-import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
+import { PrismaService } from 'src/abstraction/prisma/prisma.service';
 import { ITokens } from './dto/response';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';

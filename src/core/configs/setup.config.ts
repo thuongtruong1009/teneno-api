@@ -7,7 +7,7 @@ import * as session from 'express-session';
 import helmet from 'helmet';
 import * as passport from 'passport';
 import { AppModule } from 'src/app.module';
-import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
+import { PrismaService } from 'src/abstraction/prisma/prisma.service';
 import { AllExceptionsFilter } from '../filters/exception.filter';
 import { LoggingInterceptor } from '../interceptors/logging.interceptor';
 import { LoggerService } from '../logger/logger.service';

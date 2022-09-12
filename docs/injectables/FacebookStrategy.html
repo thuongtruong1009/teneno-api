@@ -106,7 +106,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/infrastructure/oauth/strategies/facebook.strategy.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/infrastructure/oauth/strategies/facebook.strategy.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -141,8 +141,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/infrastructure/oauth/strategies/facebook.strategy.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/infrastructure/oauth/strategies/facebook.strategy.ts:21</a></div>
                 </td>
             </tr>
 
@@ -235,9 +235,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
 import { Profile, Strategy } from &#x27;passport-facebook&#x27;;
+import { ESTRATEGY } from &#x27;src/core/constants&#x27;;
 
 @Injectable()
-export class FacebookStrategy extends PassportStrategy(Strategy, &#x27;facebook&#x27;) {
+export class FacebookStrategy extends PassportStrategy(
+    Strategy,
+    ESTRATEGY.FACEBOOK,
+) {
     constructor() {
         super({
             clientID: process.env.FACEBOOK_CLIENT_ID,

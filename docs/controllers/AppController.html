@@ -125,7 +125,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Public()<br />@Get()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Teneno homepage&#x27;})<br />@ApiResponse({status: 200, description: &#x27;{code: 1, data: {Hello world}, message: &quot;&quot;&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Not found&#x27;})<br /></code>
+                    <code>@Get()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Teneno homepage&#x27;})<br />@ApiResponse({status: 200, description: &#x27;{code: 1, data: {Hello world}, message: &quot;&quot;&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Not found&#x27;})<br /></code>
                 </td>
             </tr>
 
@@ -158,22 +158,22 @@ import { AppService } from &#x27;./app.service&#x27;;
 import { Public } from &#x27;./infrastructure/auth/decorators&#x27;;
 
 @ApiTags(&#x27;Home&#x27;)
+@Public()
 @Controller(&#x27;/&#x27;)
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+    constructor(private readonly appService: AppService) {}
 
-  @Public()
-  @Get()
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: &#x27;Teneno homepage&#x27; })
-  @ApiResponse({
-    status: 200,
-    description: &#x27;{code: 1, data: {Hello world}, message: &quot;&quot;&#x27;,
-  })
-  @ApiResponse({ status: 404, description: &#x27;Not found&#x27; })
-  getHello(): string {
-    return this.appService.getHello();
-  }
+    @Get()
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: &#x27;Teneno homepage&#x27; })
+    @ApiResponse({
+        status: 200,
+        description: &#x27;{code: 1, data: {Hello world}, message: &quot;&quot;&#x27;,
+    })
+    @ApiResponse({ status: 404, description: &#x27;Not found&#x27; })
+    getHello(): string {
+        return this.appService.getHello();
+    }
 }
 </code></pre>
     </div>

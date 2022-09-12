@@ -83,7 +83,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/infrastructure/auth/guards/rt.guard.ts:3</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/infrastructure/auth/guards/rt.guard.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -103,11 +103,12 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
+import { ESTRATEGY } from &#x27;src/core/constants&#x27;;
 
-export class RtGuard extends AuthGuard(&#x27;jwt-refresh&#x27;) {
-  constructor() {
-    super();
-  }
+export class RtGuard extends AuthGuard(ESTRATEGY.JWT_REFRESH) {
+    constructor() {
+        super();
+    }
 }
 </code></pre>
     </div>

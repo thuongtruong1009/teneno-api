@@ -105,7 +105,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/infrastructure/auth/strategies/at.strategy.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/infrastructure/auth/strategies/at.strategy.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -168,8 +168,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/infrastructure/auth/strategies/at.strategy.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/infrastructure/auth/strategies/at.strategy.ts:20</a></div>
                 </td>
             </tr>
 
@@ -228,9 +228,10 @@ import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
 import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
 import { ConfigService } from &#x27;@nestjs/config&#x27;;
 import { IJwtPayload } from &#x27;../dto/response&#x27;;
+import { ESTRATEGY } from &#x27;src/core/constants&#x27;;
 
 @Injectable()
-export class AtStrategy extends PassportStrategy(Strategy, &#x27;jwt&#x27;) {
+export class AtStrategy extends PassportStrategy(Strategy, ESTRATEGY.JWT) {
     constructor(private config: ConfigService) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

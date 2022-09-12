@@ -144,14 +144,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;facebook/redirect&#x27;)<br />@ApiOAuth2([&#x27;user:write&#x27;])<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Create login callback with your Facebook account (not execute directly).&#x27;})<br />@HttpCode(HttpStatus.CREATED)<br />@ApiCreatedResponse({description: undefined})<br /></code>
+                    <code>@Get(&#x27;facebook/redirect&#x27;)<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Create login callback with your Facebook account (not execute directly here).&#x27;})<br />@HttpCode(HttpStatus.CREATED)<br />@ApiCreatedResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:79</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:77</a></div>
                 </td>
             </tr>
 
@@ -222,14 +222,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;facebook&#x27;)<br />@ApiOAuth2([&#x27;user:read&#x27;])<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Connect to your Facebook account (not execute directly).&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                    <code>@Get(&#x27;facebook&#x27;)<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Connect to your Facebook account (not execute directly here).&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:63</a></div>
                 </td>
             </tr>
 
@@ -268,14 +268,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;github/redirect&#x27;)<br /></code>
+                    <code>@Get(&#x27;github/redirect&#x27;)<br />@ApiOperation({summary: &#x27;Create login callback with your Github account (not execute directly here).&#x27;})<br />@HttpCode(HttpStatus.CREATED)<br />@ApiCreatedResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="112"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:112</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:115</a></div>
                 </td>
             </tr>
 
@@ -346,14 +346,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;google&#x27;)<br />@ApiOAuth2([&#x27;user:read&#x27;])<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Connect to your Google account (not execute directly).&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                    <code>@Get(&#x27;google&#x27;)<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Connect to your Google account (not execute directly here).&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:88</a></div>
                 </td>
             </tr>
 
@@ -424,14 +424,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;google/redirect&#x27;)<br />@ApiOAuth2([&#x27;user:write&#x27;])<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Create login callback with your Google account (not execute directly).&#x27;})<br />@HttpCode(HttpStatus.CREATED)<br />@ApiCreatedResponse({description: undefined})<br /></code>
+                    <code>@Get(&#x27;google/redirect&#x27;)<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Create login callback with your Google account (not execute directly here).&#x27;})<br />@HttpCode(HttpStatus.CREATED)<br />@ApiCreatedResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="106"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:106</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:102</a></div>
                 </td>
             </tr>
 
@@ -500,7 +500,6 @@ import {
     ApiMethodNotAllowedResponse,
     ApiNotAcceptableResponse,
     ApiNotFoundResponse,
-    ApiOAuth2,
     ApiOkResponse,
     ApiOperation,
     ApiRequestTimeoutResponse,
@@ -539,10 +538,10 @@ export class OauthController {
     constructor(private readonly oauthService: OauthService) {}
 
     @Get(&#x27;facebook&#x27;)
-    @ApiOAuth2([&#x27;user:read&#x27;])
     @UseGuards(AuthGuard(&#x27;facebook&#x27;))
     @ApiOperation({
-        summary: &#x27;Connect to your Facebook account (not execute directly).&#x27;,
+        summary:
+            &#x27;Connect to your Facebook account (not execute directly here).&#x27;,
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
@@ -551,11 +550,10 @@ export class OauthController {
     }
 
     @Get(&#x27;facebook/redirect&#x27;)
-    @ApiOAuth2([&#x27;user:write&#x27;])
     @UseGuards(AuthGuard(&#x27;facebook&#x27;))
     @ApiOperation({
         summary:
-            &#x27;Create login callback with your Facebook account (not execute directly).&#x27;,
+            &#x27;Create login callback with your Facebook account (not execute directly here).&#x27;,
     })
     @HttpCode(HttpStatus.CREATED)
     @ApiCreatedResponse({
@@ -566,10 +564,9 @@ export class OauthController {
     }
 
     @Get(&#x27;google&#x27;)
-    @ApiOAuth2([&#x27;user:read&#x27;])
     @UseGuards(AuthGuard(&#x27;google&#x27;))
     @ApiOperation({
-        summary: &#x27;Connect to your Google account (not execute directly).&#x27;,
+        summary: &#x27;Connect to your Google account (not execute directly here).&#x27;,
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
@@ -578,11 +575,10 @@ export class OauthController {
     }
 
     @Get(&#x27;google/redirect&#x27;)
-    @ApiOAuth2([&#x27;user:write&#x27;])
     @UseGuards(AuthGuard(&#x27;google&#x27;))
     @ApiOperation({
         summary:
-            &#x27;Create login callback with your Google account (not execute directly).&#x27;,
+            &#x27;Create login callback with your Google account (not execute directly here).&#x27;,
     })
     @HttpCode(HttpStatus.CREATED)
     @ApiCreatedResponse({
@@ -593,7 +589,14 @@ export class OauthController {
     }
 
     @Get(&#x27;github/redirect&#x27;)
-    // @Redirect(&#x27;/success&#x27;, 302)
+    @ApiOperation({
+        summary:
+            &#x27;Create login callback with your Github account (not execute directly here).&#x27;,
+    })
+    @HttpCode(HttpStatus.CREATED)
+    @ApiCreatedResponse({
+        description: RESPONSES_MESSAGE.CREATE_USER,
+    })
     async githubAuthRedirect(@Query() req: string) {
         return this.oauthService.githubRedirect(req);
     }

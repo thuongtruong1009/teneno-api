@@ -4,7 +4,7 @@ import {
     Injectable,
     NotFoundException,
 } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaService } from '../../abstraction/prisma/prisma.service';
 import {
     CreatePostDto,
     DeleteOnePost,
