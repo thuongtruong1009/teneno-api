@@ -3,11 +3,8 @@ import {
     Get,
     HttpCode,
     HttpStatus,
-    Param,
     Query,
-    Redirect,
     Req,
-    Res,
     UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -29,9 +26,10 @@ import {
     RESPONSES_MESSAGE,
     STATUS_MESSAGE,
     SYSTEM_ERROR,
-} from 'src/core/constants/status-message';
+} from 'src/core/constants';
 import { Public } from '../auth/decorators';
 import { OauthService } from './oauth.service';
+import { Request } from 'express';
 
 @ApiTags('OAuth')
 @ApiNotFoundResponse({
@@ -53,8 +51,34 @@ import { OauthService } from './oauth.service';
 @Public()
 @Controller('oauth')
 export class OauthController {
-    private access_token: string;
     constructor(private readonly oauthService: OauthService) {}
+
+    @Get('facebook')
+    @ApiOAuth2(['user:read'])
+    @UseGuards(AuthGuard('facebook'))
+    @ApiOperation({
+        summary: 'Connect to your Facebook account (not execute directly).',
+    })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async facebookLogin(): Promise<any> {
+        return HttpStatus.OK;
+    }
+
+    @Get('facebook/redirect')
+    @ApiOAuth2(['user:write'])
+    @UseGuards(AuthGuard('facebook'))
+    @ApiOperation({
+        summary:
+            'Create login callback with your Facebook account (not execute directly).',
+    })
+    @HttpCode(HttpStatus.CREATED)
+    @ApiCreatedResponse({
+        description: RESPONSES_MESSAGE.CREATE_USER,
+    })
+    async facebookAuthRedirect(@Req() req: Request): Promise<any> {
+        return this.oauthService.facebookLogin(req);
+    }
 
     @Get('google')
     @ApiOAuth2(['user:read'])
@@ -64,7 +88,7 @@ export class OauthController {
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-    async googleAuth(@Req() req) {
+    async googleAuth(@Req() req: Request): Promise<any> {
         return req;
     }
 
@@ -79,7 +103,7 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async googleAuthRedirect(@Req() req) {
+    async googleAuthRedirect(@Req() req: Request): Promise<any> {
         return this.oauthService.googleLogin(req);
     }
 

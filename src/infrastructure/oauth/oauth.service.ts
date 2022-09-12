@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
 import { axiosRequest } from 'src/core/helpers';
 import { AuthService } from '../auth/auth.service';
 import { SignupDto } from '../auth/dto/request';
@@ -7,6 +6,22 @@ import { SignupDto } from '../auth/dto/request';
 @Injectable()
 export class OauthService {
     constructor(private readonly authService: AuthService) {}
+
+    async facebookLogin(req: any) {
+        if (!req.user) {
+            return 'Not found user from google';
+        }
+
+        const payload = {
+            email: req.user.user.email,
+            password: req.user.user.email,
+            username: req.user.user.email,
+        } as SignupDto;
+
+        await this.authService.signupLocal(payload);
+
+        return await this.authService.signinLocal(payload);
+    }
 
     async googleLogin(req: any) {
         if (!req.user) {
