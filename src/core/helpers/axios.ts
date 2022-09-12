@@ -9,7 +9,5 @@ export const axiosRequest = async (
         method: method,
         url: url,
         headers: headers,
-    }).then(async (response: any) => {
-        return await response.data;
-    });
+    }).then(async (response: any) => await response.data);
 };

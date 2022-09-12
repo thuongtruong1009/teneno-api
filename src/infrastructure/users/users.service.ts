@@ -23,6 +23,7 @@ import {
 import { PaginationDto } from 'src/core/common/pagination.dto';
 import {
     AUTH_ERROR,
+    EORDER,
     RESPONSES_MESSAGE,
     SYSTEM_ERROR,
     USER_ERROR,
@@ -49,7 +50,7 @@ export class UsersService {
         });
         return {
             total,
-            orderBy: dto.order || 'asc',
+            orderBy: dto.order || EORDER.ASC,
             pageItems: users.length,
             pageLimit: Number(dto.limit) || 10,
             pageCurrent: Number(dto.current) || 1,

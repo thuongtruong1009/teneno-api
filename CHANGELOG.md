@@ -15,8 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 + Generate Nest documentation
 + Create [admin module](https://github.com/thuongtruong1009/teneno-api/pull/15)
 
+##### [Source code (.zip)](https://github.com/thuongtruong1009/teneno-api/archive/refs/tags/v1.5.zip)
+##### [Source code (.tar.gz)](https://github.com/thuongtruong1009/teneno-api/archive/refs/tags/v1.5.tar.gz)
+
 
 <!-- Added - Fixed - Updated - Removed -->
 
-[1.5.0]: https://github.com/thuongtruong1009/teneno-api/compare/v1.5...main
+[1.5.0]: https://github.com/thuongtruong1009/teneno-api/compare/v1.4.0...v1.5
 
