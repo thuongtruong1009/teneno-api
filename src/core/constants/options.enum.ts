@@ -1,3 +1,8 @@
+export enum EROLE {
+    USER = 'user',
+    ADMIN = 'admin',
+}
+
 export enum EGender {
     MALE = 'male',
     FEMALE = 'femail',
@@ -11,11 +16,6 @@ export enum EOtpStatus {
     PENDING = 'pending',
     APPROVED = 'approved',
     CANCELED = 'canceled',
-}
-export enum ENotification {
-    LIKE = 'like',
-    MESSAGE = 'message',
-    MATCH = 'match',
 }
 export enum ESocial {
     FACEBOOK = 'facebook',
@@ -47,18 +47,6 @@ export enum EMaritalStatus {
     DIVORCED = 'divorced',
 }
 
-export enum EUpdateUserProfile {
-    OTHER = 'other',
-    GENDER = 'gender',
-    DESCRIPTION = 'description',
-    CHILDREN = 'children',
-    ALCOHOL = 'alcohol',
-    RELIGION = 'religion',
-    HEIGHT = 'height',
-    MARITAL_STATUS = 'maritalStatus',
-    EDUCATION = 'education',
-    PURPOSEID = 'purposeId',
-}
 export enum EOrder {
     ASC = 'ASC',
     DESC = 'DESC',

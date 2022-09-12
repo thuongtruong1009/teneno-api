@@ -11,7 +11,7 @@
 
 <!-- * [API document](http://localhost:5500/api) -->
 
-<!-- * [Project documentation](http://localhost:5500/index.html) -->
+* [Project documentation](https://thuongtruong1009.github.io/teneno-api)
 
 * [Database diagram](https://dbdiagram.io/d/62fe42dec2d9cf52fad1848c)
 
@@ -34,7 +34,7 @@
 | **OAuth** | **Files** |
 | --- | --- |
 | ✅ Google signin | ✅ Upload single file (avatar, cover) |
-| ⬜️ Facebook signin | ✅ Upload multi files |
+| ✅ Facebook signin | ✅ Upload multi files |
 | ✅ Github signin | ✅ Upload array-field files (post, sample_image) |
 
 | **Users** | **Posts** |
