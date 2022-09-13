@@ -289,42 +289,42 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  INestApplication,
-  Injectable,
-  OnModuleDestroy,
-  OnModuleInit,
+    INestApplication,
+    Injectable,
+    OnModuleDestroy,
+    OnModuleInit,
 } from &#x27;@nestjs/common&#x27;;
 import { PrismaClient } from &#x27;@prisma/client&#x27;;
 
 @Injectable()
 export class PrismaService
-  extends PrismaClient
-  implements OnModuleInit, OnModuleDestroy
+    extends PrismaClient
+    implements OnModuleInit, OnModuleDestroy
 {
-  constructor() {
-    super({
-      datasources: {
-        db: {
-          url: &#x27;postgresql://postgres:123456789@localhost:5432/teneno?schema&#x3D;public&#x27;,
-          // url: process.env.DATABASE_URL,
-        },
-      },
-    });
-  }
+    constructor() {
+        super({
+            datasources: {
+                db: {
+                    url: &#x27;postgresql://postgres:123456789@localhost:5432/teneno?schema&#x3D;public&#x27;,
+                    // url: process.env.DATABASE_URL,
+                },
+            },
+        });
+    }
 
-  async onModuleInit() {
-    await this.$connect();
-  }
+    async onModuleInit() {
+        await this.$connect();
+    }
 
-  async onModuleDestroy() {
-    await this.$disconnect();
-  }
+    async onModuleDestroy() {
+        await this.$disconnect();
+    }
 
-  async enableShutdownHooks(app: INestApplication) {
-    this.$on(&#x27;beforeExit&#x27;, async () &#x3D;&gt; {
-      await app.close();
-    });
-  }
+    async enableShutdownHooks(app: INestApplication) {
+        this.$on(&#x27;beforeExit&#x27;, async () &#x3D;&gt; {
+            await app.close();
+        });
+    }
 }
 </code></pre>
     </div>

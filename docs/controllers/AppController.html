@@ -117,7 +117,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getHello()</code>
+<code>getHello(session: Record<string | any>)</code>
                 </td>
             </tr>
 
@@ -141,8 +141,40 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>session</td>
+                                    <td>
+                                            <code>Record&lt;string | any&gt;</code>
+                                    </td>
 
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -152,7 +184,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, HttpCode, HttpStatus } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, HttpCode, HttpStatus, Session } from &#x27;@nestjs/common&#x27;;
 import { ApiOperation, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { AppService } from &#x27;./app.service&#x27;;
 import { Public } from &#x27;./infrastructure/auth/decorators&#x27;;
@@ -171,8 +203,8 @@ export class AppController {
         description: &#x27;{code: 1, data: {Hello world}, message: &quot;&quot;&#x27;,
     })
     @ApiResponse({ status: 404, description: &#x27;Not found&#x27; })
-    getHello(): string {
-        return this.appService.getHello();
+    getHello(@Session() session: Record&lt;string, any&gt;): any {
+        return this.appService.getHello(session);
     }
 }
 </code></pre>

@@ -35,6 +35,7 @@ import { MathModule } from './abstraction/microservices/math/math.module';
         MathModule,
         ConfigModule.forRoot({
             isGlobal: true,
+            cache: true,
             // envFilePath: ['.env'],
             envFilePath: `.env.${process.env.NODE_ENV} || .env`,
         }),

@@ -142,6 +142,7 @@
         "@types/passport-github2": "^1.2.5",
         "@types/passport-google-oauth20": "^2.0.11",
         "@types/supertest": "^2.0.11",
+        "@types/uuid": "^8.3.4",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
         "eslint": "^8.20.0",

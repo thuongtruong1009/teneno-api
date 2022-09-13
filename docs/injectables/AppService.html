@@ -105,7 +105,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -161,15 +161,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getHello()</code>
+<code>getHello(session: Record<string | any>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/app.service.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app.service.ts:15</a></div>
                 </td>
             </tr>
 
@@ -178,8 +178,40 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>session</td>
+                                    <td>
+                                            <code>Record&lt;string | any&gt;</code>
+                                    </td>
 
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -191,7 +223,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CacheInterceptor, Injectable, UseInterceptors } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    CacheInterceptor,
+    Injectable,
+    Session,
+    UseInterceptors,
+} from &#x27;@nestjs/common&#x27;;
 import { Logger } from &#x27;./core/logger/logger.decorator&#x27;;
 import { LoggerService } from &#x27;./core/logger/logger.service&#x27;;
 
@@ -200,9 +237,10 @@ import { LoggerService } from &#x27;./core/logger/logger.service&#x27;;
 export class AppService {
     constructor(@Logger(&#x27;AppService&#x27;) private logger: LoggerService) {}
 
-    getHello(): string {
+    getHello(session: Record&lt;string, any&gt;): any {
         this.logger.log(&#x27;Hello World&#x27;, &#x27;200&#x27;);
-        return &#x27;Hello World from Teneno!&#x27;;
+        session.visits &#x3D; session.visits ? session.visits + 1 : 1;
+        return { views: session.visits, message: &#x27;Hello World from Teneno!&#x27; };
     }
 }
 </code></pre>

@@ -7,8 +7,12 @@ import { LoggerService } from './core/logger/logger.service';
 export class AppService {
     constructor(@Logger('AppService') private logger: LoggerService) {}
 
-    getHello(): string {
+    getHello(session: Record<string, any>): any {
         this.logger.log('Hello World', '200');
-        return 'Hello World from Teneno!';
+        session.visits = session.visits ? session.visits + 1 : 1;
+        return {
+            views: `You visited this site ${session.visits} times`,
+            message: 'Hello World from Teneno!',
+        };
     }
 }

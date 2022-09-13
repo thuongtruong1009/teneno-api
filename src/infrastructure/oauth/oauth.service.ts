@@ -13,7 +13,7 @@ export class OauthService {
 
     async facebookLogin(req: any) {
         if (!req.user) {
-            return 'Not found user from google';
+            return 'Not found user from facebook!';
         }
 
         const payload = {
@@ -31,7 +31,7 @@ export class OauthService {
 
     async googleLogin(req: any) {
         if (!req.user) {
-            return 'Not found user from google';
+            return 'Not found user from Google!';
         }
 
         const payload = {
@@ -50,7 +50,7 @@ export class OauthService {
     async githubRedirect(req: string) {
         // client must request to this url https://github.com/login/oauth/authorize?client_id=358d96685bac18841a23&scope=user:email
         if (!req) {
-            return 'Not found user from github';
+            return 'Not found user from Github!';
         }
 
         const requestToken = req['code'];

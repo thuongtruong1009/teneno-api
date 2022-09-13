@@ -113,12 +113,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, usersService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -140,6 +140,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>usersService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -183,8 +195,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:14</a></div>
                 </td>
             </tr>
 
@@ -254,8 +266,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:50</a></div>
                 </td>
             </tr>
 
@@ -325,8 +337,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:58</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -396,8 +408,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -455,14 +467,18 @@
 import { axiosRequest } from &#x27;src/core/helpers&#x27;;
 import { AuthService } from &#x27;../auth/auth.service&#x27;;
 import { SignupDto } from &#x27;../auth/dto/request&#x27;;
+import { UsersService } from &#x27;../users/users.service&#x27;;
 
 @Injectable()
 export class OauthService {
-    constructor(private readonly authService: AuthService) {}
+    constructor(
+        private readonly authService: AuthService,
+        private readonly usersService: UsersService,
+    ) {}
 
     async facebookLogin(req: any) {
         if (!req.user) {
-            return &#x27;Not found user from google&#x27;;
+            return &#x27;Not found user from facebook!&#x27;;
         }
 
         const payload &#x3D; {
@@ -471,14 +487,16 @@ export class OauthService {
             username: req.user.user.email,
         } as SignupDto;
 
-        await this.authService.signupLocal(payload);
-
+        const identify &#x3D; await this.usersService.getUserByEmail(payload.email);
+        if (!identify) {
+            return await this.authService.signupLocal(payload);
+        }
         return await this.authService.signinLocal(payload);
     }
 
     async googleLogin(req: any) {
         if (!req.user) {
-            return &#x27;Not found user from google&#x27;;
+            return &#x27;Not found user from Google!&#x27;;
         }
 
         const payload &#x3D; {
@@ -487,15 +505,17 @@ export class OauthService {
             username: req.user.email,
         } as SignupDto;
 
-        await this.authService.signupLocal(payload);
-
+        const identify &#x3D; await this.usersService.getUserByEmail(payload.email);
+        if (!identify) {
+            return await this.authService.signupLocal(payload);
+        }
         return await this.authService.signinLocal(payload);
     }
 
     async githubRedirect(req: string) {
         // client must request to this url https://github.com/login/oauth/authorize?client_id&#x3D;358d96685bac18841a23&amp;scope&#x3D;user:email
         if (!req) {
-            return &#x27;Not found user from github&#x27;;
+            return &#x27;Not found user from Github!&#x27;;
         }
 
         const requestToken &#x3D; req[&#x27;code&#x27;];
@@ -517,7 +537,11 @@ export class OauthService {
             password: data.id.toString(),
             username: data.login,
         } as SignupDto;
-        await this.authService.signupLocal(payload);
+
+        const identify &#x3D; await this.usersService.getUserByEmail(payload.email);
+        if (!identify) {
+            return await this.authService.signupLocal(payload);
+        }
         return await this.authService.signinLocal(payload);
     }
 }

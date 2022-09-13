@@ -90,6 +90,9 @@
 * [Compodoc](https://docs.nestjs.com/recipes/documentation) Generate project documentation
 * [Webpack hot-reload](https://docs.nestjs.com/recipes/hot-reload) auto recompile the entire project each time a change occurs
 * [gRPC](https://docs.nestjs.com/microservices/grpc#grpc) support to run in any environment across data centers based on the concept of defining a service in terms of functions (methods) that called remotely
+* [Session](https://docs.nestjs.com/techniques/session#session) store information about the user across multiple requests, which is particularly useful for MVC applications.
+* [Versioning](https://docs.nestjs.com/techniques/versioning) allows you to have different versions of your controllers or individual routes running within the same application.
+
 
 ## Conventions & Tools
 

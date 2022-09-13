@@ -1,4 +1,9 @@
-import { ValidationPipe, INestApplication, HttpStatus } from '@nestjs/common';
+import {
+    ValidationPipe,
+    INestApplication,
+    HttpStatus,
+    VersioningType,
+} from '@nestjs/common';
 import { repl } from '@nestjs/core';
 import { useContainer } from 'class-validator';
 import * as compression from 'compression';
@@ -12,6 +17,7 @@ import { AllExceptionsFilter } from '../filters/exception.filter';
 import { LoggingInterceptor } from '../interceptors/logging.interceptor';
 import { LoggerService } from '../logger/logger.service';
 import { corsOptions } from './cors.config';
+import { v4 as uuid } from 'uuid';
 
 export async function setup(app: INestApplication): Promise<INestApplication> {
     app.useGlobalPipes(
@@ -26,8 +32,10 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
 
     app.use(cookieParser(process.env.APP_SECRET));
 
+    const hour = 3600000;
     app.use(
         session({
+            genid: () => uuid(),
             secret: process.env.APP_SECRET,
             resave: false,
             saveUninitialized: false,
@@ -36,6 +44,8 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
                 httpOnly: true,
                 signed: true,
                 sameSite: 'strict',
+                expires: new Date(Date.now() + hour),
+                maxAge: hour,
                 secure: process.env.NODE_ENV === 'production',
             },
         }),
@@ -77,6 +87,19 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
         }),
     );
     useContainer(app.select(AppModule), { fallbackOnErrors: true });
+
+    // custome version api
+    const extractor = (request: Request): string | string[] =>
+        [request.headers['custom-versioning-field'] ?? '']
+            .flatMap((v) => v.split(','))
+            .filter((v) => !!v)
+            .sort()
+            .reverse();
+
+    app.enableVersioning({
+        type: VersioningType.CUSTOM,
+        extractor,
+    });
 
     return app;
 }

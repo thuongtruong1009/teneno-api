@@ -20,6 +20,7 @@ async function bootstrap() {
     const isProduction = process.env.NODE_ENV === 'production';
     if (isProduction) {
         app.enable('trust proxy');
+        app.set('trust proxy', 1);
     }
 
     app.connectMicroservice<MicroserviceOptions>({

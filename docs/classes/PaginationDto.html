@@ -232,35 +232,35 @@
 import { IsOptional, IsString } from &#x27;class-validator&#x27;;
 
 export class PaginationDto {
-  @IsString()
-  @IsOptional()
-  @ApiProperty({
-    type: Number,
-    example: 1,
-    nullable: true,
-    description: &#x27;Page number&#x27;,
-  })
-  current: string;
+    @IsString()
+    @IsOptional()
+    @ApiProperty({
+        type: Number,
+        example: 1,
+        nullable: true,
+        description: &#x27;Page number&#x27;,
+    })
+    current: string;
 
-  @IsString()
-  @IsOptional()
-  @ApiProperty({
-    type: Number,
-    example: 10,
-    nullable: true,
-    description: &#x27;Number of items per page&#x27;,
-  })
-  limit: string;
+    @IsString()
+    @IsOptional()
+    @ApiProperty({
+        type: Number,
+        example: 10,
+        nullable: true,
+        description: &#x27;Number of items per page&#x27;,
+    })
+    limit: string;
 
-  @IsString()
-  @IsOptional()
-  @ApiProperty({
-    type: String,
-    description: &#x27;asc, desc&#x27;,
-    example: &#x27;asc&#x27;,
-    nullable: true,
-  })
-  order: string;
+    @IsString()
+    @IsOptional()
+    @ApiProperty({
+        type: String,
+        description: &#x27;asc, desc&#x27;,
+        example: &#x27;asc&#x27;,
+        nullable: true,
+    })
+    order: string;
 }
 </code></pre>
     </div>
