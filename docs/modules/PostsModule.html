@@ -187,13 +187,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
 import { PostsService } from &#x27;./posts.service&#x27;;
 import { PostsController } from &#x27;./posts.controller&#x27;;
-import { PrismaModule } from &#x27;../prisma/prisma.module&#x27;;
+import { PrismaModule } from &#x27;../../abstraction/prisma/prisma.module&#x27;;
 import { UsersModule } from &#x27;../users/users.module&#x27;;
 
 @Module({
-  imports: [PrismaModule, UsersModule],
-  controllers: [PostsController],
-  providers: [PostsService],
+    imports: [PrismaModule, UsersModule],
+    controllers: [PostsController],
+    providers: [PostsService],
 })
 export class PostsModule {}
 </code></pre>

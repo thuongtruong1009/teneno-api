@@ -1,10 +1,15 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import {
+    CacheModule,
+    MiddlewareConsumer,
+    Module,
+    NestModule,
+} from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './infrastructure/auth/auth.module';
 import { AtGuard } from './infrastructure/auth/guards';
-import { PrismaModule } from './infrastructure/prisma/prisma.module';
+import { PrismaModule } from './abstraction/prisma/prisma.module';
 import { UsersModule } from './infrastructure/users/users.module';
 import { FilesModule } from './infrastructure/files/files.module';
 import { ConfigModule } from '@nestjs/config';
@@ -19,15 +24,19 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { AdminModule } from './infrastructure/admin/admin.module';
 import { RolesGuard } from './core/roles';
 import { OauthModule } from './infrastructure/oauth/oauth.module';
-import { join } from 'path';
+import { MathModule } from './abstraction/microservices/math/math.module';
 
 @Module({
     imports: [
         InterceptorModule,
+        PrismaModule,
+        TerminusModule,
+        CacheModule.register(),
+        MathModule,
         ConfigModule.forRoot({
             isGlobal: true,
             // envFilePath: ['.env'],
-            // envFilePath: `.env.${process.env.NODE_ENV} || .env`,
+            envFilePath: `.env.${process.env.NODE_ENV} || .env`,
         }),
         LoggerModule.forRoot(),
         ServeStaticModule.forRoot({
@@ -36,8 +45,6 @@ import { join } from 'path';
             renderPath: '/',
             // exclude: ['/api*'],
         }),
-        PrismaModule,
-        TerminusModule,
         AuthModule,
         OauthModule,
         AdminModule,

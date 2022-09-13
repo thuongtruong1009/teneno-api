@@ -4,6 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { initSwagger, setup } from './core/configs';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 declare const module: any;
 
@@ -20,6 +21,12 @@ async function bootstrap() {
     if (isProduction) {
         app.enable('trust proxy');
     }
+
+    app.connectMicroservice<MicroserviceOptions>({
+        transport: Transport.TCP,
+        options: { retryAttempts: 5, retryDelay: 3000 },
+    });
+    await app.startAllMicroservices();
 
     const config: ConfigService = app.get(ConfigService);
     const port: number = config.get<number>('BASE_PORT');

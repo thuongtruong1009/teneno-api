@@ -81,6 +81,10 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#facebookLogin" >facebookLogin</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#githubRedirect" >githubRedirect</a>
                             </li>
                             <li>
@@ -114,7 +118,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -161,6 +165,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="facebookLogin"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>facebookLogin</b></span>
+                        <a href="#facebookLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>facebookLogin(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="10"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:10</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="githubRedirect"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -179,8 +254,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:42</a></div>
                 </td>
             </tr>
 
@@ -250,8 +325,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:58</a></div>
                 </td>
             </tr>
 
@@ -321,8 +396,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -377,7 +452,6 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import axios from &#x27;axios&#x27;;
 import { axiosRequest } from &#x27;src/core/helpers&#x27;;
 import { AuthService } from &#x27;../auth/auth.service&#x27;;
 import { SignupDto } from &#x27;../auth/dto/request&#x27;;
@@ -385,6 +459,22 @@ import { SignupDto } from &#x27;../auth/dto/request&#x27;;
 @Injectable()
 export class OauthService {
     constructor(private readonly authService: AuthService) {}
+
+    async facebookLogin(req: any) {
+        if (!req.user) {
+            return &#x27;Not found user from google&#x27;;
+        }
+
+        const payload &#x3D; {
+            email: req.user.user.email,
+            password: req.user.user.email,
+            username: req.user.user.email,
+        } as SignupDto;
+
+        await this.authService.signupLocal(payload);
+
+        return await this.authService.signinLocal(payload);
+    }
 
     async googleLogin(req: any) {
         if (!req.user) {

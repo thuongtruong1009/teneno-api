@@ -77,12 +77,18 @@
 import { APP_INTERCEPTOR } from &#x27;@nestjs/core&#x27;;
 import { LoggingInterceptor } from &#x27;src/core/interceptors/logging.interceptor&#x27;;
 import { TransformInterceptor } from &#x27;src/core/interceptors/transform.interceptor&#x27;;
+import { ErrorsInterceptor } from &#x27;./errors.interceptor&#x27;;
+import { ExcludeNullInterceptor } from &#x27;./null.interceptor&#x27;;
+import { TimeoutInterceptor } from &#x27;./timeout.interceptor&#x27;;
 
 @Module({
-  providers: [
-    { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
-    { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
-  ],
+    providers: [
+        { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
+        { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
+        { provide: APP_INTERCEPTOR, useClass: ExcludeNullInterceptor },
+        { provide: APP_INTERCEPTOR, useClass: TimeoutInterceptor },
+        { provide: APP_INTERCEPTOR, useClass: ErrorsInterceptor },
+    ],
 })
 export class InterceptorModule {}
 </code></pre>

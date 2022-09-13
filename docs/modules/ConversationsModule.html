@@ -188,12 +188,12 @@
 import { ConversationsService } from &#x27;./conversations.service&#x27;;
 import { ConversationsController } from &#x27;./conversations.controller&#x27;;
 import { UsersModule } from &#x27;../users/users.module&#x27;;
-import { PrismaModule } from &#x27;../prisma/prisma.module&#x27;;
+import { PrismaModule } from &#x27;../../abstraction/prisma/prisma.module&#x27;;
 
 @Module({
-  imports: [PrismaModule, UsersModule],
-  controllers: [ConversationsController],
-  providers: [ConversationsService],
+    imports: [PrismaModule, UsersModule],
+    controllers: [ConversationsController],
+    providers: [ConversationsService],
 })
 export class ConversationsModule {}
 </code></pre>

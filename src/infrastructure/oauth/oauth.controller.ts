@@ -3,11 +3,8 @@ import {
     Get,
     HttpCode,
     HttpStatus,
-    Param,
     Query,
-    Redirect,
     Req,
-    Res,
     UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -18,7 +15,6 @@ import {
     ApiMethodNotAllowedResponse,
     ApiNotAcceptableResponse,
     ApiNotFoundResponse,
-    ApiOAuth2,
     ApiOkResponse,
     ApiOperation,
     ApiRequestTimeoutResponse,
@@ -29,9 +25,10 @@ import {
     RESPONSES_MESSAGE,
     STATUS_MESSAGE,
     SYSTEM_ERROR,
-} from 'src/core/constants/status-message';
+} from 'src/core/constants';
 import { Public } from '../auth/decorators';
 import { OauthService } from './oauth.service';
+import { Request } from 'express';
 
 @ApiTags('OAuth')
 @ApiNotFoundResponse({
@@ -53,38 +50,68 @@ import { OauthService } from './oauth.service';
 @Public()
 @Controller('oauth')
 export class OauthController {
-    private access_token: string;
     constructor(private readonly oauthService: OauthService) {}
 
-    @Get('google')
-    @ApiOAuth2(['user:read'])
-    @UseGuards(AuthGuard('google'))
+    @Get('facebook')
+    @UseGuards(AuthGuard('facebook'))
     @ApiOperation({
-        summary: 'Connect to your Google account (not execute directly).',
+        summary:
+            'Connect to your Facebook account (not execute directly here).',
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-    async googleAuth(@Req() req) {
-        return req;
+    async facebookLogin(): Promise<any> {
+        return HttpStatus.OK;
     }
 
-    @Get('google/redirect')
-    @ApiOAuth2(['user:write'])
-    @UseGuards(AuthGuard('google'))
+    @Get('facebook/redirect')
+    @UseGuards(AuthGuard('facebook'))
     @ApiOperation({
         summary:
-            'Create login callback with your Google account (not execute directly).',
+            'Create login callback with your Facebook account (not execute directly here).',
     })
     @HttpCode(HttpStatus.CREATED)
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async googleAuthRedirect(@Req() req) {
+    async facebookAuthRedirect(@Req() req: Request): Promise<any> {
+        return this.oauthService.facebookLogin(req);
+    }
+
+    @Get('google')
+    @UseGuards(AuthGuard('google'))
+    @ApiOperation({
+        summary: 'Connect to your Google account (not execute directly here).',
+    })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async googleAuth(@Req() req: Request): Promise<any> {
+        return req;
+    }
+
+    @Get('google/redirect')
+    @UseGuards(AuthGuard('google'))
+    @ApiOperation({
+        summary:
+            'Create login callback with your Google account (not execute directly here).',
+    })
+    @HttpCode(HttpStatus.CREATED)
+    @ApiCreatedResponse({
+        description: RESPONSES_MESSAGE.CREATE_USER,
+    })
+    async googleAuthRedirect(@Req() req: Request): Promise<any> {
         return this.oauthService.googleLogin(req);
     }
 
     @Get('github/redirect')
-    // @Redirect('/success', 302)
+    @ApiOperation({
+        summary:
+            'Create login callback with your Github account (not execute directly here).',
+    })
+    @HttpCode(HttpStatus.CREATED)
+    @ApiCreatedResponse({
+        description: RESPONSES_MESSAGE.CREATE_USER,
+    })
     async githubAuthRedirect(@Query() req: string) {
         return this.oauthService.githubRedirect(req);
     }

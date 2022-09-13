@@ -78,39 +78,42 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller } from &#x27;@nestjs/common&#x27;;
 import {
-  ApiBearerAuth,
-  ApiConflictResponse,
-  ApiForbiddenResponse,
-  ApiInternalServerErrorResponse,
-  ApiMethodNotAllowedResponse,
-  ApiNotAcceptableResponse,
-  ApiNotFoundResponse,
-  ApiRequestTimeoutResponse,
-  ApiTags,
-  ApiTooManyRequestsResponse,
-  ApiUnauthorizedResponse,
+    ApiBearerAuth,
+    ApiConflictResponse,
+    ApiForbiddenResponse,
+    ApiInternalServerErrorResponse,
+    ApiMethodNotAllowedResponse,
+    ApiNotAcceptableResponse,
+    ApiNotFoundResponse,
+    ApiRequestTimeoutResponse,
+    ApiTags,
+    ApiTooManyRequestsResponse,
+    ApiUnauthorizedResponse,
 } from &#x27;@nestjs/swagger&#x27;;
-import { ROLE, RoleDecorator } from &#x27;src/core/roles&#x27;;
+import { EROLE, SYSTEM_ERROR } from &#x27;src/core/constants&#x27;;
+import { RoleDecorator } from &#x27;src/core/roles&#x27;;
 
 @ApiTags(&#x27;Admin&#x27;)
 @ApiBearerAuth()
-@ApiUnauthorizedResponse({ description: &#x27;Unauthorized&#x27; })
-@ApiForbiddenResponse({ description: &#x27;Forbidden&#x27; })
+@ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
+@ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: &#x27;Not Found.&#x27;,
-  type: Error,
+    description: SYSTEM_ERROR.NOT_FOUND,
+    type: Error,
 })
-@ApiMethodNotAllowedResponse({ description: &#x27;Method Not Allowed.&#x27; })
+@ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: &#x27;Provided fields are not in correct form.&#x27;,
+    description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
-@ApiRequestTimeoutResponse({ description: &#x27;Request Timeout.&#x27; })
+@ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: &#x27;Conflict existed.&#x27;,
+    description: SYSTEM_ERROR.CONFLICT,
 })
-@ApiTooManyRequestsResponse({ description: &#x27;Too Many Requests.&#x27; })
-@ApiInternalServerErrorResponse({ description: &#x27;Internal Server Error.&#x27; })
-@RoleDecorator(ROLE.ADMIN)
+@ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
+@ApiInternalServerErrorResponse({
+    description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+})
+@RoleDecorator(EROLE.ADMIN)
 @Controller(&#x27;admin&#x27;)
 export class AdminController {}
 </code></pre>

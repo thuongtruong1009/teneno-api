@@ -4,16 +4,12 @@ import {
     Inject,
     Injectable,
 } from '@nestjs/common';
-import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
+import { PrismaService } from 'src/abstraction/prisma/prisma.service';
 import { ITokens } from './dto/response';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
-import {
-    AUTH_ERROR,
-    SYSTEM_ERROR,
-    USER_ERROR,
-} from 'src/core/constants/status-message';
+import { AUTH_ERROR, SYSTEM_ERROR, USER_ERROR } from 'src/core/constants';
 import { comparePassword, hashPassword } from 'src/core/helpers';
 
 @Injectable()

@@ -1,4 +1,4 @@
 import { SetMetadata } from '@nestjs/common';
-import { ROLE } from './roles.enum';
+import { EROLE } from '../constants';
 
-export const RoleDecorator = (...roles: ROLE[]) => SetMetadata('roles', roles);
+export const RoleDecorator = (...roles: EROLE[]) => SetMetadata('roles', roles);

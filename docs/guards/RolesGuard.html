@@ -227,27 +227,28 @@
         <div class="tab-pane fade  tab-source-code" id="c-source">
             <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CanActivate, ExecutionContext, Injectable } from &#x27;@nestjs/common&#x27;;
 import { Reflector } from &#x27;@nestjs/core&#x27;;
-import { ROLE } from &#x27;./roles.enum&#x27;;
+import { EROLE } from &#x27;../constants&#x27;;
 
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(private reflector: Reflector) {}
+    constructor(private reflector: Reflector) {}
 
-  canActivate(context: ExecutionContext): boolean {
-    const requiredRoles &#x3D; this.reflector.getAllAndOverride&lt;ROLE[]&gt;(&#x27;roles&#x27;, [
-      context.getHandler(),
-      context.getClass(),
-    ]);
-    if (!requiredRoles) {
-      return true;
+    canActivate(context: ExecutionContext): boolean {
+        const requiredRoles &#x3D; this.reflector.getAllAndOverride&lt;EROLE[]&gt;(
+            &#x27;roles&#x27;,
+            [context.getHandler(), context.getClass()],
+        );
+        if (!requiredRoles) {
+            return true;
+        }
+        // return false;
+        const { request } &#x3D; context.switchToHttp().getRequest();
+        const user &#x3D; request.user;
+        const hasRole &#x3D; () &#x3D;&gt;
+            user.roles.some((role) &#x3D;&gt; user.roles.includes(role));
+
+        return user &amp;&amp; user.roles &amp;&amp; hasRole();
     }
-    // return false;
-    const { request } &#x3D; context.switchToHttp().getRequest();
-    const user &#x3D; request.user;
-    const hasRole &#x3D; () &#x3D;&gt; user.roles.some((role) &#x3D;&gt; user.roles.includes(role));
-
-    return user &amp;&amp; user.roles &amp;&amp; hasRole();
-  }
 }
 </code></pre>
         </div>

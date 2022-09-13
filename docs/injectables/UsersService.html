@@ -138,7 +138,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/infrastructure/users/users.service.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/infrastructure/users/users.service.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -203,8 +203,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="192"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:192</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:193</a></div>
                 </td>
             </tr>
 
@@ -286,8 +286,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="225"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:225</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:226</a></div>
                 </td>
             </tr>
 
@@ -357,8 +357,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:36</a></div>
                 </td>
             </tr>
 
@@ -428,8 +428,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -499,8 +499,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:81</a></div>
                 </td>
             </tr>
 
@@ -570,8 +570,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:96</a></div>
                 </td>
             </tr>
 
@@ -641,8 +641,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:135</a></div>
                 </td>
             </tr>
 
@@ -724,8 +724,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="163"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:163</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="164"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:164</a></div>
                 </td>
             </tr>
 
@@ -807,8 +807,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/infrastructure/users/users.service.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/users/users.service.ts:115</a></div>
                 </td>
             </tr>
 
@@ -875,245 +875,246 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ForbiddenException,
-  Injectable,
-  NotAcceptableException,
-  NotFoundException,
+    ForbiddenException,
+    Injectable,
+    NotAcceptableException,
+    NotFoundException,
 } from &#x27;@nestjs/common&#x27;;
 import { LoginDto } from &#x27;src/infrastructure/auth/dto/request&#x27;;
 import { comparePassword } from &#x27;src/core/helpers/hash&#x27;;
-import { PrismaService } from &#x27;src/infrastructure/prisma/prisma.service&#x27;;
+import { PrismaService } from &#x27;src/abstraction/prisma/prisma.service&#x27;;
 import {
-  UpdateUserAvatarDto,
-  UpdateUserCoverDto,
-  UpdateUserProfileDto,
+    UpdateUserAvatarDto,
+    UpdateUserCoverDto,
+    UpdateUserProfileDto,
 } from &#x27;./dto/request&#x27;;
 import {
-  IAllUsers,
-  IFindUserByEmail,
-  IGetUserProfile,
-  IPublicUser,
-  IUpdateAvatar,
-  IUpdateCover,
+    IAllUsers,
+    IFindUserByEmail,
+    IGetUserProfile,
+    IPublicUser,
+    IUpdateAvatar,
+    IUpdateCover,
 } from &#x27;./dto/response&#x27;;
-import { PaginationDto } from &#x27;src/core/common/pagination.dto&#x27;;
+import { PaginationDto } from &#x27;src/core/common/dto/pagination.dto&#x27;;
 import {
-  AUTH_ERROR,
-  RESPONSES_MESSAGE,
-  SYSTEM_ERROR,
-  USER_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
+    AUTH_ERROR,
+    EORDER,
+    RESPONSES_MESSAGE,
+    SYSTEM_ERROR,
+    USER_ERROR,
+} from &#x27;src/core/constants&#x27;;
 
 @Injectable()
 export class UsersService {
-  constructor(private prismaService: PrismaService) {}
+    constructor(private prismaService: PrismaService) {}
 
-  async getAllUsers(dto: PaginationDto): Promise&lt;IAllUsers&gt; {
-    const total &#x3D; await this.prismaService.user.count();
-    const users &#x3D; await this.prismaService.user.findMany({
-      // skip: Number(dto.limit) * (Number(dto.current) - 1),
-      take: Number(dto.limit) || 10,
-      orderBy: {
-        id: dto.order as any,
-      },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-        createdAt: true,
-      },
-    });
-    return {
-      total,
-      orderBy: dto.order || &#x27;asc&#x27;,
-      pageItems: users.length,
-      pageLimit: Number(dto.limit) || 10,
-      pageCurrent: Number(dto.current) || 1,
-      users: users,
-    };
-  }
+    async getAllUsers(dto: PaginationDto): Promise&lt;IAllUsers&gt; {
+        const total &#x3D; await this.prismaService.user.count();
+        const users &#x3D; await this.prismaService.user.findMany({
+            // skip: Number(dto.limit) * (Number(dto.current) - 1),
+            take: Number(dto.limit) || 10,
+            orderBy: {
+                id: dto.order as any,
+            },
+            select: {
+                id: true,
+                email: true,
+                username: true,
+                createdAt: true,
+            },
+        });
+        return {
+            total,
+            orderBy: dto.order || EORDER.ASC,
+            pageItems: users.length,
+            pageLimit: Number(dto.limit) || 10,
+            pageCurrent: Number(dto.current) || 1,
+            users: users,
+        };
+    }
 
-  async getPublicUserByIdOrUsername(
-    userIdOrUsername: string,
-  ): Promise&lt;IPublicUser&gt; {
-    const identify &#x3D; await this.prismaService.user.findMany({
-      where: {
-        OR: [{ id: userIdOrUsername }, { username: userIdOrUsername }],
-      },
-      select: {
-        id: true,
-        username: true,
-        email: true,
-        profile: true,
-        createdAt: true,
-      },
-    });
-    if (identify.length &#x3D;&#x3D;&#x3D; 0)
-      throw new NotFoundException(USER_ERROR.NOT_FOUND);
-    return identify[0];
-  }
+    async getPublicUserByIdOrUsername(
+        userIdOrUsername: string,
+    ): Promise&lt;IPublicUser&gt; {
+        const identify &#x3D; await this.prismaService.user.findMany({
+            where: {
+                OR: [{ id: userIdOrUsername }, { username: userIdOrUsername }],
+            },
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                profile: true,
+                createdAt: true,
+            },
+        });
+        if (identify.length &#x3D;&#x3D;&#x3D; 0)
+            throw new NotFoundException(USER_ERROR.NOT_FOUND);
+        return identify[0];
+    }
 
-  async getUserByEmail(email: string): Promise&lt;IFindUserByEmail&gt; {
-    const identify &#x3D; await this.prismaService.user.findUnique({
-      where: {
-        email: email,
-      },
-      select: {
-        username: true,
-        email: true,
-      },
-    });
+    async getUserByEmail(email: string): Promise&lt;IFindUserByEmail&gt; {
+        const identify &#x3D; await this.prismaService.user.findUnique({
+            where: {
+                email: email,
+            },
+            select: {
+                username: true,
+                email: true,
+            },
+        });
 
-    if (!identify) throw new NotFoundException(USER_ERROR.NOT_FOUND);
-    return identify;
-  }
+        if (!identify) throw new NotFoundException(USER_ERROR.NOT_FOUND);
+        return identify;
+    }
 
-  async getUserProfile(userId: string): Promise&lt;IGetUserProfile&gt; {
-    const profile &#x3D; await this.prismaService.user.findUnique({
-      where: {
-        id: userId,
-      },
-      select: {
-        id: true,
-        username: true,
-        email: true,
-        profile: true,
-        createdAt: true,
-        updatedAt: true,
-      },
-    });
+    async getUserProfile(userId: string): Promise&lt;IGetUserProfile&gt; {
+        const profile &#x3D; await this.prismaService.user.findUnique({
+            where: {
+                id: userId,
+            },
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                profile: true,
+                createdAt: true,
+                updatedAt: true,
+            },
+        });
 
-    if (!profile) throw new NotFoundException(USER_ERROR.NOT_FOUND);
-    return profile;
-  }
+        if (!profile) throw new NotFoundException(USER_ERROR.NOT_FOUND);
+        return profile;
+    }
 
-  async updateUsersProfile(
-    userId: string,
-    dto: UpdateUserProfileDto,
-  ): Promise&lt;IPublicUser&gt; {
-    await this.prismaService.userProfile.upsert({
-      where: {
-        userId: userId,
-      },
-      create: {
-        ...dto,
-        userId: userId,
-      },
-      update: {
-        ...dto,
-      },
-    });
-    const newProfile &#x3D; await this.getPublicUserByIdOrUsername(userId);
-    return newProfile;
-  }
+    async updateUsersProfile(
+        userId: string,
+        dto: UpdateUserProfileDto,
+    ): Promise&lt;IPublicUser&gt; {
+        await this.prismaService.userProfile.upsert({
+            where: {
+                userId: userId,
+            },
+            create: {
+                ...dto,
+                userId: userId,
+            },
+            update: {
+                ...dto,
+            },
+        });
+        const newProfile &#x3D; await this.getPublicUserByIdOrUsername(userId);
+        return newProfile;
+    }
 
-  async updateUsersAvatar(
-    userId: string,
-    dto: UpdateUserAvatarDto,
-  ): Promise&lt;IUpdateAvatar&gt; {
-    await this.prismaService.user.update({
-      where: { id: userId },
-      data: {
-        profile: {
-          update: {
-            ...dto,
-          },
-        },
-      },
-    });
-    const newAvatar &#x3D; await this.prismaService.user.findUnique({
-      where: {
-        id: userId,
-      },
-      select: {
-        profile: {
-          select: {
-            avatar: true,
-          },
-        },
-      },
-    });
-    return newAvatar;
-  }
+    async updateUsersAvatar(
+        userId: string,
+        dto: UpdateUserAvatarDto,
+    ): Promise&lt;IUpdateAvatar&gt; {
+        await this.prismaService.user.update({
+            where: { id: userId },
+            data: {
+                profile: {
+                    update: {
+                        ...dto,
+                    },
+                },
+            },
+        });
+        const newAvatar &#x3D; await this.prismaService.user.findUnique({
+            where: {
+                id: userId,
+            },
+            select: {
+                profile: {
+                    select: {
+                        avatar: true,
+                    },
+                },
+            },
+        });
+        return newAvatar;
+    }
 
-  async updateUsersCover(
-    userId: string,
-    dto: UpdateUserCoverDto,
-  ): Promise&lt;IUpdateCover&gt; {
-    await this.prismaService.user.update({
-      where: { id: userId },
-      data: {
-        profile: {
-          update: {
-            ...dto,
-          },
-        },
-      },
-    });
-    const newCover &#x3D; await this.prismaService.user.findUnique({
-      where: {
-        id: userId,
-      },
-      select: {
-        profile: {
-          select: {
-            cover: true,
-          },
-        },
-      },
-    });
-    return newCover;
-  }
+    async updateUsersCover(
+        userId: string,
+        dto: UpdateUserCoverDto,
+    ): Promise&lt;IUpdateCover&gt; {
+        await this.prismaService.user.update({
+            where: { id: userId },
+            data: {
+                profile: {
+                    update: {
+                        ...dto,
+                    },
+                },
+            },
+        });
+        const newCover &#x3D; await this.prismaService.user.findUnique({
+            where: {
+                id: userId,
+            },
+            select: {
+                profile: {
+                    select: {
+                        cover: true,
+                    },
+                },
+            },
+        });
+        return newCover;
+    }
 
-  async deleteUser(userId: string, dto: LoginDto): Promise&lt;string&gt; {
-    const user &#x3D; await this.prismaService.user.findUnique({
-      where: {
-        id: userId,
-      },
-      select: {
-        email: true,
-        password: true,
-      },
-    });
+    async deleteUser(userId: string, dto: LoginDto): Promise&lt;string&gt; {
+        const user &#x3D; await this.prismaService.user.findUnique({
+            where: {
+                id: userId,
+            },
+            select: {
+                email: true,
+                password: true,
+            },
+        });
 
-    if (!user) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
+        if (!user) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-    const matchEmail: number &#x3D; dto.password.localeCompare(user.password);
-    const matchPassword: boolean &#x3D; await comparePassword(
-      dto.password,
-      user.password,
-    );
+        const matchEmail: number &#x3D; dto.password.localeCompare(user.password);
+        const matchPassword: boolean &#x3D; await comparePassword(
+            dto.password,
+            user.password,
+        );
 
-    if (matchEmail &#x3D;&#x3D;&#x3D; 0 || !matchPassword)
-      throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
+        if (matchEmail &#x3D;&#x3D;&#x3D; 0 || !matchPassword)
+            throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-    if (!matchPassword)
-      throw new NotAcceptableException(AUTH_ERROR.PASSWORD_NOT_MATCH);
+        if (!matchPassword)
+            throw new NotAcceptableException(AUTH_ERROR.PASSWORD_NOT_MATCH);
 
-    await this.prismaService.userProfile.delete({
-      where: {
-        userId: userId,
-      },
-    });
-    return RESPONSES_MESSAGE.DELETE_USER;
-  }
+        await this.prismaService.userProfile.delete({
+            where: {
+                userId: userId,
+            },
+        });
+        return RESPONSES_MESSAGE.DELETE_USER;
+    }
 
-  async deleteUserById(userId: string): Promise&lt;string&gt; {
-    const user &#x3D; await this.prismaService.user.findUnique({
-      where: {
-        id: userId,
-      },
-    });
+    async deleteUserById(userId: string): Promise&lt;string&gt; {
+        const user &#x3D; await this.prismaService.user.findUnique({
+            where: {
+                id: userId,
+            },
+        });
 
-    if (!user) throw new NotFoundException(USER_ERROR.NOT_FOUND);
+        if (!user) throw new NotFoundException(USER_ERROR.NOT_FOUND);
 
-    await this.prismaService.user.delete({
-      where: {
-        id: userId,
-      },
-    });
-    return RESPONSES_MESSAGE.DELETE_USER;
-  }
+        await this.prismaService.user.delete({
+            where: {
+                id: userId,
+            },
+        });
+        return RESPONSES_MESSAGE.DELETE_USER;
+    }
 }
 </code></pre>
     </div>

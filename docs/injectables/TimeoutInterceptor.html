@@ -188,19 +188,27 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  CallHandler,
-  ExecutionContext,
-  Injectable,
-  NestInterceptor,
+    Injectable,
+    NestInterceptor,
+    ExecutionContext,
+    CallHandler,
+    RequestTimeoutException,
 } from &#x27;@nestjs/common&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-import { timeout } from &#x27;rxjs/operators&#x27;;
-
+import { Observable, throwError, TimeoutError } from &#x27;rxjs&#x27;;
+import { catchError, timeout } from &#x27;rxjs/operators&#x27;;
 @Injectable()
 export class TimeoutInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable&lt;any&gt; {
-    return next.handle().pipe(timeout(1000));
-  }
+    intercept(context: ExecutionContext, next: CallHandler): Observable&lt;any&gt; {
+        return next.handle().pipe(
+            timeout(5000),
+            catchError((err) &#x3D;&gt; {
+                if (err instanceof TimeoutError) {
+                    return throwError(() &#x3D;&gt; new RequestTimeoutException());
+                }
+                return throwError(() &#x3D;&gt; err);
+            }),
+        );
+    }
 }
 </code></pre>
     </div>

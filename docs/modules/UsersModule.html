@@ -57,13 +57,13 @@
 <title>cluster_UsersModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 392,-230.8 392,-32.8 8,-32.8"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_UsersModule_exports</title>
-<polygon fill="none" stroke="black" points="166,-170.8 166,-222.8 276,-222.8 276,-170.8 166,-170.8"/>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_UsersModule_imports</title>
 <polygon fill="none" stroke="black" points="164,-40.8 164,-92.8 384,-92.8 384,-40.8 164,-40.8"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_UsersModule_exports</title>
+<polygon fill="none" stroke="black" points="166,-170.8 166,-222.8 276,-222.8 276,-170.8 166,-170.8"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_UsersModule_providers</title>
@@ -288,22 +288,22 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MiddlewareConsumer, Module, RequestMethod } from &#x27;@nestjs/common&#x27;;
 import { ExistedUserMiddleware } from &#x27;src/core/middlewares/existed-user.middleware&#x27;;
 import { AuthModule } from &#x27;src/infrastructure/auth/auth.module&#x27;;
-import { PrismaModule } from &#x27;src/infrastructure/prisma/prisma.module&#x27;;
+import { PrismaModule } from &#x27;src/abstraction/prisma/prisma.module&#x27;;
 import { UsersController } from &#x27;./users.controller&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
 
 @Module({
-  imports: [PrismaModule, AuthModule],
-  controllers: [UsersController],
-  providers: [UsersService],
-  exports: [UsersService],
+    imports: [PrismaModule, AuthModule],
+    controllers: [UsersController],
+    providers: [UsersService],
+    exports: [UsersService],
 })
 export class UsersModule {
-  public configure(consumer: MiddlewareConsumer): void {
-    // consumer
-    //   .apply(ExistedUserMiddleware)
-    //   .forRoutes({ path: &#x27;users&#x27;, method: RequestMethod.GET });
-  }
+    public configure(consumer: MiddlewareConsumer): void {
+        // consumer
+        //   .apply(ExistedUserMiddleware)
+        //   .forRoutes({ path: &#x27;users&#x27;, method: RequestMethod.GET });
+    }
 }
 </code></pre>
     </div>

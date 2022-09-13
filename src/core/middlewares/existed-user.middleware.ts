@@ -1,6 +1,6 @@
 import { Injectable, NestMiddleware, NotFoundException } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
+import { PrismaService } from 'src/abstraction/prisma/prisma.service';
 
 @Injectable()
 export class ExistedUserMiddleware implements NestMiddleware {

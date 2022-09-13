@@ -57,13 +57,13 @@
 <title>cluster_AuthModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 527,-230.8 527,-32.8 8,-32.8"/>
 </g>
-<g id="clust3" class="cluster">
-<title>cluster_AuthModule_imports</title>
-<polygon fill="none" stroke="black" points="405,-40.8 405,-92.8 519,-92.8 519,-40.8 405,-40.8"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_AuthModule_exports</title>
 <polygon fill="none" stroke="black" points="218,-170.8 218,-222.8 324,-222.8 324,-170.8 218,-170.8"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_AuthModule_imports</title>
+<polygon fill="none" stroke="black" points="405,-40.8 405,-92.8 519,-92.8 519,-40.8 405,-40.8"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_AuthModule_providers</title>
@@ -225,7 +225,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
-import { PrismaModule } from &#x27;src/infrastructure/prisma/prisma.module&#x27;;
+import { PrismaModule } from &#x27;src/abstraction/prisma/prisma.module&#x27;;
 import { AuthController } from &#x27;./auth.controller&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { AtStrategy, RtStrategy } from &#x27;./strategies&#x27;;

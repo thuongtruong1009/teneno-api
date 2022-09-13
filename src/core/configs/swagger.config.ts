@@ -16,10 +16,14 @@ export const initSwagger = (app: INestApplication) => {
             'https://github.com/thuongtruong1009',
             'ititiu19228@student.hcmiu.edu.vn',
         )
+        .setLicense(
+            'License - MIT',
+            'https://github.com/thuongtruong1009/teneno-api/blob/main/LICENSE',
+        )
         .addServer(config.get<string>('BASE_URL'))
         .addServer(config.get<string>('HOST_URL'))
         .setVersion('1.6.0')
-        .addTag('cats', 'default description')
+        // .addTag('cats', 'default description')
         .addBearerAuth({
             type: 'http',
             scheme: 'Bearer',

@@ -1,12 +1,33 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
 import { axiosRequest } from 'src/core/helpers';
 import { AuthService } from '../auth/auth.service';
 import { SignupDto } from '../auth/dto/request';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class OauthService {
-    constructor(private readonly authService: AuthService) {}
+    constructor(
+        private readonly authService: AuthService,
+        private readonly usersService: UsersService,
+    ) {}
+
+    async facebookLogin(req: any) {
+        if (!req.user) {
+            return 'Not found user from google';
+        }
+
+        const payload = {
+            email: req.user.user.email,
+            password: req.user.user.email,
+            username: req.user.user.email,
+        } as SignupDto;
+
+        const identify = await this.usersService.getUserByEmail(payload.email);
+        if (!identify) {
+            return await this.authService.signupLocal(payload);
+        }
+        return await this.authService.signinLocal(payload);
+    }
 
     async googleLogin(req: any) {
         if (!req.user) {
@@ -19,8 +40,10 @@ export class OauthService {
             username: req.user.email,
         } as SignupDto;
 
-        await this.authService.signupLocal(payload);
-
+        const identify = await this.usersService.getUserByEmail(payload.email);
+        if (!identify) {
+            return await this.authService.signupLocal(payload);
+        }
         return await this.authService.signinLocal(payload);
     }
 
@@ -49,7 +72,11 @@ export class OauthService {
             password: data.id.toString(),
             username: data.login,
         } as SignupDto;
-        await this.authService.signupLocal(payload);
+
+        const identify = await this.usersService.getUserByEmail(payload.email);
+        if (!identify) {
+            return await this.authService.signupLocal(payload);
+        }
         return await this.authService.signinLocal(payload);
     }
 }

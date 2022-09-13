@@ -105,7 +105,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/infrastructure/auth/strategies/rt.strategy.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/infrastructure/auth/strategies/rt.strategy.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -168,8 +168,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/infrastructure/auth/strategies/rt.strategy.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/infrastructure/auth/strategies/rt.strategy.ts:25</a></div>
                 </td>
             </tr>
 
@@ -240,9 +240,13 @@ import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
 import { Request } from &#x27;express&#x27;;
 import { Inject, Injectable } from &#x27;@nestjs/common&#x27;;
 import { ConfigService } from &#x27;@nestjs/config&#x27;;
+import { ESTRATEGY } from &#x27;src/core/constants&#x27;;
 
 @Injectable()
-export class RtStrategy extends PassportStrategy(Strategy, &#x27;jwt-refresh&#x27;) {
+export class RtStrategy extends PassportStrategy(
+    Strategy,
+    ESTRATEGY.JWT_REFRESH,
+) {
     constructor(
         @Inject(ConfigService)
         private config: ConfigService,

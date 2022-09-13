@@ -161,8 +161,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:79</a></div>
                 </td>
             </tr>
 
@@ -239,8 +239,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="137"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:137</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:134</a></div>
                 </td>
             </tr>
 
@@ -329,8 +329,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="171"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:171</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="168"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:168</a></div>
                 </td>
             </tr>
 
@@ -419,8 +419,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:91</a></div>
                 </td>
             </tr>
 
@@ -497,8 +497,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:104</a></div>
                 </td>
             </tr>
 
@@ -585,8 +585,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="122"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:122</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:119</a></div>
                 </td>
             </tr>
 
@@ -675,8 +675,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="152"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:152</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:149</a></div>
                 </td>
             </tr>
 
@@ -765,8 +765,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="190"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:190</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:187</a></div>
                 </td>
             </tr>
 
@@ -831,46 +831,43 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpCode,
-  HttpStatus,
+    Controller,
+    Get,
+    Post,
+    Body,
+    Patch,
+    Param,
+    Delete,
+    HttpCode,
+    HttpStatus,
 } from &#x27;@nestjs/common&#x27;;
 import {
-  ApiBearerAuth,
-  ApiConflictResponse,
-  ApiCreatedResponse,
-  ApiForbiddenResponse,
-  ApiInternalServerErrorResponse,
-  ApiMethodNotAllowedResponse,
-  ApiNotAcceptableResponse,
-  ApiNotFoundResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiRequestTimeoutResponse,
-  ApiTags,
-  ApiTooManyRequestsResponse,
-  ApiUnauthorizedResponse,
+    ApiBearerAuth,
+    ApiConflictResponse,
+    ApiCreatedResponse,
+    ApiForbiddenResponse,
+    ApiInternalServerErrorResponse,
+    ApiMethodNotAllowedResponse,
+    ApiNotAcceptableResponse,
+    ApiNotFoundResponse,
+    ApiOkResponse,
+    ApiOperation,
+    ApiRequestTimeoutResponse,
+    ApiTags,
+    ApiTooManyRequestsResponse,
+    ApiUnauthorizedResponse,
 } from &#x27;@nestjs/swagger&#x27;;
-import {
-  STATUS_MESSAGE,
-  SYSTEM_ERROR,
-} from &#x27;src/core/constants/status-message&#x27;;
+import { STATUS_MESSAGE, SYSTEM_ERROR } from &#x27;src/core/constants&#x27;;
 import { ConversationsService } from &#x27;./conversations.service&#x27;;
 import {
-  CreateConversationDto,
-  DeleteConversationDto,
-  DeleteOneAdminConversationDto,
-  GetAllConversationDto,
-  GetOneConversationDto,
-  UpdateConversationDto,
-  UpdateMembersConversationDto,
-  UpdateRolesConversationDto,
+    CreateConversationDto,
+    DeleteConversationDto,
+    DeleteOneAdminConversationDto,
+    GetAllConversationDto,
+    GetOneConversationDto,
+    UpdateConversationDto,
+    UpdateMembersConversationDto,
+    UpdateRolesConversationDto,
 } from &#x27;./dto&#x27;;
 import { ConversationEntity } from &#x27;./entities&#x27;;
 
@@ -879,155 +876,155 @@ import { ConversationEntity } from &#x27;./entities&#x27;;
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
 @ApiForbiddenResponse({ description: SYSTEM_ERROR.FORBIDDEN })
 @ApiNotFoundResponse({
-  description: SYSTEM_ERROR.NOT_FOUND,
-  type: Error,
+    description: SYSTEM_ERROR.NOT_FOUND,
+    type: Error,
 })
 @ApiMethodNotAllowedResponse({ description: SYSTEM_ERROR.METHOD_NOT_ALLOWED })
 @ApiNotAcceptableResponse({
-  description: SYSTEM_ERROR.NOT_ACCEPTABLE,
+    description: SYSTEM_ERROR.NOT_ACCEPTABLE,
 })
 @ApiRequestTimeoutResponse({ description: SYSTEM_ERROR.REQUEST_TIMEOUT })
 @ApiConflictResponse({
-  description: SYSTEM_ERROR.CONFLICT,
+    description: SYSTEM_ERROR.CONFLICT,
 })
 @ApiTooManyRequestsResponse({ description: SYSTEM_ERROR.TOO_MANY_REQUESTS })
 @ApiInternalServerErrorResponse({
-  description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
+    description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
 @Controller(&#x27;conversations&#x27;)
 // https://www.youtube.com/watch?v&#x3D;LMjj1_EK4y8&amp;ab_channel&#x3D;Prisma
 export class ConversationsController {
-  constructor(private readonly conversationsService: ConversationsService) {
-    this.conversationsService &#x3D; conversationsService;
-  }
+    constructor(private readonly conversationsService: ConversationsService) {
+        this.conversationsService &#x3D; conversationsService;
+    }
 
-  @Post()
-  @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: &#x27;Create a new conversation (user)&#x27; })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  @ApiCreatedResponse({
-    type: ConversationEntity,
-    description: &#x27;The new conversation has been created.&#x27;,
-  })
-  async createConversation(@Body() dto: CreateConversationDto) {
-    return await this.conversationsService.createConversation(dto);
-  }
+    @Post()
+    @HttpCode(HttpStatus.CREATED)
+    @ApiOperation({ summary: &#x27;Create a new conversation (user)&#x27; })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    @ApiCreatedResponse({
+        type: ConversationEntity,
+        description: &#x27;The new conversation has been created.&#x27;,
+    })
+    async createConversation(@Body() dto: CreateConversationDto) {
+        return await this.conversationsService.createConversation(dto);
+    }
 
-  @Get()
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: &#x27;Get all conversations of current user (user)&#x27; })
-  @ApiOkResponse({
-    type: ConversationEntity,
-    isArray: true,
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getAllConversations(@Body() dto: GetAllConversationDto) {
-    return this.conversationsService.getAllConversations(dto);
-  }
+    @Get()
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: &#x27;Get all conversations of current user (user)&#x27; })
+    @ApiOkResponse({
+        type: ConversationEntity,
+        isArray: true,
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getAllConversations(@Body() dto: GetAllConversationDto) {
+        return this.conversationsService.getAllConversations(dto);
+    }
 
-  @Get(&#x27;:id&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary: &#x27;Get one conversation information of current user (user)&#x27;,
-  })
-  @ApiOkResponse({
-    type: ConversationEntity,
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async getConversationById(
-    @Param(&#x27;id&#x27;) id: string,
-    @Body() dto: GetOneConversationDto,
-  ) {
-    return this.conversationsService.getConversationById(id, dto);
-  }
+    @Get(&#x27;:id&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: &#x27;Get one conversation information of current user (user)&#x27;,
+    })
+    @ApiOkResponse({
+        type: ConversationEntity,
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getConversationById(
+        @Param(&#x27;id&#x27;) id: string,
+        @Body() dto: GetOneConversationDto,
+    ) {
+        return this.conversationsService.getConversationById(id, dto);
+    }
 
-  @Patch(&#x27;:id&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary: &#x27;Update one conversation information of current user (user)&#x27;,
-  })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  updateConversationById(
-    @Param(&#x27;id&#x27;) id: string,
-    @Body() dto: UpdateConversationDto,
-  ) {
-    return this.conversationsService.updateConversationById(id, dto);
-  }
+    @Patch(&#x27;:id&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: &#x27;Update one conversation information of current user (user)&#x27;,
+    })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    updateConversationById(
+        @Param(&#x27;id&#x27;) id: string,
+        @Body() dto: UpdateConversationDto,
+    ) {
+        return this.conversationsService.updateConversationById(id, dto);
+    }
 
-  @Delete(&#x27;:id&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary: &#x27;Delete one conversation by creator-conversation (user)&#x27;,
-  })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async deleteConversationById(
-    @Param(&#x27;id&#x27;) id: string,
-    @Body() dto: DeleteConversationDto,
-  ) {
-    return this.conversationsService.deleteConversationById(id, dto);
-  }
+    @Delete(&#x27;:id&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: &#x27;Delete one conversation by creator-conversation (user)&#x27;,
+    })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async deleteConversationById(
+        @Param(&#x27;id&#x27;) id: string,
+        @Body() dto: DeleteConversationDto,
+    ) {
+        return this.conversationsService.deleteConversationById(id, dto);
+    }
 
-  @Patch(&#x27;:conversationId/updateMembers&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary: &#x27;Update members list of current conversation (user)&#x27;,
-  })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async updateMembersConversation(
-    @Param(&#x27;conversationId&#x27;) conversationId: string,
-    @Body() dto: UpdateMembersConversationDto,
-  ) {
-    return this.conversationsService.updateMembersConversation(
-      conversationId,
-      dto,
-    );
-  }
+    @Patch(&#x27;:conversationId/updateMembers&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: &#x27;Update members list of current conversation (user)&#x27;,
+    })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async updateMembersConversation(
+        @Param(&#x27;conversationId&#x27;) conversationId: string,
+        @Body() dto: UpdateMembersConversationDto,
+    ) {
+        return this.conversationsService.updateMembersConversation(
+            conversationId,
+            dto,
+        );
+    }
 
-  @Patch(&#x27;:conversationId/deleteAdmins&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary:
-      &#x27;Delete one admin of current conversation by creator-conversation (user)&#x27;,
-  })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async deleteOneAdminConversation(
-    @Param(&#x27;conversationId&#x27;) conversationId: string,
-    @Body() dto: DeleteOneAdminConversationDto,
-  ) {
-    return this.conversationsService.deleteOneAdminConversation(
-      conversationId,
-      dto,
-    );
-  }
+    @Patch(&#x27;:conversationId/deleteAdmins&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary:
+            &#x27;Delete one admin of current conversation by creator-conversation (user)&#x27;,
+    })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async deleteOneAdminConversation(
+        @Param(&#x27;conversationId&#x27;) conversationId: string,
+        @Body() dto: DeleteOneAdminConversationDto,
+    ) {
+        return this.conversationsService.deleteOneAdminConversation(
+            conversationId,
+            dto,
+        );
+    }
 
-  @Patch(&#x27;:conversationId/updateRoles&#x27;)
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({
-    summary:
-      &#x27;Change role of any member of current conversation by creator-conversation (user)&#x27;,
-  })
-  @ApiOkResponse({
-    description: STATUS_MESSAGE.SUCCESS,
-  })
-  async updateRolesConversation(
-    @Param(&#x27;conversationId&#x27;) conversationId: string,
-    @Body() dto: UpdateRolesConversationDto,
-  ) {
-    return this.conversationsService.updateRolesConversation(
-      conversationId,
-      dto,
-    );
-  }
+    @Patch(&#x27;:conversationId/updateRoles&#x27;)
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary:
+            &#x27;Change role of any member of current conversation by creator-conversation (user)&#x27;,
+    })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async updateRolesConversation(
+        @Param(&#x27;conversationId&#x27;) conversationId: string,
+        @Body() dto: UpdateRolesConversationDto,
+    ) {
+        return this.conversationsService.updateRolesConversation(
+            conversationId,
+            dto,
+        );
+    }
 }
 </code></pre>
     </div>
