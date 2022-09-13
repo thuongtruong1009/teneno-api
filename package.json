@@ -50,7 +50,6 @@
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "nest build",
-        "heroku-postbuild": "npm install && npm install --only=dev --no-shrinkwrap && npm run build",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "fixtures": "fixtures-ts-node-commonjs load --require=dotenv/config --require=tsconfig-paths/register --dataSource=./src/data-source.ts --ignoreDecorators test/fixtures",
         "webpack": "nest build --webpack --webpackPath webpack-hmr.config.ts --watch",
