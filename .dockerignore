@@ -1,9 +1,2 @@
-*
-!Dockerfile
-!nest-cli.json
-!package.json
-!package-lock.json
-!README.md
-!src/
-!tsconfig.build.json
-!tsconfig.json
+node_modules
+npm-debug.log

@@ -72,11 +72,13 @@
         "prisma:migrate": "npx prisma migrate dev --create-only",
         "prisma:push": "npx prisma db push",
         "prisma:deploy": "npx prisma migrate deploy",
+        "start:migrate:prod": "prisma migrate deploy && npm run start:prod",
         "prisma:studio": "npx prisma studio",
         "prisma:seed": "npx prisma db seed --preview-feature",
         "prisma:reset": "npx prisma migrate reset",
         "clear": "npm rm -rf node_modules && npm cache clean --force && npm install",
-        "docs": "npx @compodoc/compodoc -p tsconfig.json -s -d ./docs -n \"Teneno API documentation\" -r 5500 -w -o --hideGenerator --customFavicon \"/public/favicon.ico\" --theme \"postmark\""
+        "docs": "npx @compodoc/compodoc -p tsconfig.json -s -d ./docs -n \"Teneno API documentation\" -r 5500 -w -o --hideGenerator --customFavicon \"/public/favicon.ico\" --theme \"postmark\"",
+        "docker:run": "docker run -p 5500:5500 --env-file .env -d teneno"
     },
     "prisma": {
         "schema": "prisma/schema.prisma"
