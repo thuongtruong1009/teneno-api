@@ -12,7 +12,7 @@ import { AtGuard } from './infrastructure/auth/guards';
 import { PrismaModule } from './abstraction/prisma/prisma.module';
 import { UsersModule } from './infrastructure/users/users.module';
 import { FilesModule } from './infrastructure/files/files.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TerminusModule } from '@nestjs/terminus';
 import { InterceptorModule } from './core/interceptors/interceptor.module';
 import { LoggerContextMiddleware } from './core/middlewares/logger-context.middleware';
@@ -25,12 +25,28 @@ import { AdminModule } from './infrastructure/admin/admin.module';
 import { RolesGuard } from './core/roles';
 import { OauthModule } from './infrastructure/oauth/oauth.module';
 import { MathModule } from './abstraction/microservices/math/math.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
     imports: [
         InterceptorModule,
         PrismaModule,
         TerminusModule,
+        ThrottlerModule.forRootAsync({
+            imports: [ConfigModule],
+            inject: [ConfigService],
+            useFactory: (config: ConfigService) => ({
+                ttl: config.get<number>('THROTTLE_TTL'),
+                limit: config.get<number>('THROTTLE_LIMIT'),
+                ignoreUserAgents: [
+                    // Don't throttle request that have 'googlebot' defined in them.
+                    // Example user agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+                    /googlebot/gi,
+                    // Example user agent: Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)
+                    new RegExp('bingbot', 'gi'),
+                ],
+            }),
+        }),
         CacheModule.register(),
         MathModule,
         ConfigModule.forRoot({
@@ -59,6 +75,10 @@ import { MathModule } from './abstraction/microservices/math/math.module';
     providers: [
         AppService,
         // the same app.useGlobalGuards(new AtGuard(new Reflector())); in main.ts
+        {
+            provide: APP_GUARD,
+            useClass: ThrottlerGuard,
+        },
         {
             provide: APP_GUARD,
             useClass: AtGuard,

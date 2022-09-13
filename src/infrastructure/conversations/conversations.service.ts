@@ -32,21 +32,21 @@ export class ConversationsService {
         return newConversation;
     }
 
-    async getAllConversations(dto: GetAllConversationDto) {
+    async getAllConversations(userId: string) {
         const list = await this.prismaService.conversation.findMany({
             where: {
                 OR: [
                     {
-                        creator: dto.userId,
+                        creator: userId,
                     },
                     {
                         admins: {
-                            has: dto.userId,
+                            has: userId,
                         },
                     },
                     {
                         members: {
-                            has: dto.userId,
+                            has: userId,
                         },
                     },
                 ],

@@ -60,7 +60,7 @@ export class UsersService {
 
     async getPublicUserByIdOrUsername(
         userIdOrUsername: string,
-    ): Promise<IPublicUser> {
+    ): Promise<IPublicUser | null> {
         const identify = await this.prismaService.user.findMany({
             where: {
                 OR: [{ id: userIdOrUsername }, { username: userIdOrUsername }],
@@ -78,7 +78,7 @@ export class UsersService {
         return identify[0];
     }
 
-    async getUserByEmail(email: string): Promise<IFindUserByEmail> {
+    async getUserByEmail(email: string): Promise<IFindUserByEmail | null> {
         const identify = await this.prismaService.user.findUnique({
             where: {
                 email: email,

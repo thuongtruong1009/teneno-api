@@ -18,6 +18,7 @@ import { LoggingInterceptor } from '../interceptors/logging.interceptor';
 import { LoggerService } from '../logger/logger.service';
 import { corsOptions } from './cors.config';
 import { v4 as uuid } from 'uuid';
+import * as csurf from 'csurf';
 
 export async function setup(app: INestApplication): Promise<INestApplication> {
     app.useGlobalPipes(
@@ -76,6 +77,9 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
     // });
 
     await repl(AppModule);
+
+    app.use(csurf());
+
     const prismaService = app.get(PrismaService);
     await prismaService.enableShutdownHooks(app);
 

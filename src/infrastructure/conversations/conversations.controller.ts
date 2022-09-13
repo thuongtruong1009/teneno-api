@@ -26,6 +26,7 @@ import {
     ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { STATUS_MESSAGE, SYSTEM_ERROR } from 'src/core/constants';
+import { GetCurrentUserId } from '../auth/decorators';
 import { ConversationsService } from './conversations.service';
 import {
     CreateConversationDto,
@@ -88,8 +89,8 @@ export class ConversationsController {
         isArray: true,
         description: STATUS_MESSAGE.SUCCESS,
     })
-    async getAllConversations(@Body() dto: GetAllConversationDto) {
-        return this.conversationsService.getAllConversations(dto);
+    async getAllConversations(@GetCurrentUserId() userId: string) {
+        return this.conversationsService.getAllConversations(userId);
     }
 
     @Get(':id')
