@@ -1,47 +1,47 @@
 version: '3'
 services:
-  db:
-    image: postgres:14-alpine
-    env_file:
-      - .env
-    restart: always
-    container_name: db
+    db:
+        image: postgres:14-alpine
+        env_file:
+        - .env
+        restart: always
+        container_name: db
+        volumes:
+        - postgres-data:/var/lib/postgresql/data
+        ports:
+        - ${DB_PORT}:5432
+        environment:
+        POSTGRES_USER: ${DB_USER}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+        POSTGRES_DB: ${DB_NAME}
+        healthcheck:
+        test: pg_isready
+        interval: 10s
+        timeout: 5s
+        retries: 5
+
+    adminer:
+        image: adminer
+        restart: always
+        depends_on:
+            db:
+            condition: service_healthy
+        ports:
+        - ${ADMIN_PORT}:8080
+
+    # app:
+    #   image: teneno-api
+    #   ports:
+    #     - 5500:5500
+    #   restart: unless-stopped
+    #   build:
+    #     context: .
+    #     dockerfile: Dockerfile
+    #   depends_on:
+    #     - db
+    #   env_file:
+    #     - .env
+
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-    ports:
-      - ${DB_PORT}:5432
-    environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    healthcheck:
-      test: pg_isready
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  adminer:
-      image: adminer
-      restart: always
-      depends_on:
-        db:
-          condition: service_healthy
-      ports:
-      - ${ADMIN_PORT}:8080
-
-  # app:
-  #   image: teneno-api
-  #   ports:
-  #     - 5500:5500
-  #   restart: unless-stopped
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - .env
-
-volumes:
-  postgres-data:
-    name: teneno-db
+    postgres-data:
+        name: teneno-db

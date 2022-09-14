@@ -1,137 +1,138 @@
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-  id                 String       @id @unique @default(uuid())
-  email              String       @unique
-  username           String       @unique
-  password           String
-  createdAt          DateTime     @default(now())
-  updatedAt          DateTime     @updatedAt
-  hashedRefreshToken String?
-  profile            UserProfile?
-  role               String[]     @default(["USER"])
-  writtenPosts       Post[]       @relation("WrittenPosts")
-  commentPosts       Comment[]    @relation("CommentPosts")
-  reactions          Reaction[]
+    id                 String       @id @unique @default(uuid())
+    email              String       @unique @db.VarChar(50)
+    username           String       @unique @db.VarChar(20)
+    password           String       @db.VarChar(64)
+    createdAt          DateTime     @default(now()) @db.Timestamp(0)
+    updatedAt          DateTime     @updatedAt @db.Timestamp(0)
+    hashedRefreshToken String?
+    profile            UserProfile?
+    role               String[]     @default(["USER"])
+    writtenPosts       Post[]       @relation("WrittenPosts")
+    commentPosts       Comment[]    @relation("CommentPosts")
+    reactions          Reaction[]
 
-  @@index([username, email])
-  @@map("users")
+    @@index([username, email])
+    @@map("users")
 }
 
 model UserProfile {
-  fullName       String   @default("")
-  bio            String   @default("")
-  address        String   @default("")
-  birthdate      DateTime @default(now())
-  avatar         String   @default("")
-  cover          String   @default("")
-  marriageStatus String   @default("")
-  interests      String[] @default([])
-  phone          String   @default("")
-  age            Int      @default(0)
-  gender         Int      @default(0)
-  user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
-  userId         String   @unique
+    fullName       String   @default("") @db.VarChar(50)
+    bio            String   @default("") @db.VarChar(255)
+    address        String   @default("") @db.VarChar(255)
+    birthdate      DateTime @default(now()) @db.Timestamp(0)
+    avatar         String   @default("") @db.Text()
+    cover          String   @default("") @db.Text()
+    marriageStatus String   @default("") @db.VarChar(20)
+    interests      String[] @default([])
+    phone          String   @default("") @db.VarChar(20)
+    age            Int      @default(0) @db.Integer()
+    gender         Int      @default(0) @db.Integer()
+    user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
+    userId         String   @unique
 
-  @@map("profiles")
+    @@map("profiles")
 }
 
 model Conversation {
-  id          String    @id @unique @default(uuid())
-  name        String
-  description String
-  avatar      String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  messages    Message[]
-  members     String[]  @default([])
-  creator     String
-  admins      String[]  @default([])
+    id          String    @id @unique @default(uuid())
+    name        String    @db.VarChar(150)
+    description String    @db.VarChar(255)
+    avatar      String    @db.Text()
+    createdAt   DateTime  @default(now()) @db.Timestamp(0)
+    updatedAt   DateTime  @updatedAt @db.Timestamp(0)
+    messages    Message[]
+    members     String[]  @default([])
+    creator     String
+    admins      String[]  @default([])
 
-  @@map("conversations")
+    @@map("conversations")
 }
 
 model Message {
-  id             String       @id @unique @default(uuid())
-  text           String
-  reactions      Int[]        @default([])
-  description    String?      @default("")
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-  conversations  Conversation @relation(fields: [conversationId], references: [id], onDelete: SetNull)
-  conversationId String       @unique
-  senderId       String       @unique
+    id             String       @id @unique @default(uuid())
+    type           String       @db.VarChar(10)
+    text           String       @db.Text()
+    reactions      Int[]        @default([])
+    description    String?      @default("") @db.VarChar(255)
+    createdAt      DateTime     @default(now()) @db.Timestamp(0)
+    updatedAt      DateTime     @updatedAt @db.Timestamp(0)
+    conversations  Conversation @relation(fields: [conversationId], references: [id], onDelete: SetNull)
+    conversationId String       @unique
+    senderId       String       @unique
 
-  @@map("messages")
+    @@map("messages")
 }
 
 model Post {
-  id          String              @id @unique @default(uuid())
-  title       String              @db.VarChar(50)
-  description String              @db.VarChar(255)
-  files       String[]            @default([])
-  published   Boolean             @default(true)
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
-  categories  CategoriesOnPosts[]
-  author      User                @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: SetNull)
-  authorId    String
-  reactions   Reaction[]
-  comments    Comment[]
+    id          String              @id @unique @default(uuid())
+    title       String              @db.VarChar(50)
+    description String              @db.VarChar(255)
+    files       String[]            @default([])
+    published   Boolean             @default(true) @db.Boolean()
+    createdAt   DateTime            @default(now()) @db.Timestamp(0)
+    updatedAt   DateTime            @updatedAt @db.Timestamp(0)
+    categories  CategoriesOnPosts[]
+    author      User                @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: SetNull)
+    authorId    String
+    reactions   Reaction[]
+    comments    Comment[]
 
-  @@map("posts")
+    @@map("posts")
 }
 
 model Reaction {
-  id        String   @id @unique @default(uuid())
-  type      Int
-  createdAt DateTime @default(now())
-  post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
-  postId    String
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
+    id        String   @id @unique @default(uuid())
+    type      Int      @default(0) @db.Integer()
+    createdAt DateTime @default(now()) @db.Timestamp(0)
+    post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
+    postId    String
+    user      User     @relation(fields: [userId], references: [id])
+    userId    String
 
-  @@map("reactions")
+    @@map("reactions")
 }
 
 model Comment {
-  id        String   @id @unique @default(uuid())
-  text      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  author    User     @relation("CommentPosts", fields: [authorId], references: [id], onDelete: SetNull)
-  authorId  String
-  post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
-  postId    String
-  reactions Json[]
-  replies   Json[]
+    id        String   @id @unique @default(uuid())
+    text      String   @db.Text()
+    createdAt DateTime @default(now()) @db.Timestamp(0)
+    updatedAt DateTime @updatedAt @db.Timestamp(0)
+    author    User     @relation("CommentPosts", fields: [authorId], references: [id], onDelete: SetNull)
+    authorId  String
+    post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
+    postId    String
+    reactions Json[]
+    replies   Json[]
 
-  @@map("comments")
+    @@map("comments")
 }
 
 model Category {
-  id    String              @id @unique @default(uuid())
-  name  String              @unique
-  posts CategoriesOnPosts[]
+    id    String              @id @unique @default(uuid())
+    name  String              @unique @db.VarChar(50)
+    posts CategoriesOnPosts[]
 
-  @@map("categories")
+    @@map("categories")
 }
 
 model CategoriesOnPosts {
-  id         String   @unique @default(uuid())
-  post       Post     @relation(fields: [postId], references: [id])
-  postId     String
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId String
-  createAt   DateTime @default(now())
+    id         String   @unique @default(uuid())
+    post       Post     @relation(fields: [postId], references: [id])
+    postId     String
+    category   Category @relation(fields: [categoryId], references: [id])
+    categoryId String
+    createAt   DateTime @default(now()) @db.Timestamp(0)
 
-  @@id([postId, categoryId])
-  @@map("categories_on_posts")
+    @@id([postId, categoryId])
+    @@map("categories_on_posts")
 }

@@ -11,7 +11,9 @@ import { Socket } from 'socket.io';
 import { CreateMessageDto, UpdateMessageDto } from './dto';
 import { WsThrottlerGuard } from 'src/core/security/throttle-websocket.guard';
 import { UseGuards } from '@nestjs/common';
+import { SkipThrottle } from '@nestjs/throttler';
 
+@SkipThrottle()
 @UseGuards(WsThrottlerGuard)
 @WebSocketGateway({ cors: { origin: '*' } })
 export class MessagesGateway {

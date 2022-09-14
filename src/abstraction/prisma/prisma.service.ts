@@ -22,7 +22,7 @@ export class PrismaService
         });
     }
 
-    async onModuleInit() {
+    async onModuleInit(): Promise<void> {
         await this.$connect();
     }
 
@@ -30,7 +30,7 @@ export class PrismaService
         await this.$disconnect();
     }
 
-    async enableShutdownHooks(app: INestApplication) {
+    async enableShutdownHooks(app: INestApplication): Promise<void> {
         this.$on('beforeExit', async () => {
             await app.close();
         });

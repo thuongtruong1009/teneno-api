@@ -4,7 +4,6 @@ import {
     CreateConversationDto,
     DeleteConversationDto,
     DeleteOneAdminConversationDto,
-    GetAllConversationDto,
     GetOneConversationDto,
     UpdateConversationDto,
     UpdateMembersConversationDto,
@@ -55,6 +54,12 @@ export class ConversationsService {
                 id: true,
                 name: true,
                 avatar: true,
+                messages: {
+                    orderBy: {
+                        createdAt: 'desc',
+                    },
+                    take: 1,
+                },
             },
         });
         return list;
