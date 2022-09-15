@@ -1,31 +1,25 @@
 FROM node:18-alpine AS build
-RUN mkdir -p /app
 WORKDIR /app
-COPY --chown=node:node package*.json .
-COPY prisma ./prisma/
-COPY .env ./
-COPY tsconfig.json ./
-RUN npm install -f
 COPY . .
+RUN npm install
 RUN npm run build
 
 FROM node:18-alpine AS production
 WORKDIR /app
-COPY .env ./
-COPY tsconfig.json ./
-COPY --chown=node:node --from=build /app/package*.json .
-RUN npm install --omit=dev && npm cache clean --force
+RUN chown -R node:node /app
 USER node
-# RUN mkdir -p dist
-COPY --chown=node:node --from=build /app/node_modules ./node_modules
-COPY --chown=node:node --from=build /app/package*.json ./
-COPY --chown=node:node --from=build /app/dist ./dist
+RUN mkdir dist
+
+COPY --chown=node:node /package*.json ./
+COPY --chown=node:node --from=build /app/dist /app/dist
 COPY --chown=node:node --from=build /app/prisma ./prisma
 
-RUN npx prisma generate
+RUN npm install --omit=dev && npm cache clean --force
+
+# RUN npx prisma generate
 # RUN npm run start:migrate:prod
 
-# CMD ["node", "dist/main.js" ]
+CMD ["node", "dist/main.js" ]
 
 EXPOSE 5500
 

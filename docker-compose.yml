@@ -3,19 +3,20 @@ services:
   postgres:
     image: postgres:14-alpine
     container_name: postgres
-    hostname: postgres
+    # hostname: postgres
     ports:
       - ${DB_PORT}:5432
     env_file:
       - .env
     restart: always
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-
+      - ./.docker/postgres/postgres-data:/var/lib/postgresql/data
+    networks:
+      - postgres-network
     environment:
+      POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
     healthcheck:
       test: pg_isready
       interval: 10s
@@ -23,7 +24,7 @@ services:
       retries: 5
 
   adminer:
-    image: adminer
+    image: dockette/adminer:pgsql
     container_name: adminer
     restart: always
     depends_on:
@@ -31,27 +32,37 @@ services:
         condition: service_healthy
     ports:
       - ${ADMIN_PORT}:80
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - postgres-network
+    # environment:
+    #   PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+    #   PGADMIN_DEFAULT_PASSWORD: admin
     volumes:
-      - adminer-data:/var/lib/pgadmin
+      - ./.docker/postgres/adminer-data:/var/lib/pgadmin
 
   app:
     image: teneno
+    container_name: teneno
+    volumes:
+      - ./:/app
     ports:
-        - 5500:5500
+      - 5500:5500
     restart: unless-stopped
     stdin_open: true
     build:
-        context: .
-        dockerfile: Dockerfile
-    container_name: teneno
+      context: .
+      dockerfile: Dockerfile
+    entrypoint:
+      - /bin/sh
+    command:
+      - -c
+      - npm run start:dev
+    networks:
+      - postgres-network
     depends_on:
         - postgres
     env_file:
         - .env
 
-volumes:
-  postgres-data:
-  adminer-data:
+networks:
+  postgres-network:
