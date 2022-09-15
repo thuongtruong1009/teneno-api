@@ -43,66 +43,27 @@ export class MessagesService {
             where: { id: conversationId },
             select: { members: true },
         });
-        console.log(identify);
         return identify[clientId];
     }
 
-    async createMessage(
-        conversationId: string,
-        dto: CreateMessageDto,
-        clientId: string,
-    ) {
-        const message = {
-            senderId: this.getMember(conversationId, clientId),
-            text: dto.text,
-            type: dto.type,
-        };
+    async getUserName(clientId: string) {
+        const user = await this.prismaService.user.findUnique({
+            where: { id: clientId },
+            select: { username: true },
+        });
+        return user.username;
+    }
 
-        console.log(message); // { senderId: '7kavCeveVfbsGqrIAAAJ', text: 'okee', type: 'text' }
-        console.log(await this.getAllMessages(conversationId));
-        // {
-        //   messages: [
-        //     {
-        //       id: '7a6f92fd-3324-45d6-a218-5be4086b877e',
-        //       type: 'text',
-        //       text: 'dedede',
-        //       reactions: [],
-        //       description: '',
-        //       createdAt: 2022-09-14T17:14:44.000Z,
-        //       updatedAt: 2022-09-14T17:14:44.000Z,
-        //       conversationId: '8f8475db-5088-4777-9eb9-c9ea8303984a',
-        //       senderId: 'JXoCZ95tMH2ALOhFAAAB'
-        //     }
-        //   ]
-        // }
-
-        // this.conversations
-        //     .find((element) => element.id === conversationId)
-        //     .messages.push(message);
-
-        // await this.prismaService.conversation.update({
-        //     where: { id: conversationId },
-        //     data: {
-        //         messages: (
-        //             await this.getAllMessages(conversationId)
-        //         ).messages.push(message),
-        //     },
-        // });
-
-        return message;
-        // await this.prismaService.message.create({
-        //     data: {
-        //         senderId: clientId,
-        //         type: dto.type,
-        //         text: dto.text,
-        //         conversation: {
-        //             connect: {
-        //                 id: conversationId,
-        //             },
-        //         },
-        //     },
-        // });
-        // return await this.getAllMessages(conversationId);
+    async createMessage(dto: CreateMessageDto, clientId: string) {
+        await this.prismaService.message.create({
+            data: {
+                type: dto.type,
+                text: dto.text,
+                conversationId: dto.conversationId,
+                senderId: await this.getUserName(dto.senderId),
+            },
+        });
+        return await this.getAllMessages(dto.conversationId);
     }
 
     async remove(message: string) {

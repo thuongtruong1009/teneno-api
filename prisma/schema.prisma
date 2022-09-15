@@ -67,8 +67,8 @@ model Message {
     createdAt      DateTime     @default(now()) @db.Timestamp(0)
     updatedAt      DateTime     @updatedAt @db.Timestamp(0)
     conversations  Conversation @relation(fields: [conversationId], references: [id], onDelete: SetNull)
-    conversationId String       @unique
-    senderId       String       @unique
+    conversationId String
+    senderId       String
 
     @@map("messages")
 }

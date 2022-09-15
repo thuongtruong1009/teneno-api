@@ -29,13 +29,11 @@ export class MessagesGateway {
 
     @SubscribeMessage('createMessage')
     async createMessage(
-        @MessageBody('conversationId') conversationId: string,
-        @MessageBody() createMessageDto: CreateMessageDto,
+        @MessageBody() dto: CreateMessageDto,
         @ConnectedSocket() client: Socket,
     ) {
         const message = await this.messagesService.createMessage(
-            conversationId,
-            createMessageDto,
+            dto,
             client.id,
         );
         this.server.emit('message', message);

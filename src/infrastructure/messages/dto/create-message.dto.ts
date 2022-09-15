@@ -6,4 +6,5 @@ export class CreateMessageDto {
     senderId: string;
     type: string;
     text: string;
+    conversationId: string;
 }

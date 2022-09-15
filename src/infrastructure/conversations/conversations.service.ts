@@ -59,6 +59,12 @@ export class ConversationsService {
                         createdAt: 'desc',
                     },
                     take: 1,
+                    select: {
+                        type: true,
+                        text: true,
+                        updatedAt: true,
+                        senderId: true,
+                    },
                 },
             },
         });

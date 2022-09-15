@@ -66,7 +66,12 @@
 
 ## Structure
 
-![Schema structure](public/docs/schema_structure.svg)
+![Architecture](public/docs/architecture.svg)
+
+## Diagram database
+
+* Relational diagram
+![Relational diagram](public/docs/teneno_relational_digram.png)
 
 ## Plugins & Dependencies
 
