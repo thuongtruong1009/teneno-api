@@ -8,7 +8,7 @@ import {
 import { MessagesService } from './messages.service';
 import { Server } from 'http';
 import { Socket } from 'socket.io';
-import { CreateMessageDto, UpdateMessageDto } from './dto';
+import { CreateMessageDto } from './dto';
 import { WsThrottlerGuard } from 'src/core/security/throttle-websocket.guard';
 import { UseGuards } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
@@ -20,22 +20,11 @@ export class MessagesGateway {
     @WebSocketServer() server: Server;
     constructor(private readonly messagesService: MessagesService) {}
 
-    @SubscribeMessage('joinConversation')
-    joinConversation(
-        @MessageBody('conversationId') conversationId: string,
-        @MessageBody('senderId') senderId: string,
-        @ConnectedSocket() client: Socket,
-    ) {
-        return this.messagesService.joinConversation(
-            conversationId,
-            senderId,
-            client.id,
-        );
-    }
-
     @SubscribeMessage('findAllMessages')
-    findAllMessages(@MessageBody('conversationId') conversationId: string) {
-        return this.messagesService.findAllMessages(conversationId);
+    async getAllMessages(
+        @MessageBody('conversationId') conversationId: string,
+    ) {
+        return this.messagesService.getAllMessages(conversationId);
     }
 
     @SubscribeMessage('createMessage')
@@ -65,13 +54,6 @@ export class MessagesGateway {
         );
 
         client.broadcast.emit('typing', { senderId: name, isTyping });
-    }
-
-    @SubscribeMessage('updateMessage')
-    updateMessage(@MessageBody() updateMessageDto: UpdateMessageDto) {
-        const refresh = this.messagesService.updateMessage(updateMessageDto);
-        this.server.emit('refresh', refresh);
-        return refresh;
     }
 
     @SubscribeMessage('removeMessage')

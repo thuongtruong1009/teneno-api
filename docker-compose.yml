@@ -1,47 +1,57 @@
 version: '3'
 services:
-    db:
-        image: postgres:14-alpine
-        env_file:
-        - .env
-        restart: always
-        container_name: db
-        volumes:
-        - postgres-data:/var/lib/postgresql/data
-        ports:
-        - ${DB_PORT}:5432
-        environment:
-        POSTGRES_USER: ${DB_USER}
-        POSTGRES_PASSWORD: ${DB_PASSWORD}
-        POSTGRES_DB: ${DB_NAME}
-        healthcheck:
-        test: pg_isready
-        interval: 10s
-        timeout: 5s
-        retries: 5
-
-    adminer:
-        image: adminer
-        restart: always
-        depends_on:
-            db:
-            condition: service_healthy
-        ports:
-        - ${ADMIN_PORT}:8080
-
-    # app:
-    #   image: teneno-api
-    #   ports:
-    #     - 5500:5500
-    #   restart: unless-stopped
-    #   build:
-    #     context: .
-    #     dockerfile: Dockerfile
-    #   depends_on:
-    #     - db
-    #   env_file:
-    #     - .env
-
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - ${DB_PORT}:5432
+    env_file:
+      - .env
+    restart: always
     volumes:
-    postgres-data:
-        name: teneno-db
+      - postgres-data:/var/lib/postgresql/data
+
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    healthcheck:
+      test: pg_isready
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - ${ADMIN_PORT}:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - adminer-data:/var/lib/pgadmin
+
+  app:
+    image: teneno
+    ports:
+        - 5500:5500
+    restart: unless-stopped
+    stdin_open: true
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: teneno
+    depends_on:
+        - postgres
+    env_file:
+        - .env
+
+volumes:
+  postgres-data:
+  adminer-data:
