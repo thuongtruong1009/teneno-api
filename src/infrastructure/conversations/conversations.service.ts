@@ -68,7 +68,7 @@ export class ConversationsService {
                 },
             },
         });
-        return list;
+        return { userId, list };
     }
 
     async getConversationById(id: string, dto: GetOneConversationDto) {

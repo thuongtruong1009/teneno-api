@@ -41,7 +41,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li >PrismaService</li>
+  <li >ThrottlerBehindProxyGuard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,7 +59,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/abstraction/prisma/prisma.service.ts</code>
+            <code>src/core/security/throttle-proxy.guard.ts</code>
         </p>
 
 
@@ -68,7 +68,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                    <code>PrismaClient</code>
+                    <code>ThrottlerGuard</code>
             </p>
 
 
@@ -86,16 +86,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#enableShutdownHooks" >enableShutdownHooks</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#onModuleDestroy" >onModuleDestroy</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#onModuleInit" >onModuleInit</a>
+                                    <span class="modifier">Protected</span>
+                                <a href="#getTracker" >getTracker</a>
                             </li>
                         </ul>
                     </td>
@@ -109,24 +101,6 @@
     </table>
 </section>
 
-            <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/abstraction/prisma/prisma.service.ts:13</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
 
             <section>
     
@@ -137,26 +111,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="enableShutdownHooks"></a>
+                    <a name="getTracker"></a>
                     <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>enableShutdownHooks</b></span>
-                        <a href="#enableShutdownHooks"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Protected</span>
+                        <span ><b>getTracker</b></span>
+                        <a href="#getTracker"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>enableShutdownHooks(app: INestApplication)</code>
+                    <code>getTracker(req: Record<string | any>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/abstraction/prisma/prisma.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="6"
+                            class="link-to-prism">src/core/security/throttle-proxy.guard.ts:6</a></div>
                 </td>
             </tr>
 
@@ -177,9 +151,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>app</td>
+                                    <td>req</td>
                                     <td>
-                                            <code>INestApplication</code>
+                                            <code>Record&lt;string | any&gt;</code>
                                     </td>
 
                                     <td>
@@ -194,89 +168,11 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </div>
                     <div class="io-description">
                         
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onModuleDestroy"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>onModuleDestroy</b></span>
-                        <a href="#onModuleDestroy"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>onModuleDestroy()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/abstraction/prisma/prisma.service.ts:29</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onModuleInit"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>onModuleInit</b></span>
-                        <a href="#onModuleInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>onModuleInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/abstraction/prisma/prisma.service.ts:25</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
-
                     </div>
                 </td>
             </tr>
@@ -288,42 +184,13 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-    INestApplication,
-    Injectable,
-    OnModuleDestroy,
-    OnModuleInit,
-} from &#x27;@nestjs/common&#x27;;
-import { PrismaClient } from &#x27;@prisma/client&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ThrottlerGuard } from &#x27;@nestjs/throttler&#x27;;
+import { Injectable } from &#x27;@nestjs/common&#x27;;
 
 @Injectable()
-export class PrismaService
-    extends PrismaClient
-    implements OnModuleInit, OnModuleDestroy
-{
-    constructor() {
-        super({
-            datasources: {
-                db: {
-                    url: &#x27;postgresql://postgres:123456789@localhost:5432/teneno?schema&#x3D;public&#x27;,
-                    // url: process.env.DATABASE_URL,
-                },
-            },
-        });
-    }
-
-    async onModuleInit(): Promise&lt;void&gt; {
-        await this.$connect();
-    }
-
-    async onModuleDestroy() {
-        await this.$disconnect();
-    }
-
-    async enableShutdownHooks(app: INestApplication): Promise&lt;void&gt; {
-        this.$on(&#x27;beforeExit&#x27;, async () &#x3D;&gt; {
-            await app.close();
-        });
+export class ThrottlerBehindProxyGuard extends ThrottlerGuard {
+    protected getTracker(req: Record&lt;string, any&gt;): string {
+        return req.ips.length ? req.ips[0] : req.ip; // individualize IP extraction to meet your own needs
     }
 }
 </code></pre>
@@ -369,7 +236,7 @@ export class PrismaService
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'PrismaService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ThrottlerBehindProxyGuard.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

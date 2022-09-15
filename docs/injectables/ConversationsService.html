@@ -133,7 +133,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -198,8 +198,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:19</a></div>
                 </td>
             </tr>
 
@@ -269,8 +269,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:115</a></div>
                 </td>
             </tr>
 
@@ -352,8 +352,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="136"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:136</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:147</a></div>
                 </td>
             </tr>
 
@@ -428,15 +428,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getAllConversations(dto: <a href="../classes/GetAllConversationDto.html" target="_self">GetAllConversationDto</a>)</code>
+                    <code>getAllConversations(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:34</a></div>
                 </td>
             </tr>
 
@@ -457,9 +457,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>dto</td>
+                                    <td>userId</td>
                                     <td>
-                                                <code><a href="../classes/GetAllConversationDto.html" target="_self" >GetAllConversationDto</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -506,8 +506,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:74</a></div>
                 </td>
             </tr>
 
@@ -587,8 +587,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:100</a></div>
                 </td>
             </tr>
 
@@ -670,8 +670,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:132</a></div>
                 </td>
             </tr>
 
@@ -753,8 +753,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="171"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:171</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="182"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.service.ts:182</a></div>
                 </td>
             </tr>
 
@@ -826,7 +826,6 @@ import {
     CreateConversationDto,
     DeleteConversationDto,
     DeleteOneAdminConversationDto,
-    GetAllConversationDto,
     GetOneConversationDto,
     UpdateConversationDto,
     UpdateMembersConversationDto,
@@ -854,21 +853,21 @@ export class ConversationsService {
         return newConversation;
     }
 
-    async getAllConversations(dto: GetAllConversationDto) {
+    async getAllConversations(userId: string) {
         const list &#x3D; await this.prismaService.conversation.findMany({
             where: {
                 OR: [
                     {
-                        creator: dto.userId,
+                        creator: userId,
                     },
                     {
                         admins: {
-                            has: dto.userId,
+                            has: userId,
                         },
                     },
                     {
                         members: {
-                            has: dto.userId,
+                            has: userId,
                         },
                     },
                 ],
@@ -877,9 +876,21 @@ export class ConversationsService {
                 id: true,
                 name: true,
                 avatar: true,
+                messages: {
+                    orderBy: {
+                        createdAt: &#x27;desc&#x27;,
+                    },
+                    take: 1,
+                    select: {
+                        type: true,
+                        text: true,
+                        updatedAt: true,
+                        senderId: true,
+                    },
+                },
             },
         });
-        return list;
+        return { userId, list };
     }
 
     async getConversationById(id: string, dto: GetOneConversationDto) {

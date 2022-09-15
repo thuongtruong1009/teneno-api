@@ -59,12 +59,6 @@
             <code>src/app.controller.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Prefix</h3>
-            </p>
-            <p class="comment">
-                <code>/</code>
-            </p>
 
 
 
@@ -84,6 +78,12 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#dontSkip" >dontSkip</a>
+                            </li>
+                            <li>
+                                <a href="#doSkip" >doSkip</a>
+                            </li>
                             <li>
                                 <a href="#getHello" >getHello</a>
                             </li>
@@ -108,6 +108,87 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="dontSkip"></a>
+                    <span class="name">
+                        <span ><b>dontSkip</b></span>
+                        <a href="#dontSkip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dontSkip()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@SkipThrottle(undefined)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app.controller.ts:25</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doSkip"></a>
+                    <span class="name">
+                        <span ><b>doSkip</b></span>
+                        <a href="#doSkip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>doSkip()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app.controller.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getHello"></a>
                     <span class="name">
                         <span ><b>getHello</b></span>
@@ -125,14 +206,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Teneno homepage&#x27;})<br />@ApiResponse({status: 200, description: &#x27;{code: 1, data: {Hello world}, message: &quot;&quot;&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Not found&#x27;})<br /></code>
+                    <code>@Version(&#x27;1&#x27;)<br />@Get()<br />@HttpCode(HttpStatus.OK)<br />@ApiOperation({summary: &#x27;Teneno homepage&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Default server response&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Not found&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app.controller.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app.controller.ts:42</a></div>
                 </td>
             </tr>
 
@@ -184,23 +265,45 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, HttpCode, HttpStatus, Session } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    Controller,
+    Get,
+    HttpCode,
+    HttpStatus,
+    Session,
+    UseGuards,
+    Version,
+} from &#x27;@nestjs/common&#x27;;
 import { ApiOperation, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { SkipThrottle } from &#x27;@nestjs/throttler&#x27;;
 import { AppService } from &#x27;./app.service&#x27;;
+import { ThrottlerBehindProxyGuard } from &#x27;./core/security/throttle-proxy.guard&#x27;;
 import { Public } from &#x27;./infrastructure/auth/decorators&#x27;;
 
 @ApiTags(&#x27;Home&#x27;)
+@UseGuards(ThrottlerBehindProxyGuard)
+@SkipThrottle()
 @Public()
-@Controller(&#x27;/&#x27;)
+@Controller({ version: &#x27;2&#x27;, path: &#x27;/&#x27; })
 export class AppController {
     constructor(private readonly appService: AppService) {}
 
+    @SkipThrottle(false)
+    dontSkip() {
+        return &#x27;List users work with Rate limiting.&#x27;;
+    }
+
+    doSkip() {
+        return &#x27;List users work without Rate limiting.&#x27;;
+    }
+
+    @Version(&#x27;1&#x27;)
     @Get()
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: &#x27;Teneno homepage&#x27; })
     @ApiResponse({
         status: 200,
-        description: &#x27;{code: 1, data: {Hello world}, message: &quot;&quot;&#x27;,
+        description: &#x27;Default server response&#x27;,
     })
     @ApiResponse({ status: 404, description: &#x27;Not found&#x27; })
     getHello(@Session() session: Record&lt;string, any&gt;): any {

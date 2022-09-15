@@ -66,12 +66,12 @@
 
 ## Structure
 
-![Architecture](public/docs/architecture.svg)
+![Architecture](https://github.com/thuongtruong1009/teneno-api/tree/main/public/docs/architecture.svg)
 
 ## Diagram database
 
 * Relational diagram
-![Relational diagram](public/docs/teneno_relational_digram.png)
+![Relational diagram](https://github.com/thuongtruong1009/teneno-api/tree/main/public/docs/teneno_relational_digram.png)
 
 ## Plugins & Dependencies
 

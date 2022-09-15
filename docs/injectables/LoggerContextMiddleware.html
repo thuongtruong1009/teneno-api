@@ -199,16 +199,16 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NestMiddleware } from &#x27;@nestjs/common&#x27;;
-import type { Request, Response } from &#x27;express&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, LoggerService, NestMiddleware } from &#x27;@nestjs/common&#x27;;
+import { Request, Response } from &#x27;express&#x27;;
 
 @Injectable()
 export class LoggerContextMiddleware implements NestMiddleware {
-  use(req: Request, res: Response, next: () &#x3D;&gt; void): void {
-    console.log(&#x60;Request ${req}...&#x60;);
-    console.log(&#x60;Response ${res}...&#x60;);
-    return next();
-  }
+    use(req: Request, res: Response, next: () &#x3D;&gt; void): void {
+        console.log(&#x60;Request ${req.body}...&#x60;);
+        console.log(&#x60;Response ${res}...&#x60;);
+        return next();
+    }
 }
 </code></pre>
     </div>
