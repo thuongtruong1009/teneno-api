@@ -38,7 +38,7 @@ import {
     UpdateMembersConversationDto,
     UpdateRolesConversationDto,
 } from './dto';
-import { ConversationEntity } from './entities';
+import { ConversationEntity } from './entities/conversation.entity';
 
 @ApiTags('Conversations')
 @ApiBearerAuth()

@@ -8,13 +8,14 @@ import {
 import { MessagesService } from './messages.service';
 import { Server } from 'http';
 import { Socket } from 'socket.io';
-import { CreateMessageDto, DeleteMessageDto } from './dto';
-import { WsThrottlerGuard } from 'src/core/security/throttle-websocket.guard';
-import { UseGuards } from '@nestjs/common';
+import { CreateMessageDto, DeleteMessageDto } from './dto/request';
 import { SkipThrottle } from '@nestjs/throttler';
+import { ICreateMessage, IGetAllMessages } from './dto/response';
+import { Controller } from '@nestjs/common';
 
 @SkipThrottle()
-@UseGuards(WsThrottlerGuard)
+// @UseGuards(WsThrottlerGuard)
+@Controller('messages')
 @WebSocketGateway({ cors: { origin: '*' } })
 export class MessagesGateway {
     @WebSocketServer() server: Server;
@@ -23,7 +24,7 @@ export class MessagesGateway {
     @SubscribeMessage('findAllMessages')
     async getAllMessages(
         @MessageBody('conversationId') conversationId: string,
-    ) {
+    ): Promise<IGetAllMessages> {
         return this.messagesService.getAllMessages(conversationId);
     }
 
@@ -31,7 +32,7 @@ export class MessagesGateway {
     async createMessage(
         @MessageBody() dto: CreateMessageDto,
         @ConnectedSocket() client: Socket,
-    ) {
+    ): Promise<ICreateMessage> {
         const message = await this.messagesService.createMessage(
             dto,
             client.id,
@@ -45,14 +46,16 @@ export class MessagesGateway {
         @MessageBody('senderId') senderId: string,
         @MessageBody('isTyping') isTyping: boolean,
         @ConnectedSocket() client: Socket,
-    ) {
-        const name = await this.messagesService.getUserName(senderId);
+    ): Promise<void> {
+        const name = await this.messagesService.getClientName(senderId);
 
         client.broadcast.emit('typing', { senderId: name, isTyping });
     }
 
     @SubscribeMessage('removeMessage')
-    async removeMessage(@MessageBody() dto: DeleteMessageDto) {
+    async removeMessage(
+        @MessageBody() dto: DeleteMessageDto,
+    ): Promise<IGetAllMessages> {
         const remove = await this.messagesService.removeMessage(dto);
         this.server.emit('remove', remove);
         return remove;

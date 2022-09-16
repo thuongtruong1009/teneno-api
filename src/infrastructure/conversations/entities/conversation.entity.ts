@@ -1,30 +1,30 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class ConversationEntity {
-  @ApiProperty()
-  id: string;
+    @ApiProperty()
+    id: string;
 
-  @ApiProperty()
-  name: string;
+    @ApiProperty()
+    name: string;
 
-  @ApiProperty({ required: false, nullable: true })
-  description: string | null;
+    @ApiProperty({ required: false, nullable: true })
+    description: string | null;
 
-  @ApiProperty()
-  avatar: string;
+    @ApiProperty()
+    avatar: string;
 
-  @ApiProperty()
-  createdAt: Date;
+    @ApiProperty()
+    createdAt: Date;
 
-  @ApiProperty()
-  updatedAt: Date;
+    @ApiProperty()
+    updatedAt: Date;
 
-  @ApiProperty()
-  members: string[];
+    @ApiProperty()
+    members: string[];
 
-  @ApiProperty()
-  creator: string;
+    @ApiProperty()
+    creator: string;
 
-  @ApiProperty()
-  admins: string[];
+    @ApiProperty()
+    admins: string[];
 }

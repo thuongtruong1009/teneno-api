@@ -1,5 +1,5 @@
 import { ApiExtraModels, PickType } from '@nestjs/swagger';
-import { MessageEntity } from '../entities/message.entity';
+import { MessageEntity } from '../../entities/message.entity';
 
 @ApiExtraModels()
 export class CreateMessageDto extends PickType(MessageEntity, [

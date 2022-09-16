@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMessageDto, DeleteMessageDto } from './dto';
+import { CreateMessageDto, DeleteMessageDto } from './dto/request';
 import { PrismaService } from 'src/abstraction/prisma/prisma.service';
+import { ICreateMessage, IGetAllMessages } from './dto/response';
 
 @Injectable()
 export class MessagesService {
     constructor(private prismaService: PrismaService) {}
 
-    async getAllMessages(conversationId: string) {
-        const identify = this.prismaService.conversation.findUnique({
+    async getAllMessages(conversationId: string): Promise<IGetAllMessages> {
+        const identify = await this.prismaService.conversation.findUnique({
             where: {
                 id: conversationId,
             },
@@ -26,15 +27,7 @@ export class MessagesService {
         return identify;
     }
 
-    getMember(conversationId: string, clientId: string) {
-        const identify = this.prismaService.conversation.findUnique({
-            where: { id: conversationId },
-            select: { members: true },
-        });
-        return identify[clientId];
-    }
-
-    async getUserName(clientId: string) {
+    async getClientName(clientId: string): Promise<string> {
         const user = await this.prismaService.user.findUnique({
             where: { id: clientId },
             select: { username: true },
@@ -42,8 +35,11 @@ export class MessagesService {
         return user.username;
     }
 
-    async createMessage(dto: CreateMessageDto, clientId: string) {
-        const senderName = await this.getUserName(dto.senderId);
+    async createMessage(
+        dto: CreateMessageDto,
+        clientId: string,
+    ): Promise<ICreateMessage> {
+        const senderName = await this.getClientName(dto.senderId);
         await this.prismaService.message.create({
             data: {
                 type: dto.type,
@@ -55,7 +51,7 @@ export class MessagesService {
         return await this.getAllMessages(dto.conversationId);
     }
 
-    async removeMessage(dto: DeleteMessageDto) {
+    async removeMessage(dto: DeleteMessageDto): Promise<IGetAllMessages> {
         await this.prismaService.message.delete({
             where: {
                 id: dto.id,

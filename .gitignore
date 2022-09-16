@@ -145,5 +145,6 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+.env.production
 
 /.docker/postgres/postgres-data
