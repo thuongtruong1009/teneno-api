@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMessageDto, DeleteMessageDto } from './dto';
-import { v4 as uuid } from 'uuid';
 import { PrismaService } from 'src/abstraction/prisma/prisma.service';
 
 @Injectable()
@@ -8,11 +7,23 @@ export class MessagesService {
     constructor(private prismaService: PrismaService) {}
 
     async getAllMessages(conversationId: string) {
-        const identify = await this.prismaService.conversation.findUnique({
-            where: { id: conversationId },
-            select: { messages: true },
+        const identify = this.prismaService.conversation.findUnique({
+            where: {
+                id: conversationId,
+            },
+            select: {
+                id: true,
+                name: true,
+                description: true,
+                avatar: true,
+                createdAt: true,
+                messages: true,
+                members: true,
+                admins: true,
+                creator: true,
+            },
         });
-        return identify.messages;
+        return identify;
     }
 
     getMember(conversationId: string, clientId: string) {

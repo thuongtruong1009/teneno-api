@@ -56,7 +56,7 @@ export class ConversationsService {
                 avatar: true,
                 messages: {
                     orderBy: {
-                        createdAt: 'desc',
+                        createdAt: 'asc',
                     },
                     take: 1,
                     select: {
