@@ -207,42 +207,29 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty, PartialType } from &#x27;@nestjs/swagger&#x27;;
-import { IsNotEmpty, IsString } from &#x27;class-validator&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PartialType, PickType } from &#x27;@nestjs/swagger&#x27;;
+import { ConversationEntity } from &#x27;../entities/conversation.entity&#x27;;
 import { CreateConversationDto } from &#x27;./create-conversation.dto&#x27;;
 
-export class UpdateConversationDto extends PartialType(CreateConversationDto) {
-  name?: string;
-  description?: string;
-  avatar?: string;
+export class UpdateConversationDto extends PartialType(ConversationEntity) {
+    name?: string;
+    description?: string;
+    avatar?: string;
 }
 
-export class UpdateMembersConversationDto extends PartialType(
-  CreateConversationDto,
-) {
-  members: string[];
-}
+export class UpdateMembersConversationDto extends PickType(ConversationEntity, [
+    &#x27;members&#x27;,
+]) {}
 
-export class DeleteOneAdminConversationDto extends PartialType(
-  CreateConversationDto,
-) {
-  creator: string;
-  @ApiProperty({
-    type: String,
-    example: &#x27;user-id-123-456-789&#x27;,
-  })
-  @IsString()
-  @IsNotEmpty()
-  userId: string;
-}
+export class DeleteOneAdminConversationDto extends PickType(
+    CreateConversationDto,
+    [&#x27;creator&#x27;, &#x27;userId&#x27;],
+) {}
 
-export class UpdateRolesConversationDto extends PartialType(
-  CreateConversationDto,
-) {
-  creator: string;
-  admins: string[];
-  members: string[];
-}
+export class UpdateRolesConversationDto extends PickType(
+    CreateConversationDto,
+    [&#x27;admins&#x27;, &#x27;members&#x27;, &#x27;creator&#x27;],
+) {}
 </code></pre>
     </div>
 </div>

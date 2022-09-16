@@ -29,19 +29,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >MessagesService</li>
+  <li>Controllers</li>
+  <li >MessagesGateway</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,8 +56,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/infrastructure/messages/messages.service.ts</code>
+            <code>src/infrastructure/messages/messages.gateway.ts</code>
         </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>messages</code>
+            </p>
+
 
 
 
@@ -89,11 +94,11 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getClientName" >getClientName</a>
+                                <a href="#removeMessage" >removeMessage</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#removeMessage" >removeMessage</a>
+                                <a href="#typing" >typing</a>
                             </li>
                         </ul>
                     </td>
@@ -105,55 +110,6 @@
 
         </tbody>
     </table>
-</section>
-
-            <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(prismaService: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/infrastructure/messages/messages.service.ts:7</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>prismaService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/PrismaService.html" target="_self" >PrismaService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
 </section>
 
             <section>
@@ -176,15 +132,22 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createMessage(dto: <a href="../classes/CreateMessageDto.html" target="_self">CreateMessageDto</a>, clientId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>createMessage(dto: <a href="../classes/CreateMessageDto.html" target="_self">CreateMessageDto</a>, client: Socket)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@SubscribeMessage(&#x27;createMessage&#x27;)<br /></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/infrastructure/messages/messages.gateway.ts:32</a></div>
                 </td>
             </tr>
 
@@ -217,9 +180,9 @@
 
                                 </tr>
                                 <tr>
-                                    <td>clientId</td>
+                                    <td>client</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <code>Socket</code>
                                     </td>
 
                                     <td>
@@ -263,11 +226,18 @@
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@SubscribeMessage(&#x27;findAllMessages&#x27;)<br /></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/infrastructure/messages/messages.gateway.ts:25</a></div>
                 </td>
             </tr>
 
@@ -319,77 +289,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getClientName"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>getClientName</b></span>
-                        <a href="#getClientName"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getClientName(clientId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:30</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>clientId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="removeMessage"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -405,11 +304,18 @@
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@SubscribeMessage(&#x27;removeMessage&#x27;)<br /></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/infrastructure/messages/messages.gateway.ts:56</a></div>
                 </td>
             </tr>
 
@@ -457,79 +363,181 @@
             </tr>
         </tbody>
     </table>
-</section>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="typing"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>typing</b></span>
+                        <a href="#typing"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>typing(senderId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, isTyping: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, client: Socket)</code>
+                </td>
+            </tr>
 
-    </div>
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@SubscribeMessage(&#x27;typing&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/infrastructure/messages/messages.gateway.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>senderId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>isTyping</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>client</td>
+                                    <td>
+                                            <code>Socket</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    WebSocketGateway,
+    SubscribeMessage,
+    MessageBody,
+    WebSocketServer,
+    ConnectedSocket,
+} from &#x27;@nestjs/websockets&#x27;;
+import { MessagesService } from &#x27;./messages.service&#x27;;
+import { Server } from &#x27;http&#x27;;
+import { Socket } from &#x27;socket.io&#x27;;
 import { CreateMessageDto, DeleteMessageDto } from &#x27;./dto/request&#x27;;
-import { PrismaService } from &#x27;src/abstraction/prisma/prisma.service&#x27;;
+import { SkipThrottle } from &#x27;@nestjs/throttler&#x27;;
 import { ICreateMessage, IGetAllMessages } from &#x27;./dto/response&#x27;;
+import { Controller } from &#x27;@nestjs/common&#x27;;
 
-@Injectable()
-export class MessagesService {
-    constructor(private prismaService: PrismaService) {}
+@SkipThrottle()
+// @UseGuards(WsThrottlerGuard)
+@Controller(&#x27;messages&#x27;)
+@WebSocketGateway({ cors: { origin: &#x27;*&#x27; } })
+export class MessagesGateway {
+    @WebSocketServer() server: Server;
+    constructor(private readonly messagesService: MessagesService) {}
 
-    async getAllMessages(conversationId: string): Promise&lt;IGetAllMessages&gt; {
-        const identify &#x3D; await this.prismaService.conversation.findUnique({
-            where: {
-                id: conversationId,
-            },
-            select: {
-                id: true,
-                name: true,
-                description: true,
-                avatar: true,
-                createdAt: true,
-                messages: true,
-                members: true,
-                admins: true,
-                creator: true,
-            },
-        });
-        return identify;
+    @SubscribeMessage(&#x27;findAllMessages&#x27;)
+    async getAllMessages(
+        @MessageBody(&#x27;conversationId&#x27;) conversationId: string,
+    ): Promise&lt;IGetAllMessages&gt; {
+        return this.messagesService.getAllMessages(conversationId);
     }
 
-    async getClientName(clientId: string): Promise&lt;string&gt; {
-        const user &#x3D; await this.prismaService.user.findUnique({
-            where: { id: clientId },
-            select: { username: true },
-        });
-        return user.username;
-    }
-
+    @SubscribeMessage(&#x27;createMessage&#x27;)
     async createMessage(
-        dto: CreateMessageDto,
-        clientId: string,
+        @MessageBody() dto: CreateMessageDto,
+        @ConnectedSocket() client: Socket,
     ): Promise&lt;ICreateMessage&gt; {
-        const senderName &#x3D; await this.getClientName(dto.senderId);
-        await this.prismaService.message.create({
-            data: {
-                type: dto.type,
-                text: dto.text,
-                conversationId: dto.conversationId,
-                senderId: &#x60;${dto.senderId}:${senderName}&#x60;,
-            },
-        });
-        return await this.getAllMessages(dto.conversationId);
+        const message &#x3D; await this.messagesService.createMessage(
+            dto,
+            client.id,
+        );
+        this.server.emit(&#x27;message&#x27;, message);
+        return message;
     }
 
-    async removeMessage(dto: DeleteMessageDto): Promise&lt;IGetAllMessages&gt; {
-        await this.prismaService.message.delete({
-            where: {
-                id: dto.id,
-            },
-        });
+    @SubscribeMessage(&#x27;typing&#x27;)
+    async typing(
+        @MessageBody(&#x27;senderId&#x27;) senderId: string,
+        @MessageBody(&#x27;isTyping&#x27;) isTyping: boolean,
+        @ConnectedSocket() client: Socket,
+    ): Promise&lt;void&gt; {
+        const name &#x3D; await this.messagesService.getClientName(senderId);
 
-        return this.getAllMessages(dto.conversationId);
+        client.broadcast.emit(&#x27;typing&#x27;, { senderId: name, isTyping });
+    }
+
+    @SubscribeMessage(&#x27;removeMessage&#x27;)
+    async removeMessage(
+        @MessageBody() dto: DeleteMessageDto,
+    ): Promise&lt;IGetAllMessages&gt; {
+        const remove &#x3D; await this.messagesService.removeMessage(dto);
+        this.server.emit(&#x27;remove&#x27;, remove);
+        return remove;
     }
 }
 </code></pre>
     </div>
-
 </div>
+
+
+
 
 
 
@@ -568,8 +576,8 @@ export class MessagesService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'MessagesService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'MessagesGateway.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

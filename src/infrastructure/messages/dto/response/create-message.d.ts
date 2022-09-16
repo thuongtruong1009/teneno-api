@@ -1,7 +1,3 @@
-import { IMessage } from './get-message';
+import { MessageEntity } from '../../entities/message.entity';
 
-export type ICreateMessage = Pick<
-    IMessage,
-    'type' | 'text' | 'senderId',
-    'conversationId'
->;
+export type ICreateMessage = Omit<MessageEntity, 'id'>;

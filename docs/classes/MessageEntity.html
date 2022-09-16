@@ -139,13 +139,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsEmpty()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;conversation-id-123-456-789&#x27;, description: &#x27;Conversation id&#x27;})<br />@IsNotEmpty()<br />@IsString()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -174,13 +174,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsEmpty()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;id-123-456-789&#x27;, description: &#x27;Message id&#x27;})<br />@IsNotEmpty()<br />@IsString()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:11</a></div>
                         </td>
                     </tr>
 
@@ -209,13 +209,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsEmpty()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;user-id-123-456-789&#x27;, description: &#x27;User id&#x27;})<br />@IsNotEmpty()<br />@IsString()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -244,13 +244,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsEmpty()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;Hello world&#x27;, description: &#x27;Message text&#x27;})<br />@IsNotEmpty()<br />@IsString()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -279,13 +279,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsEmpty()<br />@IsString()<br />
+                            @ApiProperty({example: &#x27;text&#x27;, description: &#x27;Message type: text, image, video, audio&#x27;})<br />@IsNotEmpty()<br />@IsString()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/infrastructure/messages/entities/message.entity.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -304,26 +304,47 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsEmpty, IsString } from &#x27;class-validator&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+import { IsNotEmpty, IsString } from &#x27;class-validator&#x27;;
 
 export class MessageEntity {
-    @IsEmpty()
+    @ApiProperty({
+        example: &#x27;id-123-456-789&#x27;,
+        description: &#x27;Message id&#x27;,
+    })
+    @IsNotEmpty()
     @IsString()
     id: string;
 
-    @IsEmpty()
+    @ApiProperty({
+        example: &#x27;text&#x27;,
+        description: &#x27;Message type: text, image, video, audio&#x27;,
+    })
+    @IsNotEmpty()
     @IsString()
     type: string;
 
-    @IsEmpty()
+    @ApiProperty({
+        example: &#x27;Hello world&#x27;,
+        description: &#x27;Message text&#x27;,
+    })
+    @IsNotEmpty()
     @IsString()
     text: string;
 
-    @IsEmpty()
+    @ApiProperty({
+        example: &#x27;conversation-id-123-456-789&#x27;,
+        description: &#x27;Conversation id&#x27;,
+    })
+    @IsNotEmpty()
     @IsString()
     conversationId: string;
 
-    @IsEmpty()
+    @ApiProperty({
+        example: &#x27;user-id-123-456-789&#x27;,
+        description: &#x27;User id&#x27;,
+    })
+    @IsNotEmpty()
     @IsString()
     senderId: string;
 }

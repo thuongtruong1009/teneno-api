@@ -127,6 +127,15 @@
                         </li>
                     </ul>
                 </div>
+                <div class="col-sm-3">
+                    <h3>Controllers<a href="https://docs.nestjs.com/controllers" target="_blank" title="Official documentation about module controllers"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../controllers/MessagesGateway.html">MessagesGateway</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -140,6 +149,7 @@ import { MessagesGateway } from &#x27;./messages.gateway&#x27;;
 import { MessagesService } from &#x27;./messages.service&#x27;;
 
 @Module({
+    controllers: [MessagesGateway],
     providers: [MessagesGateway, MessagesService],
 })
 export class MessagesModule {}

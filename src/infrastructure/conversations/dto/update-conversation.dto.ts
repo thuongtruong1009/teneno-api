@@ -1,36 +1,23 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { PartialType, PickType } from '@nestjs/swagger';
+import { ConversationEntity } from '../entities/conversation.entity';
 import { CreateConversationDto } from './create-conversation.dto';
 
-export class UpdateConversationDto extends PartialType(CreateConversationDto) {
-  name?: string;
-  description?: string;
-  avatar?: string;
+export class UpdateConversationDto extends PartialType(ConversationEntity) {
+    name?: string;
+    description?: string;
+    avatar?: string;
 }
 
-export class UpdateMembersConversationDto extends PartialType(
-  CreateConversationDto,
-) {
-  members: string[];
-}
+export class UpdateMembersConversationDto extends PickType(ConversationEntity, [
+    'members',
+]) {}
 
-export class DeleteOneAdminConversationDto extends PartialType(
-  CreateConversationDto,
-) {
-  creator: string;
-  @ApiProperty({
-    type: String,
-    example: 'user-id-123-456-789',
-  })
-  @IsString()
-  @IsNotEmpty()
-  userId: string;
-}
+export class DeleteOneAdminConversationDto extends PickType(
+    CreateConversationDto,
+    ['creator', 'userId'],
+) {}
 
-export class UpdateRolesConversationDto extends PartialType(
-  CreateConversationDto,
-) {
-  creator: string;
-  admins: string[];
-  members: string[];
-}
+export class UpdateRolesConversationDto extends PickType(
+    CreateConversationDto,
+    ['admins', 'members', 'creator'],
+) {}

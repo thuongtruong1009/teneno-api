@@ -1,3 +1,6 @@
-import { GetAllConversationDto } from './get-conversation.dto';
+import { PickType } from '@nestjs/swagger';
+import { ConversationEntity } from '../entities/conversation.entity';
 
-export class DeleteConversationDto extends GetAllConversationDto {}
+export class DeleteConversationDto extends PickType(ConversationEntity, [
+    'userId',
+]) {}

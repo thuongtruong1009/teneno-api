@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class MessageEntity {
     @ApiProperty({
         example: 'id-123-456-789',
         description: 'Message id',
     })
-    @IsEmpty()
+    @IsNotEmpty()
     @IsString()
     id: string;
 
@@ -14,7 +14,7 @@ export class MessageEntity {
         example: 'text',
         description: 'Message type: text, image, video, audio',
     })
-    @IsEmpty()
+    @IsNotEmpty()
     @IsString()
     type: string;
 
@@ -22,7 +22,7 @@ export class MessageEntity {
         example: 'Hello world',
         description: 'Message text',
     })
-    @IsEmpty()
+    @IsNotEmpty()
     @IsString()
     text: string;
 
@@ -30,7 +30,7 @@ export class MessageEntity {
         example: 'conversation-id-123-456-789',
         description: 'Conversation id',
     })
-    @IsEmpty()
+    @IsNotEmpty()
     @IsString()
     conversationId: string;
 
@@ -38,7 +38,7 @@ export class MessageEntity {
         example: 'user-id-123-456-789',
         description: 'User id',
     })
-    @IsEmpty()
+    @IsNotEmpty()
     @IsString()
     senderId: string;
 }

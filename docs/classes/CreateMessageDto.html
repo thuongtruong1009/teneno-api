@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/infrastructure/messages/dto/create-message.dto.ts</code>
+            <code>src/infrastructure/messages/dto/request/create-message.dto.ts</code>
         </p>
 
 
@@ -84,16 +84,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiExtraModels, PickType } from &#x27;@nestjs/swagger&#x27;;
-import { MessageEntity } from &#x27;../entities/message.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiExtraModels, OmitType } from &#x27;@nestjs/swagger&#x27;;
+import { MessageEntity } from &#x27;../../entities/message.entity&#x27;;
 
 @ApiExtraModels()
-export class CreateMessageDto extends PickType(MessageEntity, [
-    &#x27;type&#x27;,
-    &#x27;text&#x27;,
-    &#x27;conversationId&#x27;,
-    &#x27;senderId&#x27;,
-]) {}
+export class CreateMessageDto extends OmitType(MessageEntity, [&#x27;id&#x27;]) {}
 </code></pre>
     </div>
 </div>
