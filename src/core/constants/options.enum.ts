@@ -11,8 +11,14 @@ export enum ESTRATEGY {
 }
 
 export enum EORDER {
-    ASC = 'ASC',
-    DESC = 'DESC',
+    ASC = 'asc',
+    DESC = 'desc',
+}
+
+export enum EMaritalStatus {
+    SINGLE = 'single',
+    MARRIED = 'married',
+    DIVORCED = 'divorced',
 }
 
 // export enum EOtpStatus {
@@ -41,10 +47,4 @@ export enum EORDER {
 //     COLLEGE = 'college',
 //     UNIVERSITY = 'university',
 //     OTHER = 'other',
-// }
-
-// export enum EMaritalStatus {
-//     SINGLE = 'single',
-//     MARRIED = 'married',
-//     DIVORCED = 'divorced',
 // }

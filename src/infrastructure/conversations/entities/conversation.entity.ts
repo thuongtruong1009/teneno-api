@@ -1,4 +1,4 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional, PickType } from '@nestjs/swagger';
 import {
     IsArray,
     IsNotEmpty,
@@ -8,8 +8,9 @@ import {
     MaxLength,
     MinLength,
 } from 'class-validator';
+import { CustomDto } from 'src/core/common/dto';
 
-export class ConversationEntity {
+export class ConversationEntity extends PickType(CustomDto, ['userId']) {
     @ApiProperty({
         description: 'The id of the conversation',
         example: 'id-123-456-789',
@@ -92,13 +93,4 @@ export class ConversationEntity {
     @IsArray()
     @IsNotEmpty()
     creator: string;
-
-    @ApiProperty({
-        type: String,
-        example: 'user-id-123-456-789',
-        description: 'The id of the user',
-    })
-    @IsString()
-    @IsNotEmpty()
-    userId: string;
 }

@@ -45,7 +45,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li >UpdatePasswordDto</li>
+  <li >CustomDto</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/infrastructure/auth/dto/request/password.dto.ts</code>
+            <code>src/core/common/dto/custom.dto.ts</code>
         </p>
 
 
@@ -84,10 +84,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#newPassword" >newPassword</a>
+                                    <span class="modifier">Optional</span>
+                                <a href="#senderId" >senderId</a>
                             </li>
                             <li>
-                                <a href="#oldPassword" >oldPassword</a>
+                                    <span class="modifier">Optional</span>
+                                <a href="#userId" >userId</a>
                             </li>
                         </ul>
                     </td>
@@ -112,10 +114,11 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="newPassword"></a>
+                    <a name="senderId"></a>
                     <span class="name">
-                        <span ><b>newPassword</b></span>
-                        <a href="#newPassword"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Optional</span>
+                        <span ><b>senderId</b></span>
+                        <a href="#senderId"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -130,13 +133,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, description: &#x27;The new password of user&#x27;, example: &#x27;password123&#x27;})<br />@IsNotEmpty()<br />@IsString()<br />
+                            @ApiProperty({type: String, description: &#x27;The id of sender&#x27;, example: &#x27;sender-id-123-456-789&#x27;})<br />@IsNotEmpty({message: &#x27;Sender id is required&#x27;})<br />@IsString({message: &#x27;Sender id must be a string&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/infrastructure/auth/dto/request/password.dto.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/core/common/dto/custom.dto.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -147,10 +150,11 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="oldPassword"></a>
+                    <a name="userId"></a>
                     <span class="name">
-                        <span ><b>oldPassword</b></span>
-                        <a href="#oldPassword"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Optional</span>
+                        <span ><b>userId</b></span>
+                        <a href="#userId"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -165,13 +169,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, description: &#x27;The old password of user&#x27;, example: &#x27;password123&#x27;})<br />@IsNotEmpty()<br />@IsString()<br />
+                            @ApiProperty({type: String, description: &#x27;The id of user&#x27;, example: &#x27;user-id-123-456-789&#x27;})<br />@IsNotEmpty({message: &#x27;User id is required&#x27;})<br />@IsString({message: &#x27;User id must be a string&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/infrastructure/auth/dto/request/password.dto.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/core/common/dto/custom.dto.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -190,28 +194,35 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty, PickType } from &#x27;@nestjs/swagger&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 import { IsNotEmpty, IsString } from &#x27;class-validator&#x27;;
-import { UserEntity } from &#x27;src/infrastructure/users/entities/user.entity&#x27;;
 
-export class UpdatePasswordDto extends PickType(UserEntity, [&#x27;email&#x27;]) {
+export class CustomDto {
     @ApiProperty({
         type: String,
-        description: &#x27;The old password of user&#x27;,
-        example: &#x27;password123&#x27;,
+        description: &#x27;The id of user&#x27;,
+        example: &#x27;user-id-123-456-789&#x27;,
     })
-    @IsNotEmpty()
-    @IsString()
-    oldPassword: string;
+    @IsNotEmpty({
+        message: &#x27;User id is required&#x27;,
+    })
+    @IsString({
+        message: &#x27;User id must be a string&#x27;,
+    })
+    userId?: string;
 
     @ApiProperty({
         type: String,
-        description: &#x27;The new password of user&#x27;,
-        example: &#x27;password123&#x27;,
+        description: &#x27;The id of sender&#x27;,
+        example: &#x27;sender-id-123-456-789&#x27;,
     })
-    @IsNotEmpty()
-    @IsString()
-    newPassword: string;
+    @IsNotEmpty({
+        message: &#x27;Sender id is required&#x27;,
+    })
+    @IsString({
+        message: &#x27;Sender id must be a string&#x27;,
+    })
+    senderId?: string;
 }
 </code></pre>
     </div>
@@ -251,7 +262,7 @@ export class UpdatePasswordDto extends PickType(UserEntity, [&#x27;email&#x27;])
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UpdatePasswordDto.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CustomDto.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -455,6 +455,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/CreatePostDto.html" data-type="entity-link" >CreatePostDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/CustomDto.html" data-type="entity-link" >CustomDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/DefaultDto.html" data-type="entity-link" >DefaultDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/DeleteCommentDto.html" data-type="entity-link" >DeleteCommentDto</a>
                             </li>
                             <li class="link">

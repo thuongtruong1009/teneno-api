@@ -157,13 +157,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, example: &#x27;123, Address A, City B, Country C&#x27;})<br />@IsString()<br />@MaxLength(101, {message: &#x27;Address is too long, must be at most 100 characters!&#x27;})<br />
+                            @ApiPropertyOptional({type: String, example: &#x27;123, Address A, City B, Country C&#x27;, description: &#x27;The address of the user&#x27;})<br />@IsOptional({message: &#x27;Address is optional&#x27;})<br />@IsString({message: &#x27;Address must be a string&#x27;})<br />@MaxLength(101, {message: &#x27;Address is too long, must be at most 100 characters!&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:75</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -192,13 +192,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: Number, example: 19})<br />@IsNumber()<br />@Min(17, {message: &#x27;You must be at least 18 years old!&#x27;})<br />@Max(101, {message: &#x27;You must be at most 100 years old!&#x27;})<br />
+                            @ApiPropertyOptional({type: Number, example: 19})<br />@IsNumber()<br />@IsOptional({message: &#x27;Age is optional&#x27;})<br />@Min(11, {message: &#x27;You must be at least 12 years old!&#x27;})<br />@Max(101, {message: &#x27;You must be at most 100 years old!&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:101</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:156</a></div>
                         </td>
                     </tr>
 
@@ -227,13 +227,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, example: &#x27;Avatar example 1 url&#x27;})<br />@IsString()<br />@IsNotEmpty()<br />
+                            @ApiPropertyOptional({type: String, example: &#x27;Avatar example 1 url&#x27;, description: &#x27;The avatar of the user&#x27;})<br />@IsOptional({message: &#x27;Avatar is optional&#x27;})<br />@IsString({message: &#x27;Avatar must be a string&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -262,13 +262,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, example: &#x27;This is bio of Hello ABC account&#x27;})<br />@IsString()<br />@MaxLength(151, {message: &#x27;Bio is too long, must be at most 150 characters!&#x27;})<br />
+                            @ApiPropertyOptional({type: String, example: &#x27;This is bio of Hello ABC account&#x27;, description: &#x27;The bio of the user&#x27;})<br />@IsString({message: &#x27;Bio must be a string&#x27;})<br />@IsOptional({message: &#x27;Bio is optional&#x27;})<br />@MaxLength(151, {message: &#x27;Bio is too long, must be at most 150 characters!&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:111</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:172</a></div>
                         </td>
                     </tr>
 
@@ -297,13 +297,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;2021-07-02T05:01:03.938Z&#x27;})<br />@Type(undefined)<br />@IsDate()<br />
+                            @ApiProperty({example: &#x27;2021-07-02T05:01:03.938Z&#x27;, type: Date, description: &#x27;The date of birth of the user&#x27;})<br />@Type(undefined)<br />@IsDate({message: &#x27;Date of birth must be a date type&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -332,13 +332,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, example: &#x27;Cover example 1 url&#x27;})<br />@IsString()<br />@IsNotEmpty()<br />
+                            @ApiPropertyOptional({type: String, example: &#x27;Cover example 1 url&#x27;, description: &#x27;The cover of the user&#x27;})<br />@IsString({message: &#x27;Cover must be a string&#x27;})<br />@IsOptional({message: &#x27;Cover is optional&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:68</a></div>
                         </td>
                     </tr>
 
@@ -367,13 +367,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, example: &#x27;Hello ABC&#x27;})<br />@IsString()<br />@Length(3, 45)<br />@MinLength(2, {message: &#x27;Full name is too short, must be at least 3 characters!&#x27;})<br />@MaxLength(46, {message: &#x27;Name is too long, must be at most 45 characters!&#x27;})<br />@Validate(fullNameValidator, {message: &#x27;Full name must be not begin with number!&#x27;})<br />
+                            @ApiProperty({type: String, example: &#x27;Hello ABC&#x27;, description: &#x27;The full name of the user&#x27;})<br />@IsString({message: &#x27;Full name must be a string&#x27;})<br />@IsNotEmpty({message: &#x27;Full name is required&#x27;})<br />@Length(3, 45)<br />@MinLength(2, {message: &#x27;Full name is too short, must be at least 3 characters!&#x27;})<br />@MaxLength(46, {message: &#x27;Name is too long, must be at most 45 characters!&#x27;})<br />@Validate(fullNameValidator, {message: &#x27;Full name must be not begin with number!&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -402,13 +402,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: Number, description: &#x27;1: male, 2: female, 0: other&#x27;, example: 1})<br />@IsNumber()<br />@Min(0)<br />@Max(2)<br />
+                            @ApiProperty({type: Number, description: &#x27;1: male, 2: female, 0: other&#x27;, example: 1})<br />@IsNumber()<br />@IsNotEmpty()<br />@Min(0)<br />@Max(2)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:121</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:183</a></div>
                         </td>
                     </tr>
 
@@ -428,7 +428,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>[]</code>
+                        <i>Type : </i>    <code>string[]</code>
 
                     </td>
                 </tr>
@@ -437,13 +437,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: undefined, example: undefined})<br />@IsArray()<br />
+                            @ApiPropertyOptional({type: undefined, example: undefined, description: &#x27;The hobbies of the user&#x27;})<br />@IsArray({message: &#x27;Hobbies must be an array&#x27;})<br />@IsOptional({message: &#x27;Hobbies is optional&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:65</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -463,7 +463,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#EMaritalStatus" target="_self" >EMaritalStatus</a></code>
 
                     </td>
                 </tr>
@@ -472,13 +472,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, example: &#x27;Single&#x27;})<br />@IsString()<br />
+                            @ApiPropertyOptional({type: String, example: &#x27;Single&#x27;, description: &#x27;The relationship status of the user [single, married, divorced]&#x27;})<br />@IsOptional({message: &#x27;Relationship status is optional&#x27;})<br />@IsString({message: &#x27;Relationship status must be a string&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:82</a></div>
                         </td>
                     </tr>
 
@@ -507,13 +507,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: String, example: &#x27;09999999999&#x27;})<br />@IsString()<br />@Validate(phoneNumberValidator, {message: &#x27;Phone number is invalid!&#x27;})<br />
+                            @ApiPropertyOptional({type: String, example: &#x27;09999999999&#x27;, description: &#x27;The phone number of the user&#x27;})<br />@IsOptional({message: &#x27;Phone number is optional&#x27;})<br />@IsString({message: &#x27;Phone number must be a string&#x27;})<br />@MaxLength(21, {message: &#x27;Phone number is too long, must be at most maximum 20 characters!&#x27;})<br />@Validate(phoneNumberValidator, {message: &#x27;Phone number is invalid!&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:83</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/infrastructure/users/entities/profile.entity.ts:129</a></div>
                         </td>
                     </tr>
 
@@ -532,127 +532,189 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty, ApiPropertyOptional } from &#x27;@nestjs/swagger&#x27;;
 import { Type } from &#x27;class-transformer&#x27;;
 import {
-  IsArray,
-  IsDate,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  Length,
-  Max,
-  MaxLength,
-  Min,
-  MinLength,
-  Validate,
+    IsArray,
+    IsDate,
+    IsNotEmpty,
+    IsNumber,
+    IsOptional,
+    IsString,
+    Length,
+    Max,
+    MaxLength,
+    Min,
+    MinLength,
+    Validate,
 } from &#x27;class-validator&#x27;;
+import { EMaritalStatus } from &#x27;src/core/constants&#x27;;
 import { fullNameValidator, phoneNumberValidator } from &#x27;src/core/validators&#x27;;
 
 export class ProfileEntity {
-  @ApiProperty({
-    type: String,
-    example: &#x27;Hello ABC&#x27;,
-  })
-  @IsString()
-  @Length(3, 45)
-  @MinLength(2, {
-    message: &#x27;Full name is too short, must be at least 3 characters!&#x27;,
-  })
-  @MaxLength(46, {
-    message: &#x27;Name is too long, must be at most 45 characters!&#x27;,
-  })
-  @Validate(fullNameValidator, {
-    message: &#x27;Full name must be not begin with number!&#x27;,
-  })
-  fullName: string;
+    @ApiProperty({
+        type: String,
+        example: &#x27;Hello ABC&#x27;,
+        description: &#x27;The full name of the user&#x27;,
+    })
+    @IsString({
+        message: &#x27;Full name must be a string&#x27;,
+    })
+    @IsNotEmpty({
+        message: &#x27;Full name is required&#x27;,
+    })
+    @Length(3, 45)
+    @MinLength(2, {
+        message: &#x27;Full name is too short, must be at least 3 characters!&#x27;,
+    })
+    @MaxLength(46, {
+        message: &#x27;Name is too long, must be at most 45 characters!&#x27;,
+    })
+    @Validate(fullNameValidator, {
+        message: &#x27;Full name must be not begin with number!&#x27;,
+    })
+    fullName: string;
 
-  @ApiProperty({
-    type: String,
-    example: &#x27;Avatar example 1 url&#x27;,
-  })
-  @IsString()
-  @IsNotEmpty()
-  avatar: string;
+    @ApiPropertyOptional({
+        type: String,
+        example: &#x27;Avatar example 1 url&#x27;,
+        description: &#x27;The avatar of the user&#x27;,
+    })
+    @IsOptional({
+        message: &#x27;Avatar is optional&#x27;,
+    })
+    @IsString({
+        message: &#x27;Avatar must be a string&#x27;,
+    })
+    avatar: string;
 
-  @ApiProperty({
-    type: String,
-    example: &#x27;Cover example 1 url&#x27;,
-  })
-  @IsString()
-  @IsNotEmpty()
-  cover: string;
+    @ApiPropertyOptional({
+        type: String,
+        example: &#x27;Cover example 1 url&#x27;,
+        description: &#x27;The cover of the user&#x27;,
+    })
+    @IsString({
+        message: &#x27;Cover must be a string&#x27;,
+    })
+    @IsOptional({
+        message: &#x27;Cover is optional&#x27;,
+    })
+    cover: string;
 
-  @ApiProperty({
-    type: String,
-    example: &#x27;Single&#x27;,
-  })
-  @IsString()
-  marriageStatus: string;
+    @ApiPropertyOptional({
+        type: String,
+        example: &#x27;Single&#x27;,
+        description:
+            &#x27;The relationship status of the user [single, married, divorced]&#x27;,
+    })
+    @IsOptional({
+        message: &#x27;Relationship status is optional&#x27;,
+    })
+    @IsString({
+        message: &#x27;Relationship status must be a string&#x27;,
+    })
+    marriageStatus: EMaritalStatus;
 
-  @ApiProperty({
-    type: [],
-    example: [&#x27;Music&#x27;, &#x27;Sport&#x27;, &#x27;Travel&#x27;],
-  })
-  @IsArray()
-  interests: [];
+    @ApiPropertyOptional({
+        type: Array&lt;String&gt;,
+        example: [&#x27;Music&#x27;, &#x27;Sport&#x27;, &#x27;Travel&#x27;],
+        description: &#x27;The hobbies of the user&#x27;,
+    })
+    @IsArray({
+        message: &#x27;Hobbies must be an array&#x27;,
+    })
+    @IsOptional({
+        message: &#x27;Hobbies is optional&#x27;,
+    })
+    interests: string[];
 
-  @ApiProperty({
-    type: String,
-    example: &#x27;123, Address A, City B, Country C&#x27;,
-  })
-  @IsString()
-  @MaxLength(101, {
-    message: &#x27;Address is too long, must be at most 100 characters!&#x27;,
-  })
-  address: string;
+    @ApiPropertyOptional({
+        type: String,
+        example: &#x27;123, Address A, City B, Country C&#x27;,
+        description: &#x27;The address of the user&#x27;,
+    })
+    @IsOptional({
+        message: &#x27;Address is optional&#x27;,
+    })
+    @IsString({
+        message: &#x27;Address must be a string&#x27;,
+    })
+    @MaxLength(101, {
+        message: &#x27;Address is too long, must be at most 100 characters!&#x27;,
+    })
+    address: string;
 
-  @ApiProperty({
-    type: String,
-    example: &#x27;09999999999&#x27;,
-  })
-  @IsString()
-  @Validate(phoneNumberValidator, { message: &#x27;Phone number is invalid!&#x27; })
-  phone: string;
+    @ApiPropertyOptional({
+        type: String,
+        example: &#x27;09999999999&#x27;,
+        description: &#x27;The phone number of the user&#x27;,
+    })
+    @IsOptional({
+        message: &#x27;Phone number is optional&#x27;,
+    })
+    @IsString({
+        message: &#x27;Phone number must be a string&#x27;,
+    })
+    @MaxLength(21, {
+        message:
+            &#x27;Phone number is too long, must be at most maximum 20 characters!&#x27;,
+    })
+    @Validate(phoneNumberValidator, { message: &#x27;Phone number is invalid!&#x27; })
+    phone: string;
 
-  @ApiProperty({ example: &#x27;2021-07-02T05:01:03.938Z&#x27; })
-  @Type(() &#x3D;&gt; Date)
-  @IsDate()
-  birthdate: Date;
+    @ApiProperty({
+        example: &#x27;2021-07-02T05:01:03.938Z&#x27;,
+        type: Date,
+        description: &#x27;The date of birth of the user&#x27;,
+    })
+    @Type(() &#x3D;&gt; Date)
+    @IsDate({
+        message: &#x27;Date of birth must be a date type&#x27;,
+    })
+    birthdate: Date;
 
-  @ApiProperty({
-    type: Number,
-    example: 19,
-  })
-  @IsNumber()
-  @Min(17, {
-    message: &#x27;You must be at least 18 years old!&#x27;,
-  })
-  @Max(101, {
-    message: &#x27;You must be at most 100 years old!&#x27;,
-  })
-  age: number;
+    @ApiPropertyOptional({
+        type: Number,
+        example: 19,
+    })
+    @IsNumber()
+    @IsOptional({
+        message: &#x27;Age is optional&#x27;,
+    })
+    @Min(11, {
+        message: &#x27;You must be at least 12 years old!&#x27;,
+    })
+    @Max(101, {
+        message: &#x27;You must be at most 100 years old!&#x27;,
+    })
+    age: number;
 
-  @ApiProperty({
-    type: String,
-    example: &#x27;This is bio of Hello ABC account&#x27;,
-  })
-  @IsString()
-  @MaxLength(151, {
-    message: &#x27;Bio is too long, must be at most 150 characters!&#x27;,
-  })
-  bio: string;
+    @ApiPropertyOptional({
+        type: String,
+        example: &#x27;This is bio of Hello ABC account&#x27;,
+        description: &#x27;The bio of the user&#x27;,
+    })
+    @IsString({
+        message: &#x27;Bio must be a string&#x27;,
+    })
+    @IsOptional({
+        message: &#x27;Bio is optional&#x27;,
+    })
+    @MaxLength(151, {
+        message: &#x27;Bio is too long, must be at most 150 characters!&#x27;,
+    })
+    bio: string;
 
-  @ApiProperty({
-    type: Number,
-    description: &#x27;1: male, 2: female, 0: other&#x27;,
-    example: 1,
-  })
-  @IsNumber()
-  @Min(0)
-  @Max(2)
-  gender: number;
+    @ApiProperty({
+        type: Number,
+        description: &#x27;1: male, 2: female, 0: other&#x27;,
+        example: 1,
+    })
+    @IsNumber()
+    @IsNotEmpty()
+    @Min(0)
+    @Max(2)
+    gender: number;
 }
 </code></pre>
     </div>

@@ -1,22 +1,17 @@
 import { OmitType } from '@nestjs/swagger';
+import { DefaultDto } from 'src/core/common/dto';
+import { PostEntity } from 'src/infrastructure/posts/entities/post.entity';
 
-export interface IGetPostOfUser {
-  id: string;
-  title: string;
-  description: string;
-  files: string[];
-  published: boolean;
-  authorId: string;
-  createdAt: Date;
-  updateAt?: Date;
-  reactions:
-    | {
-        id: string;
-        type: number;
-        userId: string;
-        postId: string;
-      }[]
-    | null;
-}
+export type IGetPostOfUser = DefaultDto &
+    Omit<PostEntity, 'postId' | 'favouritorId' | 'reactionType'> & {
+        reactions:
+            | {
+                  id: string;
+                  type: number;
+                  userId: string;
+                  postId: string;
+              }[]
+            | null;
+    };
 
 export type IGetPublicPost = OmitType<IGetPostOfUser, ['published']>;
