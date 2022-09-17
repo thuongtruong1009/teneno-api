@@ -1,16 +1,23 @@
 import {
+    BadRequestException,
     ConflictException,
     ForbiddenException,
     Inject,
     Injectable,
 } from '@nestjs/common';
 import { PrismaService } from 'src/abstraction/prisma/prisma.service';
-import { ITokens } from './dto/response';
+import { IFailRecaptcha, ISuccessRecaptcha, ITokens } from './dto/response';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
+import {
+    LoginDto,
+    RecaptchaDto,
+    SignupDto,
+    UpdatePasswordDto,
+} from './dto/request';
 import { AUTH_ERROR, SYSTEM_ERROR, USER_ERROR } from 'src/core/constants';
 import { comparePassword, hashPassword } from 'src/core/helpers';
+import axios from 'axios';
 
 @Injectable()
 export class AuthService {
@@ -102,6 +109,38 @@ export class AuthService {
         const tokens = await this.getTokens(user.id, user.email);
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
+    }
+
+    async verifyRecaptcha(
+        recaptcha: any,
+    ): Promise<ISuccessRecaptcha | IFailRecaptcha> {
+        const bodyFormData: FormData = new FormData();
+        bodyFormData.append(
+            'secret',
+            this.configService.get('GOOGLE_RECAPTCHA_SECRET'),
+        );
+        bodyFormData.append('response', recaptcha);
+
+        const result = await axios.post(
+            `${this.configService.get('RECAPTCHA_VERIFY_URL')}`,
+            bodyFormData,
+        );
+
+        //     const response = await axios.post(
+        //       `https://www.google.com/recaptcha/api/siteverify?secret=6Lf6BAohAAAAAA0FUbrbiPNYvVSO3IIDMYIeiYsG&response=${capcha}`,
+        //       { header: { 'Content-Type': 'application/x-www-form-urlencoded' } },
+        //     );
+        if (!result?.data.success) throw new Error(AUTH_ERROR.RECAPTCHA_FAILED);
+        if (result?.data.score < 0.5) {
+            throw new BadRequestException(AUTH_ERROR.RECAPTCHA_NOT_PERSON);
+        }
+        return result?.data;
+    }
+
+    async signInRecaptcha(dto: RecaptchaDto): Promise<ITokens> {
+        await this.verifyRecaptcha(dto.recaptcha);
+        const { email, password } = dto;
+        return await this.signinLocal({ email, password });
     }
 
     async logout(userId: string): Promise<void> {

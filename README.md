@@ -27,9 +27,10 @@
 | --- | ---|
 | ✅ Get list all users | ✅ Signup |
 | ✅ Get user profile by id | ✅ Signin |
-| ✅ Update user profile | ✅ Signout  |
-| ✅ Delete user by user-id | ✅ Refresh access-token |
-|  | ✅  Update password |
+| ✅ Update user profile | ✅ Verify recaptcha |
+| ✅ Delete user by user-id | ✅ Signout |
+|  | ✅ Refresh access-token |
+|  | ✅ Update password |
 
 | **OAuth** | **Files** |
 | --- | --- |
@@ -66,12 +67,13 @@
 
 ## Structure
 
-![Architecture](https://github.com/thuongtruong1009/teneno-api/tree/main/public/docs/architecture.svg)
+![Architecture](https://raw.githubusercontent.com/thuongtruong1009/teneno-api/9ad02f21e3abbf2d6b67f651cc96e3b256c5657f/public/docs/architecture.svg)
 
 ## Diagram database
 
 * Relational diagram
-![Relational diagram](https://github.com/thuongtruong1009/teneno-api/tree/main/public/docs/teneno_relational_digram.png)
+
+![Relational diagram](https://github.com/thuongtruong1009/teneno-api/blob/main/public/docs/teneno_relational_digram.png?raw=true)
 
 ## Plugins & Dependencies
 

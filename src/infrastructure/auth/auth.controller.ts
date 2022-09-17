@@ -26,7 +26,12 @@ import {
 import { AuthService } from './auth.service';
 import { GetCurrentUser, GetCurrentUserId, Public } from './decorators';
 import { RtGuard } from './guards';
-import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
+import {
+    LoginDto,
+    RecaptchaDto,
+    SignupDto,
+    UpdatePasswordDto,
+} from './dto/request';
 import { ITokens } from './dto/response';
 import {
     RESPONSES_MESSAGE,
@@ -79,6 +84,14 @@ export class AuthController {
     @ApiOperation({ summary: 'Login to user account' })
     async signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
         return this.authService.signinLocal(dto);
+    }
+
+    @Post('signin/recaptcha')
+    @ApiOperation({ summary: 'Login user with recaptcha' })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async signInRecaptcha(@Body() dto: RecaptchaDto): Promise<ITokens> {
+        return await this.authService.signInRecaptcha(dto);
     }
 
     @Post('logout')

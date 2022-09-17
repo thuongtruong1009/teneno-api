@@ -533,6 +533,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/ReactionsPost.html" data-type="entity-link" >ReactionsPost</a>
                             </li>
                             <li class="link">
+                                <a href="classes/RecaptchaDto.html" data-type="entity-link" >RecaptchaDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/RtGuard.html" data-type="entity-link" >RtGuard</a>
                             </li>
                             <li class="link">

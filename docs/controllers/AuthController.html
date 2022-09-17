@@ -98,6 +98,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#signInRecaptcha" >signInRecaptcha</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#signupLocal" >signupLocal</a>
                             </li>
                             <li>
@@ -150,8 +154,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:102</a></div>
                 </td>
             </tr>
 
@@ -228,8 +232,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="99"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:99</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:112</a></div>
                 </td>
             </tr>
 
@@ -318,8 +322,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:85</a></div>
                 </td>
             </tr>
 
@@ -343,6 +347,84 @@
                                     <td>dto</td>
                                     <td>
                                                 <code><a href="../classes/LoginDto.html" target="_self" >LoginDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;ITokens&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="signInRecaptcha"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>signInRecaptcha</b></span>
+                        <a href="#signInRecaptcha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>signInRecaptcha(dto: <a href="../classes/RecaptchaDto.html" target="_self">RecaptchaDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;signin/recaptcha&#x27;)<br />@ApiOperation({summary: &#x27;Login user with recaptcha&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dto</td>
+                                    <td>
+                                                <code><a href="../classes/RecaptchaDto.html" target="_self" >RecaptchaDto</a></code>
                                     </td>
 
                                     <td>
@@ -396,8 +478,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:76</a></div>
                 </td>
             </tr>
 
@@ -474,8 +556,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:124</a></div>
                 </td>
             </tr>
 
@@ -555,7 +637,12 @@ import {
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { GetCurrentUser, GetCurrentUserId, Public } from &#x27;./decorators&#x27;;
 import { RtGuard } from &#x27;./guards&#x27;;
-import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto/request&#x27;;
+import {
+    LoginDto,
+    RecaptchaDto,
+    SignupDto,
+    UpdatePasswordDto,
+} from &#x27;./dto/request&#x27;;
 import { ITokens } from &#x27;./dto/response&#x27;;
 import {
     RESPONSES_MESSAGE,
@@ -608,6 +695,14 @@ export class AuthController {
     @ApiOperation({ summary: &#x27;Login to user account&#x27; })
     async signinLocal(@Body() dto: LoginDto): Promise&lt;ITokens&gt; {
         return this.authService.signinLocal(dto);
+    }
+
+    @Post(&#x27;signin/recaptcha&#x27;)
+    @ApiOperation({ summary: &#x27;Login user with recaptcha&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async signInRecaptcha(@Body() dto: RecaptchaDto): Promise&lt;ITokens&gt; {
+        return await this.authService.signInRecaptcha(dto);
     }
 
     @Post(&#x27;logout&#x27;)
