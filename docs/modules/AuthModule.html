@@ -230,12 +230,13 @@ import { AuthController } from &#x27;./auth.controller&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { AtStrategy, RtStrategy } from &#x27;./strategies&#x27;;
 import { JwtModule } from &#x27;@nestjs/jwt&#x27;;
+import { PassportModule } from &#x27;@nestjs/passport&#x27;;
 
 @Module({
     imports: [
         PrismaModule,
         JwtModule,
-        // HttpModule,
+        PassportModule.register({ session: true }),
         // JwtModule.registerAsync({
         //   imports: [ConfigModule],
         //   useFactory: async (configService: ConfigService) &#x3D;&gt; ({

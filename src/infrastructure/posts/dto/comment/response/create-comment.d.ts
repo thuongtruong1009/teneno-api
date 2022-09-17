@@ -1,10 +1,12 @@
-export interface ICreateComment {
-  id: string;
-  text: string;
-  createdAt: Date;
-  updatedAt?: Date;
-  authorId: string;
-  postId: string;
-  reactions: Json[];
-  replies: Json[];
-}
+import { DefaultDto } from 'src/core/common/dto';
+
+export type ICreateComment = Pick<
+    CommentEntity,
+    'id' | 'text',
+    'authorId',
+    'postId'
+> &
+    DefaultDto & {
+        reactions: Json[];
+        replies: Json[];
+    };

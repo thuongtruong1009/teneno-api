@@ -74,11 +74,11 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     controllers: [AppController],
     providers: [
         AppService,
-        // the same app.useGlobalGuards(new AtGuard(new Reflector())); in main.ts
         {
             provide: APP_GUARD,
             useClass: ThrottlerGuard,
         },
+        // the same app.useGlobalGuards(new AtGuard(new Reflector())); in main.ts
         {
             provide: APP_GUARD,
             useClass: AtGuard,

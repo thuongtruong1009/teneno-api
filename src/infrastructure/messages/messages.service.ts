@@ -1,94 +1,63 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMessageDto, UpdateMessageDto } from './dto';
-import { v4 as uuid } from 'uuid';
+import { CreateMessageDto, DeleteMessageDto } from './dto/request';
+import { PrismaService } from 'src/abstraction/prisma/prisma.service';
+import { ICreateMessage, IGetAllMessages } from './dto/response';
 
 @Injectable()
 export class MessagesService {
-  conversations = [
-    {
-      id: '1',
-      members: {},
-      messages: [
-        // {
-        //   id: '1',
-        //   name: 'John Doe',
-        //   text: 'Hello World',
-        // },
-      ],
-    },
-    {
-      id: '2',
-      members: {},
-      messages: [
-        // {
-        //   id: '1',
-        //   name: 'Max Mustermann',
-        //   text: 'Nice to meet you',
-        // },
-      ],
-    },
-  ];
+    constructor(private prismaService: PrismaService) {}
 
-  joinConversation(conversationId: string, senderId: string, clientId: string) {
-    this.conversations.find((element) => element.id === conversationId).members[
-      clientId
-    ] = senderId;
-    return Object.values(
-      this.conversations.find((element) => element.id === conversationId)
-        .members,
-    );
-  }
-
-  findAllMessages(conversationId: string) {
-    return this.conversations.find((element) => element.id === conversationId)
-      .messages;
-  }
-
-  getMember(conversationId: string, clientId: string) {
-    return this.conversations.find((element) => element.id === conversationId)
-      .members[clientId];
-  }
-
-  createMessage(
-    conversationId: string,
-    createMessageDto: CreateMessageDto,
-    clientId: string,
-  ) {
-    const message = {
-      id: uuid(),
-      senderId: this.getMember(conversationId, clientId),
-      text: createMessageDto.text,
-    };
-    this.conversations
-      .find((element) => element.id === conversationId)
-      .messages.push(message);
-    return message;
-  }
-
-  updateMessage(updateMessageDto: UpdateMessageDto) {
-    this.conversations.forEach((element) => {
-      if (element.id === updateMessageDto['conversationId']) {
-        element.messages.forEach((item) => {
-          if (item.id === updateMessageDto['messageId']) {
-            item.text = updateMessageDto['text'];
-          }
+    async getAllMessages(conversationId: string): Promise<IGetAllMessages> {
+        const identify = await this.prismaService.conversation.findUnique({
+            where: {
+                id: conversationId,
+            },
+            select: {
+                id: true,
+                name: true,
+                description: true,
+                avatar: true,
+                createdAt: true,
+                messages: true,
+                members: true,
+                admins: true,
+                creator: true,
+            },
         });
-      }
-    });
-    return this.findAllMessages(updateMessageDto['conversationId']);
-  }
+        return identify;
+    }
 
-  async remove(message: string) {
-    this.conversations.forEach((element) => {
-      if (element.id === message['conversationId']) {
-        element.messages.forEach((item) => {
-          if (item.id === message['messageId']) {
-            element.messages.splice(element.messages.indexOf(item), 1);
-          }
+    async getClientName(clientId: string): Promise<string> {
+        const user = await this.prismaService.user.findUnique({
+            where: { id: clientId },
+            select: { username: true },
         });
-      }
-    });
+        return user.username;
+    }
 
-    return this.findAllMessages(message['conversationId']);
-  }
+    async createMessage(
+        dto: CreateMessageDto,
+        clientId: string,
+    ): Promise<ICreateMessage> {
+        const senderName = await this.getClientName(dto.senderId);
+        await this.prismaService.message.create({
+            data: {
+                type: dto.type,
+                text: dto.text,
+                conversationId: dto.conversationId,
+                senderId: `${dto.senderId}:${senderName}`,
+            },
+        });
+        return await this.getAllMessages(dto.conversationId);
+    }
+
+    async removeMessage(dto: DeleteMessageDto): Promise<IGetAllMessages> {
+        await this.prismaService.message.delete({
+            where: {
+                id: dto.id,
+            },
+        });
+
+        return this.getAllMessages(dto.conversationId);
+    }
 }

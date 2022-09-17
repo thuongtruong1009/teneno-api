@@ -8,43 +8,33 @@ import {
 import { MessagesService } from './messages.service';
 import { Server } from 'http';
 import { Socket } from 'socket.io';
-import { CreateMessageDto, UpdateMessageDto } from './dto';
-import { WsThrottlerGuard } from 'src/core/security/throttle-websocket.guard';
-import { UseGuards } from '@nestjs/common';
+import { CreateMessageDto, DeleteMessageDto } from './dto/request';
+import { SkipThrottle } from '@nestjs/throttler';
+import { ICreateMessage, IGetAllMessages } from './dto/response';
+import { Controller } from '@nestjs/common';
 
-@UseGuards(WsThrottlerGuard)
+@SkipThrottle()
+// @UseGuards(WsThrottlerGuard)
+@Controller('messages')
 @WebSocketGateway({ cors: { origin: '*' } })
 export class MessagesGateway {
     @WebSocketServer() server: Server;
     constructor(private readonly messagesService: MessagesService) {}
 
-    @SubscribeMessage('joinConversation')
-    joinConversation(
-        @MessageBody('conversationId') conversationId: string,
-        @MessageBody('senderId') senderId: string,
-        @ConnectedSocket() client: Socket,
-    ) {
-        return this.messagesService.joinConversation(
-            conversationId,
-            senderId,
-            client.id,
-        );
-    }
-
     @SubscribeMessage('findAllMessages')
-    findAllMessages(@MessageBody('conversationId') conversationId: string) {
-        return this.messagesService.findAllMessages(conversationId);
+    async getAllMessages(
+        @MessageBody('conversationId') conversationId: string,
+    ): Promise<IGetAllMessages> {
+        return this.messagesService.getAllMessages(conversationId);
     }
 
     @SubscribeMessage('createMessage')
     async createMessage(
-        @MessageBody('conversationId') conversationId: string,
-        @MessageBody() createMessageDto: CreateMessageDto,
+        @MessageBody() dto: CreateMessageDto,
         @ConnectedSocket() client: Socket,
-    ) {
+    ): Promise<ICreateMessage> {
         const message = await this.messagesService.createMessage(
-            conversationId,
-            createMessageDto,
+            dto,
             client.id,
         );
         this.server.emit('message', message);
@@ -53,29 +43,21 @@ export class MessagesGateway {
 
     @SubscribeMessage('typing')
     async typing(
-        @MessageBody('conversationId') conversationId: string,
+        @MessageBody('senderId') senderId: string,
         @MessageBody('isTyping') isTyping: boolean,
         @ConnectedSocket() client: Socket,
-    ) {
-        const name = await this.messagesService.getMember(
-            conversationId,
-            client.id,
-        );
+    ): Promise<void> {
+        const name = await this.messagesService.getClientName(senderId);
 
         client.broadcast.emit('typing', { senderId: name, isTyping });
     }
 
-    @SubscribeMessage('updateMessage')
-    updateMessage(@MessageBody() updateMessageDto: UpdateMessageDto) {
-        const refresh = this.messagesService.updateMessage(updateMessageDto);
-        this.server.emit('refresh', refresh);
-        return refresh;
-    }
-
     @SubscribeMessage('removeMessage')
-    async remove(@MessageBody() message: string) {
-        const refresh = await this.messagesService.remove(message);
-        this.server.emit('refresh', refresh);
-        return refresh;
+    async removeMessage(
+        @MessageBody() dto: DeleteMessageDto,
+    ): Promise<IGetAllMessages> {
+        const remove = await this.messagesService.removeMessage(dto);
+        this.server.emit('remove', remove);
+        return remove;
     }
 }

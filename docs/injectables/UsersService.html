@@ -467,7 +467,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#Public" target="_self" >Promise&lt;IPublicUser&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#Public" target="_self" >Promise&lt;IPublicUser | null&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -538,7 +538,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;IFindUserByEmail&gt;</code>
+                        <b>Returns : </b>    <code>Promise&lt;IFindUserByEmail | null&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -936,7 +936,7 @@ export class UsersService {
 
     async getPublicUserByIdOrUsername(
         userIdOrUsername: string,
-    ): Promise&lt;IPublicUser&gt; {
+    ): Promise&lt;IPublicUser | null&gt; {
         const identify &#x3D; await this.prismaService.user.findMany({
             where: {
                 OR: [{ id: userIdOrUsername }, { username: userIdOrUsername }],
@@ -954,7 +954,7 @@ export class UsersService {
         return identify[0];
     }
 
-    async getUserByEmail(email: string): Promise&lt;IFindUserByEmail&gt; {
+    async getUserByEmail(email: string): Promise&lt;IFindUserByEmail | null&gt; {
         const identify &#x3D; await this.prismaService.user.findUnique({
             where: {
                 email: email,

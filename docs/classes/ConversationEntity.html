@@ -96,6 +96,7 @@
                                 <a href="#creator" >creator</a>
                             </li>
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#description" >description</a>
                             </li>
                             <li>
@@ -151,13 +152,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The list all admins of the conversation&#x27;, example: undefined, type: undefined})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:86</a></div>
                         </td>
                     </tr>
 
@@ -186,13 +187,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The avatar of the conversation&#x27;, example: &#x27;avatar-123-456-789&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -221,13 +222,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The create date of the conversation&#x27;, example: &#x27;2021-01-01T00:00:00.000Z&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -256,13 +257,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The name of conversation creator&#x27;, example: &#x27;creator-123-456-789&#x27;, type: String})<br />@IsArray()<br />@IsNotEmpty()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -275,6 +276,7 @@
                 <td class="col-md-4">
                     <a name="description"></a>
                     <span class="name">
+                            <span class="modifier">Optional</span>
                         <span ><b>description</b></span>
                         <a href="#description"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -291,13 +293,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({required: false, nullable: true})<br />
+                            @ApiPropertyOptional({description: &#x27;The description of the conversation&#x27;, example: &#x27;description-123-456-789&#x27;, type: String, required: false, nullable: true})<br />@IsOptional()<br />@IsString()<br />@Length(0, 255)<br />@MaxLength(256, {message: &#x27;Description is too long, must be at most 255 characters!&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -326,13 +328,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The id of the conversation&#x27;, example: &#x27;id-123-456-789&#x27;, type: String})<br />@IsString()<br />@IsNotEmpty()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:5</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -361,13 +363,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The list all members of the conversation&#x27;, example: undefined, type: undefined})<br />@IsArray()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -396,13 +398,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The name of the conversation&#x27;, example: &#x27;Conversation 1&#x27;, type: String})<br />@IsString()<br />@IsNotEmpty()<br />@Length(1, 50)<br />@MinLength(0, {message: &#x27;Name is not blank, must be at least 1 characters!&#x27;})<br />@MaxLength(51, {message: &#x27;Name is too long, must be at most 50 characters!&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -431,13 +433,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />
+                            @ApiProperty({description: &#x27;The update date of the conversation&#x27;, example: &#x27;2021-01-01T00:00:00.000Z&#x27;, type: Date})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/infrastructure/conversations/entities/conversation.entity.ts:71</a></div>
                         </td>
                     </tr>
 
@@ -456,35 +458,101 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty, ApiPropertyOptional, PickType } from &#x27;@nestjs/swagger&#x27;;
+import {
+    IsArray,
+    IsNotEmpty,
+    IsOptional,
+    IsString,
+    Length,
+    MaxLength,
+    MinLength,
+} from &#x27;class-validator&#x27;;
+import { CustomDto } from &#x27;src/core/common/dto&#x27;;
 
-export class ConversationEntity {
-  @ApiProperty()
-  id: string;
+export class ConversationEntity extends PickType(CustomDto, [&#x27;userId&#x27;]) {
+    @ApiProperty({
+        description: &#x27;The id of the conversation&#x27;,
+        example: &#x27;id-123-456-789&#x27;,
+        type: String,
+    })
+    @IsString()
+    @IsNotEmpty()
+    id: string;
 
-  @ApiProperty()
-  name: string;
+    @ApiProperty({
+        description: &#x27;The name of the conversation&#x27;,
+        example: &#x27;Conversation 1&#x27;,
+        type: String,
+    })
+    @IsString()
+    @IsNotEmpty()
+    @Length(1, 50)
+    @MinLength(0, {
+        message: &#x27;Name is not blank, must be at least 1 characters!&#x27;,
+    })
+    @MaxLength(51, {
+        message: &#x27;Name is too long, must be at most 50 characters!&#x27;,
+    })
+    name: string;
 
-  @ApiProperty({ required: false, nullable: true })
-  description: string | null;
+    @ApiPropertyOptional({
+        description: &#x27;The description of the conversation&#x27;,
+        example: &#x27;description-123-456-789&#x27;,
+        type: String,
+        required: false,
+        nullable: true,
+    })
+    @IsOptional()
+    @IsString()
+    @Length(0, 255)
+    @MaxLength(256, {
+        message: &#x27;Description is too long, must be at most 255 characters!&#x27;,
+    })
+    description?: string | null;
 
-  @ApiProperty()
-  avatar: string;
+    @ApiProperty({
+        description: &#x27;The avatar of the conversation&#x27;,
+        example: &#x27;avatar-123-456-789&#x27;,
+    })
+    avatar: string;
 
-  @ApiProperty()
-  createdAt: Date;
+    @ApiProperty({
+        description: &#x27;The create date of the conversation&#x27;,
+        example: &#x27;2021-01-01T00:00:00.000Z&#x27;,
+    })
+    createdAt: Date;
 
-  @ApiProperty()
-  updatedAt: Date;
+    @ApiProperty({
+        description: &#x27;The update date of the conversation&#x27;,
+        example: &#x27;2021-01-01T00:00:00.000Z&#x27;,
+        type: Date,
+    })
+    updatedAt: Date;
 
-  @ApiProperty()
-  members: string[];
+    @ApiProperty({
+        description: &#x27;The list all members of the conversation&#x27;,
+        example: [&#x27;member1-123-456&#x27;, &#x27;member2-456-789&#x27;],
+        type: Array&lt;String&gt;,
+    })
+    @IsArray()
+    members: string[];
 
-  @ApiProperty()
-  creator: string;
+    @ApiProperty({
+        description: &#x27;The list all admins of the conversation&#x27;,
+        example: [&#x27;admin1-123-456&#x27;, &#x27;admin2-456-789&#x27;],
+        type: Array&lt;String&gt;,
+    })
+    admins: string[];
 
-  @ApiProperty()
-  admins: string[];
+    @ApiProperty({
+        description: &#x27;The name of conversation creator&#x27;,
+        example: &#x27;creator-123-456-789&#x27;,
+        type: String,
+    })
+    @IsArray()
+    @IsNotEmpty()
+    creator: string;
 }
 </code></pre>
     </div>

@@ -66,7 +66,12 @@
 
 ## Structure
 
-![Schema structure](public/docs/schema_structure.svg)
+![Architecture](https://github.com/thuongtruong1009/teneno-api/tree/main/public/docs/architecture.svg)
+
+## Diagram database
+
+* Relational diagram
+![Relational diagram](https://github.com/thuongtruong1009/teneno-api/tree/main/public/docs/teneno_relational_digram.png)
 
 ## Plugins & Dependencies
 
@@ -76,6 +81,7 @@
 * [CORS](https://www.npmjs.com/package/cors) connect middleware that can be used to enable CORS with various options
 * [Swagger](https://swagger.io/) describe definition format and design document APIs at scale
 * [Bcrypt](https://www.npmjs.com/package/bcrypt) a library to help you hash passwords
+* [Crypto-js](https://www.npmjs.com/package/crypto-js) a JavaScript library of crypto standards
 * [JWT](https://www.npmjs.com/package/jsonwebtoken) decode, verify and generate access tokens
 * [Class-validator](https://www.npmjs.com/package/class-validator) use of decorator and non-decorator to perform validation
 * [Class-transformer](https://www.npmjs.com/package/class-transformer) transform plain object to some instance of class and versa and serialize / deserialize object based on criteria

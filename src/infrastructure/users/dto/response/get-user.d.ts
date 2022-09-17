@@ -1,30 +1,20 @@
-export interface IAllUsers {
-  total: number;
-  orderBy: string;
-  pageItems: number;
-  pageLimit: number;
-  pageCurrent: number;
-  users: json[];
-}
+export type IAllUsers = {
+    total: number;
+    orderBy: string;
+    pageItems: number;
+    pageLimit: number;
+    pageCurrent: number;
+    users: json[];
+};
 
-export interface IPublicUser {
-  id: string;
-  username: string;
-  email: string;
-  profile: json;
-  createdAt: Date;
-}
+export type IPublicUser = Pick<UserEntity, 'username' | 'email'> &
+    Omit<IDefault, 'updatedAt'> & {
+        profile: json;
+    };
 
-export interface IFindUserByEmail {
-  username: string;
-  email: string;
-}
+export type IFindUserByEmail = Pick<UserEntity, 'username' | 'email'>;
 
-export interface IGetUserProfile {
-  id: string;
-  username: string;
-  email: string;
-  profile: json;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export type IGetUserProfile = Pick<UserEntity, 'username' | 'email'> &
+    IDefault & {
+        profile: json;
+    };

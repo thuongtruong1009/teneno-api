@@ -70,20 +70,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#conversations" >conversations</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -94,23 +80,20 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#createMessage" >createMessage</a>
                             </li>
                             <li>
-                                <a href="#findAllMessages" >findAllMessages</a>
-                            </li>
-                            <li>
-                                <a href="#getMember" >getMember</a>
-                            </li>
-                            <li>
-                                <a href="#joinConversation" >joinConversation</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#getAllMessages" >getAllMessages</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove" >remove</a>
+                                <a href="#getClientName" >getClientName</a>
                             </li>
                             <li>
-                                <a href="#updateMessage" >updateMessage</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeMessage" >removeMessage</a>
                             </li>
                         </ul>
                     </td>
@@ -124,6 +107,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(prismaService: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/infrastructure/messages/messages.service.ts:7</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>prismaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PrismaService.html" target="_self" >PrismaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -136,6 +167,7 @@
                 <td class="col-md-4">
                     <a name="createMessage"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>createMessage</b></span>
                         <a href="#createMessage"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -143,15 +175,16 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createMessage(conversationId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createMessageDto: <a href="../classes/CreateMessageDto.html" target="_self">CreateMessageDto</a>, clientId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createMessage(dto: <a href="../classes/CreateMessageDto.html" target="_self">CreateMessageDto</a>, clientId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:38</a></div>
                 </td>
             </tr>
 
@@ -172,19 +205,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>conversationId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>createMessageDto</td>
+                                    <td>dto</td>
                                     <td>
                                                 <code><a href="../classes/CreateMessageDto.html" target="_self" >CreateMessageDto</a></code>
                                     </td>
@@ -213,7 +234,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>{ id: any; senderId: any; text: any; }</code>
+                        <b>Returns : </b>    <code>Promise&lt;ICreateMessage&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -227,269 +248,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findAllMessages"></a>
-                    <span class="name">
-                        <span ><b>findAllMessages</b></span>
-                        <a href="#findAllMessages"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>findAllMessages(conversationId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:42</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>conversationId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getMember"></a>
-                    <span class="name">
-                        <span ><b>getMember</b></span>
-                        <a href="#getMember"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getMember(conversationId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, clientId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:47</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>conversationId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>clientId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="joinConversation"></a>
-                    <span class="name">
-                        <span ><b>joinConversation</b></span>
-                        <a href="#joinConversation"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>joinConversation(conversationId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, senderId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, clientId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:32</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>conversationId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>senderId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>clientId</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="getAllMessages"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getAllMessages</b></span>
+                        <a href="#getAllMessages"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>getAllMessages(conversationId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="10"
+                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:10</a></div>
                 </td>
             </tr>
 
@@ -510,7 +288,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>message</td>
+                                    <td>conversationId</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -527,7 +305,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;IGetAllMessages&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -541,24 +319,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="updateMessage"></a>
+                    <a name="getClientName"></a>
                     <span class="name">
-                        <span ><b>updateMessage</b></span>
-                        <a href="#updateMessage"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>getClientName</b></span>
+                        <a href="#getClientName"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateMessage(updateMessageDto: <a href="../classes/UpdateMessageDto.html" target="_self">UpdateMessageDto</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getClientName(clientId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:30</a></div>
                 </td>
             </tr>
 
@@ -579,9 +359,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>updateMessageDto</td>
+                                    <td>clientId</td>
                                     <td>
-                                                <code><a href="../classes/UpdateMessageDto.html" target="_self" >UpdateMessageDto</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -596,7 +376,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -606,64 +386,75 @@
             </tr>
         </tbody>
     </table>
-</section>
-            <section>
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="conversations"></a>
+                    <a name="removeMessage"></a>
                     <span class="name">
-                        <span ><b>conversations</b></span>
-                        <a href="#conversations"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>removeMessage</b></span>
+                        <a href="#removeMessage"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[
-    {
-      id: &#x27;1&#x27;,
-      members: {},
-      messages: [
-        // {
-        //   id: &#x27;1&#x27;,
-        //   name: &#x27;John Doe&#x27;,
-        //   text: &#x27;Hello World&#x27;,
-        // },
-      ],
-    },
-    {
-      id: &#x27;2&#x27;,
-      members: {},
-      messages: [
-        // {
-        //   id: &#x27;1&#x27;,
-        //   name: &#x27;Max Mustermann&#x27;,
-        //   text: &#x27;Nice to meet you&#x27;,
-        // },
-      ],
-    },
-  ]</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/infrastructure/messages/messages.service.ts:7</a></div>
-                        </td>
-                    </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeMessage(dto: <a href="../classes/DeleteMessageDto.html" target="_self">DeleteMessageDto</a>)</code>
+                </td>
+            </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/infrastructure/messages/messages.service.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dto</td>
+                                    <td>
+                                                <code><a href="../classes/DeleteMessageDto.html" target="_self" >DeleteMessageDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;IGetAllMessages&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </section>
@@ -673,98 +464,67 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { CreateMessageDto, UpdateMessageDto } from &#x27;./dto&#x27;;
-import { v4 as uuid } from &#x27;uuid&#x27;;
+import { CreateMessageDto, DeleteMessageDto } from &#x27;./dto/request&#x27;;
+import { PrismaService } from &#x27;src/abstraction/prisma/prisma.service&#x27;;
+import { ICreateMessage, IGetAllMessages } from &#x27;./dto/response&#x27;;
 
 @Injectable()
 export class MessagesService {
-  conversations &#x3D; [
-    {
-      id: &#x27;1&#x27;,
-      members: {},
-      messages: [
-        // {
-        //   id: &#x27;1&#x27;,
-        //   name: &#x27;John Doe&#x27;,
-        //   text: &#x27;Hello World&#x27;,
-        // },
-      ],
-    },
-    {
-      id: &#x27;2&#x27;,
-      members: {},
-      messages: [
-        // {
-        //   id: &#x27;1&#x27;,
-        //   name: &#x27;Max Mustermann&#x27;,
-        //   text: &#x27;Nice to meet you&#x27;,
-        // },
-      ],
-    },
-  ];
+    constructor(private prismaService: PrismaService) {}
 
-  joinConversation(conversationId: string, senderId: string, clientId: string) {
-    this.conversations.find((element) &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; conversationId).members[
-      clientId
-    ] &#x3D; senderId;
-    return Object.values(
-      this.conversations.find((element) &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; conversationId)
-        .members,
-    );
-  }
-
-  findAllMessages(conversationId: string) {
-    return this.conversations.find((element) &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; conversationId)
-      .messages;
-  }
-
-  getMember(conversationId: string, clientId: string) {
-    return this.conversations.find((element) &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; conversationId)
-      .members[clientId];
-  }
-
-  createMessage(
-    conversationId: string,
-    createMessageDto: CreateMessageDto,
-    clientId: string,
-  ) {
-    const message &#x3D; {
-      id: uuid(),
-      senderId: this.getMember(conversationId, clientId),
-      text: createMessageDto.text,
-    };
-    this.conversations
-      .find((element) &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; conversationId)
-      .messages.push(message);
-    return message;
-  }
-
-  updateMessage(updateMessageDto: UpdateMessageDto) {
-    this.conversations.forEach((element) &#x3D;&gt; {
-      if (element.id &#x3D;&#x3D;&#x3D; updateMessageDto[&#x27;conversationId&#x27;]) {
-        element.messages.forEach((item) &#x3D;&gt; {
-          if (item.id &#x3D;&#x3D;&#x3D; updateMessageDto[&#x27;messageId&#x27;]) {
-            item.text &#x3D; updateMessageDto[&#x27;text&#x27;];
-          }
+    async getAllMessages(conversationId: string): Promise&lt;IGetAllMessages&gt; {
+        const identify &#x3D; await this.prismaService.conversation.findUnique({
+            where: {
+                id: conversationId,
+            },
+            select: {
+                id: true,
+                name: true,
+                description: true,
+                avatar: true,
+                createdAt: true,
+                messages: true,
+                members: true,
+                admins: true,
+                creator: true,
+            },
         });
-      }
-    });
-    return this.findAllMessages(updateMessageDto[&#x27;conversationId&#x27;]);
-  }
+        return identify;
+    }
 
-  async remove(message: string) {
-    this.conversations.forEach((element) &#x3D;&gt; {
-      if (element.id &#x3D;&#x3D;&#x3D; message[&#x27;conversationId&#x27;]) {
-        element.messages.forEach((item) &#x3D;&gt; {
-          if (item.id &#x3D;&#x3D;&#x3D; message[&#x27;messageId&#x27;]) {
-            element.messages.splice(element.messages.indexOf(item), 1);
-          }
+    async getClientName(clientId: string): Promise&lt;string&gt; {
+        const user &#x3D; await this.prismaService.user.findUnique({
+            where: { id: clientId },
+            select: { username: true },
         });
-      }
-    });
+        return user.username;
+    }
 
-    return this.findAllMessages(message[&#x27;conversationId&#x27;]);
-  }
+    async createMessage(
+        dto: CreateMessageDto,
+        clientId: string,
+    ): Promise&lt;ICreateMessage&gt; {
+        const senderName &#x3D; await this.getClientName(dto.senderId);
+        await this.prismaService.message.create({
+            data: {
+                type: dto.type,
+                text: dto.text,
+                conversationId: dto.conversationId,
+                senderId: &#x60;${dto.senderId}:${senderName}&#x60;,
+            },
+        });
+        return await this.getAllMessages(dto.conversationId);
+    }
+
+    async removeMessage(dto: DeleteMessageDto): Promise&lt;IGetAllMessages&gt; {
+        await this.prismaService.message.delete({
+            where: {
+                id: dto.id,
+            },
+        });
+
+        return this.getAllMessages(dto.conversationId);
+    }
 }
 </code></pre>
     </div>

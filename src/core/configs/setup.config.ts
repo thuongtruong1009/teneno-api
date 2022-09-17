@@ -26,6 +26,7 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
             whitelist: true,
             transform: true,
             forbidNonWhitelisted: true,
+            stopAtFirstError: true,
             transformOptions: { enableImplicitConversion: true },
             errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
         }),

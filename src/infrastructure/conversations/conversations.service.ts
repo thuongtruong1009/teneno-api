@@ -4,7 +4,6 @@ import {
     CreateConversationDto,
     DeleteConversationDto,
     DeleteOneAdminConversationDto,
-    GetAllConversationDto,
     GetOneConversationDto,
     UpdateConversationDto,
     UpdateMembersConversationDto,
@@ -55,9 +54,21 @@ export class ConversationsService {
                 id: true,
                 name: true,
                 avatar: true,
+                messages: {
+                    orderBy: {
+                        createdAt: 'asc',
+                    },
+                    take: 1,
+                    select: {
+                        type: true,
+                        text: true,
+                        updatedAt: true,
+                        senderId: true,
+                    },
+                },
             },
         });
-        return list;
+        return { userId, list };
     }
 
     async getConversationById(id: string, dto: GetOneConversationDto) {

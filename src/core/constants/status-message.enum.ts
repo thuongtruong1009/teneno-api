@@ -47,4 +47,5 @@ export const POST_ERROR = {
 export const CONVERSATION_ERROR = {
     NOT_FOUND: 'Conversation not found',
     NOT_CREATOR: 'You are not creator of this conversation',
+    NOT_MEMBER: 'You are not member of this conversation',
 };

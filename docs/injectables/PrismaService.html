@@ -194,7 +194,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -275,7 +275,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                 </td>
@@ -312,7 +312,7 @@ export class PrismaService
         });
     }
 
-    async onModuleInit() {
+    async onModuleInit(): Promise&lt;void&gt; {
         await this.$connect();
     }
 
@@ -320,7 +320,7 @@ export class PrismaService
         await this.$disconnect();
     }
 
-    async enableShutdownHooks(app: INestApplication) {
+    async enableShutdownHooks(app: INestApplication): Promise&lt;void&gt; {
         this.$on(&#x27;beforeExit&#x27;, async () &#x3D;&gt; {
             await app.close();
         });

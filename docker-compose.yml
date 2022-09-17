@@ -1,19 +1,22 @@
 version: '3'
 services:
-  db:
+  postgres:
     image: postgres:14-alpine
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - ${DB_PORT}:5432
     env_file:
       - .env
     restart: always
-    container_name: db
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-    ports:
-      - ${DB_PORT}:5432
+      - ./.docker/postgres/postgres-data:/var/lib/postgresql/data
+    networks:
+      - postgres-network
     environment:
+      POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
     healthcheck:
       test: pg_isready
       interval: 10s
@@ -21,27 +24,45 @@ services:
       retries: 5
 
   adminer:
-      image: adminer
-      restart: always
-      depends_on:
-        db:
-          condition: service_healthy
-      ports:
-      - ${ADMIN_PORT}:8080
+    image: dockette/adminer:pgsql
+    container_name: adminer
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - ${ADMIN_PORT}:80
+    networks:
+      - postgres-network
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - ./.docker/adminer/adminer-data:/var/lib/pgadmin
 
-  # app:
-  #   image: teneno-api
-  #   ports:
-  #     - 5500:5500
-  #   restart: unless-stopped
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - .env
+  app:
+    image: teneno
+    container_name: teneno
+    volumes:
+      - ./:/app
+    ports:
+      - 5500:5500
+    restart: unless-stopped
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint:
+      - /bin/sh
+    command:
+      - -c
+      - npm run start:dev
+    networks:
+      - postgres-network
+    depends_on:
+        - postgres
+    env_file:
+        - .env
 
-volumes:
-  postgres-data:
-    name: teneno-db
+networks:
+  postgres-network:

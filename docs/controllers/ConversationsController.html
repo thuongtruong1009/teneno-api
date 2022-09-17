@@ -161,8 +161,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:79</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:80</a></div>
                 </td>
             </tr>
 
@@ -239,8 +239,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:135</a></div>
                 </td>
             </tr>
 
@@ -329,8 +329,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="168"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:168</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:169</a></div>
                 </td>
             </tr>
 
@@ -405,7 +405,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getAllConversations(dto: <a href="../classes/GetAllConversationDto.html" target="_self">GetAllConversationDto</a>)</code>
+                    <code>getAllConversations(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -419,8 +419,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:92</a></div>
                 </td>
             </tr>
 
@@ -441,9 +441,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>dto</td>
+                                    <td>userId</td>
                                     <td>
-                                                <code><a href="../classes/GetAllConversationDto.html" target="_self" >GetAllConversationDto</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -497,8 +497,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:105</a></div>
                 </td>
             </tr>
 
@@ -585,8 +585,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="119"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:119</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:120</a></div>
                 </td>
             </tr>
 
@@ -675,8 +675,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="149"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:149</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:150</a></div>
                 </td>
             </tr>
 
@@ -765,8 +765,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="187"
-                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:187</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">src/infrastructure/conversations/conversations.controller.ts:188</a></div>
                 </td>
             </tr>
 
@@ -858,6 +858,7 @@ import {
     ApiUnauthorizedResponse,
 } from &#x27;@nestjs/swagger&#x27;;
 import { STATUS_MESSAGE, SYSTEM_ERROR } from &#x27;src/core/constants&#x27;;
+import { GetCurrentUserId } from &#x27;../auth/decorators&#x27;;
 import { ConversationsService } from &#x27;./conversations.service&#x27;;
 import {
     CreateConversationDto,
@@ -869,7 +870,7 @@ import {
     UpdateMembersConversationDto,
     UpdateRolesConversationDto,
 } from &#x27;./dto&#x27;;
-import { ConversationEntity } from &#x27;./entities&#x27;;
+import { ConversationEntity } from &#x27;./entities/conversation.entity&#x27;;
 
 @ApiTags(&#x27;Conversations&#x27;)
 @ApiBearerAuth()
@@ -920,8 +921,8 @@ export class ConversationsController {
         isArray: true,
         description: STATUS_MESSAGE.SUCCESS,
     })
-    async getAllConversations(@Body() dto: GetAllConversationDto) {
-        return this.conversationsService.getAllConversations(dto);
+    async getAllConversations(@GetCurrentUserId() userId: string) {
+        return this.conversationsService.getAllConversations(userId);
     }
 
     @Get(&#x27;:id&#x27;)

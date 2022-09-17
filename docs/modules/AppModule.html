@@ -341,8 +341,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">src/app.module.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app.module.ts:93</a></div>
                 </td>
             </tr>
 
@@ -409,7 +409,7 @@ import { AtGuard } from &#x27;./infrastructure/auth/guards&#x27;;
 import { PrismaModule } from &#x27;./abstraction/prisma/prisma.module&#x27;;
 import { UsersModule } from &#x27;./infrastructure/users/users.module&#x27;;
 import { FilesModule } from &#x27;./infrastructure/files/files.module&#x27;;
-import { ConfigModule } from &#x27;@nestjs/config&#x27;;
+import { ConfigModule, ConfigService } from &#x27;@nestjs/config&#x27;;
 import { TerminusModule } from &#x27;@nestjs/terminus&#x27;;
 import { InterceptorModule } from &#x27;./core/interceptors/interceptor.module&#x27;;
 import { LoggerContextMiddleware } from &#x27;./core/middlewares/logger-context.middleware&#x27;;
@@ -422,16 +422,33 @@ import { AdminModule } from &#x27;./infrastructure/admin/admin.module&#x27;;
 import { RolesGuard } from &#x27;./core/roles&#x27;;
 import { OauthModule } from &#x27;./infrastructure/oauth/oauth.module&#x27;;
 import { MathModule } from &#x27;./abstraction/microservices/math/math.module&#x27;;
+import { ThrottlerGuard, ThrottlerModule } from &#x27;@nestjs/throttler&#x27;;
 
 @Module({
     imports: [
         InterceptorModule,
         PrismaModule,
         TerminusModule,
+        ThrottlerModule.forRootAsync({
+            imports: [ConfigModule],
+            inject: [ConfigService],
+            useFactory: (config: ConfigService) &#x3D;&gt; ({
+                ttl: config.get&lt;number&gt;(&#x27;THROTTLE_TTL&#x27;),
+                limit: config.get&lt;number&gt;(&#x27;THROTTLE_LIMIT&#x27;),
+                ignoreUserAgents: [
+                    // Don&#x27;t throttle request that have &#x27;googlebot&#x27; defined in them.
+                    // Example user agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+                    /googlebot/gi,
+                    // Example user agent: Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)
+                    new RegExp(&#x27;bingbot&#x27;, &#x27;gi&#x27;),
+                ],
+            }),
+        }),
         CacheModule.register(),
         MathModule,
         ConfigModule.forRoot({
             isGlobal: true,
+            cache: true,
             // envFilePath: [&#x27;.env&#x27;],
             envFilePath: &#x60;.env.${process.env.NODE_ENV} || .env&#x60;,
         }),
@@ -454,6 +471,10 @@ import { MathModule } from &#x27;./abstraction/microservices/math/math.module&#x
     controllers: [AppController],
     providers: [
         AppService,
+        {
+            provide: APP_GUARD,
+            useClass: ThrottlerGuard,
+        },
         // the same app.useGlobalGuards(new AtGuard(new Reflector())); in main.ts
         {
             provide: APP_GUARD,
