@@ -39,7 +39,7 @@ export class AppController {
         description: 'Default server response',
     })
     @ApiResponse({ status: 404, description: 'Not found' })
-    getHello(@Session() session: Record<string, any>): any {
+    async getHello(@Session() session: Record<string, any>): Promise<any> {
         return this.appService.getHello(session);
     }
 }

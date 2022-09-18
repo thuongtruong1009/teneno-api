@@ -19,6 +19,7 @@ import { LoggerService } from '../logger/logger.service';
 import { corsOptions } from './cors.config';
 import { v4 as uuid } from 'uuid';
 import * as csurf from 'csurf';
+import { LoggerContextMiddleware } from '../middlewares/logger-context.middleware';
 
 export async function setup(app: INestApplication): Promise<INestApplication> {
     app.useGlobalPipes(
@@ -39,8 +40,8 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
         session({
             genid: () => uuid(),
             secret: process.env.APP_SECRET,
-            resave: false,
-            saveUninitialized: false,
+            resave: true,
+            saveUninitialized: true,
             store: new session.MemoryStore(),
             cookie: {
                 httpOnly: true,

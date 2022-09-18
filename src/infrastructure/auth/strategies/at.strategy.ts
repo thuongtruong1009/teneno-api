@@ -10,8 +10,8 @@ export class AtStrategy extends PassportStrategy(Strategy, ESTRATEGY.JWT) {
     constructor(@Inject(ConfigService) private config: ConfigService) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            // secretOrKey: config.get<string>('APP_SECRET'),
-            secretOrKey: process.env.APP_SECRET,
+            secretOrKey: config.get<string>('APP_SECRET'),
+            // secretOrKey: process.env.APP_SECRET,
             ignoreExpiration: false,
             passReqToCallback: false,
         });

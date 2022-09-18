@@ -1,6 +1,5 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import console from 'console';
 import { Observable } from 'rxjs';
 import { EROLE } from '../constants';
 
@@ -20,14 +19,22 @@ export class RolesGuard implements CanActivate {
         }
 
         const request = context.switchToHttp().getRequest();
-        if (!request.headers['Authorization']) return false;
-        const { user } = request;
+        console.log(`--> User: ${request}`);
+        // console.log('request', this.parseJwt(request));
 
-        if (!user || !user.role) return false;
-        return this.matchRoles(requiredRoles, user.role);
+        return this.matchRoles(requiredRoles, 'USER');
     }
 
     matchRoles(roles: EROLE[], role: string) {
+        console.log(`--> Require role: ${roles}`);
+        console.log(`--> Current role: ${role}`);
+        console.log(`--> Matched: ${roles.includes(role as EROLE)}`);
         return roles.find((el) => el === role) ? true : false;
+    }
+
+    parseJwt(token) {
+        return JSON.parse(
+            Buffer.from(token.split('.')[1], 'base64').toString(),
+        );
     }
 }

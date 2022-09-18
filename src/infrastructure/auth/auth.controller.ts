@@ -1,11 +1,13 @@
 import {
     Body,
+    CacheInterceptor,
     Controller,
     HttpCode,
     HttpStatus,
     Post,
     Put,
     UseGuards,
+    UseInterceptors,
 } from '@nestjs/common';
 import {
     ApiBearerAuth,
@@ -79,6 +81,7 @@ export class AuthController {
 
     @Public()
     @Post('signin')
+    @UseInterceptors(CacheInterceptor)
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
     @ApiOperation({ summary: 'Login to user account' })

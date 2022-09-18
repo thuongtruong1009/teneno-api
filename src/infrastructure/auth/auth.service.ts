@@ -1,5 +1,6 @@
 import {
     BadRequestException,
+    CACHE_MANAGER,
     ConflictException,
     ForbiddenException,
     Inject,
@@ -15,6 +16,7 @@ import {
     SignupDto,
     UpdatePasswordDto,
 } from './dto/request';
+import { Cache } from 'cache-manager';
 import { AUTH_ERROR, SYSTEM_ERROR, USER_ERROR } from 'src/core/constants';
 import { comparePassword, hashPassword } from 'src/core/helpers';
 import axios from 'axios';
@@ -26,14 +28,20 @@ export class AuthService {
         private configService: ConfigService,
         private prismaService: PrismaService,
         private jwtService: JwtService,
+        @Inject(CACHE_MANAGER) private cacheManager: Cache,
     ) {}
 
-    async getTokens(userId: string, email: string): Promise<ITokens> {
+    async getTokens(
+        userId: string,
+        email: string,
+        roles: string[],
+    ): Promise<ITokens> {
         const [at, rt] = await Promise.all([
             this.jwtService.signAsync(
                 {
                     sub: userId,
                     email: email,
+                    roles: roles,
                 },
                 {
                     secret: this.configService.get<string>('APP_SECRET'),
@@ -44,6 +52,7 @@ export class AuthService {
                 {
                     sub: userId,
                     email: email,
+                    roles: roles,
                 },
                 {
                     secret: this.configService.get<string>('APP_SECRET'),
@@ -86,7 +95,11 @@ export class AuthService {
             },
         });
 
-        const tokens = await this.getTokens(newUser.id, newUser.email);
+        const tokens = await this.getTokens(
+            newUser.id,
+            newUser.email,
+            newUser.role,
+        );
         await this.updateRtHash(newUser.id, tokens.refreshToken);
         return tokens;
     }
@@ -106,8 +119,9 @@ export class AuthService {
         if (!passwordMatches)
             throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-        const tokens = await this.getTokens(user.id, user.email);
+        const tokens = await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
+        await this.cacheManager.set('cacheToken', tokens);
         return tokens;
     }
 
@@ -126,9 +140,9 @@ export class AuthService {
             bodyFormData,
         );
 
-        //     const response = await axios.post(
-        //       `https://www.google.com/recaptcha/api/siteverify?secret=6Lf6BAohAAAAAA0FUbrbiPNYvVSO3IIDMYIeiYsG&response=${capcha}`,
-        //       { header: { 'Content-Type': 'application/x-www-form-urlencoded' } },
+        //     const response = await axiosRequest('post',
+        //       `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GOOGLE_RECAPTCHA_SECRET}&response=${capcha}`,
+        //       'Content-Type': 'application/x-www-form-urlencoded'
         //     );
         if (!result?.data.success) throw new Error(AUTH_ERROR.RECAPTCHA_FAILED);
         if (result?.data.score < 0.5) {
@@ -170,7 +184,7 @@ export class AuthService {
         );
         if (!hashMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-        const tokens = await this.getTokens(user.id, user.email);
+        const tokens = await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
     }
@@ -202,7 +216,7 @@ export class AuthService {
             });
         }
 
-        const tokens = await this.getTokens(user.id, user.email);
+        const tokens = await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
     }
