@@ -29,7 +29,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content class">
                    <div class="content-data">
 
 
@@ -39,9 +39,13 @@
 
 
 
+
+
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >LoggerContextMiddleware</li>
+  <li>Classes</li>
+  <li >RecaptchaDto</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,10 +63,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/core/middlewares/logger-context.middleware.ts</code>
+            <code>src/infrastructure/auth/dto/request/recaptcha.dto.ts</code>
         </p>
 
 
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../classes/LoginDto.html" target="_self" >LoginDto</a></code>
+            </p>
 
 
 
@@ -70,21 +81,21 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
+                        <h6><b>Properties</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#use" >use</a>
+                                <a href="#recaptcha" >recaptcha</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+
 
 
 
@@ -97,127 +108,78 @@
 
             <section>
     
-    <h3 id="methods">
-        Methods
+    <h3 id="inputs">
+        Properties
     </h3>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="use"></a>
+                    <a name="recaptcha"></a>
                     <span class="name">
-                        <span ><b>use</b></span>
-                        <a href="#use"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>recaptcha</b></span>
+                        <a href="#recaptcha"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
-            <tr>
-                <td class="col-md-4">
-<code>use(req: Request, res: <a href="../interfaces/Response.html" target="_self">Response</a>, next: () => void)</code>
-                </td>
-            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty({description: &#x27;Recapcha token&#x27;, type: String, example: &#x27;03ANYolqtMS4nv1u0XNKtfZxSjthwjRLiuvXJABk18ZQSuc8IMkuZ_mvV7Tk6aOBULne66mRwPoe9ypFs6EPl76uxlYj4QQKYWWaBX-VxAn5GW4XpL7Ps4_2PdZB1kIibDgN2zyt9BJIkwisLRvzxZenCeWWg4T7lEns25P84d7N7s12DxIKdqi2XaaEMnAS1LK-ypqAN3E8Avyd_yCTvZqkOeu9J_exVR-UoewSdcm7T6cS84zfpwaw7Q3eH4hyo7tmHrhoiqtMh9cmFgGYFN4MQOHcSx0bhJ-LgDlkq3QzudG1AKL95fwu80YWKMgofbjD2afTdLeSmH9r2YU3bi05Nqj_682aenAiwy5Qe0j3CqZ234TJqxyhihPfi2tXVANByG_z53XetTS9Wo95NZQ_NtXgOz-V9slImnDmINg5jOFjIGpIQu-GkXJ824bP14bwaRPWXdXZTu59nVfQHE99Nz0MYGVg39s8m86cZarKZWGiZUMq2-nuk&#x27;})<br />@IsString({message: &#x27;Recapcha token must be a string&#x27;})<br />@IsNotEmpty({message: &#x27;Recapcha token must not be empty&#x27;})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/infrastructure/auth/dto/request/recaptcha.dto.ts:18</a></div>
+                        </td>
+                    </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="6"
-                            class="link-to-prism">src/core/middlewares/logger-context.middleware.ts:6</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>req</td>
-                                    <td>
-                                            <code>Request</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>res</td>
-                                    <td>
-                                                <code><a href="../interfaces/Response.html" target="_self" >Response</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>next</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
         </tbody>
     </table>
 </section>
+
+
+
+
+
+
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NestMiddleware } from &#x27;@nestjs/common&#x27;;
-import { Request, Response } from &#x27;express&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+import { IsNotEmpty, IsString } from &#x27;class-validator&#x27;;
+import { LoginDto } from &#x27;./sigin.dto&#x27;;
 
-@Injectable()
-export class LoggerContextMiddleware implements NestMiddleware {
-    use(req: Request, res: Response, next: () &#x3D;&gt; void): void {
-        console.log(&#x60;Request ${req}...&#x60;);
-        console.log(&#x60;Response ${res}...&#x60;);
-        return next();
-    }
+export class RecaptchaDto extends LoginDto {
+    @ApiProperty({
+        description: &#x27;Recapcha token&#x27;,
+        type: String,
+        example:
+            &#x27;03ANYolqtMS4nv1u0XNKtfZxSjthwjRLiuvXJABk18ZQSuc8IMkuZ_mvV7Tk6aOBULne66mRwPoe9ypFs6EPl76uxlYj4QQKYWWaBX-VxAn5GW4XpL7Ps4_2PdZB1kIibDgN2zyt9BJIkwisLRvzxZenCeWWg4T7lEns25P84d7N7s12DxIKdqi2XaaEMnAS1LK-ypqAN3E8Avyd_yCTvZqkOeu9J_exVR-UoewSdcm7T6cS84zfpwaw7Q3eH4hyo7tmHrhoiqtMh9cmFgGYFN4MQOHcSx0bhJ-LgDlkq3QzudG1AKL95fwu80YWKMgofbjD2afTdLeSmH9r2YU3bi05Nqj_682aenAiwy5Qe0j3CqZ234TJqxyhihPfi2tXVANByG_z53XetTS9Wo95NZQ_NtXgOz-V9slImnDmINg5jOFjIGpIQu-GkXJ824bP14bwaRPWXdXZTu59nVfQHE99Nz0MYGVg39s8m86cZarKZWGiZUMq2-nuk&#x27;,
+    })
+    @IsString({
+        message: &#x27;Recapcha token must be a string&#x27;,
+    })
+    @IsNotEmpty({
+        message: &#x27;Recapcha token must not be empty&#x27;,
+    })
+    recaptcha: string;
 }
 </code></pre>
     </div>
-
 </div>
-
-
-
-
 
 
 
@@ -252,8 +214,8 @@ export class LoggerContextMiddleware implements NestMiddleware {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'LoggerContextMiddleware.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'RecaptchaDto.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

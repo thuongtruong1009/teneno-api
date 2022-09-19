@@ -1,26 +1,51 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import {
+    CanActivate,
+    ExecutionContext,
+    Injectable,
+    UnauthorizedException,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import console from 'console';
-import { EROLE } from '../constants';
+import { Observable } from 'rxjs';
+import { AUTH_ERROR, EROLE } from '../constants';
+import { ROLES_KEY } from './roles.decorator';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
     constructor(private reflector: Reflector) {}
 
-    canActivate(context: ExecutionContext): boolean {
+    canActivate(
+        context: ExecutionContext,
+    ): boolean | Promise<boolean> | Observable<boolean> {
         const requiredRoles = this.reflector.getAllAndOverride<EROLE[]>(
-            'roles',
+            ROLES_KEY,
             [context.getHandler(), context.getClass()],
         );
         if (!requiredRoles) {
             return true;
         }
-        // return false;
-        const request = context.switchToHttp().getRequest();
-        const user = request.user;
-        const hasRole = () =>
-            user.roles.some((role) => user.roles.includes(role));
 
-        return user && user.roles && hasRole();
+        const request = context.switchToHttp().getRequest().secret;
+
+        const data = this.parseJwt(request);
+
+        if (
+            data.key !== process.env.ADMIN_KEY ||
+            data.id !== process.env.ADMIN_SUB
+        ) {
+            throw new UnauthorizedException(AUTH_ERROR.NOT_ADMIN);
+        }
+
+        return this.matchRoles(requiredRoles, data.role);
+    }
+
+    matchRoles(roles: EROLE[], role: string) {
+        console.log(`--> Matched role: ${roles.includes(role as EROLE)}`);
+        return roles.find((el) => el === role) ? true : false;
+    }
+
+    parseJwt(token) {
+        return JSON.parse(
+            Buffer.from(token.split('.')[1], 'base64').toString(),
+        );
     }
 }

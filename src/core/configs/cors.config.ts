@@ -1,12 +1,12 @@
 const whiteList = process.env.WHITE_LIST;
 
 export const corsOptions = function (req: any, callback: any) {
-  let option;
+    let option: any;
 
-  if (Array(whiteList).indexOf(req.header('Origin')) !== -1) {
-    option = { origin: true };
-  } else {
-    option = { origin: false };
-  }
-  callback(null, option);
+    if (Array<string>(whiteList).indexOf(req.header('Origin')) !== -1) {
+        option = { origin: true };
+    } else {
+        option = { origin: false };
+    }
+    callback(null, option);
 };

@@ -62,12 +62,11 @@ import { UsersService } from '../users/users.service';
 @ApiInternalServerErrorResponse({
     description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
-@RoleDecorator(EROLE.ADMIN)
 @Controller('admin')
 export class AdminUsersController {
     constructor(private readonly usersService: UsersService) {}
 
-    @Public()
+    @RoleDecorator(EROLE.ADMIN)
     @Get('users/all')
     @ApiOperation({ summary: 'Get list all public users' })
     @HttpCode(HttpStatus.OK)

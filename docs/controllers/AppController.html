@@ -85,7 +85,14 @@
                                 <a href="#doSkip" >doSkip</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#getHello" >getHello</a>
+                            </li>
+                            <li>
+                                <a href="#requestCookie" >requestCookie</a>
+                            </li>
+                            <li>
+                                <a href="#responseCookie" >responseCookie</a>
                             </li>
                         </ul>
                     </td>
@@ -131,8 +138,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app.controller.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app.controller.ts:28</a></div>
                 </td>
             </tr>
 
@@ -168,8 +175,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app.controller.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app.controller.ts:32</a></div>
                 </td>
             </tr>
 
@@ -191,6 +198,7 @@
                 <td class="col-md-4">
                     <a name="getHello"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>getHello</b></span>
                         <a href="#getHello"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -198,7 +206,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getHello(session: Record<string | any>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getHello(session: Record<string | any>)</code>
                 </td>
             </tr>
 
@@ -212,8 +221,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/app.controller.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app.controller.ts:45</a></div>
                 </td>
             </tr>
 
@@ -251,7 +260,159 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="requestCookie"></a>
+                    <span class="name">
+                        <span ><b>requestCookie</b></span>
+                        <a href="#requestCookie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>requestCookie(request: Request)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;cookie/server&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app.controller.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>request</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="responseCookie"></a>
+                    <span class="name">
+                        <span ><b>responseCookie</b></span>
+                        <a href="#responseCookie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>responseCookie(response: <a href="../interfaces/Response.html" target="_self">Response</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;cookie/custom&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app.controller.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>response</td>
+                                    <td>
+                                                <code><a href="../interfaces/Response.html" target="_self" >Response</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -270,6 +431,8 @@
     Get,
     HttpCode,
     HttpStatus,
+    Req,
+    Res,
     Session,
     UseGuards,
     Version,
@@ -279,6 +442,7 @@ import { SkipThrottle } from &#x27;@nestjs/throttler&#x27;;
 import { AppService } from &#x27;./app.service&#x27;;
 import { ThrottlerBehindProxyGuard } from &#x27;./core/security/throttle-proxy.guard&#x27;;
 import { Public } from &#x27;./infrastructure/auth/decorators&#x27;;
+import { Request, Response } from &#x27;express&#x27;;
 
 @ApiTags(&#x27;Home&#x27;)
 @UseGuards(ThrottlerBehindProxyGuard)
@@ -306,8 +470,21 @@ export class AppController {
         description: &#x27;Default server response&#x27;,
     })
     @ApiResponse({ status: 404, description: &#x27;Not found&#x27; })
-    getHello(@Session() session: Record&lt;string, any&gt;): any {
+    async getHello(@Session() session: Record&lt;string, any&gt;): Promise&lt;any&gt; {
         return this.appService.getHello(session);
+    }
+
+    @Get(&#x27;cookie/server&#x27;)
+    requestCookie(@Req() request: Request) {
+        console.log(&#x60;Cookies: ${request.session.cookie}&#x60;);
+        console.log(&#x60;Signed cookies: ${request.signedCookies}&#x60;);
+        return &#x60;Cookies: ${request.session.cookie} Signed cookies: ${request.signedCookies}&#x60;;
+    }
+
+    @Get(&#x27;cookie/custom&#x27;)
+    responseCookie(@Res() response: Response) {
+        // console.log(response.cookie(&#x27;key&#x27;, &#x27;value&#x27;));
+        console.log(response.getHeader(&#x27;Set-Cookie&#x27;));
     }
 }
 </code></pre>

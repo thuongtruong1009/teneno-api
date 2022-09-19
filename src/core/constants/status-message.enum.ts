@@ -30,6 +30,9 @@ export const SYSTEM_ERROR = {
 export const AUTH_ERROR = {
     SAME_PASSWORD: 'New password must be different from old password',
     PASSWORD_NOT_MATCH: 'Password does not match',
+    RECAPTCHA_FAILED: 'Failed to verify recaptcha',
+    RECAPTCHA_NOT_PERSON: "You're not person",
+    NOT_ADMIN: 'You are not admin',
 };
 
 export const USER_ERROR = {

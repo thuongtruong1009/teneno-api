@@ -5,6 +5,8 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { initSwagger, setup } from './core/configs';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import * as fs from 'fs';
+import * as morgan from 'morgan';
 
 declare const module: any;
 
@@ -16,6 +18,11 @@ async function bootstrap() {
 
     setup(app);
     initSwagger(app);
+
+    const logStream = fs.createWriteStream('api.log', {
+        flags: 'a',
+    });
+    app.use(morgan('tiny', { stream: logStream }));
 
     const isProduction = process.env.NODE_ENV === 'production';
     if (isProduction) {

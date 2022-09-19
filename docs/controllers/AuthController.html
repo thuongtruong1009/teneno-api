@@ -98,6 +98,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#signInRecaptcha" >signInRecaptcha</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#signupLocal" >signupLocal</a>
                             </li>
                             <li>
@@ -136,7 +140,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>logout(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>logout(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, res: <a href="../interfaces/Response.html" target="_self">Response</a>)</code>
                 </td>
             </tr>
 
@@ -150,8 +154,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:110</a></div>
                 </td>
             </tr>
 
@@ -175,6 +179,18 @@
                                     <td>userId</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>res</td>
+                                    <td>
+                                                <code><a href="../interfaces/Response.html" target="_self" >Response</a></code>
                                     </td>
 
                                     <td>
@@ -228,8 +244,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="99"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:99</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:124</a></div>
                 </td>
             </tr>
 
@@ -312,14 +328,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Public()<br />@Post(&#x27;signin&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br />@ApiOperation({summary: &#x27;Login to user account&#x27;})<br /></code>
+                    <code>@Public()<br />@Post(&#x27;signin&#x27;)<br />@UseInterceptors(CacheInterceptor)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br />@ApiOperation({summary: &#x27;Login to user account&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:90</a></div>
                 </td>
             </tr>
 
@@ -343,6 +359,84 @@
                                     <td>dto</td>
                                     <td>
                                                 <code><a href="../classes/LoginDto.html" target="_self" >LoginDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;ITokens&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="signInRecaptcha"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>signInRecaptcha</b></span>
+                        <a href="#signInRecaptcha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>signInRecaptcha(dto: <a href="../classes/RecaptchaDto.html" target="_self">RecaptchaDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;signin/recaptcha&#x27;)<br />@ApiOperation({summary: &#x27;Login user with recaptcha&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dto</td>
+                                    <td>
+                                                <code><a href="../classes/RecaptchaDto.html" target="_self" >RecaptchaDto</a></code>
                                     </td>
 
                                     <td>
@@ -396,8 +490,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:80</a></div>
                 </td>
             </tr>
 
@@ -474,8 +568,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:136</a></div>
                 </td>
             </tr>
 
@@ -529,12 +623,15 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
     Body,
+    CacheInterceptor,
     Controller,
     HttpCode,
     HttpStatus,
     Post,
     Put,
+    Res,
     UseGuards,
+    UseInterceptors,
 } from &#x27;@nestjs/common&#x27;;
 import {
     ApiBearerAuth,
@@ -555,13 +652,19 @@ import {
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { GetCurrentUser, GetCurrentUserId, Public } from &#x27;./decorators&#x27;;
 import { RtGuard } from &#x27;./guards&#x27;;
-import { LoginDto, SignupDto, UpdatePasswordDto } from &#x27;./dto/request&#x27;;
+import {
+    LoginDto,
+    RecaptchaDto,
+    SignupDto,
+    UpdatePasswordDto,
+} from &#x27;./dto/request&#x27;;
 import { ITokens } from &#x27;./dto/response&#x27;;
 import {
     RESPONSES_MESSAGE,
     STATUS_MESSAGE,
     SYSTEM_ERROR,
 } from &#x27;src/core/constants&#x27;;
+import { Response } from &#x27;express&#x27;;
 
 @ApiTags(&#x27;Auth&#x27;)
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
@@ -603,11 +706,23 @@ export class AuthController {
 
     @Public()
     @Post(&#x27;signin&#x27;)
+    @UseInterceptors(CacheInterceptor)
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
     @ApiOperation({ summary: &#x27;Login to user account&#x27; })
     async signinLocal(@Body() dto: LoginDto): Promise&lt;ITokens&gt; {
-        return this.authService.signinLocal(dto);
+        // const cookie &#x3D; this.authService.createCookie(a.accessToken);
+        // res.setHeader(&#x27;Set-Cookie&#x27;, [cookie]);
+        // console.log(res.getHeader(&#x27;Set-Cookie&#x27;));
+        return await this.authService.signinLocal(dto);
+    }
+
+    @Post(&#x27;signin/recaptcha&#x27;)
+    @ApiOperation({ summary: &#x27;Login user with recaptcha&#x27; })
+    @HttpCode(HttpStatus.OK)
+    @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
+    async signInRecaptcha(@Body() dto: RecaptchaDto): Promise&lt;ITokens&gt; {
+        return await this.authService.signInRecaptcha(dto);
     }
 
     @Post(&#x27;logout&#x27;)
@@ -615,7 +730,11 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
     @ApiOperation({ summary: &#x27;Logout user account (user)&#x27; })
-    async logout(@GetCurrentUserId() userId: string): Promise&lt;void&gt; {
+    async logout(
+        @GetCurrentUserId() userId: string,
+        @Res() res: Response,
+    ): Promise&lt;void&gt; {
+        res.setHeader(&#x27;Set-Cookie&#x27;, [&#x27;Authorization&#x3D;; Max-age&#x3D;0&#x27;]);
         return this.authService.logout(userId);
     }
 

@@ -341,8 +341,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">src/app.module.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/app.module.ts:107</a></div>
                 </td>
             </tr>
 
@@ -396,12 +396,13 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    CacheInterceptor,
     CacheModule,
     MiddlewareConsumer,
     Module,
     NestModule,
 } from &#x27;@nestjs/common&#x27;;
-import { APP_GUARD } from &#x27;@nestjs/core&#x27;;
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from &#x27;@nestjs/core&#x27;;
 import { AppController } from &#x27;./app.controller&#x27;;
 import { AppService } from &#x27;./app.service&#x27;;
 import { AuthModule } from &#x27;./infrastructure/auth/auth.module&#x27;;
@@ -423,6 +424,7 @@ import { RolesGuard } from &#x27;./core/roles&#x27;;
 import { OauthModule } from &#x27;./infrastructure/oauth/oauth.module&#x27;;
 import { MathModule } from &#x27;./abstraction/microservices/math/math.module&#x27;;
 import { ThrottlerGuard, ThrottlerModule } from &#x27;@nestjs/throttler&#x27;;
+import { AllExceptionsFilter } from &#x27;./core/filters/exception.filter&#x27;;
 
 @Module({
     imports: [
@@ -444,7 +446,11 @@ import { ThrottlerGuard, ThrottlerModule } from &#x27;@nestjs/throttler&#x27;;
                 ],
             }),
         }),
-        CacheModule.register(),
+        CacheModule.register({
+            isGlobal: true,
+            ttl: Number(process.env.CACHE_TTL),
+            max: +Number(process.env.CACHE_MAX),
+        }),
         MathModule,
         ConfigModule.forRoot({
             isGlobal: true,
@@ -484,6 +490,14 @@ import { ThrottlerGuard, ThrottlerModule } from &#x27;@nestjs/throttler&#x27;;
             provide: APP_GUARD,
             useClass: RolesGuard,
         },
+        {
+            provide: APP_INTERCEPTOR,
+            useClass: CacheInterceptor,
+        },
+        // {
+        //     provide: APP_FILTER,
+        //     useClass: AllExceptionsFilter,
+        // },
     ],
 })
 export class AppModule implements NestModule {

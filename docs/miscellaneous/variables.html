@@ -158,6 +158,9 @@
                             <a href="#RoleDecorator" title="src/core/roles/roles.decorator.ts" ><b>RoleDecorator</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
                         </li>
                         <li>
+                            <a href="#ROLES_KEY" title="src/core/roles/roles.decorator.ts" ><b>ROLES_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
                             <a href="#SALT_ROUNDS" title="src/core/helpers/hash.ts" ><b>SALT_ROUNDS</b>&nbsp;&nbsp;&nbsp;(src/.../hash.ts)</a>
                         </li>
                         <li>
@@ -218,6 +221,9 @@
                         <i>Default value : </i><code>{
     SAME_PASSWORD: &#x27;New password must be different from old password&#x27;,
     PASSWORD_NOT_MATCH: &#x27;Password does not match&#x27;,
+    RECAPTCHA_FAILED: &#x27;Failed to verify recaptcha&#x27;,
+    RECAPTCHA_NOT_PERSON: &quot;You&#x27;re not person&quot;,
+    NOT_ADMIN: &#x27;You are not admin&#x27;,
 }</code>
                     </td>
                 </tr>
@@ -605,14 +611,14 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>function (req: any, callback: any) {
-  let option;
+    let option: any;
 
-  if (Array(whiteList).indexOf(req.header(&#x27;Origin&#x27;)) !&#x3D;&#x3D; -1) {
-    option &#x3D; { origin: true };
-  } else {
-    option &#x3D; { origin: false };
-  }
-  callback(null, option);
+    if (Array&lt;string&gt;(whiteList).indexOf(req.header(&#x27;Origin&#x27;)) !&#x3D;&#x3D; -1) {
+        option &#x3D; { origin: true };
+    } else {
+        option &#x3D; { origin: false };
+    }
+    callback(null, option);
 }</code>
                     </td>
                 </tr>
@@ -1380,7 +1386,34 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>(...roles: EROLE[]) &#x3D;&gt; SetMetadata(&#x27;roles&#x27;, roles)</code>
+                        <i>Default value : </i><code>(...roles: EROLE[]) &#x3D;&gt;
+    SetMetadata(ROLES_KEY, roles)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLES_KEY"></a>
+                    <span class="name">
+                        <span ><b>ROLES_KEY</b></span>
+                        <a href="#ROLES_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;roles&#x27;</code>
                     </td>
                 </tr>
 

@@ -85,6 +85,12 @@
                             <li>
                                 <a href="#canActivate" >canActivate</a>
                             </li>
+                            <li>
+                                <a href="#matchRoles" >matchRoles</a>
+                            </li>
+                            <li>
+                                <a href="#parseJwt" >parseJwt</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -108,7 +114,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/core/roles/roles.guard.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/core/roles/roles.guard.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -171,8 +177,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/core/roles/roles.guard.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:16</a></div>
                 </td>
             </tr>
 
@@ -210,7 +216,153 @@
                     <div>
                     </div>
                     <div class="io-description">
+                        <b>Returns : </b>    <code>boolean | Promise | Observable</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="matchRoles"></a>
+                    <span class="name">
+                        <span ><b>matchRoles</b></span>
+                        <a href="#matchRoles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>matchRoles(roles: <a href="../undefineds/EROLE.html" target="_self">EROLE[]</a>, role: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>roles</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/enumerations.html#EROLE" target="_self" >EROLE[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>role</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseJwt"></a>
+                    <span class="name">
+                        <span ><b>parseJwt</b></span>
+                        <a href="#parseJwt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>parseJwt(token)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>token</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -225,30 +377,55 @@
 
 
         <div class="tab-pane fade  tab-source-code" id="c-source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CanActivate, ExecutionContext, Injectable } from &#x27;@nestjs/common&#x27;;
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    CanActivate,
+    ExecutionContext,
+    Injectable,
+    UnauthorizedException,
+} from &#x27;@nestjs/common&#x27;;
 import { Reflector } from &#x27;@nestjs/core&#x27;;
-import console from &#x27;console&#x27;;
-import { EROLE } from &#x27;../constants&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { AUTH_ERROR, EROLE } from &#x27;../constants&#x27;;
+import { ROLES_KEY } from &#x27;./roles.decorator&#x27;;
 
 @Injectable()
 export class RolesGuard implements CanActivate {
     constructor(private reflector: Reflector) {}
 
-    canActivate(context: ExecutionContext): boolean {
+    canActivate(
+        context: ExecutionContext,
+    ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; {
         const requiredRoles &#x3D; this.reflector.getAllAndOverride&lt;EROLE[]&gt;(
-            &#x27;roles&#x27;,
+            ROLES_KEY,
             [context.getHandler(), context.getClass()],
         );
         if (!requiredRoles) {
             return true;
         }
-        // return false;
-        const request &#x3D; context.switchToHttp().getRequest();
-        const user &#x3D; request.user;
-        const hasRole &#x3D; () &#x3D;&gt;
-            user.roles.some((role) &#x3D;&gt; user.roles.includes(role));
 
-        return user &amp;&amp; user.roles &amp;&amp; hasRole();
+        const request &#x3D; context.switchToHttp().getRequest().secret;
+
+        const data &#x3D; this.parseJwt(request);
+
+        if (
+            data.key !&#x3D;&#x3D; process.env.ADMIN_KEY ||
+            data.id !&#x3D;&#x3D; process.env.ADMIN_SUB
+        ) {
+            throw new UnauthorizedException(AUTH_ERROR.NOT_ADMIN);
+        }
+
+        return this.matchRoles(requiredRoles, data.role);
+    }
+
+    matchRoles(roles: EROLE[], role: string) {
+        console.log(&#x60;--&gt; Matched role: ${roles.includes(role as EROLE)}&#x60;);
+        return roles.find((el) &#x3D;&gt; el &#x3D;&#x3D;&#x3D; role) ? true : false;
+    }
+
+    parseJwt(token) {
+        return JSON.parse(
+            Buffer.from(token.split(&#x27;.&#x27;)[1], &#x27;base64&#x27;).toString(),
+        );
     }
 }
 </code></pre>

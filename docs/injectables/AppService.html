@@ -80,6 +80,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#getHello" >getHello</a>
                             </li>
                         </ul>
@@ -100,12 +101,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(logger: <a href="../injectables/LoggerService.html" target="_self">LoggerService</a>)</code>
+<code>constructor(logger: <a href="../injectables/LoggerService.html" target="_self">LoggerService</a>, cacheManager: Cache)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -134,6 +135,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>cacheManager</td>
+                                                  
+                                                        <td>
+                                                                    <code>Cache</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -154,6 +167,7 @@
                 <td class="col-md-4">
                     <a name="getHello"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>getHello</b></span>
                         <a href="#getHello"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -161,15 +175,16 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getHello(session: Record<string | any>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getHello(session: Record<string | any>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/app.service.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app.service.ts:20</a></div>
                 </td>
             </tr>
 
@@ -207,7 +222,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -223,22 +238,39 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CacheInterceptor, Injectable, UseInterceptors } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    CacheInterceptor,
+    CACHE_MANAGER,
+    Inject,
+    Injectable,
+    UseInterceptors,
+} from &#x27;@nestjs/common&#x27;;
 import { Logger } from &#x27;./core/logger/logger.decorator&#x27;;
 import { LoggerService } from &#x27;./core/logger/logger.service&#x27;;
+import { Cache } from &#x27;cache-manager&#x27;;
 
 @Injectable()
 @UseInterceptors(CacheInterceptor)
 export class AppService {
-    constructor(@Logger(&#x27;AppService&#x27;) private logger: LoggerService) {}
+    constructor(
+        @Logger(&#x27;AppService&#x27;) private logger: LoggerService,
+        @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    ) {}
 
-    getHello(session: Record&lt;string, any&gt;): any {
+    async getHello(session: Record&lt;string, any&gt;): Promise&lt;any&gt; {
         this.logger.log(&#x27;Hello World&#x27;, &#x27;200&#x27;);
-        session.visits &#x3D; session.visits ? session.visits + 1 : 1;
-        return {
-            views: &#x60;You visited this site ${session.visits} times&#x60;,
-            message: &#x27;Hello World from Teneno!&#x27;,
+        session.visits &#x3D; (await session.visits) ? session.visits + 1 : 1;
+        const cacheToken &#x3D; await this.cacheManager.get(
+            &#x27;cacheToken&#x27; || undefined,
+        );
+        const console: Object &#x3D; {
+            Views: &#x60;You&#x27;re visited this page ${await session.visits} times&#x60;,
+            Message: &#x27;Hello World from Teneno!&#x27;,
+            Note: &#x60;This view has been cached by Cache-Interceptor in ${process.env.CACHE_TTL} seconds.&#x60;,
+            Tip: &#x27;Disable cache module in app.module.ts to reset views.&#x27;,
+            CacheToken: cacheToken,
         };
+        return console;
     }
 }
 </code></pre>

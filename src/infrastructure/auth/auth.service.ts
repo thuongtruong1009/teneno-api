@@ -1,16 +1,25 @@
 import {
+    BadRequestException,
+    CACHE_MANAGER,
     ConflictException,
     ForbiddenException,
     Inject,
     Injectable,
 } from '@nestjs/common';
 import { PrismaService } from 'src/abstraction/prisma/prisma.service';
-import { ITokens } from './dto/response';
+import { IFailRecaptcha, ISuccessRecaptcha, ITokens } from './dto/response';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { LoginDto, SignupDto, UpdatePasswordDto } from './dto/request';
+import {
+    LoginDto,
+    RecaptchaDto,
+    SignupDto,
+    UpdatePasswordDto,
+} from './dto/request';
+import { Cache } from 'cache-manager';
 import { AUTH_ERROR, SYSTEM_ERROR, USER_ERROR } from 'src/core/constants';
 import { comparePassword, hashPassword } from 'src/core/helpers';
+import axios from 'axios';
 
 @Injectable()
 export class AuthService {
@@ -19,14 +28,20 @@ export class AuthService {
         private configService: ConfigService,
         private prismaService: PrismaService,
         private jwtService: JwtService,
+        @Inject(CACHE_MANAGER) private cacheManager: Cache,
     ) {}
 
-    async getTokens(userId: string, email: string): Promise<ITokens> {
+    async getTokens(
+        userId: string,
+        email: string,
+        roles: string[],
+    ): Promise<ITokens> {
         const [at, rt] = await Promise.all([
             this.jwtService.signAsync(
                 {
                     sub: userId,
                     email: email,
+                    roles: roles,
                 },
                 {
                     secret: this.configService.get<string>('APP_SECRET'),
@@ -37,6 +52,7 @@ export class AuthService {
                 {
                     sub: userId,
                     email: email,
+                    roles: roles,
                 },
                 {
                     secret: this.configService.get<string>('APP_SECRET'),
@@ -79,7 +95,11 @@ export class AuthService {
             },
         });
 
-        const tokens = await this.getTokens(newUser.id, newUser.email);
+        const tokens = await this.getTokens(
+            newUser.id,
+            newUser.email,
+            newUser.role,
+        );
         await this.updateRtHash(newUser.id, tokens.refreshToken);
         return tokens;
     }
@@ -99,9 +119,42 @@ export class AuthService {
         if (!passwordMatches)
             throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-        const tokens = await this.getTokens(user.id, user.email);
+        const tokens = await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
+        await this.cacheManager.set('cacheToken', tokens);
         return tokens;
+    }
+
+    async verifyRecaptcha(
+        recaptcha: any,
+    ): Promise<ISuccessRecaptcha | IFailRecaptcha> {
+        const bodyFormData: FormData = new FormData();
+        bodyFormData.append(
+            'secret',
+            this.configService.get('GOOGLE_RECAPTCHA_SECRET'),
+        );
+        bodyFormData.append('response', recaptcha);
+
+        const result = await axios.post(
+            `${this.configService.get('RECAPTCHA_VERIFY_URL')}`,
+            bodyFormData,
+        );
+
+        //     const response = await axiosRequest('post',
+        //       `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GOOGLE_RECAPTCHA_SECRET}&response=${capcha}`,
+        //       'Content-Type': 'application/x-www-form-urlencoded'
+        //     );
+        if (!result?.data.success) throw new Error(AUTH_ERROR.RECAPTCHA_FAILED);
+        if (result?.data.score < 0.5) {
+            throw new BadRequestException(AUTH_ERROR.RECAPTCHA_NOT_PERSON);
+        }
+        return result?.data;
+    }
+
+    async signInRecaptcha(dto: RecaptchaDto): Promise<ITokens> {
+        await this.verifyRecaptcha(dto.recaptcha);
+        const { email, password } = dto;
+        return await this.signinLocal({ email, password });
     }
 
     async logout(userId: string): Promise<void> {
@@ -131,7 +184,7 @@ export class AuthService {
         );
         if (!hashMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-        const tokens = await this.getTokens(user.id, user.email);
+        const tokens = await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
     }
@@ -163,8 +216,12 @@ export class AuthService {
             });
         }
 
-        const tokens = await this.getTokens(user.id, user.email);
+        const tokens = await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
+    }
+
+    public createCookie(tokenData: string): string {
+        return `Authorization=${tokenData}; HttpOnly; Max-Age=604800;`;
     }
 }

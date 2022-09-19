@@ -80,6 +80,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#validate" >validate</a>
                             </li>
                         </ul>
@@ -154,6 +155,7 @@
                 <td class="col-md-4">
                     <a name="validate"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>validate</b></span>
                         <a href="#validate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -161,7 +163,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validate(payload: IJwtPayload)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validate(payload: IJwtPayload)</code>
                 </td>
             </tr>
 
@@ -207,7 +210,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>IJwtPayload</code>
+                        <b>Returns : </b>    <code>Promise&lt;IJwtPayload&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -223,7 +226,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable } from &#x27;@nestjs/common&#x27;;
 import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
 import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
 import { ConfigService } from &#x27;@nestjs/config&#x27;;
@@ -232,17 +235,17 @@ import { ESTRATEGY } from &#x27;src/core/constants&#x27;;
 
 @Injectable()
 export class AtStrategy extends PassportStrategy(Strategy, ESTRATEGY.JWT) {
-    constructor(private config: ConfigService) {
+    constructor(@Inject(ConfigService) private config: ConfigService) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            // secretOrKey: config.get&lt;string&gt;(&#x27;APP_SECRET&#x27;),
-            secretOrKey: process.env.APP_SECRET,
+            secretOrKey: config.get&lt;string&gt;(&#x27;APP_SECRET&#x27;),
+            // secretOrKey: process.env.APP_SECRET,
             ignoreExpiration: false,
             passReqToCallback: false,
         });
     }
 
-    validate(payload: IJwtPayload): IJwtPayload {
+    async validate(payload: IJwtPayload): Promise&lt;IJwtPayload&gt; {
         return payload;
     }
 }

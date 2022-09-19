@@ -1,525 +1,528 @@
-<svg width="2898pt" height="402pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="overflow: hidden; "><g id="viewport-20220915074903866" class="svg-pan-zoom_viewport" transform="matrix(0.39889579020013805,0,0,0.39889579020013805,0.9999663021911663,46.86184139317524)" style="transform: matrix(0.398896, 0, 0, 0.398896, 0.999966, 46.8618);">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 397.8)">
-<title>dependencies</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-397.8 2894,-397.8 2894,4 -4,4"></polygon>
-<text text-anchor="middle" x="1445" y="-8.2" font-family="sans-serif" font-size="14.00">dependencies</text>
-<g id="clust1" class="cluster">
-<title>cluster_AdminModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="2302,-184.8 2302,-320.8 2584,-320.8 2584,-184.8 2302,-184.8"></polygon>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_AdminModule_imports</title>
-<polygon fill="none" stroke="black" points="2468,-192.8 2468,-244.8 2576,-244.8 2576,-192.8 2468,-192.8"></polygon>
-</g>
-<g id="clust6" class="cluster">
-<title>cluster_AdminModule_providers</title>
-<polygon fill="none" stroke="black" points="2310,-192.8 2310,-244.8 2460,-244.8 2460,-192.8 2310,-192.8"></polygon>
-</g>
-<g id="clust7" class="cluster">
-<title>cluster_AppModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="916,-108.8 916,-385.8 1666,-385.8 1666,-108.8 916,-108.8"></polygon>
-</g>
-<g id="clust9" class="cluster">
-<title>cluster_AppModule_imports</title>
-<polygon fill="none" stroke="black" points="1062,-116.8 1062,-320.8 1658,-320.8 1658,-116.8 1062,-116.8"></polygon>
-</g>
-<g id="clust12" class="cluster">
-<title>cluster_AppModule_providers</title>
-<polygon fill="none" stroke="black" points="924,-268.8 924,-320.8 1054,-320.8 1054,-268.8 924,-268.8"></polygon>
-</g>
-<g id="clust13" class="cluster">
-<title>cluster_AuthModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-108.8 8,-176.8 518,-176.8 518,-108.8 8,-108.8"></polygon>
-</g>
-<g id="clust16" class="cluster">
-<title>cluster_AuthModule_exports</title>
-<polygon fill="none" stroke="black" points="404,-116.8 404,-168.8 510,-168.8 510,-116.8 404,-116.8"></polygon>
-</g>
-<g id="clust18" class="cluster">
-<title>cluster_AuthModule_providers</title>
-<polygon fill="none" stroke="black" points="16,-116.8 16,-168.8 396,-168.8 396,-116.8 16,-116.8"></polygon>
-</g>
-<g id="clust19" class="cluster">
-<title>cluster_ConversationsModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="526,-108.8 526,-176.8 748,-176.8 748,-108.8 526,-108.8"></polygon>
-</g>
-<g id="clust24" class="cluster">
-<title>cluster_ConversationsModule_providers</title>
-<polygon fill="none" stroke="black" points="534,-116.8 534,-168.8 740,-168.8 740,-116.8 534,-116.8"></polygon>
-</g>
-<g id="clust25" class="cluster">
-<title>cluster_FilesModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="1032,-32.8 1032,-100.8 1150,-100.8 1150,-32.8 1032,-32.8"></polygon>
-</g>
-<g id="clust27" class="cluster">
-<title>cluster_FilesModule_imports</title>
-<polygon fill="none" stroke="black" points="1040,-40.8 1040,-92.8 1142,-92.8 1142,-40.8 1040,-40.8"></polygon>
-</g>
-<g id="clust43" class="cluster">
-<title>cluster_MessagesModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="1158,-32.8 1158,-100.8 1346,-100.8 1346,-32.8 1158,-32.8"></polygon>
-</g>
-<g id="clust48" class="cluster">
-<title>cluster_MessagesModule_providers</title>
-<polygon fill="none" stroke="black" points="1166,-40.8 1166,-92.8 1338,-92.8 1338,-40.8 1166,-40.8"></polygon>
-</g>
-<g id="clust49" class="cluster">
-<title>cluster_OauthModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="1674,-184.8 1674,-252.8 2294,-252.8 2294,-184.8 1674,-184.8"></polygon>
-</g>
-<g id="clust52" class="cluster">
-<title>cluster_OauthModule_exports</title>
-<polygon fill="none" stroke="black" points="2174,-192.8 2174,-244.8 2286,-244.8 2286,-192.8 2174,-192.8"></polygon>
-</g>
-<g id="clust54" class="cluster">
-<title>cluster_OauthModule_providers</title>
-<polygon fill="none" stroke="black" points="1682,-192.8 1682,-244.8 2166,-244.8 2166,-192.8 1682,-192.8"></polygon>
-</g>
-<g id="clust55" class="cluster">
-<title>cluster_PostsModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="756,-108.8 756,-176.8 908,-176.8 908,-108.8 756,-108.8"></polygon>
-</g>
-<g id="clust60" class="cluster">
-<title>cluster_PostsModule_providers</title>
-<polygon fill="none" stroke="black" points="764,-116.8 764,-168.8 900,-168.8 900,-116.8 764,-116.8"></polygon>
-</g>
-<g id="clust61" class="cluster">
-<title>cluster_PrismaModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="2592,-184.8 2592,-252.8 2882,-252.8 2882,-184.8 2592,-184.8"></polygon>
-</g>
-<g id="clust64" class="cluster">
-<title>cluster_PrismaModule_exports</title>
-<polygon fill="none" stroke="black" points="2758,-192.8 2758,-244.8 2874,-244.8 2874,-192.8 2758,-192.8"></polygon>
-</g>
-<g id="clust66" class="cluster">
-<title>cluster_PrismaModule_providers</title>
-<polygon fill="none" stroke="black" points="2600,-192.8 2600,-244.8 2750,-244.8 2750,-192.8 2600,-192.8"></polygon>
-</g>
-<g id="clust67" class="cluster">
-<title>cluster_UsersModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="2592,-260.8 2592,-328.8 2866,-328.8 2866,-260.8 2592,-260.8"></polygon>
-</g>
-<g id="clust70" class="cluster">
-<title>cluster_UsersModule_exports</title>
-<polygon fill="none" stroke="black" points="2748,-268.8 2748,-320.8 2858,-320.8 2858,-268.8 2748,-268.8"></polygon>
-</g>
-<g id="clust72" class="cluster">
-<title>cluster_UsersModule_providers</title>
-<polygon fill="none" stroke="black" points="2600,-268.8 2600,-320.8 2740,-320.8 2740,-268.8 2600,-268.8"></polygon>
-</g>
-<!-- UsersModule -->
-<g id="node1" class="node">
-<title>UsersModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="2567.94,-236.8 2564.94,-240.8 2543.94,-240.8 2540.94,-236.8 2476.06,-236.8 2476.06,-200.8 2567.94,-200.8 2567.94,-236.8"></polygon>
-<text text-anchor="middle" x="2522" y="-214.6" font-family="Times,serif" font-size="14.00">UsersModule</text>
-</g>
-<!-- AdminModule -->
-<g id="node2" class="node">
-<title>AdminModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="2434.44,-312.8 2431.44,-316.8 2410.44,-316.8 2407.44,-312.8 2335.56,-312.8 2335.56,-276.8 2434.44,-276.8 2434.44,-312.8"></polygon>
-<text text-anchor="middle" x="2385" y="-290.6" font-family="Times,serif" font-size="14.00">AdminModule</text>
-</g>
-<!-- UsersModule&#45;&gt;AdminModule -->
-<g id="edge1" class="edge">
-<title>UsersModule-&gt;AdminModule</title>
-<path fill="none" stroke="black" d="M2522,-237C2522,-261.16 2522,-300.8 2522,-300.8 2522,-300.8 2444.46,-300.8 2444.46,-300.8"></path>
-<polygon fill="black" stroke="black" points="2444.46,-297.3 2434.46,-300.8 2444.46,-304.3 2444.46,-297.3"></polygon>
-</g>
-<!-- ConversationsModule -->
-<g id="node5" class="node">
-<title>ConversationsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1542.66,-236.8 1539.66,-240.8 1518.66,-240.8 1515.66,-236.8 1403.34,-236.8 1403.34,-200.8 1542.66,-200.8 1542.66,-236.8"></polygon>
-<text text-anchor="middle" x="1473" y="-214.6" font-family="Times,serif" font-size="14.00">ConversationsModule</text>
-</g>
-<!-- UsersModule&#45;&gt;ConversationsModule -->
-<g id="edge21" class="edge">
-<title>UsersModule-&gt;ConversationsModule</title>
-<path fill="none" stroke="black" d="M2537.24,-200.61C2537.24,-197.26 2537.24,-194.8 2537.24,-194.8 2537.24,-194.8 1539.74,-194.8 1539.74,-194.8 1539.74,-194.8 1539.74,-195.38 1539.74,-195.38"></path>
-<polygon fill="black" stroke="black" points="1536.24,-190.61 1539.74,-200.61 1543.24,-190.61 1536.24,-190.61"></polygon>
-</g>
-<!-- OauthModule -->
-<g id="node10" class="node">
-<title>OauthModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1649.77,-312.8 1646.77,-316.8 1625.77,-316.8 1622.77,-312.8 1556.23,-312.8 1556.23,-276.8 1649.77,-276.8 1649.77,-312.8"></polygon>
-<text text-anchor="middle" x="1603" y="-290.6" font-family="Times,serif" font-size="14.00">OauthModule</text>
-</g>
-<!-- UsersModule&#45;&gt;OauthModule -->
-<g id="edge26" class="edge">
-<title>UsersModule-&gt;OauthModule</title>
-<path fill="none" stroke="black" d="M2510.57,-236.86C2510.57,-248.24 2510.57,-260.8 2510.57,-260.8 2510.57,-260.8 1590.15,-260.8 1590.15,-260.8 1590.15,-260.8 1590.15,-266.61 1590.15,-266.61"></path>
-<polygon fill="black" stroke="black" points="1586.65,-266.61 1590.15,-276.61 1593.65,-266.61 1586.65,-266.61"></polygon>
-</g>
-<!-- PostsModule -->
-<g id="node11" class="node">
-<title>PostsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1649.62,-236.8 1646.62,-240.8 1625.62,-240.8 1622.62,-236.8 1560.38,-236.8 1560.38,-200.8 1649.62,-200.8 1649.62,-236.8"></polygon>
-<text text-anchor="middle" x="1605" y="-214.6" font-family="Times,serif" font-size="14.00">PostsModule</text>
-</g>
-<!-- UsersModule&#45;&gt;PostsModule -->
-<g id="edge32" class="edge">
-<title>UsersModule-&gt;PostsModule</title>
-<path fill="none" stroke="black" d="M2499.14,-236.86C2499.14,-241.29 2499.14,-244.8 2499.14,-244.8 2499.14,-244.8 1619.85,-244.8 1619.85,-244.8 1619.85,-244.8 1619.85,-244.01 1619.85,-244.01"></path>
-<polygon fill="black" stroke="black" points="1623.35,-246.86 1619.85,-236.86 1616.35,-246.86 1623.35,-246.86"></polygon>
-</g>
-<!-- AppModule -->
-<g id="node13" class="node">
-<title>AppModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1340.66,-377.8 1337.66,-381.8 1316.66,-381.8 1313.66,-377.8 1257.34,-377.8 1257.34,-341.8 1340.66,-341.8 1340.66,-377.8"></polygon>
-<text text-anchor="middle" x="1299" y="-355.6" font-family="Times,serif" font-size="14.00">AppModule</text>
-</g>
-<!-- UsersModule&#45;&gt;AppModule -->
-<g id="edge13" class="edge">
-<title>UsersModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M2533.43,-237.07C2533.43,-277.86 2533.43,-372.8 2533.43,-372.8 2533.43,-372.8 1350.78,-372.8 1350.78,-372.8"></path>
-<polygon fill="black" stroke="black" points="1350.78,-369.3 1340.78,-372.8 1350.78,-376.3 1350.78,-369.3"></polygon>
-</g>
-<!-- UsersService  -->
-<g id="node29" class="node">
-<title>UsersService </title>
-<polygon fill="#fb8072" stroke="black" points="2849.86,-312.8 2756.14,-312.8 2756.14,-276.8 2849.86,-276.8 2849.86,-312.8"></polygon>
-<text text-anchor="middle" x="2803" y="-290.6" font-family="Times,serif" font-size="14.00">UsersService </text>
-</g>
-<!-- UsersModule&#45;&gt;UsersService  -->
-<g id="edge38" class="edge">
-<title>UsersModule-&gt;UsersService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M2544.86,-236.85C2544.86,-251.17 2544.86,-268.8 2544.86,-268.8 2544.86,-268.8 2761.07,-268.8 2761.07,-268.8 2761.07,-268.8 2761.07,-269.59 2761.07,-269.59"></path>
-<polygon fill="black" stroke="black" points="2757.57,-266.74 2761.07,-276.74 2764.57,-266.74 2757.57,-266.74"></polygon>
-</g>
-<!-- AdminModule&#45;&gt;AppModule -->
-<g id="edge3" class="edge">
-<title>AdminModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M2385,-313.08C2385,-334.12 2385,-365.8 2385,-365.8 2385,-365.8 1350.91,-365.8 1350.91,-365.8"></path>
-<polygon fill="black" stroke="black" points="1350.91,-362.3 1340.91,-365.8 1350.91,-369.3 1350.91,-362.3"></polygon>
-</g>
-<!-- AdminService -->
-<g id="node3" class="node">
-<title>AdminService</title>
-<ellipse fill="#fdb462" stroke="black" cx="2385" cy="-218.8" rx="66.64" ry="18"></ellipse>
-<text text-anchor="middle" x="2385" y="-214.6" font-family="Times,serif" font-size="14.00">AdminService</text>
-</g>
-<!-- AdminService&#45;&gt;AdminModule -->
-<g id="edge2" class="edge">
-<title>AdminService-&gt;AdminModule</title>
-<path fill="none" stroke="black" d="M2385,-236.81C2385,-236.81 2385,-266.65 2385,-266.65"></path>
-<polygon fill="black" stroke="black" points="2381.5,-266.65 2385,-276.65 2388.5,-266.65 2381.5,-266.65"></polygon>
-</g>
-<!-- AuthModule -->
-<g id="node4" class="node">
-<title>AuthModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1384.55,-236.8 1381.55,-240.8 1360.55,-240.8 1357.55,-236.8 1297.45,-236.8 1297.45,-200.8 1384.55,-200.8 1384.55,-236.8"></polygon>
-<text text-anchor="middle" x="1341" y="-214.6" font-family="Times,serif" font-size="14.00">AuthModule</text>
-</g>
-<!-- AuthModule&#45;&gt;UsersModule -->
-<g id="edge36" class="edge">
-<title>AuthModule-&gt;UsersModule</title>
-<path fill="none" stroke="black" d="M1355.48,-236.99C1355.48,-245.08 1355.48,-252.8 1355.48,-252.8 1355.48,-252.8 2487.71,-252.8 2487.71,-252.8 2487.71,-252.8 2487.71,-246.99 2487.71,-246.99"></path>
-<polygon fill="black" stroke="black" points="2491.21,-246.99 2487.71,-236.99 2484.21,-246.99 2491.21,-246.99"></polygon>
-</g>
-<!-- AuthModule&#45;&gt;OauthModule -->
-<g id="edge25" class="edge">
-<title>AuthModule-&gt;OauthModule</title>
-<path fill="none" stroke="black" d="M1370.13,-236.81C1370.13,-259.29 1370.13,-294.8 1370.13,-294.8 1370.13,-294.8 1546.15,-294.8 1546.15,-294.8"></path>
-<polygon fill="black" stroke="black" points="1546.15,-298.3 1556.15,-294.8 1546.15,-291.3 1546.15,-298.3"></polygon>
-</g>
-<!-- AuthModule&#45;&gt;AppModule -->
-<g id="edge4" class="edge">
-<title>AuthModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1311.76,-236.94C1311.76,-236.94 1311.76,-331.73 1311.76,-331.73"></path>
-<polygon fill="black" stroke="black" points="1308.26,-331.72 1311.76,-341.73 1315.26,-331.73 1308.26,-331.72"></polygon>
-</g>
-<!-- AuthService  -->
-<g id="node15" class="node">
-<title>AuthService </title>
-<polygon fill="#fb8072" stroke="black" points="501.98,-160.8 412.02,-160.8 412.02,-124.8 501.98,-124.8 501.98,-160.8"></polygon>
-<text text-anchor="middle" x="457" y="-138.6" font-family="Times,serif" font-size="14.00">AuthService </text>
-</g>
-<!-- AuthModule&#45;&gt;AuthService  -->
-<g id="edge16" class="edge">
-<title>AuthModule-&gt;AuthService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1297.16,-208.8C1118.79,-208.8 457,-208.8 457,-208.8 457,-208.8 457,-170.83 457,-170.83"></path>
-<polygon fill="black" stroke="black" points="460.5,-170.83 457,-160.83 453.5,-170.83 460.5,-170.83"></polygon>
-</g>
-<!-- ConversationsModule&#45;&gt;AppModule -->
-<g id="edge5" class="edge">
-<title>ConversationsModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1473,-237.01C1473,-272.57 1473,-347.8 1473,-347.8 1473,-347.8 1350.68,-347.8 1350.68,-347.8"></path>
-<polygon fill="black" stroke="black" points="1350.68,-344.3 1340.68,-347.8 1350.68,-351.3 1350.68,-344.3"></polygon>
-</g>
-<!-- FilesModule -->
-<g id="node6" class="node">
-<title>FilesModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1156.28,-160.8 1153.28,-164.8 1132.28,-164.8 1129.28,-160.8 1069.72,-160.8 1069.72,-124.8 1156.28,-124.8 1156.28,-160.8"></polygon>
-<text text-anchor="middle" x="1113" y="-138.6" font-family="Times,serif" font-size="14.00">FilesModule</text>
-</g>
-<!-- FilesModule&#45;&gt;AppModule -->
-<g id="edge6" class="edge">
-<title>FilesModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1113,-160.93C1113,-213.08 1113,-359.8 1113,-359.8 1113,-359.8 1247.26,-359.8 1247.26,-359.8"></path>
-<polygon fill="black" stroke="black" points="1247.26,-363.3 1257.26,-359.8 1247.26,-356.3 1247.26,-363.3"></polygon>
-</g>
-<!-- InterceptorModule -->
-<g id="node7" class="node">
-<title>InterceptorModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1426.46,-160.8 1423.46,-164.8 1402.46,-164.8 1399.46,-160.8 1305.54,-160.8 1305.54,-124.8 1426.46,-124.8 1426.46,-160.8"></polygon>
-<text text-anchor="middle" x="1366" y="-138.6" font-family="Times,serif" font-size="14.00">InterceptorModule</text>
-</g>
-<!-- InterceptorModule&#45;&gt;AppModule -->
-<g id="edge7" class="edge">
-<title>InterceptorModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1305.52,-142.8C1297,-142.8 1291.07,-142.8 1291.07,-142.8 1291.07,-142.8 1291.07,-331.67 1291.07,-331.67"></path>
-<polygon fill="black" stroke="black" points="1287.57,-331.67 1291.07,-341.67 1294.57,-331.67 1287.57,-331.67"></polygon>
-</g>
-<!-- MathModule -->
-<g id="node8" class="node">
-<title>MathModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1533.6,-160.8 1530.6,-164.8 1509.6,-164.8 1506.6,-160.8 1444.4,-160.8 1444.4,-124.8 1533.6,-124.8 1533.6,-160.8"></polygon>
-<text text-anchor="middle" x="1489" y="-138.6" font-family="Times,serif" font-size="14.00">MathModule</text>
-</g>
-<!-- MathModule&#45;&gt;AppModule -->
-<g id="edge8" class="edge">
-<title>MathModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1489,-160.91C1489,-170.7 1489,-180.8 1489,-180.8 1489,-180.8 1294.15,-180.8 1294.15,-180.8 1294.15,-180.8 1294.15,-331.65 1294.15,-331.65"></path>
-<polygon fill="black" stroke="black" points="1290.65,-331.65 1294.15,-341.65 1297.65,-331.65 1290.65,-331.65"></polygon>
-</g>
-<!-- MessagesModule -->
-<g id="node9" class="node">
-<title>MessagesModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1287.99,-160.8 1284.99,-164.8 1263.99,-164.8 1260.99,-160.8 1174.01,-160.8 1174.01,-124.8 1287.99,-124.8 1287.99,-160.8"></polygon>
-<text text-anchor="middle" x="1231" y="-138.6" font-family="Times,serif" font-size="14.00">MessagesModule</text>
-</g>
-<!-- MessagesModule&#45;&gt;AppModule -->
-<g id="edge9" class="edge">
-<title>MessagesModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1277.72,-160.93C1277.72,-160.93 1277.72,-331.57 1277.72,-331.57"></path>
-<polygon fill="black" stroke="black" points="1274.22,-331.57 1277.72,-341.57 1281.22,-331.57 1274.22,-331.57"></polygon>
-</g>
-<!-- OauthModule&#45;&gt;AppModule -->
-<g id="edge10" class="edge">
-<title>OauthModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1556.06,-303.8C1477.12,-303.8 1326.3,-303.8 1326.3,-303.8 1326.3,-303.8 1326.3,-331.77 1326.3,-331.77"></path>
-<polygon fill="black" stroke="black" points="1322.8,-331.77 1326.3,-341.77 1329.8,-331.77 1322.8,-331.77"></polygon>
-</g>
-<!-- OauthService  -->
-<g id="node22" class="node">
-<title>OauthService </title>
-<polygon fill="#fb8072" stroke="black" points="2277.69,-236.8 2182.31,-236.8 2182.31,-200.8 2277.69,-200.8 2277.69,-236.8"></polygon>
-<text text-anchor="middle" x="2230" y="-214.6" font-family="Times,serif" font-size="14.00">OauthService </text>
-</g>
-<!-- OauthModule&#45;&gt;OauthService  -->
-<g id="edge27" class="edge">
-<title>OauthModule-&gt;OauthService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1649.87,-305.8C1795.43,-305.8 2230,-305.8 2230,-305.8 2230,-305.8 2230,-246.83 2230,-246.83"></path>
-<polygon fill="black" stroke="black" points="2233.5,-246.83 2230,-236.83 2226.5,-246.83 2233.5,-246.83"></polygon>
-</g>
-<!-- PostsModule&#45;&gt;AppModule -->
-<g id="edge11" class="edge">
-<title>PostsModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1560.17,-218.8C1553.49,-218.8 1548.8,-218.8 1548.8,-218.8 1548.8,-218.8 1548.8,-359.8 1548.8,-359.8 1548.8,-359.8 1350.81,-359.8 1350.81,-359.8"></path>
-<polygon fill="black" stroke="black" points="1350.81,-356.3 1340.81,-359.8 1350.81,-363.3 1350.81,-356.3"></polygon>
-</g>
-<!-- PrismaModule -->
-<g id="node12" class="node">
-<title>PrismaModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1650.44,-160.8 1647.44,-164.8 1626.44,-164.8 1623.44,-160.8 1551.56,-160.8 1551.56,-124.8 1650.44,-124.8 1650.44,-160.8"></polygon>
-<text text-anchor="middle" x="1601" y="-138.6" font-family="Times,serif" font-size="14.00">PrismaModule</text>
-</g>
-<!-- PrismaModule&#45;&gt;UsersModule -->
-<g id="edge37" class="edge">
-<title>PrismaModule-&gt;UsersModule</title>
-<path fill="none" stroke="black" d="M1650.34,-151.8C1839.35,-151.8 2506.76,-151.8 2506.76,-151.8 2506.76,-151.8 2506.76,-190.49 2506.76,-190.49"></path>
-<polygon fill="black" stroke="black" points="2503.26,-190.49 2506.76,-200.49 2510.26,-190.49 2503.26,-190.49"></polygon>
-</g>
-<!-- PrismaModule&#45;&gt;AuthModule -->
-<g id="edge15" class="edge">
-<title>PrismaModule-&gt;AuthModule</title>
-<path fill="none" stroke="black" d="M1605,-160.84C1605,-173.36 1605,-187.8 1605,-187.8 1605,-187.8 1345.15,-187.8 1345.15,-187.8 1345.15,-187.8 1345.15,-190.77 1345.15,-190.77"></path>
-<polygon fill="black" stroke="black" points="1341.65,-190.77 1345.15,-200.77 1348.65,-190.77 1341.65,-190.77"></polygon>
-</g>
-<!-- PrismaModule&#45;&gt;ConversationsModule -->
-<g id="edge20" class="edge">
-<title>PrismaModule-&gt;ConversationsModule</title>
-<path fill="none" stroke="black" d="M1551.57,-148.8C1542.93,-148.8 1536.64,-148.8 1536.64,-148.8 1536.64,-148.8 1536.64,-190.77 1536.64,-190.77"></path>
-<polygon fill="black" stroke="black" points="1533.14,-190.77 1536.64,-200.77 1540.14,-190.77 1533.14,-190.77"></polygon>
-</g>
-<!-- PrismaModule&#45;&gt;PostsModule -->
-<g id="edge31" class="edge">
-<title>PrismaModule-&gt;PostsModule</title>
-<path fill="none" stroke="black" d="M1627.28,-160.81C1627.28,-160.81 1627.28,-190.65 1627.28,-190.65"></path>
-<polygon fill="black" stroke="black" points="1623.78,-190.65 1627.28,-200.65 1630.78,-190.65 1623.78,-190.65"></polygon>
-</g>
-<!-- PrismaModule&#45;&gt;AppModule -->
-<g id="edge12" class="edge">
-<title>PrismaModule-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1551.72,-136.8C1548.09,-136.8 1545.81,-136.8 1545.81,-136.8 1545.81,-136.8 1545.81,-353.8 1545.81,-353.8 1545.81,-353.8 1350.87,-353.8 1350.87,-353.8"></path>
-<polygon fill="black" stroke="black" points="1350.87,-350.3 1340.87,-353.8 1350.87,-357.3 1350.87,-350.3"></polygon>
-</g>
-<!-- PrismaService  -->
-<g id="node27" class="node">
-<title>PrismaService </title>
-<polygon fill="#fb8072" stroke="black" points="2866.37,-236.8 2765.63,-236.8 2765.63,-200.8 2866.37,-200.8 2866.37,-236.8"></polygon>
-<text text-anchor="middle" x="2816" y="-214.6" font-family="Times,serif" font-size="14.00">PrismaService </text>
-</g>
-<!-- PrismaModule&#45;&gt;PrismaService  -->
-<g id="edge34" class="edge">
-<title>PrismaModule-&gt;PrismaService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1650.51,-133.8C1878.48,-133.8 2816,-133.8 2816,-133.8 2816,-133.8 2816,-190.77 2816,-190.77"></path>
-<polygon fill="black" stroke="black" points="2812.5,-190.77 2816,-200.77 2819.5,-190.77 2812.5,-190.77"></polygon>
-</g>
-<!-- AppService -->
-<g id="node14" class="node">
-<title>AppService</title>
-<ellipse fill="#fdb462" stroke="black" cx="989" cy="-294.8" rx="56.75" ry="18"></ellipse>
-<text text-anchor="middle" x="989" y="-290.6" font-family="Times,serif" font-size="14.00">AppService</text>
-</g>
-<!-- AppService&#45;&gt;AppModule -->
-<g id="edge14" class="edge">
-<title>AppService-&gt;AppModule</title>
-<path fill="none" stroke="black" d="M1038.14,-285.8C1118.07,-285.8 1267.44,-285.8 1267.44,-285.8 1267.44,-285.8 1267.44,-331.51 1267.44,-331.51"></path>
-<polygon fill="black" stroke="black" points="1263.94,-331.51 1267.44,-341.51 1270.94,-331.51 1263.94,-331.51"></polygon>
-</g>
-<!-- AtStrategy -->
-<g id="node16" class="node">
-<title>AtStrategy</title>
-<ellipse fill="#fdb462" stroke="black" cx="213" cy="-142.8" rx="52.75" ry="18"></ellipse>
-<text text-anchor="middle" x="213" y="-138.6" font-family="Times,serif" font-size="14.00">AtStrategy</text>
-</g>
-<!-- AtStrategy&#45;&gt;AuthModule -->
-<g id="edge17" class="edge">
-<title>AtStrategy-&gt;AuthModule</title>
-<path fill="none" stroke="black" d="M213,-160.95C213,-184.56 213,-222.8 213,-222.8 213,-222.8 1287.13,-222.8 1287.13,-222.8"></path>
-<polygon fill="black" stroke="black" points="1287.13,-226.3 1297.13,-222.8 1287.13,-219.3 1287.13,-226.3"></polygon>
-</g>
-<!-- AuthService -->
-<g id="node17" class="node">
-<title>AuthService</title>
-<ellipse fill="#fdb462" stroke="black" cx="83" cy="-142.8" rx="59.11" ry="18"></ellipse>
-<text text-anchor="middle" x="83" y="-138.6" font-family="Times,serif" font-size="14.00">AuthService</text>
-</g>
-<!-- AuthService&#45;&gt;AuthModule -->
-<g id="edge18" class="edge">
-<title>AuthService-&gt;AuthModule</title>
-<path fill="none" stroke="black" d="M83,-160.83C83,-186.31 83,-229.8 83,-229.8 83,-229.8 1287.33,-229.8 1287.33,-229.8"></path>
-<polygon fill="black" stroke="black" points="1287.33,-233.3 1297.33,-229.8 1287.33,-226.3 1287.33,-233.3"></polygon>
-</g>
-<!-- RtStrategy -->
-<g id="node18" class="node">
-<title>RtStrategy</title>
-<ellipse fill="#fdb462" stroke="black" cx="336" cy="-142.8" rx="52.19" ry="18"></ellipse>
-<text text-anchor="middle" x="336" y="-138.6" font-family="Times,serif" font-size="14.00">RtStrategy</text>
-</g>
-<!-- RtStrategy&#45;&gt;AuthModule -->
-<g id="edge19" class="edge">
-<title>RtStrategy-&gt;AuthModule</title>
-<path fill="none" stroke="black" d="M336,-160.84C336,-182.46 336,-215.8 336,-215.8 336,-215.8 1287.17,-215.8 1287.17,-215.8"></path>
-<polygon fill="black" stroke="black" points="1287.17,-219.3 1297.17,-215.8 1287.17,-212.3 1287.17,-219.3"></polygon>
-</g>
-<!-- ConversationsService -->
-<g id="node19" class="node">
-<title>ConversationsService</title>
-<ellipse fill="#fdb462" stroke="black" cx="637" cy="-142.8" rx="95.49" ry="18"></ellipse>
-<text text-anchor="middle" x="637" y="-138.6" font-family="Times,serif" font-size="14.00">ConversationsService</text>
-</g>
-<!-- ConversationsService&#45;&gt;ConversationsModule -->
-<g id="edge22" class="edge">
-<title>ConversationsService-&gt;ConversationsModule</title>
-<path fill="none" stroke="black" d="M637,-161.04C637,-168.23 637,-174.8 637,-174.8 637,-174.8 1414.83,-174.8 1414.83,-174.8 1414.83,-174.8 1414.83,-190.65 1414.83,-190.65"></path>
-<polygon fill="black" stroke="black" points="1411.33,-190.65 1414.83,-200.65 1418.33,-190.65 1411.33,-190.65"></polygon>
-</g>
-<!-- FilesService -->
-<g id="node20" class="node">
-<title>FilesService</title>
-<polygon fill="#8dd3c7" stroke="black" points="1133.71,-84.8 1130.71,-88.8 1109.71,-88.8 1106.71,-84.8 1048.29,-84.8 1048.29,-48.8 1133.71,-48.8 1133.71,-84.8"></polygon>
-<text text-anchor="middle" x="1091" y="-62.6" font-family="Times,serif" font-size="14.00">FilesService</text>
-</g>
-<!-- FilesService&#45;&gt;FilesModule -->
-<g id="edge23" class="edge">
-<title>FilesService-&gt;FilesModule</title>
-<path fill="none" stroke="black" d="M1101.61,-84.81C1101.61,-84.81 1101.61,-114.65 1101.61,-114.65"></path>
-<polygon fill="black" stroke="black" points="1098.11,-114.65 1101.61,-124.65 1105.11,-114.65 1098.11,-114.65"></polygon>
-</g>
-<!-- MessagesService -->
-<g id="node21" class="node">
-<title>MessagesService</title>
-<ellipse fill="#fdb462" stroke="black" cx="1252" cy="-66.8" rx="77.58" ry="18"></ellipse>
-<text text-anchor="middle" x="1252" y="-62.6" font-family="Times,serif" font-size="14.00">MessagesService</text>
-</g>
-<!-- MessagesService&#45;&gt;MessagesModule -->
-<g id="edge24" class="edge">
-<title>MessagesService-&gt;MessagesModule</title>
-<path fill="none" stroke="black" d="M1231.23,-84.43C1231.23,-84.43 1231.23,-114.74 1231.23,-114.74"></path>
-<polygon fill="black" stroke="black" points="1227.73,-114.74 1231.23,-124.74 1234.73,-114.74 1227.73,-114.74"></polygon>
-</g>
-<!-- FacebookStrategy -->
-<g id="node23" class="node">
-<title>FacebookStrategy</title>
-<ellipse fill="#fdb462" stroke="black" cx="1771" cy="-218.8" rx="80.52" ry="18"></ellipse>
-<text text-anchor="middle" x="1771" y="-214.6" font-family="Times,serif" font-size="14.00">FacebookStrategy</text>
-</g>
-<!-- FacebookStrategy&#45;&gt;OauthModule -->
-<g id="edge28" class="edge">
-<title>FacebookStrategy-&gt;OauthModule</title>
-<path fill="none" stroke="black" d="M1771,-236.83C1771,-256.38 1771,-284.8 1771,-284.8 1771,-284.8 1659.8,-284.8 1659.8,-284.8"></path>
-<polygon fill="black" stroke="black" points="1659.8,-281.3 1649.8,-284.8 1659.8,-288.3 1659.8,-281.3"></polygon>
-</g>
-<!-- GoogleStrategy -->
-<g id="node24" class="node">
-<title>GoogleStrategy</title>
-<ellipse fill="#fdb462" stroke="black" cx="2086" cy="-218.8" rx="71.79" ry="18"></ellipse>
-<text text-anchor="middle" x="2086" y="-214.6" font-family="Times,serif" font-size="14.00">GoogleStrategy</text>
-</g>
-<!-- GoogleStrategy&#45;&gt;OauthModule -->
-<g id="edge29" class="edge">
-<title>GoogleStrategy-&gt;OauthModule</title>
-<path fill="none" stroke="black" d="M2086,-236.95C2086,-260.56 2086,-298.8 2086,-298.8 2086,-298.8 1660.19,-298.8 1660.19,-298.8"></path>
-<polygon fill="black" stroke="black" points="1660.19,-295.3 1650.19,-298.8 1660.19,-302.3 1660.19,-295.3"></polygon>
-</g>
-<!-- OauthService -->
-<g id="node25" class="node">
-<title>OauthService</title>
-<ellipse fill="#fdb462" stroke="black" cx="1933" cy="-218.8" rx="63.69" ry="18"></ellipse>
-<text text-anchor="middle" x="1933" y="-214.6" font-family="Times,serif" font-size="14.00">OauthService</text>
-</g>
-<!-- OauthService&#45;&gt;OauthModule -->
-<g id="edge30" class="edge">
-<title>OauthService-&gt;OauthModule</title>
-<path fill="none" stroke="black" d="M1933,-236.84C1933,-258.46 1933,-291.8 1933,-291.8 1933,-291.8 1659.93,-291.8 1659.93,-291.8"></path>
-<polygon fill="black" stroke="black" points="1659.93,-288.3 1649.93,-291.8 1659.93,-295.3 1659.93,-288.3"></polygon>
-</g>
-<!-- PostsService -->
-<g id="node26" class="node">
-<title>PostsService</title>
-<ellipse fill="#fdb462" stroke="black" cx="832" cy="-142.8" rx="60.28" ry="18"></ellipse>
-<text text-anchor="middle" x="832" y="-138.6" font-family="Times,serif" font-size="14.00">PostsService</text>
-</g>
-<!-- PostsService&#45;&gt;PostsModule -->
-<g id="edge33" class="edge">
-<title>PostsService-&gt;PostsModule</title>
-<path fill="none" stroke="black" d="M832,-160.97C832,-164.85 832,-167.8 832,-167.8 832,-167.8 1582.72,-167.8 1582.72,-167.8 1582.72,-167.8 1582.72,-190.68 1582.72,-190.68"></path>
-<polygon fill="black" stroke="black" points="1579.22,-190.68 1582.72,-200.68 1586.22,-190.68 1579.22,-190.68"></polygon>
-</g>
-<!-- PrismaService -->
-<g id="node28" class="node">
-<title>PrismaService</title>
-<ellipse fill="#fdb462" stroke="black" cx="2675" cy="-218.8" rx="66.64" ry="18"></ellipse>
-<text text-anchor="middle" x="2675" y="-214.6" font-family="Times,serif" font-size="14.00">PrismaService</text>
-</g>
-<!-- PrismaService&#45;&gt;PrismaModule -->
-<g id="edge35" class="edge">
-<title>PrismaService-&gt;PrismaModule</title>
-<path fill="none" stroke="black" d="M2675,-200.79C2675,-178.31 2675,-142.8 2675,-142.8 2675,-142.8 1660.29,-142.8 1660.29,-142.8"></path>
-<polygon fill="black" stroke="black" points="1660.29,-139.3 1650.29,-142.8 1660.29,-146.3 1660.29,-139.3"></polygon>
-</g>
-<!-- UsersService -->
-<g id="node30" class="node">
-<title>UsersService</title>
-<ellipse fill="#fdb462" stroke="black" cx="2670" cy="-294.8" rx="61.97" ry="18"></ellipse>
-<text text-anchor="middle" x="2670" y="-290.6" font-family="Times,serif" font-size="14.00">UsersService</text>
-</g>
-<!-- UsersService&#45;&gt;UsersModule -->
-<g id="edge39" class="edge">
-<title>UsersService-&gt;UsersModule</title>
-<path fill="none" stroke="black" d="M2611.48,-288.8C2583.62,-288.8 2556.29,-288.8 2556.29,-288.8 2556.29,-288.8 2556.29,-246.83 2556.29,-246.83"></path>
-<polygon fill="black" stroke="black" points="2559.79,-246.83 2556.29,-236.83 2552.79,-246.83 2559.79,-246.83"></polygon>
-</g>
-</g>
-</g></svg>
+<svg width="830" height="300" xmlns="http://www.w3.org/2000/svg">
+ <g id="viewport-20220919030848448" class="svg-pan-zoom_viewport" transform=" matrix(0.398551, 0, 0, 0.398551, 0, 44.9312)">
+  <g stroke="null" id="graph0" class="graph">
+   <title stroke="null">dependencies</title>
+   <polygon stroke="transparent" fill="white" points="-7.516587091850511,451.7558288574219 -7.516587091850511,35.30355227846076 2089.474609375,35.30355227846076 2089.474609375,451.7558288574219 -7.516587091850511,451.7558288574219 " id="svg_1"/>
+   <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="530.004" y="-47.70783" font-family="sans-serif" font-size="14" id="svg_2">dependencies</text>
+   <g stroke="null" id="clust1" class="cluster">
+    <title stroke="null">cluster_AdminModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="1661.1041167288058,256.07095267956174 1661.1041167288058,115.11144594413054 1865.1587564821239,115.11144594413054 1865.1587564821239,256.07095267956174 1661.1041167288058,256.07095267956174 " id="svg_3"/>
+   </g>
+   <g stroke="null" id="clust3" class="cluster">
+    <title stroke="null">cluster_AdminModule_imports</title>
+    <polygon stroke="black" fill="none" points="1781.2214345947286,247.77920298701792 1781.2214345947286,193.88297875911667 1859.3701526039513,193.88297875911667 1859.3701526039513,247.77920298701792 1781.2214345947286,247.77920298701792 " id="svg_4"/>
+   </g>
+   <g stroke="null" id="clust6" class="cluster">
+    <title stroke="null">cluster_AdminModule_providers</title>
+    <polygon stroke="black" fill="none" points="1666.8924762589886,247.77920298701792 1666.8924762589886,193.88297875911667 1775.4322198465816,193.88297875911667 1775.4322198465816,247.77920298701792 1666.8924762589886,247.77920298701792 " id="svg_5"/>
+   </g>
+   <g stroke="null" id="clust7" class="cluster">
+    <title stroke="null">cluster_AppModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="658.1946526388201,334.8422772114609 658.1946526388201,47.74114706254977 1200.8943479687441,47.74114706254977 1200.8943479687441,334.8422772114609 658.1946526388201,334.8422772114609 " id="svg_6"/>
+   </g>
+   <g stroke="null" id="clust9" class="cluster">
+    <title stroke="null">cluster_AppModule_imports</title>
+    <polygon stroke="black" fill="none" points="763.840399722314,326.5506167830972 763.840399722314,115.11144594413054 1195.1053775685868,115.11144594413054 1195.1053775685868,326.5506167830972 763.840399722314,326.5506167830972 " id="svg_7"/>
+   </g>
+   <g stroke="null" id="clust12" class="cluster">
+    <title stroke="null">cluster_AppModule_providers</title>
+    <polygon stroke="black" fill="none" points="663.9835008649825,169.00774455884857 663.9835008649825,115.11144594413054 758.0514904091542,115.11144594413054 758.0514904091542,169.00774455884857 663.9835008649825,169.00774455884857 " id="svg_8"/>
+   </g>
+   <g stroke="null" id="clust13" class="cluster">
+    <title stroke="null">cluster_AuthModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="1.1665602099451462,334.8422772114609 1.1665602099451462,264.36264286265214 370.20220230212726,264.36264286265214 370.20220230212726,334.8422772114609 1.1665602099451462,334.8422772114609 " id="svg_9"/>
+   </g>
+   <g stroke="null" id="clust16" class="cluster">
+    <title stroke="null">cluster_AuthModule_exports</title>
+    <polygon stroke="black" fill="none" points="287.71197029727773,326.5506167830972 287.71197029727773,272.65436280046924 364.4134762499598,272.65436280046924 364.4134762499598,326.5506167830972 287.71197029727773,326.5506167830972 " id="svg_10"/>
+   </g>
+   <g stroke="null" id="clust18" class="cluster">
+    <title stroke="null">cluster_AuthModule_providers</title>
+    <polygon stroke="black" fill="none" points="6.955393164358156,326.5506167830972 6.955393164358156,272.65436280046924 281.92309152761663,272.65436280046924 281.92309152761663,326.5506167830972 6.955393164358156,326.5506167830972 " id="svg_11"/>
+   </g>
+   <g stroke="null" id="clust19" class="cluster">
+    <title stroke="null">cluster_ConversationsModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="375.9911116152871,334.8422772114609 375.9911116152871,264.36264286265214 536.6301838033542,264.36264286265214 536.6301838033542,334.8422772114609 375.9911116152871,334.8422772114609 " id="svg_12"/>
+   </g>
+   <g stroke="null" id="clust24" class="cluster">
+    <title stroke="null">cluster_ConversationsModule_providers</title>
+    <polygon stroke="black" fill="none" points="381.779898754452,326.5506167830972 381.779898754452,272.65436280046924 530.8413355771918,272.65436280046924 530.8413355771918,326.5506167830972 381.779898754452,326.5506167830972 " id="svg_13"/>
+   </g>
+   <g stroke="null" id="clust25" class="cluster">
+    <title stroke="null">cluster_FilesModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="742.1323410482,413.6137207622669 742.1323410482,343.1340269040047 827.5170582531282,343.1340269040047 827.5170582531282,413.6137207622669 742.1323410482,413.6137207622669 " id="svg_14"/>
+   </g>
+   <g stroke="null" id="clust27" class="cluster">
+    <title stroke="null">cluster_FilesModule_imports</title>
+    <polygon stroke="black" fill="none" points="747.9212503613599,405.3220603339032 747.9212503613599,351.42586586072866 821.7281489399684,351.42586586072866 821.7281489399684,405.3220603339032 747.9212503613599,405.3220603339032 " id="svg_15"/>
+   </g>
+   <g stroke="null" id="clust43" class="cluster">
+    <title stroke="null">cluster_MessagesModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="833.3057232182982,413.6137207622669 833.3057232182982,343.1340269040047 969.3425569671599,343.1340269040047 969.3425569671599,413.6137207622669 833.3057232182982,413.6137207622669 " id="svg_16"/>
+   </g>
+   <g stroke="null" id="clust48" class="cluster">
+    <title stroke="null">cluster_MessagesModule_providers</title>
+    <polygon stroke="black" fill="none" points="839.0944492704657,405.3220603339032 839.0944492704657,351.42586586072866 963.5541974369771,351.42586586072866 963.5541974369771,405.3220603339032 839.0944492704657,405.3220603339032 " id="svg_17"/>
+   </g>
+   <g stroke="null" id="clust49" class="cluster">
+    <title stroke="null">cluster_OauthModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="1206.6833183689014,256.07095267956174 1206.6833183689014,185.59118443448278 1655.3152685026434,185.59118443448278 1655.3152685026434,256.07095267956174 1206.6833183689014,256.07095267956174 " id="svg_18"/>
+   </g>
+   <g stroke="null" id="clust52" class="cluster">
+    <title stroke="null">cluster_OauthModule_exports</title>
+    <polygon stroke="black" fill="none" points="1568.4829116321926,247.77920298701792 1568.4829116321926,193.88297875911667 1649.5259315805015,193.88297875911667 1649.5259315805015,247.77920298701792 1568.4829116321926,247.77920298701792 " id="svg_19"/>
+   </g>
+   <g stroke="null" id="clust54" class="cluster">
+    <title stroke="null">cluster_OauthModule_providers</title>
+    <polygon stroke="black" fill="none" points="1212.471800073079,247.77920298701792 1212.471800073079,193.88297875911667 1562.6944299280149,193.88297875911667 1562.6944299280149,247.77920298701792 1212.471800073079,247.77920298701792 " id="svg_20"/>
+   </g>
+   <g stroke="null" id="clust55" class="cluster">
+    <title stroke="null">cluster_PostsModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="542.4187876815267,334.8422772114609 542.4187876815267,264.36264286265214 652.4058044126577,264.36264286265214 652.4058044126577,334.8422772114609 542.4187876815267,334.8422772114609 " id="svg_21"/>
+   </g>
+   <g stroke="null" id="clust60" class="cluster">
+    <title stroke="null">cluster_PostsModule_providers</title>
+    <polygon stroke="black" fill="none" points="548.2078191686815,326.5506167830972 548.2078191686815,272.65436280046924 646.6169561864954,272.65436280046924 646.6169561864954,326.5506167830972 548.2078191686815,326.5506167830972 " id="svg_22"/>
+   </g>
+   <g stroke="null" id="clust61" class="cluster">
+    <title stroke="null">cluster_PrismaModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="1870.9473603602964,256.07095267956174 1870.9473603602964,185.59118443448278 2080.791703557741,185.59118443448278 2080.791703557741,256.07095267956174 1870.9473603602964,256.07095267956174 " id="svg_23"/>
+   </g>
+   <g stroke="null" id="clust64" class="cluster">
+    <title stroke="null">cluster_PrismaModule_exports</title>
+    <polygon stroke="black" fill="none" points="1991.0651669221988,247.77920298701792 1991.0651669221988,193.88297875911667 2075.0028553315788,193.88297875911667 2075.0028553315788,247.77920298701792 1991.0651669221988,247.77920298701792 " id="svg_24"/>
+   </g>
+   <g stroke="null" id="clust66" class="cluster">
+    <title stroke="null">cluster_PrismaModule_providers</title>
+    <polygon stroke="black" fill="none" points="1876.7366972824384,247.77920298701792 1876.7366972824384,193.88297875911667 1985.2760743480467,193.88297875911667 1985.2760743480467,247.77920298701792 1876.7366972824384,247.77920298701792 " id="svg_25"/>
+   </g>
+   <g stroke="null" id="clust67" class="cluster">
+    <title stroke="null">cluster_UsersModule</title>
+    <polygon stroke="black" fill="none" stroke-dasharray="1,5" points="1870.9473603602964,177.29947937402903 1870.9473603602964,106.81974088367679 2069.2140071054164,106.81974088367679 2069.2140071054164,177.29947937402903 1870.9473603602964,177.29947937402903 " id="svg_26"/>
+   </g>
+   <g stroke="null" id="clust70" class="cluster">
+    <title stroke="null">cluster_UsersModule_exports</title>
+    <polygon stroke="black" fill="none" points="1983.8291677264933,169.00774455884857 1983.8291677264933,115.11144594413054 2063.425403227244,115.11144594413054 2063.425403227244,169.00774455884857 1983.8291677264933,169.00774455884857 " id="svg_27"/>
+   </g>
+   <g stroke="null" id="clust72" class="cluster">
+    <title stroke="null">cluster_UsersModule_providers</title>
+    <polygon stroke="black" fill="none" points="1876.7366972824384,169.00774455884857 1876.7366972824384,115.11144594413054 1978.0404416743258,115.11144594413054 1978.0404416743258,169.00774455884857 1876.7366972824384,169.00774455884857 " id="svg_28"/>
+   </g>
+   <!-- UsersModule -->
+   <g stroke="null" id="node1" class="node">
+    <title stroke="null">UsersModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1853.5375660876161,202.17459455539029 1851.3673894162785,198.0288089732985 1836.171143583124,198.0288089732985 1834.0004782158067,202.17459455539029 1787.0532880670944,202.17459455539029 1787.0532880670944,239.48749792656417 1853.5375660876161,239.48749792656417 1853.5375660876161,202.17459455539029 " id="svg_29"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1607.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_30">UsersModule</text>
+   </g>
+   <!-- AdminModule -->
+   <g stroke="null" id="node2" class="node">
+    <title stroke="null">AdminModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1756.9373983252299,123.403180759311 1754.766244261933,119.25734310644748 1739.5709758207377,119.25734310644748 1737.3999439314357,123.403180759311 1685.3881529983046,123.403180759311 1685.3881529983046,160.71599486630475 1756.9373983252299,160.71599486630475 1756.9373983252299,123.403180759311 " id="svg_31"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1470.004" y="-330.10783" font-family="Times,serif" font-size="14" id="svg_32">AdminModule</text>
+   </g>
+   <!-- UsersModule&#45;&gt;AdminModule -->
+   <g stroke="null" id="edge1" class="edge">
+    <title stroke="null">UsersModule-&gt;AdminModule</title>
+    <path stroke="black" fill="none" d="m1820.29549,201.96735c0,-25.04103 0,-66.12657 0,-66.12657c0,0 -56.1079,0 -56.1079,0" id="svg_33"/>
+    <polygon stroke="black" fill="black" points="1764.1876918783382,139.46847182400052 1756.9521813786123,135.84080529812672 1764.1876918783382,132.21319084302468 1764.1876918783382,139.46847182400052 " id="svg_34"/>
+   </g>
+   <!-- ConversationsModule -->
+   <g stroke="null" id="node5" class="node">
+    <title stroke="null">ConversationsModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1111.6455116532452,202.17459455539029 1109.474846285928,198.0288089732985 1094.279089148753,198.0288089732985 1092.1084237814357,202.17459455539029 1010.8335786778116,202.17459455539029 1010.8335786778116,239.48749792656417 1111.6455116532452,239.48749792656417 1111.6455116532452,202.17459455539029 " id="svg_35"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="558.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_36">ConversationsModule</text>
+   </g>
+   <!-- UsersModule&#45;&gt;ConversationsModule -->
+   <g stroke="null" id="edge21" class="edge">
+    <title stroke="null">UsersModule-&gt;ConversationsModule</title>
+    <path stroke="black" fill="none" d="m1831.32315,239.68437c0,3.47216 0,6.02187 0,6.02187c0,0 -721.79042,0 -721.79042,0c0,0 0,-0.60115 0,-0.60115" id="svg_37"/>
+    <polygon stroke="black" fill="black" points="1107.0000898453145,250.0489976820736 1109.5327567595086,239.68434032112054 1112.0653014997079,250.0489976820736 1107.0000898453145,250.0489976820736 " id="svg_38"/>
+   </g>
+   <!-- OauthModule -->
+   <g stroke="null" id="node10" class="node">
+    <title stroke="null">OauthModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1189.150250535371,123.403180759311 1186.9795851680537,119.25734310644748 1171.7840723788686,119.25734310644748 1169.6132848375564,123.403180759311 1121.4647577970318,123.403180759311 1121.4647577970318,160.71599486630475 1189.150250535371,160.71599486630475 1189.150250535371,123.403180759311 " id="svg_39"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="688.004" y="-330.10783" font-family="Times,serif" font-size="14" id="svg_40">OauthModule</text>
+   </g>
+   <!-- UsersModule&#45;&gt;OauthModule -->
+   <g stroke="null" id="edge26" class="edge">
+    <title stroke="null">UsersModule-&gt;OauthModule</title>
+    <path stroke="black" fill="none" d="m1812.02475,202.11245c0,-11.79499 0,-24.81301 0,-24.81301c0,0 -666.01538,0 -666.01538,0c0,0 0,-6.02187 0,-6.02187" id="svg_41"/>
+    <polygon stroke="black" fill="black" points="1143.4769686314394,171.27756900863096 1146.0095133716386,160.91289677031455 1148.5420581118378,171.27756900863096 1143.4769686314394,171.27756900863096 " id="svg_42"/>
+   </g>
+   <!-- PostsModule -->
+   <g stroke="null" id="node11" class="node">
+    <title stroke="null">PostsModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1189.0416378539085,202.17459455539029 1186.8707281386014,198.0288089732985 1171.6753375234111,198.0288089732985 1169.5046721560939,202.17459455539029 1124.4680389395653,202.17459455539029 1124.4680389395653,239.48749792656417 1189.0416378539085,239.48749792656417 1189.0416378539085,202.17459455539029 " id="svg_43"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="690.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_44">PostsModule</text>
+   </g>
+   <!-- UsersModule&#45;&gt;PostsModule -->
+   <g stroke="null" id="edge32" class="edge">
+    <title stroke="null">UsersModule-&gt;PostsModule</title>
+    <path stroke="black" fill="none" d="m1803.75401,202.11245c0,-4.59155 0,-8.22954 0,-8.22954c0,0 -636.25373,0 -636.25373,0c0,0 0,0.81881 0,0.81881" id="svg_45"/>
+    <polygon stroke="black" fill="black" points="1170.0328303360293,191.74777957033803 1167.4999190738454,202.11242205392773 1164.9677408556308,191.74777957033803 1170.0328303360293,191.74777957033803 " id="svg_46"/>
+   </g>
+   <!-- AppModule -->
+   <g stroke="null" id="node13" class="node">
+    <title stroke="null">AppModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="965.4786211175815,56.0328595616852 963.3077114022744,51.887003312117486 948.1120153520969,51.887003312117486 945.9412888977822,56.0328595616852 905.1880759423075,56.0328595616852 905.1880759423075,93.34564763329308 965.4786211175815,93.34564763329308 965.4786211175815,56.0328595616852 " id="svg_47"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="384.004" y="-395.10783" font-family="Times,serif" font-size="14" id="svg_48">AppModule</text>
+   </g>
+   <!-- UsersModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge13" class="edge">
+    <title stroke="null">UsersModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m1828.56624,201.8948c0,-42.27747 0,-140.67961 0,-140.67961c0,0 -855.76485,0 -855.76485,0" id="svg_49"/>
+    <polygon stroke="black" fill="black" points="972.8014249366606,64.84283245199049 965.5654257409551,61.21519196150257 972.8014249366606,57.587566348378004 972.8014249366606,64.84283245199049 " id="svg_50"/>
+   </g>
+   <!-- UsersService  -->
+   <g stroke="null" id="node29" class="node">
+    <title stroke="null">UsersService</title>
+    <polygon stroke="black" fill="#fb8072" points="2057.534906237328,123.403180759311 1989.7191760204296,123.403180759311 1989.7191760204296,160.71599486630475 2057.534906237328,160.71599486630475 2057.534906237328,123.403180759311 " id="svg_51"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1888.004" y="-330.10783" font-family="Times,serif" font-size="14" id="svg_52">UsersService</text>
+   </g>
+   <!-- UsersModule&#45;&gt;UsersService  -->
+   <g stroke="null" id="edge38" class="edge">
+    <title stroke="null">UsersModule-&gt;UsersService</title>
+    <path stroke="black" fill="none" stroke-dasharray="5,2" d="m1836.83698,202.12282c0,-14.8422 0,-33.11511 0,-33.11511c0,0 156.44943,0 156.44943,0c0,0 0,-0.81881 0,-0.81881" id="svg_53"/>
+    <polygon stroke="black" fill="black" points="1990.7543562791834,171.14286936081044 1993.286412323403,160.77822687722073 1995.819323585587,171.14286936081044 1990.7543562791834,171.14286936081044 " id="svg_54"/>
+   </g>
+   <!-- AdminModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge3" class="edge">
+    <title stroke="null">AdminModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m1721.16237,123.11297c0,-21.80726 0,-54.64252 0,-54.64252c0,0 -748.26692,0 -748.26692,0" id="svg_55"/>
+    <polygon stroke="black" fill="black" points="972.8952545647408,72.09807995889878 965.6592553690352,68.47046178445589 972.8952545647408,64.84283245199049 972.8952545647408,72.09807995889878 " id="svg_56"/>
+   </g>
+   <!-- AdminService -->
+   <g stroke="null" id="node3" class="node">
+    <title stroke="null">AdminService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="1721.16237" cy="220.83104" rx="48.22067" ry="18.6564" id="svg_57"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1470.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_58">AdminService</text>
+   </g>
+   <!-- AdminService&#45;&gt;AdminModule -->
+   <g stroke="null" id="edge2" class="edge">
+    <title stroke="null">AdminService-&gt;AdminModule</title>
+    <path stroke="black" fill="none" d="m1721.16237,202.16428c0,0 0,-30.92816 0,-30.92816" id="svg_59"/>
+    <polygon stroke="black" fill="black" points="1718.6298643995833,171.23616530641266 1721.1627756617672,160.8714781907329 1723.6951982279716,171.23616530641266 1718.6298643995833,171.23616530641266 " id="svg_60"/>
+   </g>
+   <!-- AuthModule -->
+   <g stroke="null" id="node4" class="node">
+    <title stroke="null">AuthModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="997.2375067428075,202.17459455539029 995.0664748535055,198.0288089732985 979.8712064123101,198.0288089732985 977.7002356100056,202.17459455539029 934.2117912567992,202.17459455539029 934.2117912567992,239.48749792656417 997.2375067428075,239.48749792656417 997.2375067428075,202.17459455539029 " id="svg_61"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="426.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_62">AuthModule</text>
+   </g>
+   <!-- AuthModule&#45;&gt;UsersModule -->
+   <g stroke="null" id="edge36" class="edge">
+    <title stroke="null">AuthModule-&gt;UsersModule</title>
+    <path stroke="black" fill="none" d="m976.2023,201.97771c0,-8.38501 0,-16.38654 0,-16.38654c0,0 819.28097,0 819.28097,0c0,0 0,6.02187 0,6.02187" id="svg_63"/>
+    <polygon stroke="black" fill="black" points="1798.0165714990871,191.6130799225175 1795.4834158889134,201.9777224061072 1792.9503824527346,191.6130799225175 1798.0165714990871,191.6130799225175 " id="svg_64"/>
+   </g>
+   <!-- AuthModule&#45;&gt;OauthModule -->
+   <g stroke="null" id="edge25" class="edge">
+    <title stroke="null">AuthModule-&gt;OauthModule</title>
+    <path stroke="black" fill="none" d="m986.80303,202.16428c0,-23.29977 0,-60.1047 0,-60.1047c0,0 127.36797,0 127.36797,0" id="svg_65"/>
+    <polygon stroke="black" fill="black" points="1114.1708481277456,138.43196591902415 1121.406969497446,142.05960269017123 1114.1708481277456,145.6872097065916 1114.1708481277456,138.43196591902415 " id="svg_66"/>
+   </g>
+   <!-- AuthModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge4" class="edge">
+    <title stroke="null">AuthModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m944.56653,202.02954c0,0 0,-98.24667 0,-98.24667" id="svg_67"/>
+    <polygon stroke="black" fill="black" points="942.0338591060208,103.79323885627127 944.5664649332175,93.41820453437776 947.0991318474116,103.78285445664915 942.0338591060208,103.79323885627127 " id="svg_68"/>
+   </g>
+   <!-- AuthService  -->
+   <g stroke="null" id="node15" class="node">
+    <title stroke="null">AuthService</title>
+    <polygon stroke="black" fill="#fb8072" points="358.6101198619035,280.94611249301306 293.5152961418353,280.94611249301306 293.5152961418353,318.2588968452801 358.6101198619035,318.2588968452801 358.6101198619035,280.94611249301306 " id="svg_69"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="-457.996" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_70">AuthService</text>
+   </g>
+   <!-- AuthModule&#45;&gt;AuthService  -->
+   <g stroke="null" id="edge16" class="edge">
+    <title stroke="null">AuthModule-&gt;AuthService</title>
+    <path stroke="black" fill="none" stroke-dasharray="5,2" d="m934.00198,231.19571c-129.06843,0 -607.93929,0 -607.93929,0c0,0 0,39.35464 0,39.35464" id="svg_71"/>
+    <polygon stroke="black" fill="black" points="328.59535964431416,270.55028705583027 326.06269273012003,280.9149592941467 323.53005635942463,270.55028705583027 328.59535964431416,270.55028705583027 " id="svg_72"/>
+   </g>
+   <!-- ConversationsModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge5" class="edge">
+    <title stroke="null">ConversationsModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m1061.2397,201.95698c0,-36.85675 0,-114.83013 0,-114.83013c0,0 -88.51068,0 -88.51068,0" id="svg_73"/>
+    <polygon stroke="black" fill="black" points="972.7289757576873,90.75450932844069 965.4930376489792,87.12686511861193 972.7289757576873,83.49923578614653 972.7289757576873,90.75450932844069 " id="svg_74"/>
+   </g>
+   <!-- FilesModule -->
+   <g stroke="null" id="node6" class="node">
+    <title stroke="null">FilesModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="832.0611367322927,280.94611249301306 829.8904713649754,276.80026740146786 814.6948974887928,276.80026740146786 812.5239266864883,280.94611249301306 769.4267445519363,280.94611249301306 769.4267445519363,318.2588968452801 832.0611367322927,318.2588968452801 832.0611367322927,280.94611249301306 " id="svg_75"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="198.004" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_76">FilesModule</text>
+   </g>
+   <!-- FilesModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge6" class="edge">
+    <title stroke="null">FilesModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m800.74391,280.81136c0,-54.05173 0,-206.12211 0,-206.12211c0,0 97.15046,0 97.15046,0" id="svg_77"/>
+    <polygon stroke="black" fill="black" points="897.894410621011,71.06162612469416 905.1304098167166,74.68927033452292 897.894410621011,78.31692198303335 897.894410621011,71.06162612469416 " id="svg_78"/>
+   </g>
+   <!-- InterceptorModule -->
+   <g stroke="null" id="node7" class="node">
+    <title stroke="null">InterceptorModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1027.5632914079033,280.94611249301306 1025.392626040586,276.80026740146786 1010.1970521644034,276.80026740146786 1008.0262646230913,280.94611249301306 940.0659414832335,280.94611249301306 940.0659414832335,318.2588968452801 1027.5632914079033,318.2588968452801 1027.5632914079033,280.94611249301306 " id="svg_79"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="451.004" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_80">InterceptorModule</text>
+   </g>
+   <!-- InterceptorModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge7" class="edge">
+    <title stroke="null">InterceptorModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m940.05127,299.6025c-6.16507,0 -10.45601,0 -10.45601,0c0,0 0,-195.75744 0,-195.75744" id="svg_81"/>
+    <polygon stroke="black" fill="black" points="927.0627188584622,103.84504927415674 929.5950803376691,93.48036959715864 932.1277472518632,103.84504927415674 927.0627188584622,103.84504927415674 " id="svg_82"/>
+   </g>
+   <!-- MathModule -->
+   <g stroke="null" id="node8" class="node">
+    <title stroke="null">MathModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1105.0895329131308,280.94611249301306 1102.9189897198085,276.80026740146786 1087.7233547566284,276.80026740146786 1085.5525672153162,280.94611249301306 1040.5446448875882,280.94611249301306 1040.5446448875882,318.2588968452801 1105.0895329131308,318.2588968452801 1105.0895329131308,280.94611249301306 " id="svg_83"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="574.004" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_84">MathModule</text>
+   </g>
+   <!-- MathModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge8" class="edge">
+    <title stroke="null">MathModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m1072.81729,280.83209c0,-10.14701 0,-20.61532 0,-20.61532c0,0 -140.99335,0 -140.99335,0c0,0 0,-156.35098 0,-156.35098" id="svg_85"/>
+    <polygon stroke="black" fill="black" points="929.2912336123627,103.86575856394757 931.8239005265568,93.50112351903954 934.3563230927612,103.86575856394757 929.2912336123627,103.86575856394757 " id="svg_86"/>
+   </g>
+   <!-- MessagesModule -->
+   <g stroke="null" id="node9" class="node">
+    <title stroke="null">MessagesModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="927.3665044967711,280.94611249301306 925.1957780424564,276.80026740146786 910.0001430792763,276.80026740146786 907.8294166249616,280.94611249301306 844.8905668493244,280.94611249301306 844.8905668493244,318.2588968452801 927.3665044967711,318.2588968452801 927.3665044967711,280.94611249301306 " id="svg_87"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="316.004" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_88">MessagesModule</text>
+   </g>
+   <!-- MessagesModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge9" class="edge">
+    <title stroke="null">MessagesModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m919.93521,280.81136c0,0 0,-176.86266 0,-176.86266" id="svg_89"/>
+    <polygon stroke="black" fill="black" points="917.4027265170225,103.94868498729102 919.9352101702243,93.58403506501963 922.4676327364286,103.94868498729102 917.4027265170225,103.94868498729102 " id="svg_90"/>
+   </g>
+   <!-- OauthModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge10" class="edge">
+    <title stroke="null">OauthModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m1121.34187,132.73138c-57.12094,0 -166.2542,0 -166.2542,0c0,0 0,-28.98997 0,-28.98997" id="svg_91"/>
+    <polygon stroke="black" fill="black" points="952.5550559374824,103.74139124497742 955.0877228516765,93.3767562000694 957.6201454178808,103.74139124497742 952.5550559374824,103.74139124497742 " id="svg_92"/>
+   </g>
+   <!-- OauthService  -->
+   <g stroke="null" id="node22" class="node">
+    <title stroke="null">OauthService</title>
+    <polygon stroke="black" fill="#fb8072" points="1643.5132605956896,202.17459455539029 1574.4963156609738,202.17459455539029 1574.4963156609738,239.48749792656417 1643.5132605956896,239.48749792656417 1643.5132605956896,202.17459455539029 " id="svg_93"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1315.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_94">OauthService</text>
+   </g>
+   <!-- OauthModule&#45;&gt;OauthService  -->
+   <g stroke="null" id="edge27" class="edge">
+    <title stroke="null">OauthModule-&gt;OauthService</title>
+    <path stroke="black" fill="none" stroke-dasharray="5,2" d="m1189.22273,130.65845c105.32713,0 419.78173,0 419.78173,0c0,0 0,61.12043 0,61.12043" id="svg_95"/>
+    <polygon stroke="black" fill="black" points="1611.537760477513,191.7789030144777 1609.005093563319,202.14353062070404 1606.47230447513,191.7789030144777 1611.537760477513,191.7789030144777 " id="svg_96"/>
+   </g>
+   <!-- PostsModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge11" class="edge">
+    <title stroke="null">PostsModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m1124.31586,220.83104c-4.83364,0 -8.22733,0 -8.22733,0c0,0 0,-146.14179 0,-146.14179c0,0 -143.26545,0 -143.26545,0" id="svg_97"/>
+    <polygon stroke="black" fill="black" points="972.8230497337572,78.31692198303335 965.5870505380517,74.68927033452292 972.8230497337572,71.06162612469416 972.8230497337572,78.31692198303335 " id="svg_98"/>
+   </g>
+   <!-- PrismaModule -->
+   <g stroke="null" id="node12" class="node">
+    <title stroke="null">PrismaModule</title>
+    <polygon stroke="black" fill="#8dd3c7" points="1189.6350369471184,280.94611249301306 1187.4642494058062,276.80026740146786 1172.2686144426261,276.80026740146786 1170.097704727319,280.94611249301306 1118.085791620193,280.94611249301306 1118.085791620193,318.2588968452801 1189.6350369471184,318.2588968452801 1189.6350369471184,280.94611249301306 " id="svg_99"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="686.004" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_100">PrismaModule</text>
+   </g>
+   <!-- PrismaModule&#45;&gt;UsersModule -->
+   <g stroke="null" id="edge37" class="edge">
+    <title stroke="null">PrismaModule-&gt;UsersModule</title>
+    <path stroke="black" fill="none" d="m1189.56282,290.2743c136.76753,0 619.70502,0 619.70502,0c0,0 0,-40.10089 0,-40.10089" id="svg_101"/>
+    <polygon stroke="black" fill="black" points="1806.7353964708454,250.17349145863227 1809.2681855590345,239.8087745882258 1811.8008524732286,250.17349145863227 1806.7353964708454,250.17349145863227 " id="svg_102"/>
+   </g>
+   <!-- PrismaModule&#45;&gt;AuthModule -->
+   <g stroke="null" id="edge15" class="edge">
+    <title stroke="null">PrismaModule-&gt;AuthModule</title>
+    <path stroke="black" fill="none" d="m1156.75483,280.90464c0,-12.97656 0,-27.94314 0,-27.94314c0,0 -188.02731,0 -188.02731,0c0,0 0,-3.07831 0,-3.07831" id="svg_103"/>
+    <polygon stroke="black" fill="black" points="966.1949883366542,249.88321922220348 968.7275941638509,239.51859161597713 971.260261078045,249.88321922220348 966.1949883366542,249.88321922220348 " id="svg_104"/>
+   </g>
+   <!-- PrismaModule&#45;&gt;ConversationsModule -->
+   <g stroke="null" id="edge20" class="edge">
+    <title stroke="null">PrismaModule-&gt;ConversationsModule</title>
+    <path stroke="black" fill="none" d="m1118.09291,293.3837c-6.2519,0 -10.80334,0 -10.80334,0c0,0 0,-43.5005 0,-43.5005" id="svg_105"/>
+    <polygon stroke="black" fill="black" points="1104.756853125029,249.88321922220348 1107.2893978652282,239.51859161597713 1109.8220647794224,249.88321922220348 1104.756853125029,249.88321922220348 " id="svg_106"/>
+   </g>
+   <!-- PrismaModule&#45;&gt;PostsModule -->
+   <g stroke="null" id="edge31" class="edge">
+    <title stroke="null">PrismaModule-&gt;PostsModule</title>
+    <path stroke="black" fill="none" d="m1172.87662,280.93574c0,0 0,-30.92816 0,-30.92816" id="svg_107"/>
+    <polygon stroke="black" fill="black" points="1170.3438853270345,250.007623734582 1172.8765522412286,239.64293661890224 1175.4090969814279,250.007623734582 1170.3438853270345,250.007623734582 " id="svg_108"/>
+   </g>
+   <!-- PrismaModule&#45;&gt;AppModule -->
+   <g stroke="null" id="edge12" class="edge">
+    <title stroke="null">PrismaModule-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m1118.20145,305.8213c-2.62667,0 -4.27647,0 -4.27647,0c0,0 0,-224.91325 0,-224.91325c0,0 -141.05847,0 -141.05847,0" id="svg_109"/>
+    <polygon stroke="black" fill="black" points="972.8664825889427,84.5356747429878 965.6303001322449,80.90806028788575 972.8664825889427,77.28040863937531 972.8664825889427,84.5356747429878 " id="svg_110"/>
+   </g>
+   <!-- PrismaService  -->
+   <g stroke="null" id="node27" class="node">
+    <title stroke="null">PrismaService</title>
+    <polygon stroke="black" fill="#fb8072" points="2069.4818125022284,202.17459455539029 1996.586454099539,202.17459455539029 1996.586454099539,239.48749792656417 2069.4818125022284,239.48749792656417 2069.4818125022284,202.17459455539029 " id="svg_111"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1901.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_112">PrismaService</text>
+   </g>
+   <!-- PrismaModule&#45;&gt;PrismaService  -->
+   <g stroke="null" id="edge34" class="edge">
+    <title stroke="null">PrismaModule-&gt;PrismaService</title>
+    <path stroke="black" fill="none" stroke-dasharray="5,2" d="m1189.68584,308.9307c164.95896,0 843.34789,0 843.34789,0c0,0 0,-59.0475 0,-59.0475" id="svg_113"/>
+    <polygon stroke="black" fill="black" points="2030.5012220386998,249.88321922220348 2033.033888952894,239.51859161597713 2035.566678041083,249.88321922220348 2030.5012220386998,249.88321922220348 " id="svg_114"/>
+   </g>
+   <!-- AppService -->
+   <g stroke="null" id="node14" class="node">
+    <title stroke="null">AppService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="711.01758" cy="142.05958" rx="41.06427" ry="18.6564" id="svg_115"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="74.004" y="-330.10783" font-family="Times,serif" font-size="14" id="svg_116">AppService</text>
+   </g>
+   <!-- AppService&#45;&gt;AppModule -->
+   <g stroke="null" id="edge14" class="edge">
+    <title stroke="null">AppService-&gt;AppModule</title>
+    <path stroke="black" fill="none" d="m746.57526,151.38778c57.8373,0 165.92135,0 165.92135,0c0,0 0,-47.37689 0,-47.37689" id="svg_117"/>
+    <polygon stroke="black" fill="black" points="909.9639184897896,104.0108798047986 912.4965854039838,93.64620756648219 915.0288247091958,104.0108798047986 909.9639184897896,104.0108798047986 " id="svg_118"/>
+   </g>
+   <!-- AtStrategy -->
+   <g stroke="null" id="node16" class="node">
+    <title stroke="null">AtStrategy</title>
+    <ellipse stroke="black" fill="#fdb462" cx="149.50443" cy="299.6025" rx="38.16987" ry="18.6564" id="svg_119"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="-701.996" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_120">AtStrategy</text>
+   </g>
+   <!-- AtStrategy&#45;&gt;AuthModule -->
+   <g stroke="null" id="edge17" class="edge">
+    <title stroke="null">AtStrategy-&gt;AuthModule</title>
+    <path stroke="black" fill="none" d="m149.50443,280.79063c0,-24.47098 0,-64.10546 0,-64.10546c0,0 777.23984,0 777.23984,0" id="svg_121"/>
+    <polygon stroke="black" fill="black" points="926.7443334277632,213.0575792556483 933.9802715364713,216.68517139470532 926.7443334277632,220.31282304321576 926.7443334277632,213.0575792556483 " id="svg_122"/>
+   </g>
+   <!-- AuthService -->
+   <g stroke="null" id="node17" class="node">
+    <title stroke="null">AuthService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="55.43651" cy="299.6025" rx="42.77196" ry="18.6564" id="svg_123"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="-831.996" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_124">AuthService</text>
+   </g>
+   <!-- AuthService&#45;&gt;AuthModule -->
+   <g stroke="null" id="edge18" class="edge">
+    <title stroke="null">AuthService-&gt;AuthModule</title>
+    <path stroke="black" fill="none" d="m55.43651,280.91501c0,-26.40917 0,-71.4851 0,-71.4851c0,0 871.45249,0 871.45249,0" id="svg_125"/>
+    <polygon stroke="black" fill="black" points="926.8886209157354,205.80230571335414 934.1252309814154,209.42992760713787 926.8886209157354,213.0575792556483 926.8886209157354,205.80230571335414 " id="svg_126"/>
+   </g>
+   <!-- RtStrategy -->
+   <g stroke="null" id="node18" class="node">
+    <title stroke="null">RtStrategy</title>
+    <ellipse stroke="black" fill="#fdb462" cx="238.50716" cy="299.6025" rx="37.76465" ry="18.6564" id="svg_127"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="-578.996" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_128">RtStrategy</text>
+   </g>
+   <!-- RtStrategy&#45;&gt;AuthModule -->
+   <g stroke="null" id="edge19" class="edge">
+    <title stroke="null">RtStrategy-&gt;AuthModule</title>
+    <path stroke="black" fill="none" d="m238.50716,280.90464c0,-22.40841 0,-56.9642 0,-56.9642c0,0 688.26606,0 688.26606,0" id="svg_129"/>
+    <polygon stroke="black" fill="black" points="926.7731664905587,220.31282304321576 934.0090435122693,223.94043005963613 926.7731664905587,227.56808170814656 926.7731664905587,220.31282304321576 " id="svg_130"/>
+   </g>
+   <!-- ConversationsService -->
+   <g stroke="null" id="node19" class="node">
+    <title stroke="null">ConversationsService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="456.31059" cy="299.6025" rx="69.09651" ry="18.6564" id="svg_131"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="-277.996" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_132">ConversationsService</text>
+   </g>
+   <!-- ConversationsService&#45;&gt;ConversationsModule -->
+   <g stroke="null" id="edge22" class="edge">
+    <title stroke="null">ConversationsService-&gt;ConversationsModule</title>
+    <path stroke="black" fill="none" d="m456.31059,280.69735c0,-7.45219 0,-14.26178 0,-14.26178c0,0 562.83734,0 562.83734,0c0,0 0,-16.428 0,-16.428" id="svg_133"/>
+    <polygon stroke="black" fill="black" points="1016.6149742902853,250.007623734582 1019.1477022914769,239.64293661890224 1021.6803081186736,250.007623734582 1016.6149742902853,250.007623734582 " id="svg_134"/>
+   </g>
+   <!-- FilesService -->
+   <g stroke="null" id="node20" class="node">
+    <title stroke="null">FilesService</title>
+    <polygon stroke="black" fill="#8dd3c7" points="815.7294668775721,359.71752628909235 813.5586182492625,355.571591933367 798.3632887210697,355.571591933367 796.1923179187652,359.71752628909235 753.9199324237561,359.71752628909235 753.9199324237561,397.0303701508128 815.7294668775721,397.0303701508128 815.7294668775721,359.71752628909235 " id="svg_135"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="176.004" y="-102.10783" font-family="Times,serif" font-size="14" id="svg_136">FilesService</text>
+   </g>
+   <!-- FilesService&#45;&gt;FilesModule -->
+   <g stroke="null" id="edge23" class="edge">
+    <title stroke="null">FilesService-&gt;FilesModule</title>
+    <path stroke="black" fill="none" d="m792.50211,359.7072c0,0 0,-30.92816 0,-30.92816" id="svg_137"/>
+    <polygon stroke="black" fill="black" points="789.9695076627322,328.77894826648117 792.5021134899289,318.41430578289146 795.0346582301281,328.77894826648117 789.9695076627322,328.77894826648117 " id="svg_138"/>
+   </g>
+   <!-- MessagesService -->
+   <g stroke="null" id="node21" class="node">
+    <title stroke="null">MessagesService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="901.32423" cy="378.37396" rx="56.13684" ry="18.6564" id="svg_139"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="337.004" y="-102.10783" font-family="Times,serif" font-size="14" id="svg_140">MessagesService</text>
+   </g>
+   <!-- MessagesService&#45;&gt;MessagesModule -->
+   <g stroke="null" id="edge24" class="edge">
+    <title stroke="null">MessagesService-&gt;MessagesModule</title>
+    <path stroke="black" fill="none" d="m886.29507,360.10105c0,0 0,-31.4153 0,-31.4153" id="svg_141"/>
+    <polygon stroke="black" fill="black" points="883.7623613703981,328.68578621714914 886.2948450235999,318.3210544693793 888.827511937794,328.68578621714914 883.7623613703981,328.68578621714914 " id="svg_142"/>
+   </g>
+   <!-- FacebookStrategy -->
+   <g stroke="null" id="node23" class="node">
+    <title stroke="null">FacebookStrategy</title>
+    <ellipse stroke="black" fill="#fdb462" cx="1276.87233" cy="220.83104" rx="58.26423" ry="18.6564" id="svg_143"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="856.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_144">FacebookStrategy</text>
+   </g>
+   <!-- FacebookStrategy&#45;&gt;OauthModule -->
+   <g stroke="null" id="edge28" class="edge">
+    <title stroke="null">FacebookStrategy-&gt;OauthModule</title>
+    <path stroke="black" fill="none" d="m1276.87233,202.14355c0,-20.26292 0,-49.7193 0,-49.7193c0,0 -80.46426,0 -80.46426,0" id="svg_145"/>
+    <polygon stroke="black" fill="black" points="1196.408118876163,156.05191169963473 1189.1721196804574,152.42430468321436 1196.408118876163,148.79665303470392 1196.408118876163,156.05191169963473 " id="svg_146"/>
+   </g>
+   <!-- GoogleStrategy -->
+   <g stroke="null" id="node24" class="node">
+    <title stroke="null">GoogleStrategy</title>
+    <ellipse stroke="black" fill="#fdb462" cx="1504.80615" cy="220.83104" rx="51.9472" ry="18.6564" id="svg_147"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1171.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_148">GoogleStrategy</text>
+   </g>
+   <!-- GoogleStrategy&#45;&gt;OauthModule -->
+   <g stroke="null" id="edge29" class="edge">
+    <title stroke="null">GoogleStrategy-&gt;OauthModule</title>
+    <path stroke="black" fill="none" d="m1504.80615,202.01917c0,-24.47098 0,-64.10546 0,-64.10546c0,0 -308.11587,0 -308.11587,0" id="svg_149"/>
+    <polygon stroke="black" fill="black" points="1196.690096456383,141.54139436977312 1189.4540972606774,137.91371296653597 1196.690096456383,134.2860687567072 1196.690096456383,141.54139436977312 " id="svg_150"/>
+   </g>
+   <!-- OauthService -->
+   <g stroke="null" id="node25" class="node">
+    <title stroke="null">OauthService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="1394.09544" cy="220.83104" rx="46.08605" ry="18.6564" id="svg_151"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1018.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_152">OauthService</text>
+   </g>
+   <!-- OauthService&#45;&gt;OauthModule -->
+   <g stroke="null" id="edge30" class="edge">
+    <title stroke="null">OauthService-&gt;OauthModule</title>
+    <path stroke="black" fill="none" d="m1394.09544,202.13318c0,-22.40841 0,-56.9642 0,-56.9642c0,0 -197.59329,0 -197.59329,0" id="svg_153"/>
+    <polygon stroke="black" fill="black" points="1196.501948504243,148.79665303470392 1189.2657049605477,145.16901626355684 1196.501948504243,141.54139436977312 1196.501948504243,148.79665303470392 " id="svg_154"/>
+   </g>
+   <!-- PostsService -->
+   <g stroke="null" id="node26" class="node">
+    <title stroke="null">PostsService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="597.41247" cy="299.6025" rx="43.61857" ry="18.6564" id="svg_155"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="-82.996" y="-178.10783" font-family="Times,serif" font-size="14" id="svg_156">PostsService</text>
+   </g>
+   <!-- PostsService&#45;&gt;PostsModule -->
+   <g stroke="null" id="edge33" class="edge">
+    <title stroke="null">PostsService-&gt;PostsModule</title>
+    <path stroke="black" fill="none" d="m597.41247,280.7699c0,-4.02149 0,-7.07907 0,-7.07907c0,0 543.22056,0 543.22056,0c0,0 0,-23.71436 0,-23.71436" id="svg_157"/>
+    <polygon stroke="black" fill="black" points="1138.1003354640561,249.9765151678057 1140.6328802042553,239.61181317476257 1143.1655471184495,249.9765151678057 1138.1003354640561,249.9765151678057 " id="svg_158"/>
+   </g>
+   <!-- PrismaService -->
+   <g stroke="null" id="node28" class="node">
+    <title stroke="null">PrismaService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="1931.0062" cy="220.83104" rx="48.22067" ry="18.6564" id="svg_159"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1760.004" y="-254.10783" font-family="Times,serif" font-size="14" id="svg_160">PrismaService</text>
+   </g>
+   <!-- PrismaService&#45;&gt;PrismaModule -->
+   <g stroke="null" id="edge35" class="edge">
+    <title stroke="null">PrismaService-&gt;PrismaModule</title>
+    <path stroke="black" fill="none" d="m1931.0062,239.4978c0,23.29977 0,60.1047 0,60.1047c0,0 -734.24357,0 -734.24357,0" id="svg_161"/>
+    <polygon stroke="black" fill="black" points="1196.7626678093511,303.2301711950204 1189.5264242656558,299.6025344238733 1196.7626678093511,295.97495716217963 1196.7626678093511,303.2301711950204 " id="svg_162"/>
+   </g>
+   <!-- UsersService -->
+   <g stroke="null" id="node30" class="node">
+    <title stroke="null">UsersService</title>
+    <ellipse stroke="black" fill="#fdb462" cx="1927.38821" cy="142.05958" rx="44.84146" ry="18.6564" id="svg_163"/>
+    <text stroke="null" transform="matrix(0.723599 0 0 1.03647 657.468 488.558)" text-anchor="middle" x="1755.004" y="-330.10783" font-family="Times,serif" font-size="14" id="svg_164">UsersService</text>
+   </g>
+   <!-- UsersService&#45;&gt;UsersModule -->
+   <g stroke="null" id="edge39" class="edge">
+    <title stroke="null">UsersService-&gt;UsersModule</title>
+    <path stroke="black" fill="none" d="m1885.04317,148.27838c-20.15948,0 -39.93545,0 -39.93545,0c0,0 0,43.5005 0,43.5005" id="svg_165"/>
+    <polygon stroke="black" fill="black" points="1847.6408382239606,191.7789030144777 1845.1080491357716,202.14353062070404 1842.5750156995928,191.7789030144777 1847.6408382239606,191.7789030144777 " id="svg_166"/>
+   </g>
+  </g>
+ </g>
+
+</svg>

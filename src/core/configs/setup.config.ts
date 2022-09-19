@@ -25,6 +25,7 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
         new ValidationPipe({
             whitelist: true,
             transform: true,
+            skipMissingProperties: false,
             forbidNonWhitelisted: true,
             stopAtFirstError: true,
             transformOptions: { enableImplicitConversion: true },
@@ -39,8 +40,8 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
         session({
             genid: () => uuid(),
             secret: process.env.APP_SECRET,
-            resave: false,
-            saveUninitialized: false,
+            resave: true,
+            saveUninitialized: true,
             store: new session.MemoryStore(),
             cookie: {
                 httpOnly: true,
