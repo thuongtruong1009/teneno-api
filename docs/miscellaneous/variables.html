@@ -95,10 +95,10 @@
                             <a href="#ENDPOINT" title="client/services/auth.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../auth.service.ts)</a>
                         </li>
                         <li>
-                            <a href="#ENDPOINT" title="client/services/conversations.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../conversations.service.ts)</a>
+                            <a href="#ENDPOINT" title="client/services/file.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../file.service.ts)</a>
                         </li>
                         <li>
-                            <a href="#ENDPOINT" title="client/services/file.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../file.service.ts)</a>
+                            <a href="#ENDPOINT" title="client/services/conversations.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../conversations.service.ts)</a>
                         </li>
                         <li>
                             <a href="#ENDPOINT" title="client/services/posts.service.ts" ><b>ENDPOINT</b>&nbsp;&nbsp;&nbsp;(client/.../posts.service.ts)</a>
@@ -156,6 +156,9 @@
                         </li>
                         <li>
                             <a href="#RoleDecorator" title="src/core/roles/roles.decorator.ts" ><b>RoleDecorator</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLES_KEY" title="src/core/roles/roles.decorator.ts" ><b>ROLES_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
                         </li>
                         <li>
                             <a href="#SALT_ROUNDS" title="src/core/helpers/hash.ts" ><b>SALT_ROUNDS</b>&nbsp;&nbsp;&nbsp;(src/.../hash.ts)</a>
@@ -607,14 +610,14 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>function (req: any, callback: any) {
-  let option;
+    let option: any;
 
-  if (Array(whiteList).indexOf(req.header(&#x27;Origin&#x27;)) !&#x3D;&#x3D; -1) {
-    option &#x3D; { origin: true };
-  } else {
-    option &#x3D; { origin: false };
-  }
-  callback(null, option);
+    if (Array&lt;string&gt;(whiteList).indexOf(req.header(&#x27;Origin&#x27;)) !&#x3D;&#x3D; -1) {
+        option &#x3D; { origin: true };
+    } else {
+        option &#x3D; { origin: false };
+    }
+    callback(null, option);
 }</code>
                     </td>
                 </tr>
@@ -848,35 +851,6 @@
         </tbody>
     </table>
 </section>
-    <h3>client/services/conversations.service.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ENDPOINT"></a>
-                    <span class="name">
-                        <span ><b>ENDPOINT</b></span>
-                        <a href="#ENDPOINT"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;/conversations&#x27;</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
     <h3>client/services/file.service.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -899,6 +873,35 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>&#x27;/files&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/services/conversations.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ENDPOINT"></a>
+                    <span class="name">
+                        <span ><b>ENDPOINT</b></span>
+                        <a href="#ENDPOINT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;/conversations&#x27;</code>
                     </td>
                 </tr>
 
@@ -1382,7 +1385,34 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>(...roles: EROLE[]) &#x3D;&gt; SetMetadata(&#x27;roles&#x27;, roles)</code>
+                        <i>Default value : </i><code>(...roles: EROLE[]) &#x3D;&gt;
+    SetMetadata(ROLES_KEY, roles)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLES_KEY"></a>
+                    <span class="name">
+                        <span ><b>ROLES_KEY</b></span>
+                        <a href="#ROLES_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;roles&#x27;</code>
                     </td>
                 </tr>
 

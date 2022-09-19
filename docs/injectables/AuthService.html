@@ -133,12 +133,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(configService: ConfigService, prismaService: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>, jwtService: JwtService)</code>
+<code>constructor(configService: ConfigService, prismaService: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>, jwtService: JwtService, cacheManager: Cache)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/infrastructure/auth/auth.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/infrastructure/auth/auth.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -191,6 +191,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>cacheManager</td>
+                                                  
+                                                        <td>
+                                                                    <code>Cache</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -220,15 +232,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTokens(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>getTokens(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, roles: string[])</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:34</a></div>
                 </td>
             </tr>
 
@@ -264,6 +276,18 @@
                                     <td>email</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>roles</td>
+                                    <td>
+                                            <code>string[]</code>
                                     </td>
 
                                     <td>
@@ -310,8 +334,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="146"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:146</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="160"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:160</a></div>
                 </td>
             </tr>
 
@@ -381,8 +405,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="158"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:158</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="172"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:172</a></div>
                 </td>
             </tr>
 
@@ -464,8 +488,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:107</a></div>
                 </td>
             </tr>
 
@@ -535,8 +559,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="140"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:140</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:154</a></div>
                 </td>
             </tr>
 
@@ -606,8 +630,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:78</a></div>
                 </td>
             </tr>
 
@@ -677,8 +701,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="178"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:178</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:192</a></div>
                 </td>
             </tr>
 
@@ -748,8 +772,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -831,8 +855,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/infrastructure/auth/auth.service.ts:128</a></div>
                 </td>
             </tr>
 
@@ -888,6 +912,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
     BadRequestException,
+    CACHE_MANAGER,
     ConflictException,
     ForbiddenException,
     Inject,
@@ -903,6 +928,7 @@ import {
     SignupDto,
     UpdatePasswordDto,
 } from &#x27;./dto/request&#x27;;
+import { Cache } from &#x27;cache-manager&#x27;;
 import { AUTH_ERROR, SYSTEM_ERROR, USER_ERROR } from &#x27;src/core/constants&#x27;;
 import { comparePassword, hashPassword } from &#x27;src/core/helpers&#x27;;
 import axios from &#x27;axios&#x27;;
@@ -914,14 +940,20 @@ export class AuthService {
         private configService: ConfigService,
         private prismaService: PrismaService,
         private jwtService: JwtService,
+        @Inject(CACHE_MANAGER) private cacheManager: Cache,
     ) {}
 
-    async getTokens(userId: string, email: string): Promise&lt;ITokens&gt; {
+    async getTokens(
+        userId: string,
+        email: string,
+        roles: string[],
+    ): Promise&lt;ITokens&gt; {
         const [at, rt] &#x3D; await Promise.all([
             this.jwtService.signAsync(
                 {
                     sub: userId,
                     email: email,
+                    roles: roles,
                 },
                 {
                     secret: this.configService.get&lt;string&gt;(&#x27;APP_SECRET&#x27;),
@@ -932,6 +964,7 @@ export class AuthService {
                 {
                     sub: userId,
                     email: email,
+                    roles: roles,
                 },
                 {
                     secret: this.configService.get&lt;string&gt;(&#x27;APP_SECRET&#x27;),
@@ -974,7 +1007,11 @@ export class AuthService {
             },
         });
 
-        const tokens &#x3D; await this.getTokens(newUser.id, newUser.email);
+        const tokens &#x3D; await this.getTokens(
+            newUser.id,
+            newUser.email,
+            newUser.role,
+        );
         await this.updateRtHash(newUser.id, tokens.refreshToken);
         return tokens;
     }
@@ -994,8 +1031,9 @@ export class AuthService {
         if (!passwordMatches)
             throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-        const tokens &#x3D; await this.getTokens(user.id, user.email);
+        const tokens &#x3D; await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
+        await this.cacheManager.set(&#x27;cacheToken&#x27;, tokens);
         return tokens;
     }
 
@@ -1014,9 +1052,9 @@ export class AuthService {
             bodyFormData,
         );
 
-        //     const response &#x3D; await axios.post(
-        //       &#x60;https://www.google.com/recaptcha/api/siteverify?secret&#x3D;6Lf6BAohAAAAAA0FUbrbiPNYvVSO3IIDMYIeiYsG&amp;response&#x3D;${capcha}&#x60;,
-        //       { header: { &#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27; } },
+        //     const response &#x3D; await axiosRequest(&#x27;post&#x27;,
+        //       &#x60;https://www.google.com/recaptcha/api/siteverify?secret&#x3D;${process.env.GOOGLE_RECAPTCHA_SECRET}&amp;response&#x3D;${capcha}&#x60;,
+        //       &#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;
         //     );
         if (!result?.data.success) throw new Error(AUTH_ERROR.RECAPTCHA_FAILED);
         if (result?.data.score &lt; 0.5) {
@@ -1058,7 +1096,7 @@ export class AuthService {
         );
         if (!hashMatches) throw new ForbiddenException(SYSTEM_ERROR.FORBIDDEN);
 
-        const tokens &#x3D; await this.getTokens(user.id, user.email);
+        const tokens &#x3D; await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
     }
@@ -1090,7 +1128,7 @@ export class AuthService {
             });
         }
 
-        const tokens &#x3D; await this.getTokens(user.id, user.email);
+        const tokens &#x3D; await this.getTokens(user.id, user.email, user.role);
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
     }

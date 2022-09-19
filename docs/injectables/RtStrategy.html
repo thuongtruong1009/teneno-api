@@ -80,6 +80,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#validate" >validate</a>
                             </li>
                         </ul>
@@ -154,6 +155,7 @@
                 <td class="col-md-4">
                     <a name="validate"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>validate</b></span>
                         <a href="#validate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -161,7 +163,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validate(req: Request, payload: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validate(req: Request, payload: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
@@ -219,7 +222,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -253,13 +256,13 @@ export class RtStrategy extends PassportStrategy(
     ) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            // secretOrKey: config.get&lt;string&gt;(&#x27;APP_SECRET&#x27;),
-            secretOrKey: process.env.APP_SECRET,
+            secretOrKey: config.get&lt;string&gt;(&#x27;APP_SECRET&#x27;),
+            // secretOrKey: process.env.APP_SECRET,
             passReqToCallback: true,
         });
     }
 
-    validate(req: Request, payload: any) {
+    async validate(req: Request, payload: any) {
         const refreshToken &#x3D; req
             .get(&#x27;authorization&#x27;)
             .replace(&#x27;Bearer&#x27;, &#x27;&#x27;)

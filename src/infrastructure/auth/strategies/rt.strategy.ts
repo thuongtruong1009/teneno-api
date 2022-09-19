@@ -22,7 +22,7 @@ export class RtStrategy extends PassportStrategy(
         });
     }
 
-    validate(req: Request, payload: any) {
+    async validate(req: Request, payload: any) {
         const refreshToken = req
             .get('authorization')
             .replace('Bearer', '')

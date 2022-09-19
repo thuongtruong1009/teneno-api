@@ -226,7 +226,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Public()<br />@Get(&#x27;users/all&#x27;)<br />@ApiOperation({summary: &#x27;Get list all public users&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                    <code>@Public()<br />@RoleDecorator(EROLE.ADMIN)<br />@Get(&#x27;users/all&#x27;)<br />@ApiOperation({summary: &#x27;Get list all public users&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
@@ -697,12 +697,12 @@ import { UsersService } from &#x27;../users/users.service&#x27;;
 @ApiInternalServerErrorResponse({
     description: SYSTEM_ERROR.INTERNAL_SERVER_ERROR,
 })
-@RoleDecorator(EROLE.ADMIN)
 @Controller(&#x27;admin&#x27;)
 export class AdminUsersController {
     constructor(private readonly usersService: UsersService) {}
 
     @Public()
+    @RoleDecorator(EROLE.ADMIN)
     @Get(&#x27;users/all&#x27;)
     @ApiOperation({ summary: &#x27;Get list all public users&#x27; })
     @HttpCode(HttpStatus.OK)

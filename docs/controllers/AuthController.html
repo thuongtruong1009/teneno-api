@@ -154,8 +154,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:105</a></div>
                 </td>
             </tr>
 
@@ -232,8 +232,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="112"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:112</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:115</a></div>
                 </td>
             </tr>
 
@@ -316,14 +316,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Public()<br />@Post(&#x27;signin&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br />@ApiOperation({summary: &#x27;Login to user account&#x27;})<br /></code>
+                    <code>@Public()<br />@Post(&#x27;signin&#x27;)<br />@UseInterceptors(CacheInterceptor)<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br />@ApiOperation({summary: &#x27;Login to user account&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:88</a></div>
                 </td>
             </tr>
 
@@ -400,8 +400,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:96</a></div>
                 </td>
             </tr>
 
@@ -478,8 +478,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:78</a></div>
                 </td>
             </tr>
 
@@ -556,8 +556,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="124"
-                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:124</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/infrastructure/auth/auth.controller.ts:127</a></div>
                 </td>
             </tr>
 
@@ -611,12 +611,14 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
     Body,
+    CacheInterceptor,
     Controller,
     HttpCode,
     HttpStatus,
     Post,
     Put,
     UseGuards,
+    UseInterceptors,
 } from &#x27;@nestjs/common&#x27;;
 import {
     ApiBearerAuth,
@@ -690,6 +692,7 @@ export class AuthController {
 
     @Public()
     @Post(&#x27;signin&#x27;)
+    @UseInterceptors(CacheInterceptor)
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
     @ApiOperation({ summary: &#x27;Login to user account&#x27; })

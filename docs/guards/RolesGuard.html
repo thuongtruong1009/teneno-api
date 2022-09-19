@@ -88,6 +88,9 @@
                             <li>
                                 <a href="#matchRoles" >matchRoles</a>
                             </li>
+                            <li>
+                                <a href="#parseJwt" >parseJwt</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -243,8 +246,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/core/roles/roles.guard.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:29</a></div>
                 </td>
             </tr>
 
@@ -304,6 +307,71 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseJwt"></a>
+                    <span class="name">
+                        <span ><b>parseJwt</b></span>
+                        <a href="#parseJwt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>parseJwt(token)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>token</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
         </div>
 
@@ -311,9 +379,9 @@
         <div class="tab-pane fade  tab-source-code" id="c-source">
             <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CanActivate, ExecutionContext, Injectable } from &#x27;@nestjs/common&#x27;;
 import { Reflector } from &#x27;@nestjs/core&#x27;;
-import console from &#x27;console&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
+import { map, Observable } from &#x27;rxjs&#x27;;
 import { EROLE } from &#x27;../constants&#x27;;
+import { ROLES_KEY } from &#x27;./roles.decorator&#x27;;
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -323,7 +391,7 @@ export class RolesGuard implements CanActivate {
         context: ExecutionContext,
     ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; {
         const requiredRoles &#x3D; this.reflector.getAllAndOverride&lt;EROLE[]&gt;(
-            &#x27;roles&#x27;,
+            ROLES_KEY,
             [context.getHandler(), context.getClass()],
         );
         if (!requiredRoles) {
@@ -331,15 +399,23 @@ export class RolesGuard implements CanActivate {
         }
 
         const request &#x3D; context.switchToHttp().getRequest();
-        if (!request.headers[&#x27;Authorization&#x27;]) return false;
-        const { user } &#x3D; request;
+        console.log(&#x60;--&gt; User: ${request}&#x60;);
+        // console.log(&#x27;request&#x27;, this.parseJwt(request));
 
-        if (!user || !user.role) return false;
-        return this.matchRoles(requiredRoles, user.role);
+        return this.matchRoles(requiredRoles, &#x27;USER&#x27;);
     }
 
     matchRoles(roles: EROLE[], role: string) {
+        console.log(&#x60;--&gt; Require role: ${roles}&#x60;);
+        console.log(&#x60;--&gt; Current role: ${role}&#x60;);
+        console.log(&#x60;--&gt; Matched: ${roles.includes(role as EROLE)}&#x60;);
         return roles.find((el) &#x3D;&gt; el &#x3D;&#x3D;&#x3D; role) ? true : false;
+    }
+
+    parseJwt(token) {
+        return JSON.parse(
+            Buffer.from(token.split(&#x27;.&#x27;)[1], &#x27;base64&#x27;).toString(),
+        );
     }
 }
 </code></pre>

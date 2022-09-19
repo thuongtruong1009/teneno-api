@@ -19,7 +19,6 @@ import { LoggerService } from '../logger/logger.service';
 import { corsOptions } from './cors.config';
 import { v4 as uuid } from 'uuid';
 import * as csurf from 'csurf';
-import { LoggerContextMiddleware } from '../middlewares/logger-context.middleware';
 
 export async function setup(app: INestApplication): Promise<INestApplication> {
     app.useGlobalPipes(

@@ -17,7 +17,7 @@ export class AtStrategy extends PassportStrategy(Strategy, ESTRATEGY.JWT) {
         });
     }
 
-    validate(payload: IJwtPayload): IJwtPayload {
+    async validate(payload: IJwtPayload): Promise<IJwtPayload> {
         return payload;
     }
 }

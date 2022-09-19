@@ -5,7 +5,7 @@ import {
     Module,
     NestModule,
 } from '@nestjs/common';
-import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './infrastructure/auth/auth.module';
@@ -27,6 +27,7 @@ import { RolesGuard } from './core/roles';
 import { OauthModule } from './infrastructure/oauth/oauth.module';
 import { MathModule } from './abstraction/microservices/math/math.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { AllExceptionsFilter } from './core/filters/exception.filter';
 
 @Module({
     imports: [
@@ -96,6 +97,10 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
             provide: APP_INTERCEPTOR,
             useClass: CacheInterceptor,
         },
+        // {
+        //     provide: APP_FILTER,
+        //     useClass: AllExceptionsFilter,
+        // },
     ],
 })
 export class AppModule implements NestModule {
