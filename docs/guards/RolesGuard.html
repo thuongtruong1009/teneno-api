@@ -114,7 +114,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/core/roles/roles.guard.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/core/roles/roles.guard.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -177,8 +177,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/core/roles/roles.guard.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:16</a></div>
                 </td>
             </tr>
 
@@ -246,8 +246,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/core/roles/roles.guard.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:41</a></div>
                 </td>
             </tr>
 
@@ -327,8 +327,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/core/roles/roles.guard.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/core/roles/roles.guard.ts:46</a></div>
                 </td>
             </tr>
 
@@ -377,10 +377,15 @@
 
 
         <div class="tab-pane fade  tab-source-code" id="c-source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CanActivate, ExecutionContext, Injectable } from &#x27;@nestjs/common&#x27;;
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    CanActivate,
+    ExecutionContext,
+    Injectable,
+    UnauthorizedException,
+} from &#x27;@nestjs/common&#x27;;
 import { Reflector } from &#x27;@nestjs/core&#x27;;
-import { map, Observable } from &#x27;rxjs&#x27;;
-import { EROLE } from &#x27;../constants&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { AUTH_ERROR, EROLE } from &#x27;../constants&#x27;;
 import { ROLES_KEY } from &#x27;./roles.decorator&#x27;;
 
 @Injectable()
@@ -398,17 +403,22 @@ export class RolesGuard implements CanActivate {
             return true;
         }
 
-        const request &#x3D; context.switchToHttp().getRequest();
-        console.log(&#x60;--&gt; User: ${request}&#x60;);
-        // console.log(&#x27;request&#x27;, this.parseJwt(request));
+        const request &#x3D; context.switchToHttp().getRequest().secret;
 
-        return this.matchRoles(requiredRoles, &#x27;USER&#x27;);
+        const data &#x3D; this.parseJwt(request);
+
+        if (
+            data.key !&#x3D;&#x3D; process.env.ADMIN_KEY ||
+            data.id !&#x3D;&#x3D; process.env.ADMIN_SUB
+        ) {
+            throw new UnauthorizedException(AUTH_ERROR.NOT_ADMIN);
+        }
+
+        return this.matchRoles(requiredRoles, data.role);
     }
 
     matchRoles(roles: EROLE[], role: string) {
-        console.log(&#x60;--&gt; Require role: ${roles}&#x60;);
-        console.log(&#x60;--&gt; Current role: ${role}&#x60;);
-        console.log(&#x60;--&gt; Matched: ${roles.includes(role as EROLE)}&#x60;);
+        console.log(&#x60;--&gt; Matched role: ${roles.includes(role as EROLE)}&#x60;);
         return roles.find((el) &#x3D;&gt; el &#x3D;&#x3D;&#x3D; role) ? true : false;
     }
 

@@ -25,6 +25,7 @@ export async function setup(app: INestApplication): Promise<INestApplication> {
         new ValidationPipe({
             whitelist: true,
             transform: true,
+            skipMissingProperties: false,
             forbidNonWhitelisted: true,
             stopAtFirstError: true,
             transformOptions: { enableImplicitConversion: true },

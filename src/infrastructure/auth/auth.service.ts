@@ -220,4 +220,8 @@ export class AuthService {
         await this.updateRtHash(user.id, tokens.refreshToken);
         return tokens;
     }
+
+    public createCookie(tokenData: string): string {
+        return `Authorization=${tokenData}; HttpOnly; Max-Age=604800;`;
+    }
 }

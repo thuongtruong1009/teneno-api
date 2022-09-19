@@ -3,6 +3,8 @@ import {
     Get,
     HttpCode,
     HttpStatus,
+    Req,
+    Res,
     Session,
     UseGuards,
     Version,
@@ -12,6 +14,7 @@ import { SkipThrottle } from '@nestjs/throttler';
 import { AppService } from './app.service';
 import { ThrottlerBehindProxyGuard } from './core/security/throttle-proxy.guard';
 import { Public } from './infrastructure/auth/decorators';
+import { Request, Response } from 'express';
 
 @ApiTags('Home')
 @UseGuards(ThrottlerBehindProxyGuard)
@@ -41,5 +44,18 @@ export class AppController {
     @ApiResponse({ status: 404, description: 'Not found' })
     async getHello(@Session() session: Record<string, any>): Promise<any> {
         return this.appService.getHello(session);
+    }
+
+    @Get('cookie/server')
+    requestCookie(@Req() request: Request) {
+        console.log(`Cookies: ${request.session.cookie}`);
+        console.log(`Signed cookies: ${request.signedCookies}`);
+        return `Cookies: ${request.session.cookie} Signed cookies: ${request.signedCookies}`;
+    }
+
+    @Get('cookie/custom')
+    responseCookie(@Res() response: Response) {
+        // console.log(response.cookie('key', 'value'));
+        console.log(response.getHeader('Set-Cookie'));
     }
 }

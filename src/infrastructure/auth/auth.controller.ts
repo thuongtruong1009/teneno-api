@@ -6,6 +6,7 @@ import {
     HttpStatus,
     Post,
     Put,
+    Res,
     UseGuards,
     UseInterceptors,
 } from '@nestjs/common';
@@ -40,6 +41,7 @@ import {
     STATUS_MESSAGE,
     SYSTEM_ERROR,
 } from 'src/core/constants';
+import { Response } from 'express';
 
 @ApiTags('Auth')
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
@@ -86,7 +88,10 @@ export class AuthController {
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
     @ApiOperation({ summary: 'Login to user account' })
     async signinLocal(@Body() dto: LoginDto): Promise<ITokens> {
-        return this.authService.signinLocal(dto);
+        // const cookie = this.authService.createCookie(a.accessToken);
+        // res.setHeader('Set-Cookie', [cookie]);
+        // console.log(res.getHeader('Set-Cookie'));
+        return await this.authService.signinLocal(dto);
     }
 
     @Post('signin/recaptcha')
@@ -102,7 +107,11 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
     @ApiOperation({ summary: 'Logout user account (user)' })
-    async logout(@GetCurrentUserId() userId: string): Promise<void> {
+    async logout(
+        @GetCurrentUserId() userId: string,
+        @Res() res: Response,
+    ): Promise<void> {
+        res.setHeader('Set-Cookie', ['Authorization=; Max-age=0']);
         return this.authService.logout(userId);
     }
 
