@@ -10,7 +10,10 @@
                 "start-case",
                 "pascal-case",
                 "upper-case",
-                "lower-case"
+                "lower-case",
+                "camel-case",
+                "kebab-case",
+                "snake-case"
             ]
         ],
         "type-enum": [
@@ -30,5 +33,12 @@
                 "sample"
             ]
         ]
+    },
+    "prompt": {
+        "questions": {
+            "type": {
+                "description": "please input type:"
+            }
+        }
     }
 }

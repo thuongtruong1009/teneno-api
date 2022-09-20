@@ -24,3 +24,10 @@ api.log
 error.log
 
 /.git
+
+.gitignore
+Dockerfile
+docker-compose.yml
+*.yaml
+helm
+database
