@@ -12,7 +12,10 @@ declare const module: any;
 
 async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-        cors: true,
+        cors: {
+            origin: true,
+            credentials: true,
+        },
         bufferLogs: true,
     });
 

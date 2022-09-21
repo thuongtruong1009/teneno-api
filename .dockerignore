@@ -31,3 +31,7 @@ docker-compose.yml
 *.yaml
 helm
 database
+
+dist/
+graphql/
+test/

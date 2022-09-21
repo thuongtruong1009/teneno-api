@@ -1,25 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { axiosRequest } from 'src/core/helpers';
+import { subRandom } from 'src/core/utils/random';
 import { AuthService } from '../auth/auth.service';
 import { SignupDto } from '../auth/dto/request';
 import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class OauthService {
+    private randomPasword = subRandom(16);
+    private randomUsername = subRandom(16);
+
     constructor(
         private readonly authService: AuthService,
         private readonly usersService: UsersService,
     ) {}
 
-    async facebookLogin(req: any) {
+    async facebookRedirect(req: any) {
         if (!req.user) {
             return 'Not found user from facebook!';
         }
 
         const payload = {
             email: req.user.user.email,
-            password: req.user.user.email,
-            username: req.user.user.email,
+            password: this.randomPasword,
+            username: this.randomUsername,
         } as SignupDto;
 
         const identify = await this.usersService.getUserByEmail(payload.email);
@@ -29,15 +33,15 @@ export class OauthService {
         return await this.authService.signinLocal(payload);
     }
 
-    async googleLogin(req: any) {
+    async googleRedirect(req: any) {
         if (!req.user) {
             return 'Not found user from Google!';
         }
 
         const payload = {
             email: req.user.email,
-            password: req.user.email,
-            username: req.user.email,
+            password: this.randomPasword,
+            username: this.randomUsername,
         } as SignupDto;
 
         const identify = await this.usersService.getUserByEmail(payload.email);
@@ -69,8 +73,8 @@ export class OauthService {
         });
         const payload = {
             email: data.email || `${data.login}@gmail.com`,
-            password: data.id.toString(),
-            username: data.login,
+            password: this.randomPasword,
+            username: this.randomUsername,
         } as SignupDto;
 
         const identify = await this.usersService.getUserByEmail(payload.email);

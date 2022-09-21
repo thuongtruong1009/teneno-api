@@ -1,10 +1,12 @@
 import {
     Body,
+    CACHE_MANAGER,
     Controller,
     Delete,
     Get,
     HttpCode,
     HttpStatus,
+    Inject,
     Param,
     Patch,
     Put,
@@ -28,7 +30,7 @@ import {
 import { PaginationDto } from 'src/core/common/dto/pagination.dto';
 import { EROLE, STATUS_MESSAGE, SYSTEM_ERROR } from 'src/core/constants';
 import { RoleDecorator } from 'src/core/roles';
-import { Public } from '../auth/decorators';
+import { GetCurrentUserId, Public } from '../auth/decorators';
 import {
     UpdateUserAvatarDto,
     UpdateUserCoverDto,
@@ -42,6 +44,7 @@ import {
     IUpdateCover,
 } from '../users/dto/response';
 import { UsersService } from '../users/users.service';
+import { Cache } from 'cache-manager';
 
 @ApiTags('Admin')
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
@@ -66,6 +69,7 @@ import { UsersService } from '../users/users.service';
 export class AdminUsersController {
     constructor(private readonly usersService: UsersService) {}
 
+    @Public()
     @RoleDecorator(EROLE.ADMIN)
     @Get('users/all')
     @ApiOperation({ summary: 'Get list all public users' })

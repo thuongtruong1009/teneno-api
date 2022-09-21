@@ -27,7 +27,6 @@ import { RolesGuard } from './core/roles';
 import { OauthModule } from './infrastructure/oauth/oauth.module';
 import { MathModule } from './abstraction/microservices/math/math.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import { AllExceptionsFilter } from './core/filters/exception.filter';
 
 @Module({
     imports: [

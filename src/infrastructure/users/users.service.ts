@@ -89,7 +89,8 @@ export class UsersService {
             },
         });
 
-        if (!identify) throw new NotFoundException(USER_ERROR.NOT_FOUND);
+        // if (!identify && !nullable)
+        //     throw new NotFoundException(USER_ERROR.NOT_FOUND);
         return identify;
     }
 

@@ -67,7 +67,7 @@
 
 ## Structure
 
-![Architecture](https://raw.githubusercontent.com/thuongtruong1009/teneno-api/9ad02f21e3abbf2d6b67f651cc96e3b256c5657f/public/docs/architecture.svg)
+![Architecture](https://raw.githubusercontent.com/thuongtruong1009/teneno-api/9ad02f21e3abbf2d6b67f651cc96e3b256c5657f/public/docs/architecture.png)
 
 ## Diagram database
 

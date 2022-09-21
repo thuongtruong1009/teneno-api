@@ -60,7 +60,7 @@ export class OauthController {
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-    async facebookLogin(): Promise<any> {
+    async facebookAuth(): Promise<any> {
         return HttpStatus.OK;
     }
 
@@ -74,8 +74,8 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async facebookAuthRedirect(@Req() req: Request): Promise<any> {
-        return this.oauthService.facebookLogin(req);
+    async facebookRedirect(@Req() req: Request): Promise<any> {
+        return this.oauthService.facebookRedirect(req);
     }
 
     @Get('google')
@@ -99,8 +99,8 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async googleAuthRedirect(@Req() req: Request): Promise<any> {
-        return this.oauthService.googleLogin(req);
+    async googleRedirect(@Req() req: Request): Promise<any> {
+        return this.oauthService.googleRedirect(req);
     }
 
     @Get('github/redirect')
@@ -112,7 +112,7 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async githubAuthRedirect(@Query() req: string) {
+    async githubRedirect(@Query() req: string) {
         return this.oauthService.githubRedirect(req);
     }
 }

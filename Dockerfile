@@ -1,7 +1,7 @@
 FROM node:18-alpine AS build-stage
 WORKDIR /app
-COPY . .
 RUN npm install
+COPY . .
 RUN npm run build
 
 FROM node:18-alpine AS production-stage
@@ -11,7 +11,7 @@ USER node
 RUN mkdir dist
 
 COPY --chown=node:node /package*.json ./
-COPY --chown=node:node --from=build-stage /app/dist /app/dist
+COPY --chown=node:node --from=build-stage /app/dist ./dist
 COPY --chown=node:node --from=build-stage /app/prisma ./prisma
 
 RUN npm install --omit=dev && npm cache clean --force
@@ -21,7 +21,7 @@ RUN npm install --omit=dev && npm cache clean --force
 
 ENV NODE_ENV production
 
-CMD ["node", "dist/main.js" ]
+CMD ["npm", "run", "start:prod" ]
 
 EXPOSE 5500
 

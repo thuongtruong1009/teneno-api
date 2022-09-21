@@ -4,7 +4,7 @@ import { config } from 'dotenv';
 import { Injectable } from '@nestjs/common';
 import { ESTRATEGY } from 'src/core/constants';
 
-config();
+// config();
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(

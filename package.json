@@ -12,8 +12,10 @@
         "type": "git",
         "url": "https://github.com/thuongtruong1009/teneno-api"
     },
-    "funding": [
-        {
+    "bugs": {
+        "url": "https://github.com/fivethree-team/nestjs-prisma-client-example/issues"
+    },
+    "funding": [{
             "type": "github",
             "url": "https://github.com/sponsors/thuongtruong1009"
         },
@@ -61,25 +63,28 @@
         "start:prod": "node dist/main",
         "lint": "eslint \"{src,apps,libs,test,client}/**/*.ts\" --fix",
         "tslint": "tslint --fix -c tslint.json 'lib/**/*{.ts,.tsx}'",
-        "test": "jest",
+        "test": "jest --setupFiles dotenv/config",
         "test:watch": "jest --watch",
         "test:cov": "jest --coverage",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "jest --config ./test/jest-e2e.json",
         "prepare": "husky install",
         "pre-commit": "lint-staged",
-        "prisma:pull": "prisma db pull",
         "prisma:generate": "npx prisma generate",
-        "prisma:migrate": "npx prisma migrate dev --create-only",
+        "prisma:pull": "prisma db pull",
         "prisma:push": "npx prisma db push",
-        "prisma:deploy": "npx prisma migrate deploy",
-        "start:migrate:prod": "npx prisma migrate deploy && node dist/main",
         "prisma:studio": "npx prisma studio",
         "prisma:seed": "npx prisma db seed --preview-feature",
-        "prisma:reset": "npx prisma migrate reset",
+        "prisma:migrate:create": "npx prisma migrate dev --create-only --preview-feature",
+        "prisma:migrate:reset": "npx prisma migrate reset --preview-feature",
+        "prisma:migrate:dev": "prisma migrate dev --preview-feature",
+        "prisma:migrate:status": "npx prisma migrate status --preview-feature",
+        "prisma:migrate:resolve": "npx prisma migrate resolve --preview-feature",
+        "prisma:migrate:deploy": "npx prisma migrate deploy --preview-feature && node dist/main",
         "clear": "npm rm -rf node_modules && npm cache clean --force && npm install",
         "docs": "npx @compodoc/compodoc -p tsconfig.json -s -d ./docs -n \"Teneno API documentation\" -r 5500 -w -o --hideGenerator --customFavicon \"/public/favicon.ico\" --theme \"postmark\"",
-        "docker:run": "docker run -p 5500:5500 --env-file .env -d teneno"
+        "docker:run": "docker run -p 5500:5500 --env-file .env -d teneno-api",
+        "docker:seed": "docker exec -it app npm run seed"
     },
     "prisma": {
         "schema": "prisma/schema.prisma"
@@ -185,12 +190,12 @@
         "coverageDirectory": "../coverage",
         "testEnvironment": "node",
         "setupFiles": [
-            "@suncin/dotenv",
-            "jest-ts-auto-mock"
+            "jest-ts-auto-mock",
+            "./src/test/setup-tests.ts"
         ],
         "globals": {
             "ts-jest": {
-                "compiler": "ttypescript",
+                "compiler": "typescript",
                 "tsconfig": "tsconfig.test.json"
             }
         }
