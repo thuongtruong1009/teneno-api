@@ -188,25 +188,23 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  CallHandler,
-  ExecutionContext,
-  Injectable,
-  NestInterceptor,
+    CallHandler,
+    ExecutionContext,
+    Injectable,
+    NestInterceptor,
 } from &#x27;@nestjs/common&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { tap } from &#x27;rxjs/operators&#x27;;
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable&lt;any&gt; {
-    console.log(&#x27;Before...&#x27;);
-
-    console.log(&#x27;Connecting &#x27; + context.getClass().name);
-    const now &#x3D; Date.now();
-    return next
-      .handle()
-      .pipe(tap(() &#x3D;&gt; console.log(&#x60;After... ${Date.now() - now}ms&#x60;)));
-  }
+    intercept(context: ExecutionContext, next: CallHandler): Observable&lt;any&gt; {
+        console.log(&#x27;Connecting &#x27; + context.getClass().name);
+        const now &#x3D; Date.now();
+        return next
+            .handle()
+            .pipe(tap(() &#x3D;&gt; console.log(&#x60;Log time... ${Date.now() - now}ms&#x60;)));
+    }
 }
 </code></pre>
     </div>

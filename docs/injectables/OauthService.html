@@ -81,7 +81,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#facebookLogin" >facebookLogin</a>
+                                <a href="#facebookRedirect" >facebookRedirect</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -93,7 +93,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#googleLogin" >googleLogin</a>
+                                <a href="#googleRedirect" >googleRedirect</a>
                             </li>
                         </ul>
                     </td>
@@ -118,7 +118,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -177,26 +177,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="facebookLogin"></a>
+                    <a name="facebookRedirect"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>facebookLogin</b></span>
-                        <a href="#facebookLogin"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>facebookRedirect</b></span>
+                        <a href="#facebookRedirect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>facebookLogin(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>facebookRedirect(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:15</a></div>
                 </td>
             </tr>
 
@@ -266,8 +266,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:51</a></div>
                 </td>
             </tr>
 
@@ -337,8 +337,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:67</a></div>
                 </td>
             </tr>
 
@@ -390,26 +390,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="googleLogin"></a>
+                    <a name="googleRedirect"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>googleLogin</b></span>
-                        <a href="#googleLogin"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>googleRedirect</b></span>
+                        <a href="#googleRedirect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>googleLogin(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>googleRedirect(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.service.ts:33</a></div>
                 </td>
             </tr>
 
@@ -463,8 +463,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { axiosRequest } from &#x27;src/core/helpers&#x27;;
+import { subRandom } from &#x27;src/core/utils/random&#x27;;
 import { AuthService } from &#x27;../auth/auth.service&#x27;;
 import { SignupDto } from &#x27;../auth/dto/request&#x27;;
 import { UsersService } from &#x27;../users/users.service&#x27;;
@@ -476,15 +477,15 @@ export class OauthService {
         private readonly usersService: UsersService,
     ) {}
 
-    async facebookLogin(req: any) {
+    async facebookRedirect(req: any) {
         if (!req.user) {
             return &#x27;Not found user from facebook!&#x27;;
         }
 
         const payload &#x3D; {
             email: req.user.user.email,
-            password: req.user.user.email,
-            username: req.user.user.email,
+            password: req.user.user.email.split(&#x27;@&#x27;)[0],
+            username: subRandom(16),
         } as SignupDto;
 
         const identify &#x3D; await this.usersService.getUserByEmail(payload.email);
@@ -494,15 +495,15 @@ export class OauthService {
         return await this.authService.signinLocal(payload);
     }
 
-    async googleLogin(req: any) {
+    async googleRedirect(req: any) {
         if (!req.user) {
             return &#x27;Not found user from Google!&#x27;;
         }
 
         const payload &#x3D; {
             email: req.user.email,
-            password: req.user.email,
-            username: req.user.email,
+            password: req.user.email.split(&#x27;@&#x27;)[0],
+            username: subRandom(16),
         } as SignupDto;
 
         const identify &#x3D; await this.usersService.getUserByEmail(payload.email);
@@ -534,9 +535,15 @@ export class OauthService {
         });
         const payload &#x3D; {
             email: data.email || &#x60;${data.login}@gmail.com&#x60;,
-            password: data.id.toString(),
-            username: data.login,
+            password: data.email.split(&#x27;@&#x27;)[0],
+            username: subRandom(16),
         } as SignupDto;
+
+        if (!payload.email) {
+            throw new NotFoundException(
+                &#x27;The email address associated with this account has not been verified or made public!&#x27;,
+            );
+        }
 
         const identify &#x3D; await this.usersService.getUserByEmail(payload.email);
         if (!identify) {

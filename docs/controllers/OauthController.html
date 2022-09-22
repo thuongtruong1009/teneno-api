@@ -86,15 +86,15 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#facebookAuthRedirect" >facebookAuthRedirect</a>
+                                <a href="#facebookAuth" >facebookAuth</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#facebookLogin" >facebookLogin</a>
+                                <a href="#facebookRedirect" >facebookRedirect</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#githubAuthRedirect" >githubAuthRedirect</a>
+                                <a href="#githubRedirect" >githubRedirect</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -102,7 +102,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#googleAuthRedirect" >googleAuthRedirect</a>
+                                <a href="#googleRedirect" >googleRedirect</a>
                             </li>
                         </ul>
                     </td>
@@ -125,18 +125,64 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="facebookAuthRedirect"></a>
+                    <a name="facebookAuth"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>facebookAuthRedirect</b></span>
-                        <a href="#facebookAuthRedirect"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>facebookAuth</b></span>
+                        <a href="#facebookAuth"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>facebookAuthRedirect(req: Request)</code>
+                    <code>facebookAuth()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;facebook&#x27;)<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Connect to your Facebook account (not execute directly here).&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="facebookRedirect"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>facebookRedirect</b></span>
+                        <a href="#facebookRedirect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>facebookRedirect(req: Request)</code>
                 </td>
             </tr>
 
@@ -203,64 +249,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="facebookLogin"></a>
+                    <a name="githubRedirect"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>facebookLogin</b></span>
-                        <a href="#facebookLogin"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>githubRedirect</b></span>
+                        <a href="#githubRedirect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>facebookLogin()</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;facebook&#x27;)<br />@UseGuards(undefined)<br />@ApiOperation({summary: &#x27;Connect to your Facebook account (not execute directly here).&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/infrastructure/oauth/oauth.controller.ts:63</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="githubAuthRedirect"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>githubAuthRedirect</b></span>
-                        <a href="#githubAuthRedirect"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>githubAuthRedirect(req: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>githubRedirect(req: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -405,18 +405,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="googleAuthRedirect"></a>
+                    <a name="googleRedirect"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>googleAuthRedirect</b></span>
-                        <a href="#googleAuthRedirect"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>googleRedirect</b></span>
+                        <a href="#googleRedirect"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>googleAuthRedirect(req: Request)</code>
+                    <code>googleRedirect(req: Request)</code>
                 </td>
             </tr>
 
@@ -545,7 +545,7 @@ export class OauthController {
     })
     @HttpCode(HttpStatus.OK)
     @ApiOkResponse({ description: STATUS_MESSAGE.SUCCESS })
-    async facebookLogin(): Promise&lt;any&gt; {
+    async facebookAuth(): Promise&lt;any&gt; {
         return HttpStatus.OK;
     }
 
@@ -559,8 +559,8 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async facebookAuthRedirect(@Req() req: Request): Promise&lt;any&gt; {
-        return this.oauthService.facebookLogin(req);
+    async facebookRedirect(@Req() req: Request): Promise&lt;any&gt; {
+        return this.oauthService.facebookRedirect(req);
     }
 
     @Get(&#x27;google&#x27;)
@@ -584,8 +584,8 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async googleAuthRedirect(@Req() req: Request): Promise&lt;any&gt; {
-        return this.oauthService.googleLogin(req);
+    async googleRedirect(@Req() req: Request): Promise&lt;any&gt; {
+        return this.oauthService.googleRedirect(req);
     }
 
     @Get(&#x27;github/redirect&#x27;)
@@ -597,7 +597,7 @@ export class OauthController {
     @ApiCreatedResponse({
         description: RESPONSES_MESSAGE.CREATE_USER,
     })
-    async githubAuthRedirect(@Query() req: string) {
+    async githubRedirect(@Query() req: string) {
         return this.oauthService.githubRedirect(req);
     }
 }

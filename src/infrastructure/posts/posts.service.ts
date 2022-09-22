@@ -252,6 +252,7 @@ export class PostsService {
         return this.prismaService.comment.create({
             data: {
                 text: dto.text,
+                type: dto.type,
                 postId: dto.postId,
                 authorId: userId,
             },

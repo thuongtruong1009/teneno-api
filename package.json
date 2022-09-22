@@ -15,7 +15,8 @@
     "bugs": {
         "url": "https://github.com/fivethree-team/nestjs-prisma-client-example/issues"
     },
-    "funding": [{
+    "funding": [
+        {
             "type": "github",
             "url": "https://github.com/sponsors/thuongtruong1009"
         },
@@ -60,7 +61,7 @@
         "start:dev": "nest start --watch",
         "start:repl": "nest start --entryFile repl",
         "start:debug": "nest start --debug --watch",
-        "start:prod": "node dist/main",
+        "start:prod": "node dist/src/main",
         "lint": "eslint \"{src,apps,libs,test,client}/**/*.ts\" --fix",
         "tslint": "tslint --fix -c tslint.json 'lib/**/*{.ts,.tsx}'",
         "test": "jest --setupFiles dotenv/config",
@@ -121,6 +122,7 @@
         "express-session": "^1.17.3",
         "helmet": "^6.0.0",
         "husky": "^8.0.1",
+        "morgan": "^1.10.0",
         "passport": "^0.6.0",
         "passport-facebook": "^3.0.0",
         "passport-github2": "^0.1.12",

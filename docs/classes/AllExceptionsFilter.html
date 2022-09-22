@@ -268,7 +268,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/core/filters/exception.filter.ts:99</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/core/filters/exception.filter.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -633,7 +633,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
         const { method, url } &#x3D; request;
         const errorLog &#x3D; &#x60;Response Code: ${statusCode} - Method: ${method} - URL: ${url}\n
         ${JSON.stringify(errorResponse)}\n
-        User: ${JSON.stringify(request.user ?? &#x27;Not signed in&#x27;)}\n
         ${exception instanceof HttpException ? exception.stack : error}\n&#x60;;
         return errorLog;
     };

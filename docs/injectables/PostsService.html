@@ -377,8 +377,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="276"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:276</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="277"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:277</a></div>
                 </td>
             </tr>
 
@@ -886,8 +886,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="261"
-                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:261</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="262"
+                            class="link-to-prism">src/infrastructure/posts/posts.service.ts:262</a></div>
                 </td>
             </tr>
 
@@ -1266,6 +1266,7 @@ export class PostsService {
         return this.prismaService.comment.create({
             data: {
                 text: dto.text,
+                type: dto.type,
                 postId: dto.postId,
                 authorId: userId,
             },

@@ -90,6 +90,7 @@
 * [Passport](https://www.npmjs.com/package/passport) compatible authentication requests middleware for Node.js
 * [Cookies-Parser](https://anonystick.com/blog-developer/cookie-parser-la-gi-middleware-can-thiet-ma-hoa-cookie-trong-expressjs-2020112687915577) middleware parsing of cookies in Nodejs and Expressjs.
 * [Multer](https://docs.nestjs.com/techniques/file-upload) upload file data form in Expressjs
+* [Morgan](https://www.npmjs.com/package/morgan) HTTP request logger middleware for Node.js
 * [Cookie-parser](https://www.npmjs.com/package/cookie-parser) Parse Cookie header and signed cookie support
 * [Helmet](https://www.npmjs.com/package/helmet) secure Express apps by setting various HTTP headers
 * [Compression](https://www.npmjs.com/package/compression) compress response bodies for all request
@@ -121,6 +122,7 @@
 * [Postgre x Heroku](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
 * [Nest x Prisma](https://docs.nestjs.com/recipes/prisma)
 * [gRPC for Microservice](https://200lab.io/blog/grpc-la-gi-vu-khi-tang-tai-microservices/)
+* [OAuth in Node](https://www.loginradius.com/blog/engineering/oauth-implemenation-using-node/)
 
 <!-- * [Database for chat](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bchat%2Bapplication%26sxsrf%3DALiCzsZVJGO-Xg7f0j6bm04uemOFXQOCow%3A1661272422354%26source%3Dlnms%26tbm%3Disch%26sa%3DX%26ved%3D2ahUKEwjH3u-Est35AhUFmlYBHQe4BikQ_AUoAXoECAEQAw%26biw%3D1920%26bih%3D948%26dpr%3D1&h=AT1rz92_FbaMniK5W8han8NWXAfairaSKCmfkCu3TPLJWm48IqSIYii-aIRJ16hF-Vt_Y7Ju8l2B8YvIqo-5fIndTxa4Koo62fgJN7fGuUcbuMg9XU-5Y7IYHdhWjOESt9SEOvAGrud8_5c&s=1)
 * [Database for social](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%2Bapp%26tbm%3Disch%26ved%3D2ahUKEwj2_M6Tst35AhUKVPUHHefeDpkQ2-cCegQIABAA%26oq%3Ddatabase%2Bfor%2Bsocial%2Bmedia%26gs_lcp%3DCgNpbWcQARgAMgQIABAYMgQIABAYOgQIIxAnOgYIABAeEAg6BQgAEIAEUN4HWOodYNYlaABwAHgAgAGFAYgB3AySAQQwLjE0mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE%26sclient%3Dimg%26ei%3DhQEFY7amEIqo1e8P5727yAk%26bih%3D948%26biw%3D1920&h=AT2bN5utpmugfzrrq3LxJL2taNOV2GVjJPB9MXZ3kkPt5MBwUuqo6O-m-g_xeLO-c0MBe3_P6H_hrFvp53MmQ8msV1DFVay8_JdoXpgmkCp8LQwiiTzYktBVKIMNN_kEWLxUjRQLqsOIZyE&s=1) -->
@@ -132,6 +134,7 @@
 * [Nest structure](https://github.com/CatsMiaow/nestjs-project-structure)
 * [Nest auth example](https://github.com/leosuncin/nest-auth-example)
 * [Nest social login](https://github.com/m-haecker/nestjs-social-login)
+* [Nest P2P](https://github.com/mfcodeworks/Nest-P2P-Full-Mesh)
 
 ### Setup Prisma
 

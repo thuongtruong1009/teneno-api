@@ -154,8 +154,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="132"
-                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:132</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:136</a></div>
                 </td>
             </tr>
 
@@ -226,14 +226,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@RoleDecorator(EROLE.ADMIN)<br />@Get(&#x27;users/all&#x27;)<br />@ApiOperation({summary: &#x27;Get list all public users&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
+                    <code>@Public()<br />@RoleDecorator(EROLE.ADMIN)<br />@Get(&#x27;users/all&#x27;)<br />@ApiOperation({summary: &#x27;Get list all public users&#x27;})<br />@HttpCode(HttpStatus.OK)<br />@ApiOkResponse({description: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:78</a></div>
                 </td>
             </tr>
 
@@ -310,8 +310,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:89</a></div>
                 </td>
             </tr>
 
@@ -388,8 +388,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:100</a></div>
                 </td>
             </tr>
 
@@ -478,8 +478,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:112</a></div>
                 </td>
             </tr>
 
@@ -568,8 +568,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="120"
-                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:120</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/infrastructure/admin/admin-users.controller.ts:124</a></div>
                 </td>
             </tr>
 
@@ -635,11 +635,13 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
     Body,
+    CACHE_MANAGER,
     Controller,
     Delete,
     Get,
     HttpCode,
     HttpStatus,
+    Inject,
     Param,
     Patch,
     Put,
@@ -663,7 +665,7 @@ import {
 import { PaginationDto } from &#x27;src/core/common/dto/pagination.dto&#x27;;
 import { EROLE, STATUS_MESSAGE, SYSTEM_ERROR } from &#x27;src/core/constants&#x27;;
 import { RoleDecorator } from &#x27;src/core/roles&#x27;;
-import { Public } from &#x27;../auth/decorators&#x27;;
+import { GetCurrentUserId, Public } from &#x27;../auth/decorators&#x27;;
 import {
     UpdateUserAvatarDto,
     UpdateUserCoverDto,
@@ -677,6 +679,7 @@ import {
     IUpdateCover,
 } from &#x27;../users/dto/response&#x27;;
 import { UsersService } from &#x27;../users/users.service&#x27;;
+import { Cache } from &#x27;cache-manager&#x27;;
 
 @ApiTags(&#x27;Admin&#x27;)
 @ApiUnauthorizedResponse({ description: SYSTEM_ERROR.UNAUTHORIZED })
@@ -701,6 +704,7 @@ import { UsersService } from &#x27;../users/users.service&#x27;;
 export class AdminUsersController {
     constructor(private readonly usersService: UsersService) {}
 
+    @Public()
     @RoleDecorator(EROLE.ADMIN)
     @Get(&#x27;users/all&#x27;)
     @ApiOperation({ summary: &#x27;Get list all public users&#x27; })
