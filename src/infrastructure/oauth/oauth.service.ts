@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { axiosRequest } from 'src/core/helpers';
 import { subRandom } from 'src/core/utils/random';
 import { AuthService } from '../auth/auth.service';
@@ -7,9 +7,6 @@ import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class OauthService {
-    private randomPasword = subRandom(16);
-    private randomUsername = subRandom(16);
-
     constructor(
         private readonly authService: AuthService,
         private readonly usersService: UsersService,
@@ -22,8 +19,8 @@ export class OauthService {
 
         const payload = {
             email: req.user.user.email,
-            password: this.randomPasword,
-            username: this.randomUsername,
+            password: req.user.user.email.split('@')[0],
+            username: subRandom(16),
         } as SignupDto;
 
         const identify = await this.usersService.getUserByEmail(payload.email);
@@ -40,8 +37,8 @@ export class OauthService {
 
         const payload = {
             email: req.user.email,
-            password: this.randomPasword,
-            username: this.randomUsername,
+            password: req.user.email.split('@')[0],
+            username: subRandom(16),
         } as SignupDto;
 
         const identify = await this.usersService.getUserByEmail(payload.email);
@@ -73,9 +70,15 @@ export class OauthService {
         });
         const payload = {
             email: data.email || `${data.login}@gmail.com`,
-            password: this.randomPasword,
-            username: this.randomUsername,
+            password: data.email.split('@')[0],
+            username: subRandom(16),
         } as SignupDto;
+
+        if (!payload.email) {
+            throw new NotFoundException(
+                'The email address associated with this account has not been verified or made public!',
+            );
+        }
 
         const identify = await this.usersService.getUserByEmail(payload.email);
         if (!identify) {
