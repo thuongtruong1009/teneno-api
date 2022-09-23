@@ -12,7 +12,7 @@ import { TimeoutInterceptor } from './timeout.interceptor';
         { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
         { provide: APP_INTERCEPTOR, useClass: ExcludeNullInterceptor },
         { provide: APP_INTERCEPTOR, useClass: TimeoutInterceptor },
-        { provide: APP_INTERCEPTOR, useClass: ErrorsInterceptor },
+        // { provide: APP_INTERCEPTOR, useClass: ErrorsInterceptor },
     ],
 })
 export class InterceptorModule {}

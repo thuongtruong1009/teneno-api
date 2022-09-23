@@ -69,8 +69,8 @@ export class UsersService {
                 id: true,
                 username: true,
                 email: true,
-                profile: true,
                 createdAt: true,
+                profile: true,
             },
         });
         if (identify.length === 0)
@@ -88,9 +88,6 @@ export class UsersService {
                 email: true,
             },
         });
-
-        // if (!identify && !nullable)
-        //     throw new NotFoundException(USER_ERROR.NOT_FOUND);
         return identify;
     }
 
@@ -129,8 +126,21 @@ export class UsersService {
                 ...dto,
             },
         });
+
         const newProfile = await this.getPublicUserByIdOrUsername(userId);
         return newProfile;
+    }
+
+    async getUserAvatar(userId: string) {
+        return this.prismaService.userProfile.findUnique({
+            where: {
+                userId: userId,
+            },
+            select: {
+                avatar: true,
+                fullName: true,
+            },
+        });
     }
 
     async updateUsersAvatar(

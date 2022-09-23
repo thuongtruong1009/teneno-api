@@ -29,10 +29,14 @@ import {
     IUpdateComment,
 } from './dto/comment/response';
 import { POST_ERROR, RESPONSES_MESSAGE, USER_ERROR } from 'src/core/constants';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class PostsService {
-    constructor(private prismaService: PrismaService) {}
+    constructor(
+        private prismaService: PrismaService,
+        private readonly usersService: UsersService,
+    ) {}
 
     async createPost(userId: string, dto: CreatePostDto): Promise<ICreatePost> {
         const post = await this.prismaService.post.create({
@@ -68,8 +72,10 @@ export class PostsService {
         return post;
     }
 
-    async getAllPostsOfUser(userId: string): Promise<IGetPostOfUser[]> | null {
-        return await this.prismaService.post.findMany({
+    async getAllPostsOfUser(
+        userId: string,
+    ) /* : Promise<IGetPostOfUser[]> | null */ {
+        const posts = await this.prismaService.post.findMany({
             where: {
                 authorId: userId,
             },
@@ -84,6 +90,8 @@ export class PostsService {
                 reactions: true,
             },
         });
+        const user = await this.usersService.getUserAvatar(userId);
+        return { posts, user };
     }
 
     async getAllPublicPosts(userId: string): Promise<IGetPublicPost[]> | null {
@@ -197,32 +205,82 @@ export class PostsService {
         return 'This post has been deleted!';
     }
 
-    async reactionPost(dto: ReactionsPost): Promise<IUpdateReaction> {
-        const checkExist = await this.prismaService.reaction.findMany({
-            where: {
-                postId: dto.postId,
-                userId: dto.favouritorId,
-            },
-        });
-
-        if (checkExist.length > 0) {
-            throw new BadRequestException('You already reacted to this post');
-        }
-        await this.prismaService.reaction.create({
-            data: {
-                userId: dto.favouritorId,
-                postId: dto.postId,
-                type: dto.reactionType,
-            },
-        });
+    async getAllReactionsPost(postId: any) {
         return await this.prismaService.post.findUnique({
             where: {
-                id: dto.postId,
+                id: postId,
             },
             select: {
                 reactions: true,
             },
         });
+    }
+
+    async createReactionToPost(
+        userId: string,
+        dto: ReactionsPost,
+    ): Promise<IUpdateReaction> {
+        const checkExist = await this.prismaService.post.findUnique({
+            where: {
+                id: dto.postId,
+            },
+            select: {
+                id: true,
+                reactions: true,
+            },
+        });
+
+        if (!checkExist.id) {
+            return new NotFoundException(POST_ERROR.NOT_FOUND);
+        }
+
+        const checkReaction = await this.prismaService.reaction.findMany({
+            where: {
+                userId: userId,
+                postId: dto.postId,
+            },
+            select: {
+                id: true,
+                type: true,
+            },
+        });
+
+        if (!checkReaction || checkReaction.length === 0) {
+            await this.prismaService.reaction.create({
+                data: {
+                    type: dto.reactionType,
+                    userId: userId,
+                    postId: dto.postId,
+                },
+            });
+        }
+
+        if (dto.reactionType !== 0) {
+            await this.prismaService.reaction.update({
+                where: {
+                    id: checkReaction[0]['id'],
+                },
+                data: {
+                    type: dto.reactionType,
+                    userId: userId,
+                },
+            });
+        } else if (dto.reactionType === 0) {
+            await this.prismaService.reaction.delete({
+                where: {
+                    id: dto.postId,
+                },
+            });
+        }
+
+        // await this.prismaService.reaction.create({
+        //     data: {
+        //         userId: userId,
+        //         postId: dto.postId,
+        //         type: dto.reactionType,
+        //     },
+        // });
+        return this.getAllReactionsPost(dto.postId);
     }
 
     async getAllComments(postId: string): Promise<IGetComment> {

@@ -86,7 +86,7 @@ export class PostsController {
     @Post()
     @ApiBearerAuth()
     @HttpCode(HttpStatus.CREATED)
-    @ApiOperation({ summary: 'Get all posts of user by user-id' })
+    @ApiOperation({ summary: 'Create a new post by user-id' })
     @ApiOkResponse({
         description: STATUS_MESSAGE.SUCCESS,
     })
@@ -107,9 +107,7 @@ export class PostsController {
     @ApiOkResponse({
         description: STATUS_MESSAGE.SUCCESS,
     })
-    async getAllPostsOfUser(
-        @GetCurrentUserId() userId: string,
-    ): Promise<IGetPostOfUser[]> | null {
+    async getAllPostsOfUser(@GetCurrentUserId() userId: string) {
         return this.postsService.getAllPostsOfUser(userId);
     }
 
@@ -161,14 +159,27 @@ export class PostsController {
         return this.postsService.deletePost(userId, dto);
     }
 
-    @Post('reaction')
+    @Post('reactions/all')
+    @ApiBearerAuth()
+    @ApiOperation({ summary: 'Get all reactions of post' })
+    @ApiOkResponse({
+        description: STATUS_MESSAGE.SUCCESS,
+    })
+    async getAllReactionsPost(@Body() dto: any) {
+        return this.postsService.getAllReactionsPost(dto);
+    }
+
+    @Post('reaction/new')
     @ApiBearerAuth()
     @ApiOperation({ summary: 'React to post of user' })
     @ApiOkResponse({
         description: STATUS_MESSAGE.SUCCESS,
     })
-    async reactionPost(@Body() dto: ReactionsPost): Promise<IUpdateReaction> {
-        return this.postsService.reactionPost(dto);
+    async createReactionToPost(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: ReactionsPost,
+    ): Promise<IUpdateReaction> {
+        return this.postsService.createReactionToPost(userId, dto);
     }
 
     @Public()
@@ -180,7 +191,6 @@ export class PostsController {
     async getAllComments(
         @Param('postId', new ParseUUIDPipe()) postId: string,
     ): Promise<IGetComment> {
-        console.log(postId);
         return this.postsService.getAllComments(postId);
     }
 
