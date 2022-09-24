@@ -87,7 +87,6 @@ export class PostsService {
                 published: true,
                 authorId: true,
                 createdAt: true,
-                reactions: true,
             },
         });
         const user = await this.usersService.getUserAvatar(userId);
@@ -205,15 +204,46 @@ export class PostsService {
         return 'This post has been deleted!';
     }
 
-    async getAllReactionsPost(postId: any) {
-        return await this.prismaService.post.findUnique({
+    async getAllReactionsPost(postId: string) {
+        // const list = await this.prismaService.post.findUnique({
+        //     where: {
+        //         id: postId,
+        //     },
+        //     select: {
+        //         reactions: {
+        //             select: {
+        //                 userId: true,
+        //                 type: true,
+        //             },
+        //         },
+        //     },
+        // });
+
+        const reactions = await this.prismaService.reaction.findMany({
             where: {
-                id: postId,
+                postId: postId,
             },
             select: {
-                reactions: true,
+                userId: true,
+                type: true,
             },
         });
+        reactions.forEach(
+            async (item) => (
+                await this.usersService.getUserName(item.userId), item.type
+            ),
+        );
+
+        const topReactions = await this.prismaService.reaction.groupBy({
+            by: ['type'],
+            where: {
+                postId: postId,
+            },
+            _count: true,
+        });
+
+        const total = reactions.length;
+        return { total, topReactions, reactions };
     }
 
     async createReactionToPost(

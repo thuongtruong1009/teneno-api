@@ -91,6 +91,18 @@ export class UsersService {
         return identify;
     }
 
+    async getUserName(userId: string) {
+        const user = await this.prismaService.userProfile.findUnique({
+            where: {
+                userId: userId,
+            },
+            select: {
+                fullName: true,
+            },
+        });
+        return user?.fullName;
+    }
+
     async getUserProfile(userId: string): Promise<IGetUserProfile> {
         const profile = await this.prismaService.user.findUnique({
             where: {

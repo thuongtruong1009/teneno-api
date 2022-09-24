@@ -166,7 +166,7 @@ export class PostsController {
         description: STATUS_MESSAGE.SUCCESS,
     })
     async getAllReactionsPost(@Body() dto: any) {
-        return this.postsService.getAllReactionsPost(dto);
+        return this.postsService.getAllReactionsPost(dto.postId);
     }
 
     @Post('reaction/new')
