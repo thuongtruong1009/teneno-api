@@ -204,46 +204,44 @@ export class PostsService {
         return 'This post has been deleted!';
     }
 
-    async getAllReactionsPost(postId: string) {
-        // const list = await this.prismaService.post.findUnique({
-        //     where: {
-        //         id: postId,
-        //     },
-        //     select: {
-        //         reactions: {
-        //             select: {
-        //                 userId: true,
-        //                 type: true,
-        //             },
-        //         },
-        //     },
-        // });
-
+    async getAllReactionsPost(userId: string, postId: string) {
         const reactions = await this.prismaService.reaction.findMany({
             where: {
                 postId: postId,
             },
             select: {
+                id: true,
                 userId: true,
                 type: true,
             },
         });
-        reactions.forEach(
-            async (item) => (
-                await this.usersService.getUserName(item.userId), item.type
-            ),
-        );
+
+        const total = reactions.length;
 
         const topReactions = await this.prismaService.reaction.groupBy({
             by: ['type'],
             where: {
                 postId: postId,
             },
-            _count: true,
+            // _count: true,
+            orderBy: {
+                _count: {
+                    type: 'asc',
+                },
+            },
         });
 
-        const total = reactions.length;
-        return { total, topReactions, reactions };
+        const choosed = await this.prismaService.reaction.findMany({
+            where: {
+                postId: postId,
+                userId: userId,
+            },
+            select: {
+                type: true,
+            },
+        });
+
+        return { total, topReactions, choosed, reactions };
     }
 
     async createReactionToPost(
@@ -298,19 +296,11 @@ export class PostsService {
         } else if (dto.reactionType === 0) {
             await this.prismaService.reaction.delete({
                 where: {
-                    id: dto.postId,
+                    id: checkReaction[0]['id'],
                 },
             });
         }
-
-        // await this.prismaService.reaction.create({
-        //     data: {
-        //         userId: userId,
-        //         postId: dto.postId,
-        //         type: dto.reactionType,
-        //     },
-        // });
-        return this.getAllReactionsPost(dto.postId);
+        return this.getAllReactionsPost(userId, dto.postId);
     }
 
     async getAllComments(postId: string): Promise<IGetComment> {

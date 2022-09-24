@@ -37,7 +37,7 @@ model UserProfile {
     phone          String   @default("") @db.VarChar(20)
     age            Int      @default(0) @db.Integer()
     gender         Int      @default(0) @db.Integer()
-    user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
+    user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId         String   @unique
 
     @@map("profiles")
@@ -66,7 +66,7 @@ model Message {
     description    String?      @default("") @db.VarChar(255)
     createdAt      DateTime     @default(now()) @db.Timestamp(0)
     updatedAt      DateTime     @updatedAt @db.Timestamp(0)
-    conversations  Conversation @relation(fields: [conversationId], references: [id], onDelete: SetNull)
+    conversations  Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
     conversationId String
     senderId       String
 
@@ -82,7 +82,7 @@ model Post {
     createdAt   DateTime            @default(now()) @db.Timestamp(0)
     updatedAt   DateTime            @updatedAt @db.Timestamp(0)
     categories  CategoriesOnPosts[]
-    author      User                @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: SetNull)
+    author      User                @relation("WrittenPosts", fields: [authorId], references: [id], onDelete: Cascade)
     authorId    String
     reactions   Reaction[]
     comments    Comment[]
@@ -94,9 +94,9 @@ model Reaction {
     id        String   @id @unique @default(uuid())
     type      Int      @default(0) @db.Integer()
     createdAt DateTime @default(now()) @db.Timestamp(0)
-    post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
+    post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
     postId    String
-    user      User     @relation(fields: [userId], references: [id])
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId    String
 
     @@map("reactions")
@@ -108,9 +108,9 @@ model Comment {
     text      String   @db.Text()
     createdAt DateTime @default(now()) @db.Timestamp(0)
     updatedAt DateTime @updatedAt @db.Timestamp(0)
-    author    User     @relation("CommentPosts", fields: [authorId], references: [id], onDelete: SetNull)
+    author    User     @relation("CommentPosts", fields: [authorId], references: [id], onDelete: Cascade)
     authorId  String
-    post      Post     @relation(fields: [postId], references: [id], onDelete: SetNull)
+    post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
     postId    String
     reactions Json[]
     replies   Json[]

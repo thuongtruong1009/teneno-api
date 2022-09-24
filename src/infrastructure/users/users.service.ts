@@ -91,7 +91,7 @@ export class UsersService {
         return identify;
     }
 
-    async getUserName(userId: string) {
+    async getFullName(userId: string) {
         const user = await this.prismaService.userProfile.findUnique({
             where: {
                 userId: userId,

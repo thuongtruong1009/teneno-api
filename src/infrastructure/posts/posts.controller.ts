@@ -165,8 +165,11 @@ export class PostsController {
     @ApiOkResponse({
         description: STATUS_MESSAGE.SUCCESS,
     })
-    async getAllReactionsPost(@Body() dto: any) {
-        return this.postsService.getAllReactionsPost(dto.postId);
+    async getAllReactionsPost(
+        @GetCurrentUserId() userId: string,
+        @Body() dto: any,
+    ) {
+        return this.postsService.getAllReactionsPost(userId, dto.postId);
     }
 
     @Post('reaction/new')
