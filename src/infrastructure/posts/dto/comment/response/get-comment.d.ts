@@ -1,4 +1,5 @@
 export type IGetComment = {
+    total: number;
     comments: Array[{
         id: string;
         text: string;

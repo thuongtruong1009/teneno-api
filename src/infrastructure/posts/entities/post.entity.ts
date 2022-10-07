@@ -11,6 +11,7 @@ import { CustomDto } from 'src/core/common/dto';
 export class PostEntity extends PickType(CustomDto, ['userId']) {
     @ApiProperty({
         type: String,
+        required: true,
         description: 'The id of post',
         example: 'post-id-123-456-789',
     })
@@ -123,4 +124,19 @@ export class PostEntity extends PickType(CustomDto, ['userId']) {
         message: 'The type reaction of post is required',
     })
     reactionType: number;
+
+    // export class PostTag {
+    //     @ApiProperty({description: 'post tag name', required: true})
+    //     @IsOptional()
+    //     @IsString()
+    //     public tag?: string;
+    //   }
+
+    // @ApiProperty({ description: 'tags', required: false, type: [PostTag] })
+    // @IsOptional()
+    // @IsArray()
+    // @ValidateNested()
+    // @ArrayMinSize(1)
+    // @ValidateType(() => PostTag)
+    // public tags?: PostTag[];
 }

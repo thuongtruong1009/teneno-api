@@ -1,0 +1,18 @@
+1. Authentication
+	+ Signup
+	+ Signin
+	+ Update password
+	+ Verify account
+2. OAuth
+	+ Login with Facebook
+	+ Login with Google
+	+ Login with Github
+	+ Login with Linkedin
+2. User
+	+ Follow, unfollow
+3. Post
+	+ Post (private, friend, public)
+	+ Like, unlike
+	+ Share post
+	+ Timeline
+	

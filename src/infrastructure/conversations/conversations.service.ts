@@ -72,7 +72,7 @@ export class ConversationsService {
     }
 
     async getConversationById(id: string, dto: GetOneConversationDto) {
-        const list = await this.prismaService.conversation.findMany({
+        return await this.prismaService.conversation.findMany({
             where: {
                 OR: [
                     {
@@ -94,8 +94,18 @@ export class ConversationsService {
                 },
             },
         });
-        return list;
     }
+
+    // async getConversationParticipants(conversationId: string) {
+    //     return await this.prismaService.conversation.findMany({
+    //         where: {
+    //             id: conversationId,
+    //         },
+    //         select: {
+    //             members: true,
+    //         },
+    //     });
+    // }
 
     updateConversationById(id: string, dto: UpdateConversationDto) {
         const updated = this.prismaService.conversation.update({

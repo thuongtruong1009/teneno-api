@@ -32,7 +32,6 @@ import {
     CreateConversationDto,
     DeleteConversationDto,
     DeleteOneAdminConversationDto,
-    GetAllConversationDto,
     GetOneConversationDto,
     UpdateConversationDto,
     UpdateMembersConversationDto,
@@ -108,6 +107,19 @@ export class ConversationsController {
     ) {
         return this.conversationsService.getConversationById(id, dto);
     }
+
+    // @Get(':id/participants')
+    // @HttpCode(HttpStatus.OK)
+    // @ApiOperation({
+    //     summary: 'Get all participants of current conversation (user)',
+    // })
+    // @ApiOkResponse({
+    //     type: ConversationEntity,
+    //     description: STATUS_MESSAGE.SUCCESS,
+    // })
+    // async getConversationParticipants(@Param('id') id: string) {
+    //     return this.conversationsService.getConversationParticipants(id);
+    // }
 
     @Patch(':id')
     @HttpCode(HttpStatus.OK)

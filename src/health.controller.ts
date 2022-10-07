@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import {
     DiskHealthIndicator,
@@ -13,6 +13,8 @@ import { Public } from './infrastructure/auth/decorators';
 @Public()
 @Controller('health')
 export class HealthController {
+    private readonly logger = new Logger(HealthController.name);
+
     constructor(
         private health: HealthCheckService,
         private memory: MemoryHealthIndicator,
@@ -23,6 +25,7 @@ export class HealthController {
     @ApiOperation({ summary: 'Health check for server system' })
     @HealthCheck()
     async readiness(): Promise<HealthCheckResult> {
+        this.logger.log('Health Check');
         return await this.health.check([
             async () => await this.memory.checkRSS('mem_rss', 768 * 2 ** 20),
             async () =>
