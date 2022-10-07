@@ -186,7 +186,7 @@ export class PostsController {
     }
 
     @Public()
-    @Get(':postId/comments')
+    @Get(':postId/comments/all')
     @ApiOperation({ summary: 'Get all comments of the post' })
     @ApiOkResponse({
         description: STATUS_MESSAGE.SUCCESS,
@@ -197,7 +197,7 @@ export class PostsController {
         return this.postsService.getAllComments(postId);
     }
 
-    @Post('comments')
+    @Post('comment/new')
     @ApiBearerAuth()
     @ApiOperation({ summary: 'Add a new comment to post of user' })
     @ApiOkResponse({

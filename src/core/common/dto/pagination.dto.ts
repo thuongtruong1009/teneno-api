@@ -6,6 +6,7 @@ import { EORDER } from 'src/core/constants';
 export class PaginationDto {
     @ApiPropertyOptional({
         type: Number,
+        required: false,
         example: 1,
         minimum: 1,
         default: 1,

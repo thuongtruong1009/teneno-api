@@ -304,7 +304,7 @@ export class PostsService {
     }
 
     async getAllComments(postId: string): Promise<IGetComment> {
-        return await this.prismaService.post.findUnique({
+        const comments = await this.prismaService.post.findUnique({
             where: {
                 id: postId,
             },
@@ -312,6 +312,13 @@ export class PostsService {
                 comments: true,
             },
         });
+        // const total = await this.prismaService.comment.count({
+        //     where: {
+        //         postId: postId,
+        //     },
+        // });
+        const total = 2;
+        return { total, comments };
     }
 
     async addComment(
